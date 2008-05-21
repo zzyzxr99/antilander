@@ -265,64 +265,62 @@ SDL_Surface* Render::getpScreen()
 
 void Render::doInput()
 {
-	SDL_PollEvent(&mEvent);
+    plIn.leftClick= false;
+    plIn.rightClick= false;
+    while (SDL_PollEvent(&mEvent))
+    {
+	    if(mEvent.type == SDL_MOUSEMOTION)
+	    {
+		    plIn.mouseMove.x = mEvent.motion.x;
+		    plIn.mouseMove.y = mEvent.motion.y;
+	    }
 
-	if(mEvent.type == SDL_MOUSEMOTION)
-	{
-		plIn.mouseMove.x = mEvent.motion.x;
-		plIn.mouseMove.y = mEvent.motion.y;
-	}
+	    if(mEvent.type == SDL_KEYDOWN)
+	    {
+		    plIn.keyPress = mEvent.key.keysym.sym;
+		    if(plIn.keyPress == SDLK_ESCAPE)
+		    {
+			    gameState = false;
+		    }
+	    }
 
-	if(mEvent.type == SDL_KEYDOWN)
-	{
-		plIn.keyPress = mEvent.key.keysym.sym;
-		if(plIn.keyPress == SDLK_ESCAPE)
-		{
-			gameState = false;
-		}
-	}
+	    if(mEvent.type == SDL_MOUSEBUTTONDOWN)
+	    {
+		    plIn.mousePress.button = mEvent.button.button;
+		    if((plIn.mousePress.button == SDL_BUTTON_LEFT))
+		    {
+			    plIn.leftClick = true;
+			    plIn.tlclicked = true;
+		    }
+		   
 
-	if(mEvent.type == SDL_MOUSEBUTTONDOWN)
-	{
-		plIn.mousePress.button = mEvent.button.button;
-		if(plIn.mousePress.button == SDL_BUTTON_LEFT && plIn.tlclicked == 0)
-		{
-			plIn.leftClick = 1;
-			plIn.tlclicked = 1;
-		}
-		else
-		{
-			plIn.leftClick = 0;
-		}
-
-		if(plIn.mousePress.button == SDL_BUTTON_RIGHT && plIn.trclicked == 0)
-		{
-			plIn.rightClick = 1;
-			plIn.trclicked = 1;
-		}
-		else
-		{
-			plIn.rightClick = 0;
-		}
-	}
-	if(mEvent.type == SDL_MOUSEBUTTONUP)
-	{
-		plIn.mousePress.button = mEvent.button.button;
-		if(plIn.mousePress.button == SDL_BUTTON_LEFT)
-		{
-			plIn.tlclicked = 0;
-		}
-		else
-		{
-			plIn.trclicked = 0;
-		}
-	}
-	
-	if(plIn.leftClick == 1)
-		cout << "left clicked\n";
-	if(plIn.rightClick == 1)
-		cout << "right clicked\n";
-
+		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT )
+		    {
+			    plIn.rightClick = true;
+			    plIn.trclicked = true;
+		    }
+		 
+	    }
+	    if(mEvent.type == SDL_MOUSEBUTTONUP)
+	    {
+		    plIn.mousePress.button = mEvent.button.button;
+		    if(plIn.mousePress.button == SDL_BUTTON_LEFT)
+		    {
+			    plIn.tlclicked = false;
+                plIn.leftClick = false;
+		    }
+		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT)
+		    {
+			    plIn.trclicked = false;
+                plIn.rightClick = false;
+		    }
+	    }
+    	
+	    if(plIn.leftClick == 1)
+		    cout << "left clicked\n";
+	    if(plIn.rightClick == 1)
+		    cout << "right clicked\n";
+    }
 }
 
 bool Render::gameRunning()
