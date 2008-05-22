@@ -191,6 +191,9 @@ void Render::DrawTerrain( SDL_Surface *scrn,
                   Round( tPts[i+1].x ),
                   Round( tPts[i+1].y ),
                   255,255,255,255 );
+    }
+    for ( int i = 0; i < numTP-1; i++ )
+    {
 		DrawBox(boxes[i]);
     }
 }
