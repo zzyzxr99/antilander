@@ -141,7 +141,8 @@ void GameWorld::DrawEverything( )
 
     mRender.DrawTerrain( mRender.getpScreen( ),
                          mGameTerrain.TerrainPts( ),
-                         mGameTerrain.GetTPts( ));
+                         mGameTerrain.GetTPts( ),
+						 mGameTerrain.TerBox());
 
     if ( mRender.GetSplashAlpha( ) > 0 )
     {

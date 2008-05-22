@@ -165,7 +165,8 @@ void Render::DrawLander( SDL_Surface* scrn,
 
 void Render::DrawTerrain( SDL_Surface *scrn,
                           Point *tPts,
-                          int numTP )
+                          int numTP,
+						  BBox* boxes)
 {
     for ( int i = 0; i < numTP-1; i++ )
     {
@@ -186,6 +187,7 @@ void Render::DrawTerrain( SDL_Surface *scrn,
                   Round( tPts[i+1].x ),
                   Round( tPts[i+1].y ),
                   255,255,255,255 );
+		DrawBox(boxes[i]);
     }
 }
 
@@ -396,5 +398,15 @@ void Render::DrawBox( Point loc,
                    (int)(loc.y + box.y),
                    (int)(loc.x + box.x + box.w),
                    (int)(loc.y + box.y + box.h),
+                   255,255,255,127 );
+}
+
+void Render::DrawBox(BBox box)
+{
+    rectangleRGBA( screen,
+                   (int)(box.x),
+                   (int)(box.y),
+                   (int)(box.x + box.w),
+                   (int)(box.y + box.h),
                    255,255,255,127 );
 }

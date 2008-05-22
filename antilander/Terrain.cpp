@@ -112,6 +112,10 @@ void Terrain::InitPadPoints()
 	mPadPts[4].y= (mTerrainPts[12].y);
 }
 
+BBox* Terrain::TerBox()
+{
+	return &mTerrainBoxes[0];
+}
 
 	
 

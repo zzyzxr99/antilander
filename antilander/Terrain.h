@@ -28,6 +28,7 @@ public:
 	int GetTPts();
 	Point *TerrainPts();
 	Point *PadPts();
+	BBox *TerBox();
 
 };
 
