@@ -104,3 +104,36 @@ float Angle( Vect v )
     float rAngle = atan2( v.y, v.x );
     return rAngle;
 }
+
+bool IntersectBoxes(BBox b1, BBox b2)
+{
+	bool retIntersect= true;
+	if (b1.x > (b2.x + b2.w))
+	{
+		retIntersect= false;
+	}
+	else if ((b1.x + b1.w) < b2.x)
+	{
+		retIntersect= false;
+	}
+	else if (b1.y > (b2.y + b2.h))
+	{
+		retIntersect= false;
+	}
+	else if ((b1.y + b1.h) < b2.y)
+	{
+		retIntersect= false;
+	}
+
+	return retIntersect;
+}
+
+bool IntersectSegments(float x1,float y1,float x2,float y2)
+{
+	bool retIntersect= true;
+
+	
+
+
+	return retIntersect;
+}
