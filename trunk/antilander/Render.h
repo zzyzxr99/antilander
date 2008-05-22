@@ -19,6 +19,7 @@ private:
 	playInput plIn;				//player input
 	bool gameState;
     short int mSplashAlpha;
+	BBox mBBoxLander;
 
 public:
     Render( );
@@ -57,6 +58,7 @@ public:
     void DrawBox( Point loc,
                   BBox box );
 	void DrawBox(BBox box);
+	BBox GetLanderBox();
 };
 
 #endif // _RENDER_H;
