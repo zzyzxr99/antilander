@@ -128,12 +128,34 @@ bool IntersectBoxes(BBox b1, BBox b2)
 	return retIntersect;
 }
 
-bool IntersectSegments(float x1,float y1,float x2,float y2)
+// EJR Not tested do not use until rechecked code
+bool IntersectSegments(Point p1,Point p2,Point p3,Point p4)
 {
 	bool retIntersect= true;
 
-	
+	float uA,uB,uBot;
 
+	uBot= (p4.y-p3.y)*(p2.x-p1.x) - (p4.x-p3.x)*(p2.y-p1.y);
+	if (uBot == 0.0)
+	{
+		if ((uA == 0.0) && (uB == 0.0))
+		{
+			retIntersect= true;
+		}
+		else
+		{
+			retIntersect= false;
+		}
+	}
+	else 
+	{
+		uA= (p4.x-p3.x)*(p1.y-p3.y) - (p4.y-p3.y)*(p1.x-p3.x);
+		uB= (p2.x-p1.x)*(p1.y-p3.y)- (p2.y-p1.y)*(p1.x-p3.x);
+		uA= uA/uBot;
+		uB= uB/uBot;
+	}
 
 	return retIntersect;
 }
+
+
