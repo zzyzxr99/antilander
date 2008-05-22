@@ -387,3 +387,14 @@ void Render::DrawSplash( )
     SDL_FreeSurface( textSurface );
     TTF_CloseFont( splashFont );
 }
+
+void Render::DrawBox( Point loc,
+                      BBox box )
+{
+    rectangleRGBA( screen,
+                   (int)(loc.x + box.x),
+                   (int)(loc.y + box.y),
+                   (int)(loc.x + box.x + box.w),
+                   (int)(loc.y + box.y + box.h),
+                   255,255,255,127 );
+}

@@ -67,8 +67,8 @@ Missile::Missile(Point StartLoc, Point Dest, Vect InitDir)
     pts[2].y = -17.0F;
     pts[3].y = -12.0F;
     pts[4].y =   0.0F;
-    float locToTarg = atan2( mDirection.x,
-                             mDirection.y );
+    float locToTarg = atan2( mDirection.y,
+                             mDirection.x );
     float rotAngle = locToTarg - kPi/2;
     for ( int i = 0; i < 5; i++ )
     {
@@ -133,5 +133,10 @@ Missile::Missile ( Point loc,Point targ )
     mDestination.y = targ.y;
     int mDrawBankIDX = 0;
 	float mSpeed = kMissileStartSpeed;
+}
+
+BBox Missile::GetBox( )
+{
+    return mBox;
 }
 ////////////////// Dave's added functions ////////////////////
