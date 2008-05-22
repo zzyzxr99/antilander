@@ -164,6 +164,8 @@ void GameWorld::DrawEverything( )
         mRender.DrawCrosshair( mRender.getpScreen( ),
                                &(misIter->GetTarget( )),
                                255,0,0 );
+        mRender.DrawBox( misIter->GetLocation( ),
+                         misIter->GetBox( ) );
     }
 
     mRender.DrawMissile( mRender.getpScreen( ),

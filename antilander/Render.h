@@ -53,6 +53,8 @@ public:
     short int GetSplashAlpha( );
     void DecSplashAlpha( short int amt );
     void DrawSplash( );
+    void DrawBox( Point loc,
+                  BBox box );
 };
 
 #endif // _RENDER_H;

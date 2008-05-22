@@ -30,6 +30,7 @@ public:
     Point GetTarget( );
 	MissileStatusType GetStatus();
 	void SetStatus(MissileStatusType stat);
+    BBox GetBox( );
 ////////////////// Dave's added functions ////////////////////
 
 };
