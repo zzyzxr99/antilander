@@ -85,6 +85,15 @@ void Terrain::InitTerrain()
 	this->mTerrainPts[12].y= 360;
 	this->mTerrainPts[13].x= 639; //639 x 479 is max for 640 x 480 resolution
 	this->mTerrainPts[13].y= 360;
+
+	for (int i= 0; i < (mNumTPts-1); i++)
+	{
+		mTerrainBoxes[i].x = mTerrainPts[i].x;
+		mTerrainBoxes[i].y = mTerrainPts[i].y;
+		mTerrainBoxes[i].w = mTerrainPts[i+1].x - mTerrainPts[i].x;
+		mTerrainBoxes[i].h = mTerrainPts[i+1].y - mTerrainPts[i].y;
+
+	}
 }
 
 
@@ -102,6 +111,9 @@ void Terrain::InitPadPoints()
 	mPadPts[4].x= (mTerrainPts[12].x + mTerrainPts[13].x) / 2;
 	mPadPts[4].y= (mTerrainPts[12].y);
 }
+
+
+	
 
 
 
