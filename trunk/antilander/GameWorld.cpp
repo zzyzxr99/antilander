@@ -267,9 +267,13 @@ void GameWorld::UpdateEverything( )
 					}
 
 				}	
-
-
 				misIter->SetLocation(temp);
+				Point newtemp;
+				misIter->GetDirection();
+				if(this->MissileSect(mGameTerrain.TerrainPts(),misIter->GetLocation()))
+				{
+					misIter->SetStatus(gone);	
+				}
 			}
 		}
 	}
@@ -357,4 +361,54 @@ bool GameWorld::SplashRunning( )
         return true;
     }
     return false;
+}
+
+bool GameWorld::MissileSect(Point* TerArr, Point MissNose)
+{
+//	cout << TerArr[0].x << " - " << TerArr[0].y << "\n";
+//	cout << MissNose.x << " - " << MissNose.y << "\n";
+	int ctr = 0; 
+	int rndMiss = (int)(MissNose.x);
+	Point iter;
+	while(MissNose.x <= TerArr[ctr].x || MissNose.x > TerArr[ctr+1].x)
+	{
+		ctr++;
+	}
+	
+	//in case of similar y values
+	if(TerArr[ctr].y == TerArr[ctr+1].y && MissNose.y >= TerArr[ctr].y)
+	{
+		return true;
+	}
+
+	float diffX = TerArr[ctr+1].x - TerArr[ctr].x;
+	float diffY = TerArr[ctr].y - TerArr[ctr+1].y;
+	
+	if(diffX == 0)
+	{
+		diffX = 0.00001F;
+	}
+	
+	float slope = diffY/diffX;
+	float misVect = MissNose.x - TerArr[ctr].x;
+
+	iter.x = TerArr[ctr].x;
+	iter.y = TerArr[ctr].y;
+
+	//move iterator
+	for(int i=0; i<misVect+1; i++)
+	{
+		iter.x = iter.x + 1;
+		iter.y = iter.y - slope;
+		if(iter.x == rndMiss)
+		{
+			if(MissNose.y >= iter.y)
+			{
+				return true;
+				cout << "Intersection!!!";
+			}
+		}
+	}
+	return false;
+
 }

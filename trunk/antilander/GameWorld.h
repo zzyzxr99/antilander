@@ -44,6 +44,7 @@ public:
     void TestSpawnExplosion();// onlt for spawning explosion at mouse on right click
     bool SplashRunning( );
     void SpawnExplosion( Point sLoc );
+	bool MissileSect(Point * TerArr, Point MissNose);
 };
 
 #endif // end _GAMEWORLD_H
