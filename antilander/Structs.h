@@ -1,5 +1,5 @@
-#ifndef _VECT_H
-#define _VECT_H
+#ifndef _STRUCTS_H
+#define _STRUCTS_H
 #include "SDL.h"
 #include <cmath>
 
@@ -10,13 +10,6 @@ struct Vect
 	Vect();
 	~Vect();
 };
-
-
-
-#endif // _VECT_H
-
-#ifndef _POINT_H
-#define _POINT_H
 
 struct Point
 {
@@ -51,7 +44,10 @@ struct playInput
 	~playInput();
 };
 
+struct BBox
+{
+	float x,y,w,h;
+};
 
-
-#endif // _POINT_H
+#endif // _STRUCTS_H
 
