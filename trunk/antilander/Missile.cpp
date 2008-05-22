@@ -1,5 +1,8 @@
 #include "constants.h"
+#include "structs.h"
 #include "Missile.h"
+#include <cmath>
+using namespace std;
 
 
 //Constructor FIRST (easier for me)
@@ -53,6 +56,58 @@ Missile::Missile(Point StartLoc, Point Dest, Vect InitDir)
    	mDrawBankIDX = 0; //does nothing
 	mSpeed = kMissileStartSpeed;
 	mStatus = flight;
+    Point pts[5];
+    pts[0].x =  -4.0F;
+    pts[1].x =  -2.0F;
+    pts[2].x =   0.0F;
+    pts[3].x =   2.0F;
+    pts[4].x =   4.0F;
+    pts[0].y =   0.0F;
+    pts[1].y = -12.0F;
+    pts[2].y = -17.0F;
+    pts[3].y = -12.0F;
+    pts[4].y =   0.0F;
+    float locToTarg = atan2( mDirection.x,
+                             mDirection.y );
+    float rotAngle = locToTarg - kPi/2;
+    for ( int i = 0; i < 5; i++ )
+    {
+        float dist = sqrt( pts[i].x * pts[i].x + pts[i].y * pts[i].y ); // distance from point to origin
+        float pntToOrg = rotAngle - atan2( pts[i].y,
+                                           pts[i].x );
+        pts[i].x = dist * cos( pntToOrg );
+        pts[i].y = dist * sin( pntToOrg );
+    }
+    float minX = pts[0].x;
+    float minY = pts[0].y;
+    for ( int i = 1; i < 5; i++ )
+    {
+        if ( pts[i].x < minX)
+        {
+            minX = pts[i].x;
+        }
+        if ( pts[i].y < minY)
+        {
+            minY = pts[i].y;
+        }
+    }
+    float maxX = pts[0].x;
+    float maxY = pts[0].y;
+    for ( int i = 1; i < 5; i++ )
+    {
+        if ( pts[i].x > maxX)
+        {
+            maxX = pts[i].x;
+        }
+        if ( pts[i].y > maxY)
+        {
+            maxY = pts[i].y;
+        }
+    }
+    mBox.x = minX;
+    mBox.y = minY;
+    mBox.w = maxX - minX;
+    mBox.h = maxY - minY;
 }
 //Deconstructor Last (easier for me)
 Missile::~Missile()
