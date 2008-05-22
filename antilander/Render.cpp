@@ -55,6 +55,10 @@ Render::Render( )
 	plIn.mouseMove.x = 50;
 	plIn.mouseMove.y = 50;
 	gameState = true;
+	mBBoxLander.x= -7;
+	mBBoxLander.y= -8;
+	mBBoxLander.h= 22;
+	mBBoxLander.w= 16;
 }
 
 Render::~Render( )
@@ -409,4 +413,8 @@ void Render::DrawBox(BBox box)
                    (int)(box.x + box.w),
                    (int)(box.y + box.h),
                    255,255,255,127 );
+}
+BBox Render::GetLanderBox()
+{
+	return mBBoxLander;
 }

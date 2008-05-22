@@ -154,6 +154,7 @@ void GameWorld::DrawEverything( )
     {
         mRender.DrawLander( mRender.getpScreen( ),
                             &(landIter->GetLoc( )));
+		mRender.DrawBox(landIter->GetLoc(), mRender.GetLanderBox());
     }
 
     vector<Missile>::iterator misIter;
