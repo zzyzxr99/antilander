@@ -49,5 +49,8 @@ struct BBox
 	float x,y,w,h;
 };
 
+bool IntersectBoxes(BBox b1, BBox b2);
+bool IntersectSegments(float x1,float y1,float x2,float y2);
+
 #endif // _STRUCTS_H
 
