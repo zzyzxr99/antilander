@@ -15,6 +15,7 @@ private:
 	Point mPadPts [kMaxPpts];
 	int mNumTPts;
 	int mNumPadPts;
+	BBox mTerrainBoxes [kMaxTpts];
 	
 public:
 	
@@ -22,7 +23,7 @@ public:
 	~Terrain();
 	void InitTerrain();
 	void InitPadPoints();
-
+	float InitTbox();
 	int GetNumPadPts();
 	int GetTPts();
 	Point *TerrainPts();
