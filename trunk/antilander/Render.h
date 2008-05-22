@@ -32,7 +32,8 @@ public:
                      Point* landerLoc );
     void DrawTerrain( SDL_Surface* scrn,
                       Point* tPts,
-                      int numTP );
+                      int numTP,
+					  BBox* boxes);
     void DrawCrosshair( SDL_Surface* scrn,
                          Point* loc,
                          int r,
@@ -55,6 +56,7 @@ public:
     void DrawSplash( );
     void DrawBox( Point loc,
                   BBox box );
+	void DrawBox(BBox box);
 };
 
 #endif // _RENDER_H;
