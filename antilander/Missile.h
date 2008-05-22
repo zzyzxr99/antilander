@@ -12,6 +12,7 @@ private:
 	float mSpeed; //uses GetSpeed to change its firing speed
 	Vect mDirection; //Uses Vect GetDirection to find its direction
 	int mDrawBankIDX; //Graphic for the missile
+    BBox mBox;
 public:
 	Missile();
 	Missile ( Point StartLoc, Point Dest, Vect InitDir);
