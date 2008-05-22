@@ -242,10 +242,38 @@ void GameWorld::UpdateEverything( )
 			else
 			{
 				Point temp = MoveEntity(misIter->GetLocation(),misIter->GetDirection(),misIter->GetSpeed(),mLastElapsedTime);
+				BBox MBoxTemp= misIter->GetBox();
+				MBoxTemp.x+= temp.x;
+				MBoxTemp.y+= temp.y;
+
+				Point LanderTemp;
+				vector<Lander>::iterator landIter;
+				for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
+				{
+					if ( landIter->GetStatus( ) == descending )
+					{
+						LanderTemp= landIter->GetLoc();
+						BBox LBoxTemp= mRender.GetLanderBox();
+						LBoxTemp.x+= LanderTemp.x;
+						LBoxTemp.y+= LanderTemp.y;
+
+						if (IntersectBoxes(MBoxTemp, LBoxTemp))
+						{
+							landIter->SetStatus(dead);
+							misIter->SetStatus(gone);
+							SpawnExplosion( landIter->GetLoc( ) );
+							SpawnExplosion( misIter->GetLocation( ) );
+						}
+					}
+
+				}	
+
+
 				misIter->SetLocation(temp);
 			}
 		}
 	}
+
     for ( misIter = mMissiles.begin( ); misIter != mMissiles.end( ); misIter++ )
 	{
 		if (misIter->GetStatus() == gone)
