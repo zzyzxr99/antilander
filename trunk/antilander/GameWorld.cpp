@@ -417,3 +417,13 @@ bool GameWorld::MissileSect(Point* TerArr, Point MissNose, Vect Direction)
 	return false;
 
 }
+
+bool GameWorld::LeftMouseHeld()
+{
+	return mRender.isLeftHeld();
+}
+
+bool GameWorld::RightMouseHeld()
+{
+	return mRender.isRightHeld();
+}

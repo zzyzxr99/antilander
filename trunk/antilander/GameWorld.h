@@ -45,6 +45,9 @@ public:
     bool SplashRunning( );
     void SpawnExplosion( Point sLoc );
 	bool MissileSect(Point * TerArr, Point MissNose, Vect Direction);
+
+	bool LeftMouseHeld();
+	bool RightMouseHeld();
 };
 
 #endif // end _GAMEWORLD_H
