@@ -278,7 +278,7 @@ void GameWorld::UpdateEverything( )
 			}
 		}
 	}
-
+	// Remove a Missile from vector if status is gone
     for ( misIter = mMissiles.begin( ); misIter != mMissiles.end( ); misIter++ )
 	{
 		if (misIter->GetStatus() == gone)
@@ -288,7 +288,7 @@ void GameWorld::UpdateEverything( )
 		}
 	}
 
-
+	// Update all Landers
 	Point LanderTemp;
     vector<Lander>::iterator landIter;
     for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
@@ -308,6 +308,7 @@ void GameWorld::UpdateEverything( )
 		}
 
     }
+	// Remove a Lander from vector if dead
     for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
 	{
 		if (landIter->GetStatus() == dead)
@@ -316,7 +317,7 @@ void GameWorld::UpdateEverything( )
             break;
 		}
 	}
-
+	// Update all Explosions
     vector<Explosion>::iterator iterExpl;
     for (iterExpl= mExplosions.begin(); iterExpl != mExplosions.end(); iterExpl++)
     {
@@ -337,7 +338,6 @@ void GameWorld::UpdateEverything( )
             break; // break out of loop - iterator is invalid after erase - only delete one each update cycle
         }
     }
-   
 }
 
 bool GameWorld::FireMissile()
@@ -415,7 +415,6 @@ bool GameWorld::MissileSect(Point* TerArr, Point MissNose, Vect Direction)
 		}
 	}
 	return false;
-
 }
 
 bool GameWorld::LeftMouseHeld()
