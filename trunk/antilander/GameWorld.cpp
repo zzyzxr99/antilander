@@ -2,6 +2,7 @@
 #include "GameWorld.h"
 #include "Functions.h"
 #include <iostream>
+#include "math.h"
 using namespace std;
 // Definition
 
@@ -270,7 +271,7 @@ void GameWorld::UpdateEverything( )
 				misIter->SetLocation(temp);
 				Point newtemp;
 				misIter->GetDirection();
-				if(this->MissileSect(mGameTerrain.TerrainPts(),misIter->GetLocation()))
+				if(this->MissileSect(mGameTerrain.TerrainPts(),misIter->GetLocation(),misIter->GetDirection()))
 				{
 					misIter->SetStatus(gone);	
 				}
@@ -363,10 +364,14 @@ bool GameWorld::SplashRunning( )
     return false;
 }
 
-bool GameWorld::MissileSect(Point* TerArr, Point MissNose)
+bool GameWorld::MissileSect(Point* TerArr, Point MissNose, Vect Direction)
 {
-//	cout << TerArr[0].x << " - " << TerArr[0].y << "\n";
-//	cout << MissNose.x << " - " << MissNose.y << "\n";
+	float M = Direction.y/Direction.x;		//slope
+	float offX = sqrt (289/((M * M) + 1));
+	float offY = M*offX;
+	
+	MissNose.x += offX;
+	MissNose.y -+ offY;
 	int ctr = 0; 
 	int rndMiss = (int)(MissNose.x);
 	Point iter;
