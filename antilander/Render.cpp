@@ -352,6 +352,16 @@ bool Render::isRClicked()
 	return plIn.rightClick;
 }
 
+bool Render::isLeftHeld()
+{
+	return plIn.tlclicked;
+}
+
+bool Render::isRightHeld()
+{
+	return plIn.trclicked;
+}
+
 short int Render::GetSplashAlpha( )
 {
     return mSplashAlpha;

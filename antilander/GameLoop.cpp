@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include "GameWorld.h"
 
+#include <iostream>
 
 int main(int argv, char *args[])
 {
@@ -15,7 +16,17 @@ int main(int argv, char *args[])
 
 	while (tWorld->GetRender()->gameRunning())
 	{
-	    tWorld->GetRender( )->doInput( );
+		tWorld->GetRender()->doInput();
+
+	    if (tWorld->LeftMouseHeld())
+		{
+			std::cout << "LeftMouseHeld" << std::endl;
+		}
+		if (tWorld->RightMouseHeld())
+		{
+			std::cout << "RightMouseHeld" << std::endl;
+		}
+		
 	    if (tWorld->FireMissile())
 	    {
 		    tWorld->SpawnMissile();
