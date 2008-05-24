@@ -129,32 +129,39 @@ bool IntersectBoxes(BBox b1, BBox b2)
 }
 
 // EJR Not tested do not use until rechecked code
-bool IntersectSegments(Point p1,Point p2,Point p3,Point p4)
+bool IntersectSegments(Point p1,Point p2,Point p3,Point p4, Point *ip)
 {
-	bool retIntersect= true;
+	bool retIntersect= false;
 
-	float uA,uB,uBot;
+	float uA,uB,uAn,uBn,uBot;
 
 	uBot= (p4.y-p3.y)*(p2.x-p1.x) - (p4.x-p3.x)*(p2.y-p1.y);
+	uAn= (p4.x-p3.x)*(p1.y-p3.y) - (p4.y-p3.y)*(p1.x-p3.x);
+	uBn= (p2.x-p1.x)*(p1.y-p3.y)- (p2.y-p1.y)*(p1.x-p3.x);
+
 	if (uBot == 0.0)
 	{
-		if ((uA == 0.0) && (uB == 0.0))
+		if ((uAn == 0.0) && (uBn == 0.0))
 		{
+			// Segments are the same
 			retIntersect= true;
-		}
-		else
-		{
-			retIntersect= false;
 		}
 	}
 	else 
 	{
-		uA= (p4.x-p3.x)*(p1.y-p3.y) - (p4.y-p3.y)*(p1.x-p3.x);
-		uB= (p2.x-p1.x)*(p1.y-p3.y)- (p2.y-p1.y)*(p1.x-p3.x);
-		uA= uA/uBot;
-		uB= uB/uBot;
+		uA= uAn/uBot;
+		uB= uBn/uBot;
+		if ((uA >= 0.0) && (uA <= 1.0) && (uB >= 0.0) && (uB <= 1.0))
+		{
+			// intersect in both segments
+			retIntersect= true;
+		}
 	}
-
+	if (retIntersect)
+	{
+		(*ip).x= p1.x + (p2.x-p1.x)*uA;
+		(*ip).y= p1.y + (p2.y-p1.y)*uA;
+	}
 	return retIntersect;
 }
 

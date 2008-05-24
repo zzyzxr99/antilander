@@ -50,7 +50,7 @@ struct BBox
 };
 
 bool IntersectBoxes(BBox b1, BBox b2);
-bool IntersectSegments(Point p1,Point p2,Point p3,Point p4);
+bool IntersectSegments(Point p1,Point p2,Point p3,Point p4,Point *ip);
 
 #endif // _STRUCTS_H
 

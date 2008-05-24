@@ -150,6 +150,7 @@ void GameWorld::DrawEverything( )
         mRender.DrawSplash( );
         mRender.DecSplashAlpha( 1 );
     }
+
     vector<Lander>::iterator landIter;
     for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
     {
@@ -193,6 +194,48 @@ void GameWorld::DrawEverything( )
         }
     }
 
+	// Temp test for IntersectSegments
+	Point *p1= mPlayerShip.GetLoc();
+	Point p2= mRender.getMouse();
+
+	lineRGBA( mRender.getpScreen(),
+                  Round( (*p1).x ),
+                  Round( (*p1).y),
+                  Round( p2.x),
+                  Round( p2.y),
+                  255,255,255,255 );
+
+	Point p3,p4;
+	p3.x= 150.0;
+	p3.y= 128.0;
+	p4.x= 151.0;
+	p4.y= 200.0;
+
+	lineRGBA( mRender.getpScreen(),
+              Round( p3.x ),
+              Round( p3.y),
+              Round( p4.x),
+              Round( p4.y),
+              255,255,255,255 );
+
+	Point p5;
+	if (IntersectSegments(*p1,p2,p3,p4,&p5))
+	{
+			lineRGBA( mRender.getpScreen(),
+              Round( p5.x-5 ),
+              Round( p5.y-5),
+              Round( p5.x+5),
+              Round( p5.y+5),
+              0,255,255,255 );
+			lineRGBA( mRender.getpScreen(),
+              Round( p5.x+5 ),
+              Round( p5.y-5),
+              Round( p5.x-5),
+              Round( p5.y+5),
+              0,255,255,255 );
+	}
+	// end test code for IntersectSegments
+	
     SDL_Flip( mRender.getpScreen( ));
 }
 
@@ -371,7 +414,6 @@ bool GameWorld::MissileSect(Point* TerArr, Point MissNose, Vect Direction)
 	float offY = M*offX;
 	
 	MissNose.x += offX;
-	MissNose.y += offY;
 	int ctr = 0; 
 	int rndMiss = (int)(MissNose.x);
 	Point iter;
