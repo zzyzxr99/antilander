@@ -62,7 +62,7 @@ int main(int argv, char *args[])
 			//run EditUpdateEverything
 
 
-			//run EditDrawEverything
+			tWorld->EditDrawEverything();
 		}
  	}
 

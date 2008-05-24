@@ -248,6 +248,8 @@ void GameWorld::EditDrawEverything()
                   SDL_MapRGB( mRender.getpScreen( )->format,
                               0,0,0 ));
 
+	mRender.DrawLevel(&mEditLevel);
+
     //mRender.DrawGunship( mRender.getpScreen( ),
     //                     mPlayerShip.GetLoc( ));
 
@@ -256,57 +258,22 @@ void GameWorld::EditDrawEverything()
     //                     mGameTerrain.GetTPts( ),
 	//					 mGameTerrain.TerBox());
 
-    if ( mRender.GetSplashAlpha( ) > 0 )
+    /*if ( mRender.GetSplashAlpha( ) > 0 )
     {
         mRender.DrawSplash( );
         mRender.DecSplashAlpha( 1 );
-    }
-
-    vector<Lander>::iterator landIter;
-    for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
-    {
-        mRender.DrawLander( mRender.getpScreen( ),
-                            &(landIter->GetLoc( )));
-		mRender.DrawBox(landIter->GetLoc(), mRender.GetLanderBox());
-    }
-
-    vector<Missile>::iterator misIter;
-    for ( misIter = mMissiles.begin( ); misIter != mMissiles.end( ); misIter++ )
-    {
-        mRender.DrawMissile( mRender.getpScreen( ),
-                             &(misIter->GetLocation( )),
-                             &(misIter->GetTarget( )));
-        mRender.DrawCrosshair( mRender.getpScreen( ),
-                               &(misIter->GetTarget( )),
-                               255,0,0 );
-        mRender.DrawBox( misIter->GetLocation( ),
-                         misIter->GetBox( ) );
-    }
-
-    mRender.DrawMissile( mRender.getpScreen( ),
+    }*/
+ 
+ /*   mRender.DrawMissile( mRender.getpScreen( ),
 					     mPlayerShip.GetLoc( ),
-					     &(mRender.getMouse( )));
+					     &(mRender.getMouse( )));*/
 
     mRender.DrawCrosshair( mRender.getpScreen( ),
 					       &mRender.getMouse( ),
 					       0,255,0);
 
-    vector<Explosion>::iterator iterExpl;
-    for (iterExpl= mExplosions.begin(); iterExpl != mExplosions.end(); iterExpl++)
-    {
-        if (iterExpl->GetStatus() == knExplosionOccuring)
-        {
-            mRender.DrawExplosion(mRender.getpScreen(),
-                                  iterExpl->GetLocation(),
-                                  0,
-                                  iterExpl->GetCurrentRadius(),
-                                  iterExpl->GetOuterColor(),
-                                  iterExpl->GetInnerColor());
-        }
-    }
-
 	// Temp test for IntersectSegments
-	Point *p1= mPlayerShip.GetLoc();
+	/*Point *p1= mPlayerShip.GetLoc();
 	Point p2= mRender.getMouse();
 
 	lineRGBA( mRender.getpScreen(),
@@ -344,8 +311,9 @@ void GameWorld::EditDrawEverything()
               Round( p5.x-5),
               Round( p5.y+5),
               0,255,255,255 );
-	}
+	}*/
 	// end test code for IntersectSegments
+
 	
     SDL_Flip( mRender.getpScreen( ));
 }

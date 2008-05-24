@@ -7,6 +7,7 @@
 #include "SDL.h"
 #include "SDL_GFXprimitives.h"
 #include "SDL_ttf.h"
+#include "level.h"
 
 class Render
 {
@@ -62,6 +63,7 @@ public:
                   BBox box );
 	void DrawBox(BBox box);
 	BBox GetLanderBox();
+	void DrawLevel(Level* l);
 };
 
 #endif // _RENDER_H;
