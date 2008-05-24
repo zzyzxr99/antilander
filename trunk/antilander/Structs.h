@@ -36,6 +36,7 @@ struct playInput
 	Point mouseMove;
 	bool leftClick;				//if set to true - left mouse button has been clicked
 	bool rightClick;			//if set to true - right mouse button has been clicked
+	bool midClick;				//if set to true - middle mouse button has been clicked
 	bool tlclicked;				//temp click variable
 	bool trclicked;             //temp click variable
 	SDLKey keyPress;

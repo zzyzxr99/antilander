@@ -54,9 +54,10 @@ public:
 	Point getMouse();					//gets cursor position
 	bool isLClicked();					//check whether mouse is clicked
 	bool isRClicked();
+	bool isMClicked();
 	bool isLeftHeld();
 	bool isRightHeld();
-    short int GetSplashAlpha( );
+	short int GetSplashAlpha( );
     void DecSplashAlpha( short int amt );
     void DrawSplash( );
     void DrawBox( Point loc,

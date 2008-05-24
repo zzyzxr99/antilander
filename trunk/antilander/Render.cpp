@@ -346,9 +346,9 @@ void Render::doInput()
 			    plIn.rightClick = true;
 			    plIn.trclicked = true;
 		    }
-		 
 	    }
-	    if(mEvent.type == SDL_MOUSEBUTTONUP)
+
+		if(mEvent.type == SDL_MOUSEBUTTONUP)
 	    {
 		    plIn.mousePress.button = mEvent.button.button;
 		    if(plIn.mousePress.button == SDL_BUTTON_LEFT)
@@ -356,7 +356,8 @@ void Render::doInput()
 			    plIn.tlclicked = false;
                 plIn.leftClick = false;
 		    }
-		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT)
+
+			if(plIn.mousePress.button == SDL_BUTTON_RIGHT)
 		    {
 			    plIn.trclicked = false;
                 plIn.rightClick = false;
@@ -410,6 +411,11 @@ void Render::doEditInput()
 			    plIn.rightClick = true;
 			    plIn.trclicked = true;
 		    }
+
+			if(plIn.mousePress.button == SDL_BUTTON_MIDDLE)
+			{
+				plIn.midClick = true;
+			}
 		 
 	    }
 	    if(mEvent.type == SDL_MOUSEBUTTONUP)
@@ -425,6 +431,11 @@ void Render::doEditInput()
 			    plIn.trclicked = false;
                 plIn.rightClick = false;
 		    }
+
+			if(plIn.mousePress.button == SDL_BUTTON_MIDDLE)
+			{
+				plIn.midClick = false;
+			}
 	    }
     	
     }
@@ -448,6 +459,11 @@ bool Render::isLClicked()
 bool Render::isRClicked()
 {
 	return plIn.rightClick;
+}
+
+bool Render::isMClicked()
+{
+	return plIn.midClick;
 }
 
 bool Render::isLeftHeld()

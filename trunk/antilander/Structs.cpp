@@ -39,6 +39,7 @@ playInput::playInput()
 	mouseMove.y = 0;
 	leftClick = false;	
     rightClick = false;
+	midClick = false;
 	tlclicked = 0;
 	trclicked = 0;
 }
