@@ -37,6 +37,7 @@ public:
 	GameWorld();
 	~GameWorld();
     void DrawEverything();
+	void EditDrawEverything();
 	Render* GetRender( );
 	void SpawnMissile();
 	void StartGameStepper();
@@ -54,6 +55,7 @@ public:
 	bool RightMouseHeld();
 	void SetGameStatus(GameStatusType status);
 	GameStatusType GetGameStatus();
+	void AddEditLevelPoint(Point p);
 };
 
 #endif // end _GAMEWORLD_H

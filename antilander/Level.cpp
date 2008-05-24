@@ -216,3 +216,9 @@ void Level::LoadLevel( )
 void Level::SaveLevel( )
 {
 }
+
+void Level::AddPoint(Point p)
+{
+	mTerPt.push_back (p);
+	mNumTerPt= mTerPt.size();
+}

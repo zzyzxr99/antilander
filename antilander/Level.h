@@ -73,6 +73,8 @@ public:
 
     void LoadLevel( );
     void SaveLevel( );
+
+	void AddPoint(Point p);
 };
 
 #endif // _LEVEL_H
