@@ -267,6 +267,40 @@ void Render::DrawExplosion( SDL_Surface* scrn,
     }
 }
 
+void Render::DrawLevel(Level* l)
+{
+	vector<Point> *vPts;
+	vector<Point>::iterator iterPoint;
+	vPts= l->GetTerPt();
+	unsigned short numPts= l->GetNumTerPt();
+	if (numPts > 0)
+	{
+		iterPoint= vPts->begin();
+		if (numPts > 1)
+		{
+			for (int tp = 0; tp < (numPts -1); tp++)
+			{
+				Point pt1= *iterPoint;
+				iterPoint++;
+				lineRGBA(screen,
+					Round(pt1.x),
+					Round(pt1.y),
+					Round(iterPoint->x),
+					Round(iterPoint->y),
+					255,255,255,255 );
+			}
+			
+		}
+			lineRGBA(screen,
+			Round(iterPoint->x),
+			Round(iterPoint->y),
+			Round(getMouse().x),
+			Round(getMouse().y),
+			0,255,0,255 );
+	}
+
+}
+
 SDL_Surface* Render::getpScreen()
 {
 	return screen;
