@@ -371,7 +371,7 @@ bool GameWorld::MissileSect(Point* TerArr, Point MissNose, Vect Direction)
 	float offY = M*offX;
 	
 	MissNose.x += offX;
-	MissNose.y -+ offY;
+	MissNose.y += offY;
 	int ctr = 0; 
 	int rndMiss = (int)(MissNose.x);
 	Point iter;
