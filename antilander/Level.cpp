@@ -118,67 +118,83 @@ bool Level::GetFrat( )
     return mFrat;
 }
 
-void Level::SetNumLndrLvl( unsigned short Landers )
+void Level::SetNumLndrLvl( unsigned short landers )
 {
+    mNumLndrLvl = landers;
 }
-void Level::SetNumLndrScr( unsigned short Landers )
+void Level::SetNumLndrScr( unsigned short landers )
 {
+    mNumLndrScr = landers;
 }
 
 void Level::SetLndrPersist( bool persist )
 {
+    mLndrPersist = persist;
 }
 
 void Level::SetLndrDescRate( unsigned short rate )
 {
+    mLndrDescRate = rate;
 }
 
 void Level::SetNumPad( unsigned short pads )
 {
+    mNumPad = pads;
 }
 
 void Level::SetNumTerPt( unsigned short points )
 {
+    mNumTerPt = points;
 }
 
 void Level::SetNumMissile( unsigned short missiles )
 {
+    mNumMissile = missiles;
 }
 
 void Level::SetMissileSpd( float speed )
 {
+    mMissileSpd = speed;
 }
 
 void Level::SetGunStartPad( unsigned short pad )
 {
+    mGunStartPad = pad;
 }
 
 void Level::SetGunMoves( bool moves )
 {
+    mGunMoves = moves;
 }
 
 void Level::SetGunMoveRnd( bool moveRnd )
 {
+    mGunMoveRnd = moveRnd;
 }
 
 void Level::SetEndGamePadOcc( unsigned short pads )
 {
+    mEndGamePadOcc = pads;
 }
 
 void Level::SetGunReload( float reloadTime )
 {
+    mGunReload = reloadTime;
 }
 
 void Level::SetExpRad( float radius )
 {
+    mExpRad = radius;
 }
 
 void Level::SetExpRate( float rate )
 {
+    mExpRate = rate;
 }
 
 void Level::SetFrat( bool frat )
 {
+    mFrat = frat;
 }
 
 void LoadLevel( )

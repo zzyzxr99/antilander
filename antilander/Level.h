@@ -51,8 +51,8 @@ public:
     float GetExplRate( );
     bool GetFrat( );
 
-    void SetNumLndrLvl( unsigned short Landers );
-    void SetNumLndrScr( unsigned short Landers );
+    void SetNumLndrLvl( unsigned short landers );
+    void SetNumLndrScr( unsigned short landers );
     void SetLndrPersist( bool persist );
     void SetLndrDescRate( unsigned short rate );
     void SetNumPad( unsigned short pads );
