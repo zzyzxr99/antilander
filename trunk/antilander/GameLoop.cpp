@@ -52,6 +52,10 @@ int main(int argv, char *args[])
 		else if (tWorld->GetGameStatus() == knEditMode)
 		{
 			tWorld->GetRender()->doEditInput();
+			if (tWorld->GetRender()->isLClicked())
+			{
+
+			}
 			//run doEditInput
 
 
