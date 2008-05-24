@@ -13,7 +13,7 @@ int main(int argv, char *args[])
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
-	tWorld->SetGameStatus(knPlayMode);
+	tWorld->SetGameStatus(knEditMode);
 
 	while (tWorld->GetRender()->gameRunning())
 	{
@@ -46,6 +46,7 @@ int main(int argv, char *args[])
 		}
 		else if (tWorld->GetGameStatus() == knEditMode)
 		{
+			tWorld->GetRender()->doEditInput();
 			//run doEditInput
 
 
