@@ -9,6 +9,7 @@
 #include "Explosion.h"
 #include "ALTimer.h"
 #include <vector>
+#include "Level.h"
 using namespace std;
 
 class GameWorld
@@ -29,6 +30,8 @@ private:
 	void InitLanders();
 	void SpawnLander();
     GameStatusType mGameMode;
+	Level mEditLevel;
+	Level mCurrentLevel;
 
 public:
 	GameWorld();

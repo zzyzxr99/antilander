@@ -1,5 +1,6 @@
 // Level.h
-
+#ifndef _LEVEL_H
+#define _LEVEL_H
 #include "Structs.h"
 #include <vector>
 using namespace std;
@@ -71,3 +72,5 @@ public:
     void LoadLevel( );
     void SaveLevel( );
 };
+
+#endif // _LEVEL_H
