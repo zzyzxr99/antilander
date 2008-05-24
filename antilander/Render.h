@@ -48,6 +48,7 @@ public:
                          SDL_Color colorInner);
 	SDL_Surface* getpScreen();			//gets a pointer to the surface (screen)
 	void doInput();						//gets, processes input
+	void doEditInput();					//gets, processes editor input
 	bool gameRunning();					//gets current gamestate
 	Point getMouse();					//gets cursor position
 	bool isLClicked();					//check whether mouse is clicked
