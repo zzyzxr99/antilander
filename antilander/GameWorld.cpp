@@ -1,6 +1,7 @@
 
 #include "GameWorld.h"
 #include "Functions.h"
+#include "Level.h"
 #include <iostream>
 #include "math.h"
 using namespace std;
