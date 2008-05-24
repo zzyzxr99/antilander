@@ -28,6 +28,7 @@ private:
 	void InitMissiles();
 	void InitLanders();
 	void SpawnLander();
+    GameStatusType mGameMode;
 
 public:
 	GameWorld();
@@ -48,6 +49,8 @@ public:
 
 	bool LeftMouseHeld();
 	bool RightMouseHeld();
+	void SetGameStatus(GameStatusType status);
+	GameStatusType GetGameStatus();
 };
 
 #endif // end _GAMEWORLD_H

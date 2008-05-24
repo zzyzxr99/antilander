@@ -13,33 +13,47 @@ int main(int argv, char *args[])
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
+	tWorld->SetGameStatus(knPlayMode);
 
 	while (tWorld->GetRender()->gameRunning())
 	{
-		tWorld->GetRender()->doInput();
+		if (tWorld->GetGameStatus() == knPlayMode)
+		{
+			tWorld->GetRender()->doInput();
 
-	    if (tWorld->LeftMouseHeld())
-		{
-			std::cout << "LeftMouseHeld" << std::endl;
+			if (tWorld->LeftMouseHeld())
+			{
+				std::cout << "LeftMouseHeld" << std::endl;
+			}
+			if (tWorld->RightMouseHeld())
+			{
+				std::cout << "RightMouseHeld" << std::endl;
+			}
+
+			if (tWorld->FireMissile())
+			{
+				tWorld->SpawnMissile();
+			}
+			if (tWorld->TestFireExplosion())
+			{
+				tWorld->TestSpawnExplosion();
+			}
+			if ( tWorld->CheckTick( ))
+			{
+				tWorld->UpdateEverything( );
+			}
+			tWorld->DrawEverything();
 		}
-		if (tWorld->RightMouseHeld())
+		else if (tWorld->GetGameStatus() == knEditMode)
 		{
-			std::cout << "RightMouseHeld" << std::endl;
+			//run doEditInput
+
+
+			//run EditUpdateEverything
+
+
+			//run editDrawEverything
 		}
-		
-	    if (tWorld->FireMissile())
-	    {
-		    tWorld->SpawnMissile();
-	    }
-        if (tWorld->TestFireExplosion())
-        {
-            tWorld->TestSpawnExplosion();
-        }
-        if ( tWorld->CheckTick( ))
-        {
-            tWorld->UpdateEverything( );
-        }
-        tWorld->DrawEverything();
  	}
 
     // Delete the GameWorld, it will delete all of its members

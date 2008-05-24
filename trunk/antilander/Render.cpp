@@ -336,6 +336,66 @@ void Render::doInput()
     }
 }
 
+void Render::doEditInput()
+{
+    plIn.leftClick= false;
+    plIn.rightClick= false;
+    while (SDL_PollEvent(&mEvent))
+    {
+	    if(mEvent.type == SDL_MOUSEMOTION)
+	    {
+		    plIn.mouseMove.x = mEvent.motion.x;
+		    plIn.mouseMove.y = mEvent.motion.y;
+	    }
+		if (mEvent.type == SDL_QUIT)
+		{
+			gameState= false;
+		}
+
+	    if(mEvent.type == SDL_KEYDOWN)
+	    {
+		    plIn.keyPress = mEvent.key.keysym.sym;
+		    if(plIn.keyPress == SDLK_ESCAPE)
+		    {
+			    gameState = false;
+		    }
+	    }
+
+	    if(mEvent.type == SDL_MOUSEBUTTONDOWN)
+	    {
+		    plIn.mousePress.button = mEvent.button.button;
+		    if((plIn.mousePress.button == SDL_BUTTON_LEFT))
+		    {
+			    plIn.leftClick = true;
+			    plIn.tlclicked = true;
+		    }
+		   
+
+		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT )
+		    {
+			    plIn.rightClick = true;
+			    plIn.trclicked = true;
+		    }
+		 
+	    }
+	    if(mEvent.type == SDL_MOUSEBUTTONUP)
+	    {
+		    plIn.mousePress.button = mEvent.button.button;
+		    if(plIn.mousePress.button == SDL_BUTTON_LEFT)
+		    {
+			    plIn.tlclicked = false;
+                plIn.leftClick = false;
+		    }
+		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT)
+		    {
+			    plIn.trclicked = false;
+                plIn.rightClick = false;
+		    }
+	    }
+    	
+    }
+}
+
 bool Render::gameRunning()
 {
 	return gameState;

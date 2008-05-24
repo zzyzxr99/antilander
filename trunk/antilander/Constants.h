@@ -103,6 +103,8 @@ const float kExplosionExpandRateDefault = 35.0F; // Pixel radius per second
 const float kExplosionStartRadiusDefault= 0.0F;
 enum ExplosionStatusType { knExplosionOccuring = 1,
                            knExplosionDone };
+enum GameStatusType { knPlayMode = 1,
+					  knEditMode };
 #endif // _CONSTANTS_H
 
 // comment

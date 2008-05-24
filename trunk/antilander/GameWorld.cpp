@@ -14,6 +14,7 @@ GameWorld::GameWorld()
 	mLastElapsedTime= 0.0F;
 	InitEverything();
 	mLastTimeStamp= mGameStepper.CurrentTimeMS();
+	mGameMode= knPlayMode;
 }
 
 GameWorld::~GameWorld()
@@ -468,4 +469,14 @@ bool GameWorld::LeftMouseHeld()
 bool GameWorld::RightMouseHeld()
 {
 	return mRender.isRightHeld();
+}
+void GameWorld::SetGameStatus(GameStatusType status)
+{
+	mGameMode= status;
+}
+
+
+GameStatusType GameWorld::GetGameStatus()
+{
+	return mGameMode;
 }
