@@ -7,6 +7,22 @@ using namespace std;
 
 Level::Level( )
 {
+    mNumLndrLvl    = 0;
+    mNumLndrScr    = 0;
+    mLndrPersist   = false;
+    mLndrDescRate  = 0;
+    mNumPad        = 0;
+    mNumTerPt      = 0;
+    mNumMissile    = 0;
+    mMissileSpd    = 0.0F;
+    mGunStartPad   = 0;
+    mGunMoves      = false;
+    mGunMoveRnd    = false;
+    mEndGamePadOcc = 0;
+    mGunReload     = 0.0F;
+    mExpRad        = 0.0F;
+    mExpRate       = 0.0F;
+    mFrat          = 0.0F;
 }
 
 Level::~Level( )
