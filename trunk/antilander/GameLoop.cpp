@@ -54,7 +54,7 @@ int main(int argv, char *args[])
 			tWorld->GetRender()->doEditInput();
 			if (tWorld->GetRender()->isLClicked())
 			{
-
+				tWorld->AddEditLevelPoint(tWorld->GetRender()->getMouse());
 			}
 			//run doEditInput
 
@@ -62,7 +62,7 @@ int main(int argv, char *args[])
 			//run EditUpdateEverything
 
 
-			//run editDrawEverything
+			//run EditDrawEverything
 		}
  	}
 
