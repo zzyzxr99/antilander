@@ -2,7 +2,7 @@
 #include "Constants.h"
 #include "SDL.h"
 #include "GameWorld.h"
-
+#include "Level.h"			//testing
 #include <iostream>
 
 int main(int argv, char *args[])
@@ -14,6 +14,11 @@ int main(int argv, char *args[])
 
     tWorld->StartGameStepper();
 	tWorld->SetGameStatus(knEditMode);
+
+	//////////////// test /////////////////////
+	Level* tLevel = new Level();
+	tLevel->LoadLevel();
+	//////////////// test /////////////////////
 
 	while (tWorld->GetRender()->gameRunning())
 	{

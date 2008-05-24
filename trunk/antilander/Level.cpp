@@ -1,9 +1,11 @@
 // Level.cpp
-
 #include "Structs.h"
 #include "Level.h"
 #include <vector>
+#include <fstream>
+#include <iostream>
 using namespace std;
+
 
 Level::Level( )
 {
@@ -197,10 +199,20 @@ void Level::SetFrat( bool frat )
     mFrat = frat;
 }
 
-void LoadLevel( )
+void Level::LoadLevel( )
 {
+	char ch;
+	ifstream infile("insettings.txt");
+	while (infile)
+	{
+		while(!infile.eof())
+		{	
+			infile.get(ch);
+			cout << ch;
+		}
+	}
 }
 
-void SaveLevel( )
+void Level::SaveLevel( )
 {
 }
