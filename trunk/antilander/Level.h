@@ -3,6 +3,7 @@
 #define _LEVEL_H
 #include "Structs.h"
 #include <vector>
+
 using namespace std;
 
 class Level
@@ -27,6 +28,7 @@ private:
     float mExpRad;
     float mExpRate;
     bool mFrat;
+	
 
 public:
 
@@ -38,9 +40,9 @@ public:
     bool GetLndrPersist( );
     unsigned short GetLndrDescRate( );
     unsigned short GetNumPad( );
-    vector<Point>* GetPadpt( );
+    vector<Point>* GetPadpt( );				//need this too
     unsigned short GetNumTerPt( );
-    vector<Point>* GetTerPt( );
+    vector<Point>* GetTerPt( );				//need this
     unsigned short GetNumMissile( );
     float GetMissileSpd( );
     unsigned short GetGunStartPad( );
