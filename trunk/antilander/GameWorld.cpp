@@ -566,3 +566,12 @@ void GameWorld::AddEditLevelPoint(Point p)
 	}
 	mEditLevel.AddPoint(p);
 }
+
+void GameWorld::EndEditLvlPts(Point p)
+{
+	if (mEditLevel.GetNumTerPt() > 0)
+	{
+		p.x= 639;
+	}
+	mEditLevel.AddPoint(p);
+}

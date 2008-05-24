@@ -56,6 +56,10 @@ int main(int argv, char *args[])
 			{
 				tWorld->AddEditLevelPoint(tWorld->GetRender()->getMouse());
 			}
+			if (tWorld->GetRender()->isRClicked())
+			{
+				tWorld->EndEditLvlPts(tWorld->GetRender()->getMouse());
+			}
 			//run doEditInput
 
 
