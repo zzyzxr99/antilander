@@ -283,6 +283,10 @@ void Render::doInput()
 		    plIn.mouseMove.x = mEvent.motion.x;
 		    plIn.mouseMove.y = mEvent.motion.y;
 	    }
+		if (mEvent.type == SDL_QUIT)
+		{
+			gameState= false;
+		}
 
 	    if(mEvent.type == SDL_KEYDOWN)
 	    {
