@@ -70,6 +70,7 @@ int main(int argv, char *args[])
 		}
  	}
 
+    tWorld->TestSaveLoadLevel();
     // Delete the GameWorld, it will delete all of its members
    	delete tWorld;
 

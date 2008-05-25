@@ -4,6 +4,8 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <ostream>
+#include <string>
 using namespace std;
 
 
@@ -215,6 +217,42 @@ void Level::LoadLevel( )
 
 void Level::SaveLevel( )
 {
+}
+
+void Level::EJRTestSaveLevel(string filename)
+{
+    // Open output file stream to destination filename ios::out means to write
+    ofstream outf(filename.c_str(),ios::out);
+    
+    // Write out level header
+    outf << "Level 1" << endl;
+    // Write out number of terrain points
+    outf << mNumTerPt << endl;
+
+    // close and save file
+    outf.close();
+}
+
+void Level::EJRTestLoadLevel(string filename)
+{
+    // open file as input file stream, ios::in read
+    ifstream inf(filename.c_str(),ios::in);
+    // if ifstream is NULL will fail
+    if (inf != NULL) // File exists
+    {
+        // read first line of ifstream inf into strLevel
+        string strLevel="";
+        getline(inf,strLevel);
+        cout << strLevel << endl;; // output to console
+
+        // read next line and convert it to an integer to put into terrain points
+        string strNumTerrain="";
+        getline(inf,strNumTerrain);
+        int numterr= atoi(strNumTerrain.c_str()); // atoi is asc to integer - 
+
+        cout << "Number of points=" << numterr <<endl; // outp to console for test
+    }
+    inf.close();
 }
 
 void Level::AddPoint(Point p)

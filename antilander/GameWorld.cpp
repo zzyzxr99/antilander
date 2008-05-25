@@ -20,7 +20,16 @@ GameWorld::GameWorld()
 GameWorld::~GameWorld()
 {
 	// any new operators must have delete matches here
-	mLanders.capacity();
+	// mLanders.capacity();
+
+
+
+}
+
+void GameWorld::TestSaveLoadLevel()
+{
+    mEditLevel.EJRTestSaveLevel("TestLevel.LEV");
+    mEditLevel.EJRTestLoadLevel("TestLevel.LEV");
 }
 void GameWorld::InitMissiles()
 {
