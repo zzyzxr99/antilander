@@ -59,6 +59,8 @@ public:
 	void EndEditLvlPts(Point p);
 
     void InitLevel( );
+
+    void TestSaveLoadLevel();
 };
 
 #endif // end _GAMEWORLD_H

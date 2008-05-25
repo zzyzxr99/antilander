@@ -73,6 +73,8 @@ public:
 
     void LoadLevel( );
     void SaveLevel( );
+    void EJRTestSaveLevel(string filename);
+    void EJRTestLoadLevel(string filename);
 
 	void AddPoint(Point p);
 };
