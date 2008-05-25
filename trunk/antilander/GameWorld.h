@@ -57,6 +57,8 @@ public:
 	GameStatusType GetGameStatus();
 	void AddEditLevelPoint(Point p);
 	void EndEditLvlPts(Point p);
+
+    void InitLevel( );
 };
 
 #endif // end _GAMEWORLD_H

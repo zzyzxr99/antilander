@@ -108,12 +108,17 @@ void GameWorld::TestSpawnExplosion()
 void GameWorld::SpawnExplosion( Point sLoc )
 {
     Explosion *newExpl;
-    newExpl= new Explosion(sLoc,
-                           kExplosionMaxRadiusDefault,
-                           kExplosionExpandRateDefault,
-                           kExplosionInnerColorDefault,
-                           kExplosionOuterColorDefault);
+    newExpl= new Explosion( sLoc,
+                            Explosion::sGetMaxRadius( ),
+                            Explosion::sGetExpansionRate( ),
+                            kExplosionInnerColorDefault,
+                            kExplosionOuterColorDefault);
     mExplosions.push_back(*newExpl);
+
+    // Test setting static variables
+    //Explosion::sSetMaxRadius( newExpl->GetMaxRadius( ) + 10.0F );
+    //Explosion::sSetExpansionRate( newExpl->GetExpansionRate( ) + 5.0F );
+
 }
 
 void GameWorld::InitEverything()
@@ -574,4 +579,26 @@ void GameWorld::EndEditLvlPts(Point p)
 		p.x= 639;
 	}
 	mEditLevel.AddPoint(p);
+}
+
+void GameWorld::InitLevel( )
+{
+    //mNumLndrLvl;
+    //mNumLndrScr;
+    //mLndrPersist;
+    //mLndrDescRate;
+    //mNumPad;
+    //mPadPt;
+    //mNumTerPt;
+    //mTerPt;
+    //mNumMissile;
+    Missile::sSetSpeed( mCurrentLevel.GetMissileSpd( ) );
+    //mGunStartPad;
+    //mGunMoves;
+    //mGunMoveRnd;
+    //mEndGamePadOcc;
+    //mGunReload;
+    Explosion::sSetMaxRadius( mCurrentLevel.GetExpRad( ) );
+    Explosion::sSetExpansionRate( mCurrentLevel.GetExplRate( ) );
+    //mFrat;
 }

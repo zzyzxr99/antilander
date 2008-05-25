@@ -97,7 +97,7 @@ const int kLanderFillT = kBackColorT;
 // SDL_Color has 4 Uint8 values - last is unused 
 const SDL_Color kExplosionInnerColorDefault = {0xF0,0x80,0x10,0xFF};
 const SDL_Color kExplosionOuterColorDefault = {0xFF,0xFF,0x00,0xFF};
-const float kExplosionMaxRadiusDefault = 50.0F;
+const float kExplosionMaxRadiusDefault = 50.0F; // was 50
 const float kExplosionSecondRadiusDefault = 4.0F;
 const float kExplosionExpandRateDefault = 35.0F; // Pixel radius per second
 const float kExplosionStartRadiusDefault= 0.0F;

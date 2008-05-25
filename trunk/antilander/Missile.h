@@ -13,6 +13,10 @@ private:
 	Vect mDirection; //Uses Vect GetDirection to find its direction
 	int mDrawBankIDX; //Graphic for the missile
     BBox mBox;
+
+    //static member variables
+    static float sSpeed;
+
 public:
 	Missile();
 	Missile ( Point StartLoc, Point Dest, Vect InitDir);
@@ -25,14 +29,15 @@ public:
 	int GetBankIDX(); //Gets DrawBankIDX
 	Point GetDestination(); //Gets the Destination
 	void SetLocation(Point p);
-////////////////// Dave's added functions ////////////////////
     void SetTarget( Point targ );
     Point GetTarget( );
 	MissileStatusType GetStatus();
 	void SetStatus(MissileStatusType stat);
     BBox GetBox( );
-////////////////// Dave's added functions ////////////////////
 
+    //static member functions
+    static void sSetSpeed( float speed );
+    static float sGetSpeed( );
 };
 
 #endif 

@@ -1,14 +1,17 @@
 #include "Constants.h"
 #include "Explosion.h"
 
+float Explosion::smExpansionRate = kExplosionExpandRateDefault;
+float Explosion::smMaxRadius = kExplosionMaxRadiusDefault;
+
 Explosion::Explosion()
 {
     mStatus= knExplosionOccuring;
     mDrawLoc.x= 0;
     mDrawLoc.y= 0;
     mCurrentRadius= kExplosionStartRadiusDefault;
-    mMaxRadius= kExplosionMaxRadiusDefault;
-    mExpansionRate= kExplosionExpandRateDefault;
+    mMaxRadius= smMaxRadius;
+    mExpansionRate= smExpansionRate;
     mInnerColor= kExplosionInnerColorDefault;
     mOuterColor= kExplosionOuterColorDefault;
 }
@@ -18,8 +21,8 @@ Explosion::Explosion( Point sLoc )
     mStatus= knExplosionOccuring;
     mDrawLoc = sLoc;
     mCurrentRadius= kExplosionStartRadiusDefault;
-    mMaxRadius= kExplosionMaxRadiusDefault;
-    mExpansionRate= kExplosionExpandRateDefault;
+    mMaxRadius= smMaxRadius;
+    mExpansionRate= smExpansionRate;
     mInnerColor= kExplosionInnerColorDefault;
     mOuterColor= kExplosionOuterColorDefault;
 }
@@ -90,4 +93,24 @@ ExplosionStatusType Explosion::Update(float elapsedTime)
 void Explosion::SetStatus(ExplosionStatusType stat)
 {
     mStatus= stat;
+}
+
+void Explosion::sSetExpansionRate( float rate )
+{
+    smExpansionRate = rate;
+}
+
+float Explosion::sGetExpansionRate( )
+{
+    return smExpansionRate;
+}
+
+void Explosion::sSetMaxRadius( float radius )
+{
+    smMaxRadius = radius;
+}
+
+float Explosion::sGetMaxRadius( )
+{
+    return smMaxRadius;
 }
