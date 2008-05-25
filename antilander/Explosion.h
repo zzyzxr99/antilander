@@ -14,6 +14,10 @@ private:
     float mExpansionRate;
     SDL_Color mInnerColor;
     SDL_Color mOuterColor;
+
+    // static member variables
+    static float smExpansionRate;
+    static float smMaxRadius;
     
 public:
     Explosion();
@@ -29,6 +33,12 @@ public:
     SDL_Color GetInnerColor();
     ExplosionStatusType Update(float elaspedTime);
     void SetStatus(ExplosionStatusType stat);
+
+    // static member functions
+    static void sSetExpansionRate( float rate );
+    static float sGetExpansionRate( );
+    static void sSetMaxRadius( float radius );
+    static float sGetMaxRadius( );
 };
 
 #endif // end _EXPLOSION_H

@@ -4,13 +4,14 @@
 #include <cmath>
 using namespace std;
 
+float Missile::sSpeed = kMissileStartSpeed;
 
 //Constructor FIRST (easier for me)
 Missile::Missile()
 {
 	//Initilize all member variables
 	int mDrawBankIDX = 0;
-	float mSpeed = kMissileStartSpeed;
+	float mSpeed = sSpeed;
 }
 float Missile::GetSpeed()
 {
@@ -54,7 +55,7 @@ Missile::Missile(Point StartLoc, Point Dest, Vect InitDir)
 	mDrawLoc.x = StartLoc.x;
 	mDrawLoc.y = StartLoc.y;
    	mDrawBankIDX = 0; //does nothing
-	mSpeed = kMissileStartSpeed;
+	mSpeed = sSpeed;
 	mStatus = flight;
     Point pts[5];
     pts[0].x =  -4.0F;
@@ -115,7 +116,6 @@ Missile::~Missile()
 	//any new operators must have delete matches here
 }
 
-////////////////// Dave's added functions ////////////////////
 void Missile::SetTarget( Point targ )
 {
     mDestination.x = targ.x;
@@ -132,11 +132,20 @@ Missile::Missile ( Point loc,Point targ )
     mDestination.x = targ.x;
     mDestination.y = targ.y;
     int mDrawBankIDX = 0;
-	float mSpeed = kMissileStartSpeed;
+	float mSpeed = sSpeed;
 }
 
 BBox Missile::GetBox( )
 {
     return mBox;
 }
-////////////////// Dave's added functions ////////////////////
+
+void Missile::sSetSpeed(float speed)
+{
+    sSpeed = speed;
+}
+
+float Missile::sGetSpeed( )
+{
+    return sSpeed;
+}
