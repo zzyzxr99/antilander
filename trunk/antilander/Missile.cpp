@@ -1,5 +1,5 @@
-#include "constants.h"
-#include "structs.h"
+#include "Constants.h"
+#include "Structs.h"
 #include "Missile.h"
 #include <cmath>
 using namespace std;
