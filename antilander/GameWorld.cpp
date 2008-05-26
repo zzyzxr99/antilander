@@ -701,4 +701,6 @@ void GameWorld::InitLevel( )
     // Explosion
     Explosion::sSetMaxRadius( mCurrentLevel.GetExpRad( ) );
     Explosion::sSetExpansionRate( mCurrentLevel.GetExplRate( ) );
+    
+    // Bomb
 }
