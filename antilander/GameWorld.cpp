@@ -89,10 +89,8 @@ void GameWorld::SpawnBomb()
 	Destin = mRender.getMouse();
 
 	//Direction
-	Vect Dir;
-	Dir = UnitVect(*Start, Destin);
-
-	//Add to Vector
+	Vect Dir= MakeVect(*Start,Destin);
+    //Add to Vector
 	PtrBomb = new Bomb(*Start, Dir);
 	mBombs.push_back(*PtrBomb);
 }
@@ -459,7 +457,9 @@ void GameWorld::UpdateEverything( )
 		if (bombIter->GetStatus( ) == knBombFlying)
 		{
 			// EJR Need to test bomb off screen 
-			    Point temp = MoveEntity(bombIter->GetLocation(),bombIter->GetDirection(),bombIter->GetSpeed(),mLastElapsedTime);
+                Vect bombVel= bombIter->GetVelocity();
+                Vect bombAcc= bombIter->GetAcceleration();
+			    Point temp = MoveEntityAccel(bombIter->GetLocation(),bombVel,bombAcc,mLastElapsedTime);
 				BBox BBoxTemp= bombIter->GetBox();
 				BBoxTemp.x+= temp.x;
 				BBoxTemp.y+= temp.y;
@@ -486,7 +486,10 @@ void GameWorld::UpdateEverything( )
 
 				}	
 				bombIter->SetLocation(temp);
-
+                // Velocity changes based on acceleration
+                bombVel.x+= bombAcc.x*mLastElapsedTime;
+                bombVel.y+= bombAcc.y*mLastElapsedTime;
+                bombIter->SetVelocity(bombVel);
                 // EJR need test collide with Terrain
 			
 		}

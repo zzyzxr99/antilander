@@ -9,6 +9,7 @@ struct Vect
 	float y;
 	Vect();
 	~Vect();
+    float Mag();
 };
 
 struct Point
@@ -22,7 +23,10 @@ struct Point
 
 Vect UnitVect(Point pStart, Point pEnd);
 Vect MagVect(Vect v,float m);
+Vect MakeVect(Point p1, Point p2);
+
 Point MoveEntity(Point start,Vect direction,float speed,float timeelapsed);
+Point MoveEntityAccel(Point start,Vect vel,Vect acc,float timeelapsed);
 
 float Angle( Point pStart,
              Point pEnd );
