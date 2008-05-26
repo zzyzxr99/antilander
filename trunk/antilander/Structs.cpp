@@ -33,6 +33,19 @@ Vect::~Vect()
 	// any allocations with new must have matching delete here
 }
 
+float Vect::Mag()
+{
+    return x*x + y*y;
+}
+
+Vect MakeVect(Point p1, Point p2)
+{
+    Vect retV;
+    retV.x= p2.x - p1.x;
+    retV.y= p2.y - p1.y;
+    return retV;
+}
+
 playInput::playInput()
 {
 	mouseMove.x = 0;
@@ -77,16 +90,33 @@ Vect MagVect(Vect v, float m)
 Point MoveEntity(Point start,Vect direction,float speed,float timeelapsed)
 {
 	Point retPoint;
-	Point calcStart, calcEnd;
-	calcEnd.x= direction.x;
-	calcEnd.y= direction.y;
+	//Point calcStart, calcEnd;
+	//calcEnd.x= direction.x;
+	//calcEnd.y= direction.y;
 
-	direction= UnitVect(calcStart,calcEnd);
+	//direction= UnitVect(calcStart,calcEnd);
 	direction.x= direction.x*speed*timeelapsed;
 	direction.y= direction.y*speed*timeelapsed;
 
 	retPoint.x= start.x + direction.x;
 	retPoint.y= start.y + direction.y;
+
+	return retPoint;
+}
+
+Point MoveEntityAccel(Point start,Vect vel,Vect acc,float timeelapsed)
+{
+	Point retPoint;
+	Point calcStart, calcEnd;
+	//calcEnd.x= direction.x;
+	//calcEnd.y= direction.y;
+
+	//direction= UnitVect(calcStart,calcEnd);
+	vel.x= (vel.x + .5F*acc.x*timeelapsed)*timeelapsed;
+	vel.y= (vel.y +  .5F*acc.y*timeelapsed)*timeelapsed;
+
+	retPoint.x= start.x + vel.x;
+	retPoint.y= start.y + vel.y;
 
 	return retPoint;
 }
