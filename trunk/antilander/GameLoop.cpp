@@ -26,22 +26,13 @@ int main(int argv, char *args[])
 		{
 			tWorld->GetRender()->doInput();
 
-			if (tWorld->LeftMouseHeld())
-			{
-				std::cout << "LeftMouseHeld" << std::endl;
-			}
-			if (tWorld->RightMouseHeld())
-			{
-				std::cout << "RightMouseHeld" << std::endl;
-			}
-
 			if (tWorld->FireMissile())
 			{
 				tWorld->SpawnMissile();
 			}
-			if (tWorld->TestFireExplosion())
+			if (tWorld->FireBomb())
 			{
-				tWorld->TestSpawnExplosion();
+				tWorld->SpawnBomb();
 			}
 			if ( tWorld->CheckTick( ))
 			{

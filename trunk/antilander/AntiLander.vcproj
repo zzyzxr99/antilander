@@ -179,6 +179,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Bomb.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Explosion.cpp"
 				>
 			</File>
@@ -230,6 +234,10 @@
 			>
 			<File
 				RelativePath=".\ALTimer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Bomb.h"
 				>
 			</File>
 			<File
