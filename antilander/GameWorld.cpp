@@ -592,22 +592,33 @@ void GameWorld::EndEditLvlPts(Point p)
 
 void GameWorld::InitLevel( )
 {
-    //mNumLndrLvl;
-    //mNumLndrScr;
-    //mLndrPersist;
-    //mLndrDescRate;
-    //mNumPad;
-    //mPadPt;
-    //mNumTerPt;
-    //mTerPt;
-    //mNumMissile;
+    // GameWorld
+    // mNumLndrLvl;
+    // mNumLndrScr;
+    // mLndrPersist;
+    // mNumMissile;
+    // mGunMoves;
+    // mGunMoveRnd;
+    // mEndGamePadOcc;
+    // mFrat;
+
+    // Terrain
+    // mNumPad;
+    // mPadPt;
+    // mNumTerPt;
+    // mTerPt;
+
+    // Lander
+    // mLndrDescRate;
+
+    // Missile
     Missile::sSetSpeed( mCurrentLevel.GetMissileSpd( ) );
-    //mGunStartPad;
-    //mGunMoves;
-    //mGunMoveRnd;
-    //mEndGamePadOcc;
-    //mGunReload;
+
+    // Gunship
+    mPlayerShip.SetPad( mCurrentLevel.GetGunStartPad( ) );
+    mPlayerShip.SetReloadTime( mCurrentLevel.GetGunReload( ) );
+
+    // Explosion
     Explosion::sSetMaxRadius( mCurrentLevel.GetExpRad( ) );
     Explosion::sSetExpansionRate( mCurrentLevel.GetExplRate( ) );
-    //mFrat;
 }

@@ -7,9 +7,11 @@ Gunship::Gunship()
 	mDrawLoc.x= 0;
 	mDrawLoc.y= 0;
 	mStatus= ready; 
-	//mGunangle=?;  how do I represent gun angle?
+	mGunangle= kPi / 2;
 	mLastTimeShot= 0;  
-	mMissileCount= 0;  //kStartAmmo = 1000
+	mMissileCount= kStartAmmo;
+    mReloadTime = kReloadTime;
+    mPad = kDefaultGunStartPad;
 // initialize all the member variables
 }
 
@@ -37,4 +39,24 @@ void Gunship::InitGunship(Point P)
 Point* Gunship::GetLoc( )
 {
     return &mDrawLoc;
+}
+
+void Gunship::SetReloadTime( float t )
+{
+    mReloadTime = t;
+}
+
+float Gunship::GetReloadTime( )
+{
+    return mReloadTime;
+}
+
+void Gunship::SetPad( unsigned short pad )
+{
+    mPad = pad;
+}
+
+unsigned short Gunship::GetPad( )
+{
+    return mPad;
 }
