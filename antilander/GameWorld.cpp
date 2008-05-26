@@ -77,6 +77,26 @@ void GameWorld::SpawnMissile()
 	mMissiles.push_back(*PtrMissile);
 }
 
+void GameWorld::SpawnBomb()
+{
+	//set Missile at Gunship Location EVERYTIME
+	Bomb *PtrBomb;
+	Point *Start;
+	Start = mPlayerShip.GetLoc();
+
+	//Destination
+	Point Destin;
+	Destin = mRender.getMouse();
+
+	//Direction
+	Vect Dir;
+	Dir = UnitVect(*Start, Destin);
+
+	//Add to Vector
+	PtrBomb = new Bomb(*Start, Dir);
+	mBombs.push_back(*PtrBomb);
+}
+
 void GameWorld::InitLanders()
 {
 	Lander *PtrLander;
@@ -186,6 +206,14 @@ void GameWorld::DrawEverything( )
                                255,0,0 );
         mRender.DrawBox( misIter->GetLocation( ),
                          misIter->GetBox( ) );
+    }
+
+    vector<Bomb>::iterator bombIter;
+    for ( bombIter = mBombs.begin( ); bombIter != mBombs.end( ); bombIter++ )
+    {
+        mRender.DrawBomb( mRender.getpScreen( ),
+                             &(bombIter->GetLocation( )),
+                             bombIter->sGetRadius());
     }
 
     mRender.DrawMissile( mRender.getpScreen( ),
@@ -424,6 +452,55 @@ void GameWorld::UpdateEverything( )
 		}
 	}
 
+    //move all the Bomb
+	vector<Bomb>::iterator bombIter;
+	for ( bombIter = mBombs.begin( ); bombIter != mBombs.end( ); bombIter++ )
+	{
+		if (bombIter->GetStatus( ) == knBombFlying)
+		{
+			// EJR Need to test bomb off screen 
+			    Point temp = MoveEntity(bombIter->GetLocation(),bombIter->GetDirection(),bombIter->GetSpeed(),mLastElapsedTime);
+				BBox BBoxTemp= bombIter->GetBox();
+				BBoxTemp.x+= temp.x;
+				BBoxTemp.y+= temp.y;
+
+				Point LanderTemp;
+				vector<Lander>::iterator landIter;
+				for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
+				{
+					if ( landIter->GetStatus( ) == descending )
+					{
+						LanderTemp= landIter->GetLoc();
+						BBox LBoxTemp= mRender.GetLanderBox();
+						LBoxTemp.x+= LanderTemp.x;
+						LBoxTemp.y+= LanderTemp.y;
+
+						if (IntersectBoxes(BBoxTemp, LBoxTemp))
+						{
+							landIter->SetStatus(dead);
+							bombIter->SetStatus(knBombGone);
+							SpawnExplosion( landIter->GetLoc( ) );
+							SpawnExplosion( bombIter->GetLocation( ) );
+						}
+					}
+
+				}	
+				bombIter->SetLocation(temp);
+
+                // EJR need test collide with Terrain
+			
+		}
+	}
+	// Remove a Bomb from vector if status is gone
+    for ( bombIter = mBombs.begin( ); bombIter != mBombs.end( ); bombIter++ )
+	{
+		if (bombIter->GetStatus() == knBombGone)
+		{
+            mBombs.erase( bombIter );
+            break;
+		}
+	}
+
 	// Update all Landers
 	Point LanderTemp;
     vector<Lander>::iterator landIter;
@@ -486,7 +563,7 @@ bool GameWorld::FireMissile()
 }
 
 // EJR only for testing explosion at right click mouse loc
-bool GameWorld::TestFireExplosion()
+bool GameWorld::FireBomb()
 {
 	return mRender.isRClicked();
 }

@@ -128,6 +128,30 @@ void Render::DrawMissile( SDL_Surface* scrn,
                        255,0,0,255 );
 }
 
+void Render::DrawBomb( SDL_Surface* scrn,
+                          Point* loc, float radius )
+{
+    aacircleRGBA(scrn,
+                 Round(loc->x),
+                 Round(loc->y),
+                 Round(radius),
+                 255,255,255,
+                 0xFF);
+    filledCircleRGBA(scrn,
+                 Round(loc->x),
+                 Round(loc->y),
+                 Round(radius/2.0F),
+                 128,128,128,
+                 255);
+    aacircleRGBA(scrn,
+                 Round(loc->x),
+                 Round(loc->y),
+                 Round(radius/2.0F),
+                 255,0,0,
+                 255);
+
+}
+
 void Render::DrawLander( SDL_Surface* scrn,
                          Point* landerLoc )
 {
@@ -166,6 +190,7 @@ void Render::DrawLander( SDL_Surface* scrn,
                      8,8,
                      255,255,255,255 );
 }
+
 
 void Render::DrawTerrain( SDL_Surface *scrn,
                           Point *tPts,

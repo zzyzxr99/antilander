@@ -65,6 +65,14 @@ const float kMissileAcceleration = 10.0F;
 enum MissileStatusType { flight = 1,
                          boom,
                          gone };
+// bomb
+const float kGravity = 9.8F;
+const float kBombRadius = 5.0F;
+const float kBombStartSpeed = 100.0F;
+const float kBombAcceleration = 10.0F;
+enum BombStatusType { knBombFlying = 1,
+                         knBombBoom,
+                         knBombGone };
 const int kWarheadColorR = 255;
 const int kWarheadColorG = 0;
 const int kWarheadColorB = 0;

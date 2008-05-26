@@ -5,6 +5,7 @@
 #include "Lander.h"
 #include "Gunship.h"
 #include "Missile.h"
+#include "Bomb.h"
 #include "Terrain.h"
 #include "Explosion.h"
 #include "ALTimer.h"
@@ -22,6 +23,7 @@ private:
 	float mLastElapsedTime;
 	vector<Lander> mLanders;
 	vector<Missile> mMissiles;
+    vector<Bomb> mBombs;
     vector<Explosion> mExplosions;
 	Gunship mPlayerShip;
 	Terrain mGameTerrain;
@@ -40,12 +42,13 @@ public:
 	void EditDrawEverything();
 	Render* GetRender( );
 	void SpawnMissile();
+    void SpawnBomb();
 	void StartGameStepper();
     void Timestamp( );
     bool CheckTick( );
     void UpdateEverything( );
 	bool FireMissile();
-    bool TestFireExplosion(); // only for testing exploison on rightclick
+    bool FireBomb(); // 
     void TestSpawnExplosion();// onlt for spawning explosion at mouse on right click
     bool SplashRunning( );
     void SpawnExplosion( Point sLoc );

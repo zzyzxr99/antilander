@@ -30,6 +30,8 @@ public:
     void DrawMissile( SDL_Surface* scrn,
                       Point* loc,
                       Point* targ );
+    void DrawBomb( SDL_Surface* scrn,
+                      Point* loc, float radius);
     void DrawLander( SDL_Surface* scrn,
                      Point* landerLoc );
     void DrawTerrain( SDL_Surface* scrn,
