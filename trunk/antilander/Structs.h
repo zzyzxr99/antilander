@@ -56,13 +56,7 @@ struct IntersectStruct
     unsigned int mTop:1;
     unsigned int mRight:1;
     unsigned int mBottom:1;
-    IntersectStruct()
-    {
-        mLeft= 0;
-        mTop= 0;
-        mRight= 0;
-        mBottom= 0;
-    }
+    IntersectStruct();
 };
 
 struct BBox

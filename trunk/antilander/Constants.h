@@ -12,6 +12,7 @@ const float kPi = acos( -1.0F );
 const float kSlopeRunTolerance = 0.00001F; // Slope tolerance for vertical lines - nearly zero run
 // GameWorld
 const unsigned long kGameStep = 10; // kGameStep is in milliseconds
+const float kGameDivisor = 1000.0F;
 
 // window
 // EJR this makes a const char array of char's the correct size - and than we can use it as a const char * in GameLoop
@@ -74,8 +75,7 @@ enum MissileStatusType { flight = 1,
 // bomb
 const float kGravity = 9.8F;
 const float kBombRadius = 5.0F;
-const float kBombStartSpeed = 100.0F;
-const float kBombAcceleration = 10.0F;
+const float kBombMaxSpeed = 100.0F;
 enum BombStatusType { knBombFlying = 1,
                          knBombBoom,
                          knBombGone };

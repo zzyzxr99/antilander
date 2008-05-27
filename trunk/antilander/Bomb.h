@@ -13,7 +13,7 @@ private:
 	BBox mBox;
 
     //static member variables
-    static float sSpeed;
+    static float sMaxSpeed;
     static float sAcceleration;
     static float sRadius;
 

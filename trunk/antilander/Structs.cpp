@@ -58,6 +58,15 @@ playInput::playInput()
 	trclicked = 0;
 }
 
+IntersectStruct::IntersectStruct()
+{
+    mLeft= 0;
+    mTop= 0;
+    mRight= 0;
+    mBottom= 0;
+
+}
+
 playInput::~playInput()
 {
 	

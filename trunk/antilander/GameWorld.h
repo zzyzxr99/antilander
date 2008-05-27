@@ -18,9 +18,7 @@ class GameWorld
 private:
     Render mRender;
     bool mStarted;
-	unsigned long mLastTimeStamp;
 	ALTimer mGameStepper;
-	float mLastElapsedTime;
 	vector<Lander> mLanders;
 	vector<Missile> mMissiles;
     vector<Bomb> mBombs;
@@ -44,7 +42,6 @@ public:
 	void SpawnMissile();
     void SpawnBomb();
 	void StartGameStepper();
-    void Timestamp( );
     bool CheckTick( );
     void UpdateEverything( );
 	bool FireMissile();

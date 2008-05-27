@@ -11,10 +11,9 @@ GameWorld::GameWorld()
 {
 	// initialize all the member varibles
 	mStarted= false;
-	mLastElapsedTime= 0.0F;
 	InitEverything();
-	mLastTimeStamp= mGameStepper.CurrentTimeMS();
 	mGameMode= knPlayMode;
+    mGameStepper.Mark();
 }
 
 GameWorld::~GameWorld()
@@ -371,14 +370,9 @@ Render* GameWorld::GetRender( )
 	return &mRender;
 }
 
-void GameWorld::Timestamp( )
-{
-    mGameStepper.Mark( );
-}
-
 bool GameWorld::CheckTick( )
 {
-	unsigned long curTime,timePassed;
+/*	unsigned long curTime,timePassed;
     curTime= mGameStepper.CurrentTimeMS();
 	timePassed= curTime - mLastTimeStamp;
 	if (timePassed >= kGameStep)
@@ -387,12 +381,18 @@ bool GameWorld::CheckTick( )
 		mLastTimeStamp= curTime;
 		return true;
 	}
-	return false;
+	*/
+    if (mGameStepper.CheckElapsedMS(kGameStep))
+    {
+        return true;
+    }
+    return false;
 }
 
 void GameWorld::UpdateEverything( )
 {
 
+    float elapsedTime= mGameStepper.LastInterval();
 	//move all the missiles
 	vector<Missile>::iterator misIter;
 	for ( misIter = mMissiles.begin( ); misIter != mMissiles.end( ); misIter++ )
@@ -406,7 +406,7 @@ void GameWorld::UpdateEverything( )
 			}
 			else
 			{
-				Point temp = MoveEntity(misIter->GetLocation(),misIter->GetDirection(),misIter->GetSpeed(),mLastElapsedTime);
+				Point temp = MoveEntity(misIter->GetLocation(),misIter->GetDirection(),misIter->GetSpeed(),elapsedTime);
 				BBox MBoxTemp= misIter->GetBox();
 				MBoxTemp.x+= temp.x;
 				MBoxTemp.y+= temp.y;
@@ -461,7 +461,7 @@ void GameWorld::UpdateEverything( )
 			// EJR Need to test bomb off screen 
                 Vect bombVel= bombIter->GetVelocity();
                 Vect bombAcc= bombIter->GetAcceleration();
-			    Point temp = MoveEntityAccel(bombIter->GetLocation(),bombVel,bombAcc,mLastElapsedTime);
+			    Point temp = MoveEntityAccel(bombIter->GetLocation(),bombVel,bombAcc,elapsedTime);
 				BBox BBoxTemp= bombIter->GetBox();
 				BBoxTemp.x+= temp.x;
 				BBoxTemp.y+= temp.y;
@@ -521,8 +521,8 @@ void GameWorld::UpdateEverything( )
                         bombIter->SetLocation(temp);
 
                         // Velocity changes based on acceleration
-                        bombVel.x+= bombAcc.x*mLastElapsedTime;
-                        bombVel.y+= bombAcc.y*mLastElapsedTime;
+                        bombVel.x+= bombAcc.x*elapsedTime;
+                        bombVel.y+= bombAcc.y*elapsedTime;
                         bombIter->SetVelocity(bombVel);
                     }
                 }
@@ -552,7 +552,7 @@ void GameWorld::UpdateEverything( )
 			}
 			else
 			{
-				LanderTemp= MoveEntity( landIter->GetLoc(),landIter->GetDir(), landIter->GetSpeed(), mLastElapsedTime);
+				LanderTemp= MoveEntity( landIter->GetLoc(),landIter->GetDir(), landIter->GetSpeed(), elapsedTime);
 				landIter->SetLocation(LanderTemp.x,LanderTemp.y);
 			}
 		}
@@ -574,7 +574,7 @@ void GameWorld::UpdateEverything( )
         if (iterExpl->GetStatus() == knExplosionOccuring)
         {
             ExplosionStatusType tStat;
-            tStat= iterExpl->Update(mLastElapsedTime);
+            tStat= iterExpl->Update(elapsedTime);
             iterExpl->SetStatus(tStat);
         }
     }
@@ -735,6 +735,6 @@ void GameWorld::InitLevel( )
     // Explosion
     Explosion::sSetMaxRadius( mCurrentLevel.GetExpRad( ) );
     Explosion::sSetExpansionRate( mCurrentLevel.GetExplRate( ) );
-    
+
     // Bomb
 }
