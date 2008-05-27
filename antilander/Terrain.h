@@ -3,19 +3,19 @@
 
 #include "Constants.h"
 #include "Structs.h"
-
-// EJR Added for SDL_Surface
+#include <vector>
 #include "SDL.h"
 
 class Terrain
 {
 private:
 	
-	Point mTerrainPts [kMaxTpts];
-	Point mPadPts [kMaxPpts];
+	vector<Point> mTerrainPts;
+    vector<Point> mPadPts;
+    vector<BBox> mTerrainBoxes;
 	int mNumTPts;
 	int mNumPadPts;
-	BBox mTerrainBoxes [kMaxTpts];
+
 	
 public:
 	
@@ -26,11 +26,11 @@ public:
 	float InitTbox();
 	int GetNumPadPts();
     void SetNumPadPts( int pads );
+    void SetNumTPts( int tpts );
 	int GetTPts();
-    void SetNumTPts( int pts );
-	Point *TerrainPts();
-	Point *PadPts();
-	BBox *TerBox();
+	vector<Point>::iterator TerrainPts();
+    vector<Point>::iterator PadPts();
+    vector<BBox>::iterator TerBox();
 
 };
 

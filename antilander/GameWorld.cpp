@@ -111,12 +111,14 @@ void GameWorld::InitLanders()
 void GameWorld::SpawnLander()
 {
 	Lander *PtrLander;
-	Point *pad0;
+    vector<Point>::iterator pad0;
 	pad0= mGameTerrain.PadPts();
-	Point sPoint;
-	sPoint.x= pad0->x;
+	Point sPoint,tPoint;
+	sPoint.x= pad0[2].x;
 	sPoint.y= kLanderStartY;
-    PtrLander= new Lander(sPoint, *pad0, descending, Lander::sGetDescentRate( ) );
+    tPoint.x= pad0[2].x;
+    tPoint.y= pad0[2].y;
+	PtrLander= new Lander(sPoint, tPoint, descending, kBaseDescendRate);
 	mLanders.push_back(*PtrLander);
 }
 
@@ -157,7 +159,7 @@ void GameWorld::InitEverything()
 	//InitLanders();
 	SpawnLander();
 	int numpts= mGameTerrain.GetNumPadPts();
-	Point *fP= mGameTerrain.PadPts();
+    vector<Point>::iterator fP= mGameTerrain.PadPts();
 	// Did not check num pad pts!
 	mPlayerShip.InitGunship(fP[3]);
 
@@ -580,7 +582,7 @@ bool GameWorld::SplashRunning( )
     return false;
 }
 
-bool GameWorld::MissileSect(Point* TerArr, Point MissNose, Vect Direction)
+bool GameWorld::MissileSect(vector<Point>::iterator TerArr, Point MissNose, Vect Direction)
 {
 	float M = Direction.y/Direction.x;		//slope
 	float offX = sqrt (289/((M * M) + 1));
