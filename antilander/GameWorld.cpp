@@ -487,13 +487,45 @@ void GameWorld::UpdateEverything( )
 					}
 
 				}	
-				bombIter->SetLocation(temp);
-                // Velocity changes based on acceleration
-                bombVel.x+= bombAcc.x*mLastElapsedTime;
-                bombVel.y+= bombAcc.y*mLastElapsedTime;
-                bombIter->SetVelocity(bombVel);
-                // EJR need test collide with Terrain
-			
+                 // EJR need test collide with Terrain
+                // EJR Test outside of world left right or bottom - top we let it fall back in
+                IntersectStruct isOut;
+                isOut= OutsideBoxes(BBoxTemp,mRender.GetGameScreen());
+                if ((isOut.mLeft == 1) || (isOut.mRight == 1) || (isOut.mBottom == 1))
+                {
+                    bombIter->SetStatus(knBombGone);
+                }
+                else
+                {
+                    float yInter;
+                    bool hitTerrain= false;
+                    // Check if bombs is below terrain
+                    int numtps= mGameTerrain.GetTPts();
+                    vector<Point>::iterator landIter= mGameTerrain.TerrainPts();
+                    for (int tps= 0; tps < (numtps-1); tps++)
+                    {
+                        if (CalcYIntercept(temp,landIter[tps],landIter[tps+1],&yInter))
+                        {
+                            if (temp.y >= yInter)
+                            {
+                                // intercept is below or equal to line - boom!
+                                bombIter->SetStatus(knBombGone);
+                                SpawnExplosion( temp );
+                                hitTerrain= true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!hitTerrain)
+                    {
+                        bombIter->SetLocation(temp);
+
+                        // Velocity changes based on acceleration
+                        bombVel.x+= bombAcc.x*mLastElapsedTime;
+                        bombVel.y+= bombAcc.y*mLastElapsedTime;
+                        bombIter->SetVelocity(bombVel);
+                    }
+                }
 		}
 	}
 	// Remove a Bomb from vector if status is gone

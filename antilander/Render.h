@@ -21,6 +21,7 @@ private:
 	bool gameState;
     short int mSplashAlpha;
 	BBox mBBoxLander;
+    BBox mGameScreen;
 
 public:
     Render( );
@@ -67,6 +68,7 @@ public:
 	void DrawBox(BBox box);
 	BBox GetLanderBox();
 	void DrawLevel(Level* l);
+    BBox GetGameScreen();
 };
 
 #endif // _RENDER_H;

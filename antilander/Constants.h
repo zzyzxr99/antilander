@@ -9,7 +9,7 @@ using namespace std;
 
 // math
 const float kPi = acos( -1.0F );
-
+const float kSlopeRunTolerance = 0.00001F; // Slope tolerance for vertical lines - nearly zero run
 // GameWorld
 const unsigned long kGameStep = 10; // kGameStep is in milliseconds
 
@@ -27,6 +27,11 @@ const int kForeColorG = 255;
 const int kForeColorB = 255;
 const int kForeColorT = 255;
 const int kSplashFadeRate = 100;
+
+// for IntersectBoxesStatus - to return information about where out of bounds
+// each value can be combine using powers of 2
+// knOutLeft | knOutTop means outside of boxes left and up/top
+// 
 
 // terrain
 const int kDefaultNumLPad = 8;

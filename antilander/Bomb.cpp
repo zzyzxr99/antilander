@@ -2,6 +2,7 @@
 #include "Structs.h"
 #include "Bomb.h"
 #include <cmath>
+#include <iostream>
 using namespace std;
 
 float Bomb::sSpeed = kBombStartSpeed;
@@ -59,11 +60,14 @@ Bomb::Bomb(Point StartLoc, Vect InitDir)
     mBox.y = -Bomb::sRadius;
     mBox.w = Bomb::sRadius;
     mBox.h = Bomb::sRadius;
+    cout << "Add bomb";
+
 }
 //Deconstructor Last (easier for me)
 Bomb::~Bomb()
 {
 	//any new operators must have delete matches here
+    cout << "Delete bomb";
 }
 
 BBox Bomb::GetBox( )
