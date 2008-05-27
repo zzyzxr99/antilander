@@ -193,9 +193,9 @@ void Render::DrawLander( SDL_Surface* scrn,
 
 
 void Render::DrawTerrain( SDL_Surface *scrn,
-                          Point *tPts,
+                         vector<Point>::iterator tPts,
                           int numTP,
-						  BBox* boxes)
+                          vector<BBox>::iterator boxes)
 {
     for ( int i = 0; i < numTP-1; i++ )
     {

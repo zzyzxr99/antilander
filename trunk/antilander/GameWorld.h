@@ -52,7 +52,7 @@ public:
     void TestSpawnExplosion();// onlt for spawning explosion at mouse on right click
     bool SplashRunning( );
     void SpawnExplosion( Point sLoc );
-	bool MissileSect(Point * TerArr, Point MissNose, Vect Direction);
+    bool MissileSect(vector<Point>::iterator TerArr, Point MissNose, Vect Direction);
 
 	bool LeftMouseHeld();
 	bool RightMouseHeld();

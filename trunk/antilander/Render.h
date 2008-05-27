@@ -35,9 +35,9 @@ public:
     void DrawLander( SDL_Surface* scrn,
                      Point* landerLoc );
     void DrawTerrain( SDL_Surface* scrn,
-                      Point* tPts,
+        vector<Point>::iterator tPts,
                       int numTP,
-					  BBox* boxes);
+                      vector<BBox>::iterator boxes);
     void DrawCrosshair( SDL_Surface* scrn,
                          Point* loc,
                          int r,

@@ -34,8 +34,8 @@ const int kDefaultNumTPt = kDefaultNumLPad * 2;
 const int kPadWidth = 30;
 const int kWallHeight = 300;
 const int kFloorHeight = 20;
-const int kMaxTpts = 700;
-const int kMaxPpts = 700;
+const int kInitialTPts = 100; // Initial size of vector
+const int kInitialPPts = 100; // Initial size of vector
 
 const int kTerrainLineR = kForeColorR;
 const int kTerrainLineG = kForeColorG;
