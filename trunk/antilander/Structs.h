@@ -49,13 +49,31 @@ struct playInput
 	~playInput();
 };
 
+
+struct IntersectStruct
+{
+    unsigned int mLeft:1;
+    unsigned int mTop:1;
+    unsigned int mRight:1;
+    unsigned int mBottom:1;
+    IntersectStruct()
+    {
+        mLeft= 0;
+        mTop= 0;
+        mRight= 0;
+        mBottom= 0;
+    }
+};
+
 struct BBox
 {
 	float x,y,w,h;
 };
 
 bool IntersectBoxes(BBox b1, BBox b2);
+IntersectStruct OutsideBoxes(BBox b1, BBox b2);
 bool IntersectSegments(Point p1,Point p2,Point p3,Point p4,Point *ip);
+bool CalcYIntercept(Point p, Point lp1, Point lp2, float *yinter);
 
 #endif // _STRUCTS_H
 

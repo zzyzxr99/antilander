@@ -31,7 +31,7 @@ public:
 	vector<Point>::iterator TerrainPts();
     vector<Point>::iterator PadPts();
     vector<BBox>::iterator TerBox();
-
+    
 };
 
 #endif // end _Terrain_H

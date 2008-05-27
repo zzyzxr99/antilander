@@ -1,4 +1,5 @@
 #include "Structs.h"
+#include "Constants.h"
 #include <cmath>
 using namespace std;
 
@@ -159,6 +160,30 @@ bool IntersectBoxes(BBox b1, BBox b2)
 	return retIntersect;
 }
 
+// Returns information about two bound boxes that do not intersect
+// if retIntersect members are all zero than there is intersect - logically OPPOSITE of IntersectBoxes
+IntersectStruct OutsideBoxes(BBox b1, BBox b2)
+{
+    IntersectStruct retIntersect;
+	if (b1.x > (b2.x + b2.w))
+	{
+		retIntersect.mRight= 1;
+	}
+	if ((b1.x + b1.w) < b2.x)
+	{
+		retIntersect.mLeft= 1;
+	}
+	if (b1.y > (b2.y + b2.h))
+	{
+		retIntersect.mBottom= 1;
+	}
+	else if ((b1.y + b1.h) < b2.y)
+	{
+		retIntersect.mTop= 1;
+	}
+	return retIntersect;
+}
+
 // EJR Not tested do not use until rechecked code
 bool IntersectSegments(Point p1,Point p2,Point p3,Point p4, Point *ip)
 {
@@ -196,4 +221,39 @@ bool IntersectSegments(Point p1,Point p2,Point p3,Point p4, Point *ip)
 	return retIntersect;
 }
 
+// EJR calucate the Y intercept *yinter for Point p on the line made by lp1 and lp2
+
+bool CalcYIntercept(Point p, Point lp1, Point lp2, float *yinter)
+{
+    bool isYinter= true;
+    // Point x value is left of pts or right of points - out of segment 
+    if (((p.x < lp1.x) && (p.x < lp2.x)) || ((p.x > lp1.x) && (p.x > lp2.x)))
+    {
+        isYinter= false;
+    }
+    else
+    {
+        float ldiffx= lp2.x-lp1.x;
+        if (fabsf(ldiffx) < kSlopeRunTolerance)
+        {
+            // there is no Y intercept line is vertical   return false;
+            isYinter= false;
+        }
+        else
+        {
+            float ldiffy= lp2.y-lp1.y;
+            // y = Mx + b
+            // M is rise/run which is diffy/diffx
+            // Find b which is x=0 intercept for slope M line with point lp1
+            // b = y - Mx - plug in lp1.x and lp1.y for x and y
+            float slope = ldiffy/ldiffx;
+            float xInter= lp1.y - slope*lp1.x;
+            // now we have M and b - plug in x value of Point p and we get the y value on the line where for the x.
+            // y= Mx + b - use Point p x
+            // *yinter= slope*p.x + xInter
+            *yinter= slope*p.x + xInter;
+        }
+    }
+    return isYinter;
+}
 

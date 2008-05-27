@@ -59,6 +59,11 @@ Render::Render( )
 	mBBoxLander.y= -8;
 	mBBoxLander.h= 22;
 	mBBoxLander.w= 16;
+
+    mGameScreen.x= 0;
+    mGameScreen.y= 0;
+    mGameScreen.w= kWinWidth;
+    mGameScreen.h= kWinHeight;
 }
 
 Render::~Render( )
@@ -569,4 +574,9 @@ void Render::DrawBox(BBox box)
 BBox Render::GetLanderBox()
 {
 	return mBBoxLander;
+}
+
+BBox Render::GetGameScreen()
+{
+    return mGameScreen;
 }
