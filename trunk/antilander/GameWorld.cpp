@@ -116,7 +116,7 @@ void GameWorld::SpawnLander()
 	Point sPoint;
 	sPoint.x= pad0->x;
 	sPoint.y= kLanderStartY;
-	PtrLander= new Lander(sPoint, *pad0, descending, kBaseDescendRate);
+    PtrLander= new Lander(sPoint, *pad0, descending, Lander::sGetDescentRate( ) );
 	mLanders.push_back(*PtrLander);
 }
 
@@ -689,7 +689,7 @@ void GameWorld::InitLevel( )
     // mTerPt;
 
     // Lander
-    // mLndrDescRate;
+    Lander::sSetDescentRate( mCurrentLevel.GetLndrDescRate( ) );
 
     // Missile
     Missile::sSetSpeed( mCurrentLevel.GetMissileSpd( ) );
