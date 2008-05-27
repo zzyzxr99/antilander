@@ -1,6 +1,9 @@
 #include "Lander.h"
 
 // Definition
+
+float Lander::sDescentRate = kBaseDescendRate;
+
 void Lander::SetLocation(float x, float y)
 {
 	mDrawLoc.x= x;//value;
@@ -14,10 +17,9 @@ Lander::Lander()
 	mDestination.x= 0;
 	mDestination.y= 0;
 	mStatus= descending;
-	mDescentRate= 0;
+	mDescentRate= sDescentRate;
 	mDir.x= 0;
 	mDir.y= 0;
-
 }
 
 
@@ -70,4 +72,14 @@ void Lander::SetStatus( LanderStatusType status )
 LanderStatusType Lander::GetStatus( )
 {
 	return mStatus;
+}
+
+void Lander::sSetDescentRate( float spd )
+{
+    sDescentRate = spd;
+}
+
+float Lander::sGetDescentRate( )\
+{
+    return sDescentRate;
 }

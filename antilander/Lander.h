@@ -14,6 +14,9 @@ private:
 	float mDescentRate;
 	Vect mDir;
 
+    // static member variables
+    static float sDescentRate;
+
 public:
 	Lander();
 	Lander(Point sPoint, Point Dest, LanderStatusType lStatus, float DescentRate);
@@ -28,6 +31,10 @@ public:
 	Point GetDest();
 	void SetStatus( LanderStatusType status );
 	LanderStatusType GetStatus( );
+
+    // static member functions
+    static void sSetDescentRate( float spd );
+    static float sGetDescentRate( );
 };
 
 #endif 
