@@ -25,7 +25,9 @@ public:
 	void InitPadPoints();
 	float InitTbox();
 	int GetNumPadPts();
+    void SetNumPadPts( int pads );
 	int GetTPts();
+    void SetNumTPts( int pts );
 	Point *TerrainPts();
 	Point *PadPts();
 	BBox *TerBox();
