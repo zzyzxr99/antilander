@@ -29,7 +29,8 @@ const int kForeColorT = 255;
 const int kSplashFadeRate = 100;
 
 // terrain
-const int kLandingPads = 8;
+const int kDefaultNumLPad = 8;
+const int kDefaultNumTPt = kDefaultNumLPad * 2;
 const int kPadWidth = 30;
 const int kWallHeight = 300;
 const int kFloorHeight = 20;

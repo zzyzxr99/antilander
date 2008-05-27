@@ -683,9 +683,9 @@ void GameWorld::InitLevel( )
     // mFrat;
 
     // Terrain
-    // mNumPad;
+    mGameTerrain.SetNumPadPts( mCurrentLevel.GetNumPad( ) );
     // mPadPt;
-    // mNumTerPt;
+    mGameTerrain.SetNumTPts( mCurrentLevel.GetNumTerPt( ) );
     // mTerPt;
 
     // Lander

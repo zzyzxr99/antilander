@@ -19,17 +19,13 @@ Terrain::Terrain()
 	{
 		mPadPts[i].x=0;
 		mPadPts[i].y=0;
-
 	}
-	
-	
-
+	mNumPadPts = kDefaultNumLPad;
+	mNumTPts = kDefaultNumTPt;
 }
 Terrain::~Terrain()
 {
-
 	//any new operators must have delete matches here
-
 }
 
 int Terrain::GetNumPadPts()
@@ -37,9 +33,19 @@ int Terrain::GetNumPadPts()
 	return mNumPadPts;
 }
 
+void Terrain::SetNumPadPts( int pads )
+{
+    mNumPadPts = pads;
+}
+
 int Terrain::GetTPts()
 {
 	return mNumTPts;
+}
+
+void Terrain::SetNumTPts( int pts )
+{
+    mNumTPts = pts;
 }
 
 Point *Terrain::TerrainPts()
@@ -92,11 +98,8 @@ void Terrain::InitTerrain()
 		mTerrainBoxes[i].y = mTerrainPts[i].y;
 		mTerrainBoxes[i].w = mTerrainPts[i+1].x - mTerrainPts[i].x;
 		mTerrainBoxes[i].h = mTerrainPts[i+1].y - mTerrainPts[i].y;
-
 	}
 }
-
-
 
 void Terrain::InitPadPoints()
 {
@@ -116,10 +119,6 @@ BBox* Terrain::TerBox()
 {
 	return &mTerrainBoxes[0];
 }
-
-	
-
-
 
 /*
 void Terrain::StevenDrawTerrain(SDL_Surface* surf)
