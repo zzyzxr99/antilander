@@ -12,6 +12,7 @@ Gunship::Gunship()
 	mMissileCount= kStartAmmo;
     mReloadTime = kReloadTime;
     mPad = kDefaultGunStartPad;
+    mGunTimer.CurrentTimeMS();
 // initialize all the member variables
 }
 

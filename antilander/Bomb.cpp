@@ -5,15 +5,15 @@
 #include <iostream>
 using namespace std;
 
-float Bomb::sSpeed = kBombStartSpeed;
-float Bomb::sAcceleration = kGravity;
+float Bomb::sMaxSpeed = kBombMaxSpeed;
+float Bomb::sAcceleration = kGravity*kGravity;
 float Bomb::sRadius = kBombRadius;
 
 //Constructor FIRST (easier for me)
 Bomb::Bomb()
 {
 	//Initilize all member variables
-	float mSpeed = sSpeed;
+	float mSpeed = sMaxSpeed;
 }
 Vect Bomb::GetVelocity()
 {
@@ -77,12 +77,12 @@ BBox Bomb::GetBox( )
 
 void Bomb::sSetSpeed(float speed)
 {
-    sSpeed = speed;
+    sMaxSpeed = speed;
 }
 
 float Bomb::sGetSpeed( )
 {
-    return sSpeed;
+    return sMaxSpeed;
 }
 void Bomb::sSetAcceleration(float accel)
 {

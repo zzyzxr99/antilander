@@ -13,7 +13,10 @@ class ALTimer
 {
 
 private:
-	unsigned long mTick; 
+	unsigned long mLastTick;
+    unsigned long mLastDiff;
+    float mLastInterval;
+
 public:
 	ALTimer();
 	~ALTimer();
@@ -22,6 +25,9 @@ public:
 	unsigned long CurrentTimeMS();
 	bool CheckElapsedMS(unsigned long ms);
 	unsigned long TimerMinMS();
+    unsigned long LastStamp();
+    unsigned long LastDiff();
+    float LastInterval();
 };
 
 #endif /*_ALTIMER_H*/

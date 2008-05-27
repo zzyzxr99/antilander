@@ -1,8 +1,9 @@
 #include "ALTimer.h"
+#include "Constants.h"
 
 ALTimer::ALTimer()
 {
-	mTick= 0;
+	mLastTick= timeGetTime();
 }
 
 ALTimer::~ALTimer()
@@ -10,14 +11,29 @@ ALTimer::~ALTimer()
 	// Default de-constructor
 }
 
+unsigned long ALTimer::LastStamp()
+{
+    return mLastTick;
+}
+
+float ALTimer::LastInterval()
+{
+    return mLastInterval;
+}
+
+unsigned long ALTimer::LastDiff()
+{
+    return mLastDiff;
+}
+
 void ALTimer::Mark()
 {
-	mTick= timeGetTime();
+	mLastTick= timeGetTime();
 }
 
 unsigned long ALTimer::ElapsedMS()
 {
-    return timeGetTime() - mTick;
+    return timeGetTime() - mLastTick;
 }
 
 unsigned long ALTimer::CurrentTimeMS()
@@ -27,9 +43,15 @@ unsigned long ALTimer::CurrentTimeMS()
 
 bool ALTimer::CheckElapsedMS(unsigned long ms)
 {
-	unsigned long passed;
-	passed= timeGetTime() - mTick;
-	return (passed >= ms);
+    unsigned long curTime= timeGetTime();
+	mLastDiff= curTime - mLastTick;
+    if (mLastDiff >= ms)
+    {
+        mLastTick= curTime;
+        mLastInterval= (float)(mLastDiff)/kGameDivisor;
+        return true;
+    }
+    return false;
 }
 
 unsigned long ALTimer::TimerMinMS()

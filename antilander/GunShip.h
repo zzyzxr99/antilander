@@ -3,6 +3,7 @@
 
 #include "Constants.h"
 #include "Structs.h"
+#include "ALTimer.h"
 
 class Gunship
 {
@@ -16,6 +17,7 @@ private:
 	int mMissileCount;  //uses GetMCount to get missiles remaining
     float mReloadTime;
     unsigned short mPad;
+    ALTimer mGunTimer;
 
 public:
 	Gunship();
