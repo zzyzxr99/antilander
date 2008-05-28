@@ -122,6 +122,8 @@ enum ExplosionStatusType { knExplosionOccuring = 1,
                            knExplosionDone };
 enum GameStatusType { knPlayMode = 1,
 					  knEditMode };
+enum EditStatusType { knBuildMode = 1,
+                      knMoveMode };
 #endif // _CONSTANTS_H
 
 // comment

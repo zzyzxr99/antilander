@@ -14,6 +14,7 @@ int main(int argv, char *args[])
 
     tWorld->StartGameStepper();
 	tWorld->SetGameStatus(knPlayMode);
+	tWorld->SetEditStatus(knBuildMode);
 
 	//////////////// test /////////////////////
 	Level* tLevel = new Level();
@@ -47,20 +48,29 @@ int main(int argv, char *args[])
 		}
 		else if (tWorld->GetGameStatus() == knEditMode)
 		{
-			tWorld->GetRender()->doEditInput();
-			if (tWorld->GetRender()->isLClicked())
+			if (tWorld->GetEditStatus() == knBuildMode)
 			{
-				tWorld->AddEditLevelPoint(tWorld->GetRender()->getMouse());
+				tWorld->GetRender()->doEditInput();
+				if (tWorld->GetRender()->isLClicked())
+				{
+					tWorld->AddEditLevelPoint(tWorld->GetRender()->getMouse());
+				}
+				if (tWorld->GetRender()->isMClicked())
+				{
+					tWorld->EndEditLvlPts(tWorld->GetRender()->getMouse());
+					tWorld->SetEditStatus(knMoveMode);
+				}
+				
 			}
-			if (tWorld->GetRender()->isMClicked())
+			else if (tWorld->GetEditStatus() == knMoveMode)
 			{
-				tWorld->EndEditLvlPts(tWorld->GetRender()->getMouse());
+				tWorld->GetRender()->doMoveInput();
+				if (tWorld->GetRender()->isLClicked())
+				{
+					Point mp= (tWorld->GetRender()->getMouse());
+
+				}
 			}
-			//run doEditInput
-
-
-			//run EditUpdateEverything
-
 
 			tWorld->EditDrawEverything();
 		}
