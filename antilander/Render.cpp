@@ -404,6 +404,7 @@ void Render::doInput()
 void Render::doEditInput()
 {
     plIn.leftClick= false;
+	plIn.midClick= false;
     plIn.rightClick= false;
     while (SDL_PollEvent(&mEvent))
     {
@@ -445,6 +446,7 @@ void Render::doEditInput()
 			if(plIn.mousePress.button == SDL_BUTTON_MIDDLE)
 			{
 				plIn.midClick = true;
+				plIn.tmclicked = true;
 			}
 		 
 	    }
@@ -465,6 +467,7 @@ void Render::doEditInput()
 			if(plIn.mousePress.button == SDL_BUTTON_MIDDLE)
 			{
 				plIn.midClick = false;
+				plIn.tmclicked = false;
 			}
 	    }
     	
@@ -504,6 +507,11 @@ bool Render::isLeftHeld()
 bool Render::isRightHeld()
 {
 	return plIn.trclicked;
+}
+
+bool Render::isMidHeld()
+{
+	return plIn.tmclicked;
 }
 
 short int Render::GetSplashAlpha( )
