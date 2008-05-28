@@ -274,6 +274,7 @@ void Level::LoadLevel( string LevString )
 				p = strtok(NULL," ");
 				pt.y = (float)atof(p);
 				mTerPt.push_back(pt);
+				cout << pt.x << " " << pt.y << endl;
 			}
 			mNumTerPt = mTerPt.size();
 		} 
