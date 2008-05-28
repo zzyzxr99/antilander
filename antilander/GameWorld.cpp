@@ -126,7 +126,7 @@ void GameWorld::SpawnLander()
 	sPoint.y= kLanderStartY;
     tPoint.x= pad0[2].x;
     tPoint.y= pad0[2].y;
-	PtrLander= new Lander(sPoint, tPoint, descending, kBaseDescendRate);
+    PtrLander= new Lander(sPoint, tPoint, descending, Lander::sGetDescentRate( ) );
 	mLanders.push_back(*PtrLander);
 }
 
