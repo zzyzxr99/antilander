@@ -28,7 +28,6 @@ private:
 	void InitEverything();
 	void InitMissiles();
 	void InitLanders();
-	void SpawnLander();
     GameStatusType mGameMode;
 	Level mEditLevel;
 	Level mCurrentLevel;
@@ -66,8 +65,10 @@ public:
 	GameStatusType GetGameStatus();
 	void AddEditLevelPoint(Point p);
 	void EndEditLvlPts(Point p);
-
+    void SpawnLander();
     void InitLevel( );
+    vector<Lander>* GetLanders( );
+    unsigned short GetNumLndrScr( );
 
     void TestSaveLoadLevel();
 };
