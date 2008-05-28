@@ -29,6 +29,7 @@ private:
 	void InitMissiles();
 	void InitLanders();
     GameStatusType mGameMode;
+	EditStatusType mEditMode;
 	Level mEditLevel;
 	Level mCurrentLevel;
     unsigned short mNumLndrLvl;
@@ -62,7 +63,9 @@ public:
 	bool LeftMouseHeld();
 	bool RightMouseHeld();
 	void SetGameStatus(GameStatusType status);
+	void SetEditStatus(EditStatusType status);
 	GameStatusType GetGameStatus();
+	EditStatusType GetEditStatus();
 	void AddEditLevelPoint(Point p);
 	void EndEditLvlPts(Point p);
     void SpawnLander();
@@ -71,6 +74,7 @@ public:
     unsigned short GetNumLndrScr( );
 
     void TestSaveLoadLevel();
+	int PointCheck();
 };
 
 #endif // end _GAMEWORLD_H

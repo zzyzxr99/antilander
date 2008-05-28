@@ -305,8 +305,8 @@ void GameWorld::EditDrawEverything()
                   NULL,
                   SDL_MapRGB( mRender.getpScreen( )->format,
                               0,0,0 ));
-
-	mRender.DrawLevel(&mEditLevel);
+	bool DrawGreen= (mEditMode == knBuildMode);
+	mRender.DrawLevel(&mEditLevel,DrawGreen);
 
     //mRender.DrawGunship( mRender.getpScreen( ),
     //                     mPlayerShip.GetLoc( ));
@@ -712,10 +712,19 @@ void GameWorld::SetGameStatus(GameStatusType status)
 	mGameMode= status;
 }
 
+void GameWorld::SetEditStatus(EditStatusType status)
+{
+	mEditMode= status;
+}
 
 GameStatusType GameWorld::GetGameStatus()
 {
 	return mGameMode;
+}
+
+EditStatusType GameWorld::GetEditStatus()
+{
+	return mEditMode;
 }
 
 void GameWorld::AddEditLevelPoint(Point p)
@@ -783,4 +792,10 @@ vector<Lander>* GameWorld::GetLanders( )
 unsigned short GameWorld::GetNumLndrScr( )
 {
     return mNumLndrScr;
+}
+
+int GameWorld::PointCheck()
+{
+	//for (int tp = 1; tp < (numPts); tp++)
+	return 0;
 }

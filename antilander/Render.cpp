@@ -215,7 +215,7 @@ void Render::DrawTerrain( SDL_Surface *scrn,
         filledPolygonRGBA( scrn,
                            x,y,4,
                            0,0,0,255 );
-        lineRGBA( scrn,
+		lineRGBA( scrn,
                   Round( tPts[i].x ),
                   Round( tPts[i].y ),
                   Round( tPts[i+1].x ),
@@ -297,7 +297,7 @@ void Render::DrawExplosion( SDL_Surface* scrn,
     }
 }
 
-void Render::DrawLevel(Level* l)
+void Render::DrawLevel(Level* l,bool DrawGreen)
 {
 	vector<Point> *vPts;
 	vector<Point>::iterator iterPoint;
@@ -319,14 +319,19 @@ void Render::DrawLevel(Level* l)
 					Round(iterPoint->y),
 					255,255,255,255 );
 			}
-			
+						
 		}
+		if (DrawGreen)
+		{
+				
 			lineRGBA(screen,
 			Round(iterPoint->x),
 			Round(iterPoint->y),
 			Round(getMouse().x),
 			Round(getMouse().y),
 			0,255,0,255 );
+		}
+		
 	}
 
 }
@@ -402,6 +407,79 @@ void Render::doInput()
 }
 
 void Render::doEditInput()
+{
+    plIn.leftClick= false;
+	plIn.midClick= false;
+    plIn.rightClick= false;
+    while (SDL_PollEvent(&mEvent))
+    {
+	    if(mEvent.type == SDL_MOUSEMOTION)
+	    {
+		    plIn.mouseMove.x = mEvent.motion.x;
+		    plIn.mouseMove.y = mEvent.motion.y;
+	    }
+		if (mEvent.type == SDL_QUIT)
+		{
+			gameState= false;
+		}
+
+	    if(mEvent.type == SDL_KEYDOWN)
+	    {
+		    plIn.keyPress = mEvent.key.keysym.sym;
+		    if(plIn.keyPress == SDLK_ESCAPE)
+		    {
+			    gameState = false;
+		    }
+	    }
+
+	    if(mEvent.type == SDL_MOUSEBUTTONDOWN)
+	    {
+		    plIn.mousePress.button = mEvent.button.button;
+		    if((plIn.mousePress.button == SDL_BUTTON_LEFT))
+		    {
+			    plIn.leftClick = true;
+			    plIn.tlclicked = true;
+		    }
+		   
+
+		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT )
+		    {
+			    plIn.rightClick = true;
+			    plIn.trclicked = true;
+		    }
+
+			if(plIn.mousePress.button == SDL_BUTTON_MIDDLE)
+			{
+				plIn.midClick = true;
+				plIn.tmclicked = true;
+			}
+		 
+	    }
+	    if(mEvent.type == SDL_MOUSEBUTTONUP)
+	    {
+		    plIn.mousePress.button = mEvent.button.button;
+		    if(plIn.mousePress.button == SDL_BUTTON_LEFT)
+		    {
+			    plIn.tlclicked = false;
+                plIn.leftClick = false;
+		    }
+		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT)
+		    {
+			    plIn.trclicked = false;
+                plIn.rightClick = false;
+		    }
+
+			if(plIn.mousePress.button == SDL_BUTTON_MIDDLE)
+			{
+				plIn.midClick = false;
+				plIn.tmclicked = false;
+			}
+	    }
+    	
+    }
+}
+
+void Render::doMoveInput()
 {
     plIn.leftClick= false;
 	plIn.midClick= false;

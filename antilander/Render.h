@@ -53,6 +53,7 @@ public:
 	SDL_Surface* getpScreen();			//gets a pointer to the surface (screen)
 	void doInput();						//gets, processes input
 	void doEditInput();					//gets, processes editor input
+	void doMoveInput();
 	bool gameRunning();					//gets current gamestate
 	Point getMouse();					//gets cursor position
 	bool isLClicked();					//check whether mouse is clicked
@@ -68,7 +69,7 @@ public:
                   BBox box );
 	void DrawBox(BBox box);
 	BBox GetLanderBox();
-	void DrawLevel(Level* l);
+	void DrawLevel(Level* l,bool DrawGreen);
     BBox GetGameScreen();
 };
 
