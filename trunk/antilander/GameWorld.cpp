@@ -14,6 +14,14 @@ GameWorld::GameWorld()
 	InitEverything();
 	mGameMode= knPlayMode;
     mGameStepper.Mark();
+    mNumLndrLvl = 0;
+    mNumLndrScr = 0;
+    mLndrPersist = false;
+    mNumMissile = 0;
+    mGunMoves = false;
+    mGunMoveRnd = false;
+    mEndGamePadOcc = 0;
+    mFrat = false;
 }
 
 GameWorld::~GameWorld()
@@ -707,14 +715,14 @@ void GameWorld::EndEditLvlPts(Point p)
 void GameWorld::InitLevel( )
 {
     // GameWorld
-    // mNumLndrLvl;
-    // mNumLndrScr;
-    // mLndrPersist;
-    // mNumMissile;
-    // mGunMoves;
-    // mGunMoveRnd;
-    // mEndGamePadOcc;
-    // mFrat;
+    mNumLndrLvl = mCurrentLevel.GetNumLndrLvl( );
+    mNumLndrScr = mCurrentLevel.GetNumLndrScr( );
+    mLndrPersist = mCurrentLevel.GetLndrPersist( );
+    mNumMissile = mCurrentLevel.GetNumMissile( );
+    mGunMoves = mCurrentLevel.GetGunMoves( );
+    mGunMoveRnd = mCurrentLevel.GetGunMoveRnd( );
+    mEndGamePadOcc = mCurrentLevel.GetEndGamePadOcc( );
+    mFrat = mCurrentLevel.GetFrat( );
 
     // Terrain
     mGameTerrain.SetNumPadPts( mCurrentLevel.GetNumPad( ) );
