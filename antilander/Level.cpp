@@ -245,7 +245,7 @@ void Level::SetBombRad( float rad )
     mBombRad = rad;
 }
 
-void Level::LoadLevel( )
+void Level::LoadLevel( string LevString )
 {
 	vector<Point>::iterator iterTer = mTerPt.begin();
 	vector<Point>::iterator iterPad = mPadPt.begin();
@@ -274,7 +274,7 @@ void Level::LoadLevel( )
 				p = strtok(NULL," ");
 				pt.y = (float)atof(p);
 				mTerPt.push_back(pt);
-			}s
+			}
 			mNumTerPt = mTerPt.size();
 		} 
 		else if(!str[j].compare(index[1]))
@@ -295,7 +295,7 @@ void Level::LoadLevel( )
 	delete [] cstr;
 }
 
-void Level::SaveLevel( )
+void Level::SaveLevel( string LevString )
 {
 	ofstream outfile("LEVEL01.txt");
 	outfile << "TERRAINPTS" << endl;

@@ -3,6 +3,7 @@
 #define _LEVEL_H
 #include "Structs.h"
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -83,8 +84,8 @@ public:
     void SetBombAcc( float acc );
     void SetBombRad( float rad );
 
-    void LoadLevel( );
-    void SaveLevel( );
+    void LoadLevel( string LevString );
+    void SaveLevel( string LevString );
     void EJRTestSaveLevel(string filename);
     void EJRTestLoadLevel(string filename);
 
