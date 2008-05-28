@@ -17,8 +17,8 @@ int main(int argv, char *args[])
 
 	//////////////// test /////////////////////
 	Level* tLevel = new Level();
-	tLevel->LoadLevel();
-	tLevel->SaveLevel();
+	tLevel->LoadLevel( "LEVEL01.txt" );
+	tLevel->SaveLevel( "LEVEL01.txt" );
 	//////////////// test /////////////////////
 
 	while (tWorld->GetRender()->gameRunning())
