@@ -17,8 +17,8 @@ GameWorld::GameWorld()
     mNumLndrLvl = 0;
     mNumLndrScr = 0;
     mLndrPersist = false;
-    mNumMissile = 0;
-    mNumBomb = 0;
+    mNumMissile = kStartAmmo;
+    mNumBomb = kDefaultStartBomb;
     mGunMoves = false;
     mGunMoveRnd = false;
     mEndGamePadOcc = 0;
@@ -67,40 +67,48 @@ void GameWorld::InitMissiles()
 
 void GameWorld::SpawnMissile()
 {
-	//set Missile at Gunship Location EVERYTIME
-	Missile *PtrMissile;
-	Point *Start;
-	Start = mPlayerShip.GetLoc();
+    if ( mNumMissile > 0 )
+    {
+	    //set Missile at Gunship Location EVERYTIME
+	    Missile *PtrMissile;
+	    Point *Start;
+	    Start = mPlayerShip.GetLoc();
 
-	//Destination
-	Point Destin;
-	Destin = mRender.getMouse();
+	    //Destination
+	    Point Destin;
+	    Destin = mRender.getMouse();
 
-	//Direction
-	Vect Dir;
-	Dir = UnitVect(*Start, Destin);
+	    //Direction
+	    Vect Dir;
+	    Dir = UnitVect(*Start, Destin);
 
-	//Add to Vector
-	PtrMissile = new Missile(*Start, Destin, Dir);
-	mMissiles.push_back(*PtrMissile);
+	    //Add to Vector
+	    PtrMissile = new Missile(*Start, Destin, Dir);
+	    mMissiles.push_back(*PtrMissile);
+        mNumMissile--;
+    }
 }
 
 void GameWorld::SpawnBomb()
 {
-	//set Missile at Gunship Location EVERYTIME
-	Bomb *PtrBomb;
-	Point *Start;
-	Start = mPlayerShip.GetLoc();
+    if ( mNumBomb > 0 )
+    {
+	    //set Missile at Gunship Location EVERYTIME
+	    Bomb *PtrBomb;
+	    Point *Start;
+	    Start = mPlayerShip.GetLoc();
 
-	//Destination
-	Point Destin;
-	Destin = mRender.getMouse();
+	    //Destination
+	    Point Destin;
+	    Destin = mRender.getMouse();
 
-	//Direction
-	Vect Dir= MakeVect(*Start,Destin);
-    //Add to Vector
-	PtrBomb = new Bomb(*Start, Dir);
-	mBombs.push_back(*PtrBomb);
+	    //Direction
+	    Vect Dir= MakeVect(*Start,Destin);
+        //Add to Vector
+	    PtrBomb = new Bomb(*Start, Dir);
+	    mBombs.push_back(*PtrBomb);
+        mNumBomb--;
+    }
 }
 
 void GameWorld::InitLanders()
