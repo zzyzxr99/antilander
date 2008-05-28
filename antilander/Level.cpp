@@ -254,7 +254,7 @@ void Level::LoadLevel( )
 	char * cstr, *p;
 	cstr = new char [15];
 	char *index[] = {"TERRAINPTS","PADPTS","LAST"};		//index of strings to compare
-	ifstream infile("insettings.txt");
+	ifstream infile("LEVEL01.txt");
 	Point pt;
 	while (!infile.eof())
 	{
@@ -266,8 +266,6 @@ void Level::LoadLevel( )
 	{
 		if(!str[j].compare(index[0]))			//if current line is TERRAINPTS
 		{
-
-			cout << "this is the terrainpts line" << endl;
 			for (int l = j+1; str[l].compare(index[1]); l++)
 			{
 				strcpy (cstr, str[l].c_str());
@@ -276,14 +274,11 @@ void Level::LoadLevel( )
 				p = strtok(NULL," ");
 				pt.y = (float)atof(p);
 				mTerPt.push_back(pt);
-				cout << pt.x << " " << pt.y << endl;
-			}
+			}s
 			mNumTerPt = mTerPt.size();
 		} 
 		else if(!str[j].compare(index[1]))
 		{
-
-			cout << "this is the padpts line" << endl;
 			for (int l = j+1, k = 0; str[l].compare(index[2]); l++, k++)
 			{
 				strcpy (cstr, str[l].c_str());
@@ -292,7 +287,6 @@ void Level::LoadLevel( )
 				p = strtok(NULL," ");
 				pt.y = (float)atof(p);
 				mPadPt.push_back(pt);
-				cout << pt.x << " " << pt.y << endl;
 			}
 			mNumPad = mPadPt.size();
 		}				
@@ -303,7 +297,18 @@ void Level::LoadLevel( )
 
 void Level::SaveLevel( )
 {
-	
+	ofstream outfile("LEVEL01.txt");
+	outfile << "TERRAINPTS" << endl;
+	for(int i = 0; i < mNumTerPt; i++)
+	{
+		outfile << mTerPt[i].x << ", " << mTerPt[i].y << endl;
+	}
+	outfile << "PADPTS" << endl;
+	for(int i = 0; i < mNumPad; i++)
+	{
+		outfile << mPadPt[i].x << ", " << mPadPt[i].y << endl;
+	}
+	outfile << "LAST" << endl;
 }
 
 void Level::EJRTestSaveLevel(string filename)
