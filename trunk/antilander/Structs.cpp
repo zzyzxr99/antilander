@@ -56,6 +56,7 @@ playInput::playInput()
 	midClick = false;
 	tlclicked = 0;
 	trclicked = 0;
+	tmclicked = 0;
 }
 
 IntersectStruct::IntersectStruct()

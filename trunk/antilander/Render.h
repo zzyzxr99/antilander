@@ -60,6 +60,7 @@ public:
 	bool isMClicked();
 	bool isLeftHeld();
 	bool isRightHeld();
+	bool isMidHeld();
 	short int GetSplashAlpha( );
     void DecSplashAlpha( short int amt );
     void DrawSplash( );

@@ -43,6 +43,7 @@ struct playInput
 	bool midClick;				//if set to true - middle mouse button has been clicked
 	bool tlclicked;				//temp click variable
 	bool trclicked;             //temp click variable
+	bool tmclicked;
 	SDLKey keyPress;
 	SDL_MouseButtonEvent mousePress;
 	playInput();
