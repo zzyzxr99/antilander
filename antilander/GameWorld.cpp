@@ -18,6 +18,7 @@ GameWorld::GameWorld()
     mNumLndrScr = 0;
     mLndrPersist = false;
     mNumMissile = 0;
+    mNumBomb = 0;
     mGunMoves = false;
     mGunMoveRnd = false;
     mEndGamePadOcc = 0;
@@ -760,4 +761,8 @@ void GameWorld::InitLevel( )
     Explosion::sSetExpansionRate( mCurrentLevel.GetExplRate( ) );
 
     // Bomb
+    mNumBomb = mCurrentLevel.GetNumBomb( );
+    Bomb::sSetSpeed( mCurrentLevel.GetBombMxSpd( ) );
+    Bomb::sSetAcceleration( mCurrentLevel.GetBombAcc( ) );
+    Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
 }

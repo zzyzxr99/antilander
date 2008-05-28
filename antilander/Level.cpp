@@ -26,7 +26,11 @@ Level::Level( )
     mGunReload     = 0.0F;
     mExpRad        = 0.0F;
     mExpRate       = 0.0F;
-    mFrat          = 0.0F;
+    mFrat          = false;
+    mNumBomb       = 0;
+    mBombMxSpd     = 0.0F;
+    mBombAcc       = 0.0F;
+    mBombRad       = 0.0F;
 }
 
 Level::~Level( )
@@ -122,6 +126,26 @@ bool Level::GetFrat( )
     return mFrat;
 }
 
+unsigned short Level::GetNumBomb( )
+{
+    return mNumBomb;
+}
+
+float Level::GetBombMxSpd( )
+{
+    return mBombMxSpd;
+}
+
+float Level::GetBombAcc( )
+{
+    return mBombAcc;
+}
+
+float Level::GetBombRad( )
+{
+    return mBombAcc;
+}
+
 void Level::SetNumLndrLvl( unsigned short landers )
 {
     mNumLndrLvl = landers;
@@ -199,6 +223,26 @@ void Level::SetExpRate( float rate )
 void Level::SetFrat( bool frat )
 {
     mFrat = frat;
+}
+
+void Level::SetNumBomb( unsigned short num )
+{
+    mNumBomb = num;
+}
+
+void Level::SetBombMxSpd( float spd )
+{
+    mBombMxSpd = spd;
+}
+
+void Level::SetBombAcc( float acc )
+{
+    mBombAcc = acc;
+}
+
+void Level::SetBombRad( float rad )
+{
+    mBombRad = rad;
 }
 
 void Level::LoadLevel( )
