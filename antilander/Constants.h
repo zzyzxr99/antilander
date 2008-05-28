@@ -64,7 +64,7 @@ const int kGunshipLineG = kForeColorG;
 const int kGunshipLineB = kForeColorB;
 const int kGunshipLineT = kForeColorT;
 enum GunshipStatusType { ready = 1,
-                         reloading };
+                         reloading = 2 };
 
 // missile
 const float kMissileStartSpeed = 100.0F;

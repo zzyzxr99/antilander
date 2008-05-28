@@ -19,6 +19,7 @@ private:
     unsigned short mPad;
     ALTimer mGunTimer;
 
+
 public:
 	Gunship();
 	~Gunship();
@@ -32,6 +33,7 @@ public:
 	void InitGunship(Point P);
     void SetReloadTime( float t );
     float GetReloadTime( );
+	bool CanShoot();
     void SetPad( unsigned short pad );
     unsigned short GetPad( );
 };
