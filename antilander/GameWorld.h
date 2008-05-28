@@ -32,6 +32,14 @@ private:
     GameStatusType mGameMode;
 	Level mEditLevel;
 	Level mCurrentLevel;
+    unsigned short mNumLndrLvl;
+    unsigned short mNumLndrScr;
+    bool mLndrPersist;
+    unsigned short mNumMissile;
+    bool mGunMoves;
+    bool mGunMoveRnd;
+    unsigned short mEndGamePadOcc;
+    bool mFrat;
 
 public:
 	GameWorld();
