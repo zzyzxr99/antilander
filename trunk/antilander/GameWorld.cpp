@@ -627,50 +627,62 @@ bool GameWorld::SplashRunning( )
 
 bool GameWorld::MissileSect(vector<Point>::iterator TerArr, Point MissNose, Vect Direction)
 {
-	float M = Direction.y/Direction.x;		//slope
+	///////// calculate missile nose in relation to base //////////////
+	float M = Direction.y/Direction.x;		
 	float offX = sqrt (289/((M * M) + 1));
 	float offY = M*offX;
-	
 	MissNose.x += offX;
+	int numTps= mGameTerrain.GetTPts();
+	
 	int ctr = 0; 
 	int rndMiss = (int)(MissNose.x);
 	Point iter;
-	while(MissNose.x <= TerArr[ctr].x || MissNose.x > TerArr[ctr+1].x)
+	
+
+
+
+	while ((ctr < (numTps - 1) && ((MissNose.x <= TerArr[ctr].x) || (MissNose.x > TerArr[ctr+1].x))))
 	{
+
 		ctr++;
-	}
-	
-	//in case of similar y values
-	if(TerArr[ctr].y == TerArr[ctr+1].y && MissNose.y >= TerArr[ctr].y)
-	{
-		return true;
+
 	}
 
-	float diffX = TerArr[ctr+1].x - TerArr[ctr].x;
-	float diffY = TerArr[ctr].y - TerArr[ctr+1].y;
-	
-	if(diffX == 0)
+	if (ctr < (numTps - 1))
 	{
-		diffX = 0.00001F;
-	}
-	
-	float slope = diffY/diffX;
-	float misVect = MissNose.x - TerArr[ctr].x;
-
-	iter.x = TerArr[ctr].x;
-	iter.y = TerArr[ctr].y;
-
-	//move iterator
-	for(int i=0; i<misVect+1; i++)
-	{
-		iter.x = iter.x + 1;
-		iter.y = iter.y - slope;
-		if(iter.x == rndMiss)
+		//in case of similar y values
+		if(TerArr[ctr].y == TerArr[ctr+1].y && MissNose.y >= TerArr[ctr].y)
 		{
-			if(MissNose.y >= iter.y)
+			return true;
+		}
+
+		float diffX = TerArr[ctr+1].x - TerArr[ctr].x;
+		float diffY = TerArr[ctr].y - TerArr[ctr+1].y;
+
+		if(diffX == 0)
+		{
+			diffX = 0.00001F;
+		}
+
+		float slope = diffY/diffX;				//terrain slope
+		float misVect = MissNose.x - TerArr[ctr].x;
+
+
+		iter.x = TerArr[ctr].x;
+		iter.y = TerArr[ctr].y;
+
+		//move iterator
+		for(int i=0; i<misVect+1; i++)
+		{
+			iter.x = iter.x + 1;
+			iter.y = iter.y - slope;
+			if(iter.x == rndMiss)
 			{
-				return true;
-				cout << "Intersection!!!";
+				if(MissNose.y >= iter.y)
+				{
+					return true;
+					cout << "Intersection!!!";
+				}
 			}
 		}
 	}
