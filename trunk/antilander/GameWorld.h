@@ -36,6 +36,7 @@ private:
     unsigned short mNumLndrScr;
     bool mLndrPersist;
     unsigned short mNumMissile;
+    unsigned short mNumBomb;
     bool mGunMoves;
     bool mGunMoveRnd;
     unsigned short mEndGamePadOcc;

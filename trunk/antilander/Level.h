@@ -28,6 +28,10 @@ private:
     float mExpRad;
     float mExpRate;
     bool mFrat;
+    unsigned short mNumBomb;
+    float mBombMxSpd;
+    float mBombAcc;
+    float mBombRad;
 	
 
 public:
@@ -53,6 +57,10 @@ public:
     float GetExpRad( );
     float GetExplRate( );
     bool GetFrat( );
+    unsigned short GetNumBomb( );
+    float GetBombMxSpd( );
+    float GetBombAcc( );
+    float GetBombRad( );
 
     void SetNumLndrLvl( unsigned short landers );
     void SetNumLndrScr( unsigned short landers );
@@ -70,6 +78,10 @@ public:
     void SetExpRad( float radius );
     void SetExpRate( float rate );
     void SetFrat( bool frat );
+    void SetNumBomb( unsigned short num );
+    void SetBombMxSpd( float spd );
+    void SetBombAcc( float acc );
+    void SetBombRad( float rad );
 
     void LoadLevel( );
     void SaveLevel( );
