@@ -729,9 +729,9 @@ void GameWorld::InitLevel( )
 
     // Terrain
     mGameTerrain.SetNumPadPts( mCurrentLevel.GetNumPad( ) );
-    // mPadPt;
+    mGameTerrain.InitPadPoints( mCurrentLevel.GetPadpt( ) );
     mGameTerrain.SetNumTPts( mCurrentLevel.GetNumTerPt( ) );
-    // mTerPt;
+    mGameTerrain.InitTerrain( mCurrentLevel.GetTerPt( ) );
 
     // Lander
     Lander::sSetDescentRate( mCurrentLevel.GetLndrDescRate( ) );

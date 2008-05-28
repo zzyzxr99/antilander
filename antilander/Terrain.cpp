@@ -2,6 +2,8 @@
 #include "Terrain.h"
 // EJR added SDL.H to test Draw Functions - its getting messy
 #include "SDL_gfxPrimitives.h"
+#include <vector>
+using namespace std;
 
 
 //Definition
@@ -126,6 +128,27 @@ void Terrain::InitTerrain()
 	}
 }
 
+void Terrain::InitTerrain( vector<Point>* vtp )
+{
+    mTerrainPts.clear( );
+    vector<Point>::iterator srcIter = vtp->begin( );
+    for ( ; srcIter != vtp->end( ); srcIter++ )
+    {
+        mTerrainPts.push_back( *srcIter );
+    }
+    this->mNumTPts= mTerrainPts.size();
+    vector<Point>::iterator iterTPts= mTerrainPts.begin();
+    BBox boxTPts;
+	for (int i= 0; i < (mNumTPts-1); i++)
+	{
+		boxTPts.x = iterTPts[i].x;
+		boxTPts.y = iterTPts[i].y;
+		boxTPts.w = iterTPts[i+1].x - iterTPts[i].x;
+		boxTPts.h = iterTPts[i+1].y - iterTPts[i].y;
+        mTerrainBoxes.push_back(boxTPts);
+	}
+}
+
 void Terrain::InitPadPoints()
 {
 
@@ -163,6 +186,16 @@ void Terrain::InitPadPoints()
 	mPadPts[4].x= (mTerrainPts[12].x + mTerrainPts[13].x) / 2;
 	mPadPts[4].y= (mTerrainPts[12].y);
     */
+}
+
+void Terrain::InitPadPoints( vector<Point>* vpp )
+{
+    mPadPts.clear( );
+    vector<Point>::iterator srcIter = vpp->begin( );
+    for ( ; srcIter != vpp->end( ); srcIter++ )
+    {
+        mPadPts.push_back( *srcIter );
+    }
 }
 
 vector<BBox>::iterator Terrain::TerBox()

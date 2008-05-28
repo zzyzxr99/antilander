@@ -22,7 +22,9 @@ public:
 	Terrain();
 	~Terrain();
 	void InitTerrain();
-	void InitPadPoints();
+    void InitTerrain( vector<Point>* vtp );
+	void InitPadPoints( );
+    void InitPadPoints( vector<Point>* vpp );
 	float InitTbox();
 	int GetNumPadPts();
     void SetNumPadPts( int pads );
