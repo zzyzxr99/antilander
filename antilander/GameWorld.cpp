@@ -15,7 +15,7 @@ GameWorld::GameWorld()
 	mGameMode= knPlayMode;
     mGameStepper.Mark();
     mNumLndrLvl = 0;
-    mNumLndrScr = 0;
+    mNumLndrScr = 1;
     mLndrPersist = false;
     mNumMissile = kStartAmmo;
     mNumBomb = kDefaultStartBomb;
@@ -173,7 +173,7 @@ void GameWorld::InitEverything()
 	mGameTerrain.InitPadPoints();
 	/*InitMissiles();*/
 	//InitLanders();
-	SpawnLander();
+	//SpawnLander();
 	int numpts= mGameTerrain.GetNumPadPts();
     vector<Point>::iterator fP= mGameTerrain.PadPts();
 	// Did not check num pad pts!
@@ -773,4 +773,14 @@ void GameWorld::InitLevel( )
     Bomb::sSetSpeed( mCurrentLevel.GetBombMxSpd( ) );
     Bomb::sSetAcceleration( mCurrentLevel.GetBombAcc( ) );
     Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
+}
+
+vector<Lander>* GameWorld::GetLanders( )
+{
+    return &mLanders;
+}
+
+unsigned short GameWorld::GetNumLndrScr( )
+{
+    return mNumLndrScr;
 }
