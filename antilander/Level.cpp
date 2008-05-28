@@ -254,7 +254,7 @@ void Level::LoadLevel( string LevString )
 	char * cstr, *p;
 	cstr = new char [15];
 	char *index[] = {"TERRAINPTS","PADPTS","LAST"};		//index of strings to compare
-	ifstream infile("LEVEL01.txt");
+	ifstream infile(LevString.c_str());
 	Point pt;
 	while (!infile.eof())
 	{
@@ -297,7 +297,7 @@ void Level::LoadLevel( string LevString )
 
 void Level::SaveLevel( string LevString )
 {
-	ofstream outfile("LEVEL01.txt");
+	ofstream outfile(LevString.c_str());
 	outfile << "TERRAINPTS" << endl;
 	for(int i = 0; i < mNumTerPt; i++)
 	{
