@@ -14,7 +14,7 @@ Level::Level( )
     mNumLndrLvl    = 0;
     mNumLndrScr    = 0;
     mLndrPersist   = false;
-    mLndrDescRate  = 0;
+    mLndrDescRate  = 0.0F;
     mNumPad        = 0;
     mNumTerPt      = 0;
     mNumMissile    = 0;
@@ -47,7 +47,7 @@ bool Level::GetLndrPersist( )
     return mLndrPersist;
 }
 
-unsigned short Level::GetLndrDescRate( )
+float Level::GetLndrDescRate( )
 {
     return mLndrDescRate;
 }
@@ -136,7 +136,7 @@ void Level::SetLndrPersist( bool persist )
     mLndrPersist = persist;
 }
 
-void Level::SetLndrDescRate( unsigned short rate )
+void Level::SetLndrDescRate( float rate )
 {
     mLndrDescRate = rate;
 }

@@ -13,7 +13,7 @@ private:
     unsigned short mNumLndrLvl;
     unsigned short mNumLndrScr;
     bool mLndrPersist;
-    unsigned short mLndrDescRate;
+    float mLndrDescRate;
     unsigned short mNumPad;
     vector<Point> mPadPt;
     unsigned short mNumTerPt;
@@ -38,7 +38,7 @@ public:
     unsigned short GetNumLndrLvl( );
     unsigned short GetNumLndrScr( );
     bool GetLndrPersist( );
-    unsigned short GetLndrDescRate( );
+    float GetLndrDescRate( );
     unsigned short GetNumPad( );
     vector<Point>* GetPadpt( );				//need this too
     unsigned short GetNumTerPt( );
@@ -57,7 +57,7 @@ public:
     void SetNumLndrLvl( unsigned short landers );
     void SetNumLndrScr( unsigned short landers );
     void SetLndrPersist( bool persist );
-    void SetLndrDescRate( unsigned short rate );
+    void SetLndrDescRate( float rate );
     void SetNumPad( unsigned short pads );
     void SetNumTerPt( unsigned short points );
     void SetNumMissile( unsigned short missiles );
