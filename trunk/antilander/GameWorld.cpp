@@ -602,7 +602,10 @@ bool GameWorld::FireMissile()
 {
 	if(mRender.isLClicked())
 	{
+		if(mPlayerShip.CanShoot())
+		{
 		return true;
+		}
 	}
 	return false;
 }

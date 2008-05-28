@@ -12,7 +12,7 @@ Gunship::Gunship()
 	mMissileCount= kStartAmmo;
     mReloadTime = kReloadTime;
     mPad = kDefaultGunStartPad;
-    mGunTimer.CurrentTimeMS();
+    mGunTimer.Mark();
 // initialize all the member variables
 }
 
@@ -24,6 +24,11 @@ Gunship::~Gunship()
 int Gunship::GetDrawGunshipIDX()
 {
 	return mDrawGunshipIDX;
+}
+
+bool Gunship::CanShoot()
+{
+	return mGunTimer.CheckElapsedMS(kReloadTime * 1000);
 }
 
 int Gunship::GetDrawBarrelIDX()
