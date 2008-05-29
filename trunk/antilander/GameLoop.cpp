@@ -23,12 +23,13 @@ int main(int argv, char *args[])
 	int lvlCtr = 1;
 	
 	//if (conditions are met to advance level)
-	lvlCtr++;
 	string name;
 	stringstream out;
 	out << lvlCtr;
 	name = out.str();
+	tLevel->SaveLevel ( "LEVEL" + name + ".txt" );
 	tLevel->LoadLevel ( "LEVEL" + name + ".txt" );
+
 
 	//////////////// load test /////////////////////
 

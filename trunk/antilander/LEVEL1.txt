@@ -1,13 +1,39 @@
-TERRAINPTS
-1.54, 56.2
-2, 36
-13, 26
-246, 266
-246, 233
-162, 723
-PADPTS
-41, 124
-124, 621
-62, 151
-53, 135
+mTerPt
+mPadPt
+mGunStartPad
+0
+mEndGamePadOcc
+0
+mNumLndrLvl
+0
+mNumLndrScr
+0
+mNumBomb
+0
+mNumMissile
+0
+mBombMxSpd
+0
+mBombAcc
+0
+mBombRad
+0
+mLndrDescRate
+0
+mGunReload
+0
+mExpRad
+0
+mExpRate
+0
+mMissileSpd
+0
+mLndrPersist
+0
+mFrat
+0
+mGunMoves
+0
+mGunMoveRnd
+0
 LAST
