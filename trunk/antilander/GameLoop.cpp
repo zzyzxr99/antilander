@@ -66,24 +66,23 @@ int main(int argv, char *args[])
 				{
 					tWorld->AddEditLevelPoint(tWorld->GetRender()->getMouse());
 				}
-				//if(tWorld->GetRender()->shiftHeld())   //with this code uncomented, it builds successfully, but doesn't function
-				//{										 //the way it should.  On the first Lclick, the line draws accross the screen.
-					if (tWorld->GetRender()->isMClicked())
-					{
-						tWorld->EndEditLvlPts(tWorld->GetRender()->getMouse());
-						tWorld->SetEditStatus(knMoveMode);
-					}
-				//}
+
+				if (tWorld->GetRender()->EndDraw())
+				{
+					tWorld->EndEditLvlPts(tWorld->GetRender()->getMouse());
+					tWorld->SetEditStatus(knMoveMode);
+				}
+
 
 			}
 
 
 			else if (tWorld->GetEditStatus() == knMoveMode)
 			{
-				if(tWorld->GetRender()->isRClicked())
+				/*if(tWorld->GetRender()->isRClicked())
 				{
 					tWorld->SetEditStatus(knBuildMode);
-				}
+				}*/
 
 				tWorld->GetRender()->doMoveInput();
 				if (tWorld->GetRender()->isLClicked())

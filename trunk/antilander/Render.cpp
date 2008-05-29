@@ -59,7 +59,7 @@ Render::Render( )
 	mBBoxLander.y= -8;
 	mBBoxLander.h= 22;
 	mBBoxLander.w= 16;
-
+	doneBuildmode =false;
     mGameScreen.x= 0;
     mGameScreen.y= 0;
     mGameScreen.w= kWinWidth;
@@ -430,29 +430,34 @@ void Render::doEditInput()
 		    {
 			    gameState = false;
 		    }
+			if(plIn.keyPress == SDLK_e)
+			{
+				doneBuildmode = true;
+			}
 	    }
 
-		if(mEvent.type == SDL_KEYDOWN)
+		//if(mEvent.type == SDL_KEYDOWN)
+		//{
+		//	plIn.keyPress = mEvent.key.keysym.sym;
+		//	if(plIn.keyPress == SDLK_LSHIFT)
+		//	{
+		//		shiftKey = true;
+		//	}
+		//}
+
+
+		if(mEvent.type == SDL_MOUSEBUTTONDOWN)
 		{
-			plIn.keyPress = mEvent.key.keysym.sym;
-			if(plIn.keyPress == SDLK_LSHIFT)
+			plIn.mousePress.button = mEvent.button.button;
+			if((plIn.mousePress.button == SDL_BUTTON_LEFT))
 			{
-				shiftKey = true;
+				plIn.leftClick = true;
+				plIn.tlclicked = true;
 			}
-		}
 
-	    if(mEvent.type == SDL_MOUSEBUTTONDOWN)
-	    {
-		    plIn.mousePress.button = mEvent.button.button;
-		    if((plIn.mousePress.button == SDL_BUTTON_LEFT))
-		    {
-			    plIn.leftClick = true;
-			    plIn.tlclicked = true;
-		    }
-		   
 
-		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT )
-		    {
+			if(plIn.mousePress.button == SDL_BUTTON_RIGHT )
+			{
 			    plIn.rightClick = true;
 			    plIn.trclicked = true;
 		    }
@@ -566,9 +571,14 @@ bool Render::gameRunning()
 	return gameState;
 }
 
-bool Render::shiftHeld()
+//bool Render::shiftHeld()
+//{
+//	return shiftKey;
+//}
+
+bool Render::EndDraw()
 {
-	return shiftKey;
+	return doneBuildmode;
 }
 
 Point Render::getMouse()

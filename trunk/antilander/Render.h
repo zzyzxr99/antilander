@@ -19,8 +19,9 @@ private:
 	SDL_Event mEvent;
 	SDL_KeyboardEvent mKeyEvent;
 	playInput plIn;				//player input
-	bool shiftKey;
+	//bool shiftKey;
 	bool gameState;
+	bool doneBuildmode;
     short int mSplashAlpha;
 	BBox mBBoxLander;
     BBox mGameScreen;
@@ -57,8 +58,9 @@ public:
 	void doEditInput();					//gets, processes editor input
 	void doMoveInput();
 	bool gameRunning();					//gets current gamestate
+	bool EndDraw();
 	Point getMouse();					//gets cursor position
-	bool shiftHeld();
+	//bool shiftHeld();
 	bool isLClicked();					//check whether mouse is clicked
 	bool isRClicked();
 	bool isMClicked();
