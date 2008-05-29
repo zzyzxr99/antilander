@@ -80,17 +80,18 @@ int main(int argv, char *args[])
 
 			else if (tWorld->GetEditStatus() == knMoveMode)
 			{
-				if(tWorld->GetRender()->isMClicked())
+				if(tWorld->GetRender()->isRClicked())
 				{
 					tWorld->SetEditStatus(knBuildMode);
-
-					tWorld->GetRender()->doMoveInput();
-					if (tWorld->GetRender()->isLClicked())
-					{
-						Point mp= (tWorld->GetRender()->getMouse());
-
-					}
 				}
+
+				tWorld->GetRender()->doMoveInput();
+				if (tWorld->GetRender()->isLClicked())
+				{
+					Point mp= (tWorld->GetRender()->getMouse());
+
+				}
+
 			}
 
 			tWorld->EditDrawEverything();
