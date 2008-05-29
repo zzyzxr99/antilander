@@ -250,10 +250,12 @@ void Level::LoadLevel( string LevString )
 	vector<Point>::iterator iterTer = mTerPt.begin();
 	vector<Point>::iterator iterPad = mPadPt.begin();
 	int ctr = 0;
-	string str[30];		
+	string str[100];		
 	char * cstr, *p;
 	cstr = new char [15];
-	char *index[] = {"TERRAINPTS","PADPTS","LAST"};		//index of strings to compare
+	char *index[] = {"mTerPt","mPadPt","mGunStartPad","mEndGamePadOcc","mNumLndrLvl","mNumLndrScr","mNumBomb","mNumMissile","mBombMxSpd",
+					 "mBombAcc","mBombRad","mLndrDescRate","mGunReload","mExpRad","mExpRate","mMissileSpd","mLndrPersist","mFrat","mGunMoves",
+					 "mGunMoveRnd","LAST"};		//index of strings to compare
 	ifstream infile(LevString.c_str());
 	Point pt;
 	while (!infile.eof())
@@ -290,7 +292,80 @@ void Level::LoadLevel( string LevString )
 				mPadPt.push_back(pt);
 			}
 			mNumPad = mPadPt.size();
-		}				
+		}		
+		else if(!str[j].compare(index[2]))
+		{
+			SetGunStartPad((unsigned short)(atoi(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[3]))
+		{
+			SetEndGamePadOcc((unsigned short)(atoi(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[4]))
+		{
+			SetNumLndrLvl((unsigned short)(atoi(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[5]))
+		{
+			SetNumLndrScr((unsigned short)(atoi(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[6]))
+		{
+			SetNumBomb((unsigned short)(atoi(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[7]))
+		{
+			SetNumMissile((unsigned short)(atoi(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[8]))
+		{
+			SetBombMxSpd((float)(atof(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[9]))
+		{
+			SetBombAcc((float)(atof(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[10]))
+		{
+			SetBombRad((float)(atof(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[11]))
+		{
+			SetLndrDescRate((float)(atof(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[12]))
+		{
+			SetGunReload((float)(atof(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[13]))
+		{
+			SetExpRad((float)(atof(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[14]))
+		{
+			SetExpRate((float)(atof(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[15]))
+		{
+			SetMissileSpd((float)(atof(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[16]))
+		{
+			SetLndrPersist((bool)(atoi(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[17]))
+		{
+			SetFrat((bool)(atoi(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[18]))
+		{
+			SetGunMoves((bool)(atoi(str[j+1].c_str())));
+		}
+		else if(!str[j].compare(index[19]))
+		{
+			SetGunMoveRnd((bool)(atoi(str[j+1].c_str())));
+		}
+
 	}
 
 	delete [] cstr;
@@ -299,16 +374,34 @@ void Level::LoadLevel( string LevString )
 void Level::SaveLevel( string LevString )
 {
 	ofstream outfile(LevString.c_str());
-	outfile << "TERRAINPTS" << endl;
+	outfile << "mTerPt" << endl;
 	for(int i = 0; i < mNumTerPt; i++)
 	{
 		outfile << mTerPt[i].x << ", " << mTerPt[i].y << endl;
 	}
-	outfile << "PADPTS" << endl;
+	outfile << "mPadPt" << endl;
 	for(int i = 0; i < mNumPad; i++)
 	{
 		outfile << mPadPt[i].x << ", " << mPadPt[i].y << endl;
 	}
+	outfile << "mGunStartPad" << endl;		outfile << mGunStartPad << endl;
+	outfile << "mEndGamePadOcc" << endl;	outfile << mEndGamePadOcc << endl;
+	outfile << "mNumLndrLvl" << endl;		outfile << mNumLndrLvl << endl;
+	outfile << "mNumLndrScr" << endl;		outfile << mNumLndrScr << endl;
+	outfile << "mNumBomb" << endl;			outfile << mNumBomb << endl;
+	outfile << "mNumMissile" << endl;		outfile << mNumMissile << endl;	
+	outfile << "mBombMxSpd" << endl;		outfile << mBombMxSpd << endl;
+    outfile << "mBombAcc" << endl;			outfile << mBombAcc << endl;
+    outfile << "mBombRad" << endl;			outfile << mBombRad << endl;
+	outfile << "mLndrDescRate" << endl;		outfile << mLndrDescRate << endl;
+	outfile << "mGunReload" << endl;		outfile << mGunReload << endl;
+    outfile << "mExpRad" << endl;			outfile << mExpRad << endl;
+    outfile << "mExpRate" << endl;			outfile << mExpRate << endl;
+	outfile << "mMissileSpd" << endl;		outfile << mMissileSpd << endl;
+	outfile << "mLndrPersist" << endl;		outfile << mLndrPersist << endl;
+	outfile << "mFrat" << endl;				outfile << mFrat << endl;
+	outfile << "mGunMoves" << endl;			outfile << mGunMoves << endl;
+    outfile << "mGunMoveRnd" << endl;		outfile << mGunMoveRnd << endl;
 	outfile << "LAST" << endl;
 }
 

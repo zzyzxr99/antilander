@@ -1,10 +1,10 @@
-TERRAINPTS
+mTerPt
 5, 20
 5, 20
 5, 20
 25, 20
 5, 20
-PADPTS
+mPadPt
 5, 20
 5, 20
 65, 20
