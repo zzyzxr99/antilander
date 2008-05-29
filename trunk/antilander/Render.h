@@ -17,7 +17,9 @@ private:
     Point mCrosshairDrawPts[5];
 	SDL_Surface* screen;
 	SDL_Event mEvent;
+	SDL_KeyboardEvent mKeyEvent;
 	playInput plIn;				//player input
+	bool shiftKey;
 	bool gameState;
     short int mSplashAlpha;
 	BBox mBBoxLander;
@@ -56,6 +58,7 @@ public:
 	void doMoveInput();
 	bool gameRunning();					//gets current gamestate
 	Point getMouse();					//gets cursor position
+	bool shiftHeld();
 	bool isLClicked();					//check whether mouse is clicked
 	bool isRClicked();
 	bool isMClicked();

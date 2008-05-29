@@ -15,7 +15,7 @@ int main(int argv, char *args[])
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
-	tWorld->SetGameStatus(knPlayMode);
+	tWorld->SetGameStatus(knEditMode);
 	tWorld->SetEditStatus(knBuildMode);
 
 	//////////////// load test /////////////////////
@@ -65,13 +65,18 @@ int main(int argv, char *args[])
 				{
 					tWorld->AddEditLevelPoint(tWorld->GetRender()->getMouse());
 				}
-				if (tWorld->GetRender()->isMClicked())
-				{
-					tWorld->EndEditLvlPts(tWorld->GetRender()->getMouse());
-					tWorld->SetEditStatus(knMoveMode);
-				}
-				
+				//if(tWorld->GetRender()->shiftHeld())   //with this code uncomented, it builds successfully, but doesn't function
+				//{										 //the way it should.  On the first Lclick, the line draws accross the screen.
+					if (tWorld->GetRender()->isMClicked())
+					{
+						tWorld->EndEditLvlPts(tWorld->GetRender()->getMouse());
+						tWorld->SetEditStatus(knMoveMode);
+					}
+				//}
+
 			}
+
+
 			else if (tWorld->GetEditStatus() == knMoveMode)
 			{
 				tWorld->GetRender()->doMoveInput();
@@ -84,7 +89,8 @@ int main(int argv, char *args[])
 
 			tWorld->EditDrawEverything();
 		}
- 	}
+	}
+
 
     tWorld->TestSaveLoadLevel();
     // Delete the GameWorld, it will delete all of its members

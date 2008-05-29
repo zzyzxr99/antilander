@@ -418,7 +418,7 @@ void Render::doEditInput()
 		    plIn.mouseMove.x = mEvent.motion.x;
 		    plIn.mouseMove.y = mEvent.motion.y;
 	    }
-		if (mEvent.type == SDL_QUIT)
+		if(mEvent.type == SDL_QUIT)
 		{
 			gameState= false;
 		}
@@ -431,6 +431,15 @@ void Render::doEditInput()
 			    gameState = false;
 		    }
 	    }
+
+		if(mEvent.type == SDL_KEYDOWN)
+		{
+			plIn.keyPress = mEvent.key.keysym.sym;
+			if(plIn.keyPress == SDLK_LSHIFT)
+			{
+				shiftKey = true;
+			}
+		}
 
 	    if(mEvent.type == SDL_MOUSEBUTTONDOWN)
 	    {
@@ -555,6 +564,11 @@ void Render::doMoveInput()
 bool Render::gameRunning()
 {
 	return gameState;
+}
+
+bool Render::shiftHeld()
+{
+	return shiftKey;
 }
 
 Point Render::getMouse()
