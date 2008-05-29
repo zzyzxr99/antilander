@@ -707,6 +707,7 @@ bool GameWorld::RightMouseHeld()
 {
 	return mRender.isRightHeld();
 }
+
 void GameWorld::SetGameStatus(GameStatusType status)
 {
 	mGameMode= status;
