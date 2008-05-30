@@ -88,7 +88,7 @@ int main(int argv, char *args[])
 				if (tWorld->GetRender()->isLClicked())
 				{
 					Point mp= (tWorld->GetRender()->getMouse());
-
+					
 				}
 				if(tWorld->GetRender()->EndEdit())
 				{

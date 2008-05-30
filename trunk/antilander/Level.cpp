@@ -446,3 +446,21 @@ void Level::AddPoint(Point p)
 	mTerPt.push_back (p);
 	mNumTerPt= mTerPt.size();
 }
+void Level::MakePadPtsFromTerrainPts()
+{
+	mPadPt.clear();
+	for (int n= 0; n <= mNumTerPt-1; n++)
+	{
+		Point p1, p2, p3;
+		p1 = mTerPt[n];
+		p2 = mTerPt[n+1];
+		if (p1.y == p2.y)
+		{
+			p3.x = (p1.x + p2.x)/2;
+			p3.y = p1.y;
+			mPadPt.push_back(p3);
+		}
+		
+	}
+
+}
