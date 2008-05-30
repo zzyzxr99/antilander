@@ -276,7 +276,30 @@ void Level::SetBombRad( float rad )
 {
     mBombRad = rad;
 }
-
+void Level::ClearLevel( )
+{
+    mNumLndrLvl    = kDefaultLandersPerLevel;
+    mNumLndrScr    = kDefaultLandersPerScreen;
+    mLndrPersist   = false;
+    mLndrDescRate  = kBaseDescendRate;
+    mNumMissile    = kStartAmmo;
+    mMissileSpd    = kMissileStartSpeed;
+    mGunMoves      = false;
+    mGunMoveRnd    = false;
+    mEndGamePadOcc = 0;
+    mGunReload     = kReloadTime;
+    mExpRad        = kExplosionMaxRadiusDefault;
+    mExpRate       = kExplosionExpandRateDefault;
+    mFrat          = false;
+    mNumBomb       = kDefaultStartBomb;
+    mBombMxSpd     = kBombMaxSpeed;
+    mBombAcc       = kGravity;
+    mBombRad       = kBombRadius;
+    mNumTerPt	   = 0;
+	mNumPad	       = 0;
+	mTerPt.clear();
+	mPadPt.clear();
+}
 void Level::LoadLevel( string LevString )
 {
 	vector<Point>::iterator iterTer = mTerPt.begin();
@@ -481,7 +504,7 @@ void Level::AddPoint(Point p)
 void Level::MakePadPtsFromTerrainPts()
 {
 	mPadPt.clear();
-	for (int n= 0; n <= mNumTerPt-1; n++)
+	for (int n= 0; n < mNumTerPt-1; n++)
 	{
 		Point p1, p2, p3;
 		p1 = mTerPt[n];

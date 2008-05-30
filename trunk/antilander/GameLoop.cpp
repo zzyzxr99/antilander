@@ -8,19 +8,22 @@ using namespace std;
 
 int main(int argv, char *args[])
 {
+
 	GameWorld *tWorld;
 	tWorld= new GameWorld();
 
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
-	tWorld->SetGameStatus(knPlayMode);
+	tWorld->SetGameStatus(knEditMode);
 	tWorld->SetEditStatus(knBuildMode);
+	
 
-	tWorld->GetLevel()->LoadLevel(tWorld->GetLevName());
-	tWorld->GetLevel()->SaveLevel(tWorld->GetLevName());
-
-
+	if (tWorld->GetGameStatus() == knEditMode)
+	{
+//		Level*L= tWorld->GetLevel();
+		tWorld->GetLevel()->ClearLevel();
+	}
 	//////////////// load test /////////////////////
 
 	while (tWorld->GetRender()->gameRunning())
@@ -81,9 +84,11 @@ int main(int argv, char *args[])
 					
 				}
 				if(tWorld->GetRender()->EndEdit())
-				{
-					// Save level
-					// Load level
+				{	
+					tWorld->GetLevel()->MakePadPtsFromTerrainPts();
+					tWorld->GetLevel()->SaveLevel(tWorld->GetLevName());
+					tWorld->GetLevel()->LoadLevel(tWorld->GetLevName());
+					tWorld->InitEditLvl();
 					tWorld->SetGameStatus(knPlayMode);
 				}
 
