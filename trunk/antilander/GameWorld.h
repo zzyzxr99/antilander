@@ -42,7 +42,7 @@ private:
     unsigned short mEndGamePadOcc;
     bool mFrat;
 	int lvlCtr;
-	Level* tLevel;
+	
 
 public:
 	GameWorld();
