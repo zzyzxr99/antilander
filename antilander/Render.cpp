@@ -468,6 +468,7 @@ void Render::doEditInput()
 			{
 				plIn.midClick = true;
 				plIn.tmclicked = true;
+				doneBuildmode = true;
 			}
 		 
 	    }

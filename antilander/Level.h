@@ -90,6 +90,7 @@ public:
     void EJRTestLoadLevel(string filename);
 
 	void AddPoint(Point p);
+	void MakePadPtsFromTerrainPts();
 };
 
 #endif // _LEVEL_H
