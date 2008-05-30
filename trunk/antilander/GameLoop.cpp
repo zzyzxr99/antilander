@@ -90,6 +90,11 @@ int main(int argv, char *args[])
 					Point mp= (tWorld->GetRender()->getMouse());
 
 				}
+				if(tWorld->GetRender()->EndEdit())
+				{
+					// Save level and 
+					tWorld->SetGameStatus(knPlayMode);
+				}
 
 			}
 

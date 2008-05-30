@@ -59,7 +59,8 @@ Render::Render( )
 	mBBoxLander.y= -8;
 	mBBoxLander.h= 22;
 	mBBoxLander.w= 16;
-	doneBuildmode =false;
+	doneBuildmode= false;
+	exitEditmode= false;
     mGameScreen.x= 0;
     mGameScreen.y= 0;
     mGameScreen.w= kWinWidth;
@@ -434,6 +435,7 @@ void Render::doEditInput()
 			{
 				doneBuildmode = true;
 			}
+			
 	    }
 
 		//if(mEvent.type == SDL_KEYDOWN)
@@ -517,6 +519,10 @@ void Render::doMoveInput()
 		    {
 			    gameState = false;
 		    }
+			if(plIn.keyPress == SDLK_x)
+			{
+				exitEditmode = true;
+			}
 	    }
 
 	    if(mEvent.type == SDL_MOUSEBUTTONDOWN)
@@ -575,6 +581,11 @@ bool Render::gameRunning()
 //{
 //	return shiftKey;
 //}
+
+bool Render::EndEdit()
+{
+	return exitEditmode;
+}
 
 bool Render::EndDraw()
 {
