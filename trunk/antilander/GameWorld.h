@@ -72,6 +72,7 @@ public:
 	void EndEditLvlPts(Point p);
     void SpawnLander();
     void InitLevel( );
+    void InitEditLvl( );
     vector<Lander>* GetLanders( );
     unsigned short GetNumLndrScr( );
 

@@ -787,6 +787,45 @@ void GameWorld::InitLevel( )
     Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
 }
 
+void GameWorld::InitEditLvl( )
+{
+    // GameWorld
+    mNumLndrLvl = mEditLevel.GetNumLndrLvl( );
+    mNumLndrScr = mEditLevel.GetNumLndrScr( );
+    mLndrPersist = mEditLevel.GetLndrPersist( );
+    mNumMissile = mEditLevel.GetNumMissile( );
+    mGunMoves = mEditLevel.GetGunMoves( );
+    mGunMoveRnd = mEditLevel.GetGunMoveRnd( );
+    mEndGamePadOcc = mEditLevel.GetEndGamePadOcc( );
+    mFrat = mEditLevel.GetFrat( );
+
+    // Terrain
+    mGameTerrain.SetNumPadPts( mEditLevel.GetNumPad( ) );
+    mGameTerrain.InitPadPoints( mEditLevel.GetPadpt( ) );
+    mGameTerrain.SetNumTPts( mEditLevel.GetNumTerPt( ) );
+    mGameTerrain.InitTerrain( mEditLevel.GetTerPt( ) );
+
+    // Lander
+    Lander::sSetDescentRate( mEditLevel.GetLndrDescRate( ) );
+
+    // Missile
+    Missile::sSetSpeed( mEditLevel.GetMissileSpd( ) );
+
+    // Gunship
+    mPlayerShip.SetPad( mEditLevel.GetGunStartPad( ) );
+    mPlayerShip.SetReloadTime( mEditLevel.GetGunReload( ) );
+
+    // Explosion
+    Explosion::sSetMaxRadius( mEditLevel.GetExpRad( ) );
+    Explosion::sSetExpansionRate( mEditLevel.GetExplRate( ) );
+
+    // Bomb
+    mNumBomb = mEditLevel.GetNumBomb( );
+    Bomb::sSetSpeed( mEditLevel.GetBombMxSpd( ) );
+    Bomb::sSetAcceleration( mEditLevel.GetBombAcc( ) );
+    Bomb::sSetRadius( mEditLevel.GetBombRad( ) );
+}
+
 vector<Lander>* GameWorld::GetLanders( )
 {
     return &mLanders;
