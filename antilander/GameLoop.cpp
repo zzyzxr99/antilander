@@ -82,7 +82,8 @@ int main(int argv, char *args[])
 				}
 				if(tWorld->GetRender()->EndEdit())
 				{
-					// Save level and 
+					// Save level
+					// Load level
 					tWorld->SetGameStatus(knPlayMode);
 				}
 
