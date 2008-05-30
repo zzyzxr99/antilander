@@ -25,14 +25,14 @@ GameWorld::GameWorld()
     mEndGamePadOcc = 0;
     mFrat = false;
 	lvlCtr = 1;
-	tLevel = new Level();
+
 }
 
 GameWorld::~GameWorld()
 {
 	// any new operators must have delete matches here
 	// mLanders.capacity();
-	delete tLevel;
+	
 }
 
 void GameWorld::TestSaveLoadLevel()
@@ -813,5 +813,5 @@ string GameWorld::GetLevName()
 
 Level* GameWorld::GetLevel()
 {
-	return tLevel;
+	return &mEditLevel;
 }
