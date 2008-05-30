@@ -496,3 +496,45 @@ void Level::MakePadPtsFromTerrainPts()
 	}
 
 }
+
+void Level::Clone( Level* srcLvl )
+{
+    mNumLndrLvl    = srcLvl->GetNumLndrLvl( );
+    mNumLndrScr    = srcLvl->GetNumLndrScr( );
+    mLndrPersist   = srcLvl->GetLndrPersist( );
+    mLndrDescRate  = srcLvl->GetLndrDescRate( );
+    mNumMissile    = srcLvl->GetNumMissile( );
+    mMissileSpd    = srcLvl->GetMissileSpd( );
+    mGunStartPad   = srcLvl->GetGunStartPad( );
+    mGunMoves      = srcLvl->GetGunMoves( );
+    mGunMoveRnd    = srcLvl->GetGunMoveRnd( );
+    mEndGamePadOcc = srcLvl->GetEndGamePadOcc( );
+    mGunReload     = srcLvl->GetGunReload( );
+    mExpRad        = srcLvl->GetExpRad( );
+    mExpRate       = srcLvl->GetExplRate( );
+    mFrat          = srcLvl->GetFrat( );
+    mNumBomb       = srcLvl->GetNumBomb( );
+    mBombMxSpd     = srcLvl->GetBombMxSpd( );
+    mBombAcc       = srcLvl->GetBombAcc( );
+    mBombRad       = srcLvl->GetBombRad( );
+
+    vector<Point>::iterator Iter;
+    for ( Iter = srcLvl->GetPadpt( )->begin( );
+          Iter != srcLvl->GetPadpt( )->end( ); Iter++ )
+    {
+        mPadPt.push_back(*Iter);
+    }
+    mNumPad = mPadPt.size( );
+
+    for ( Iter = srcLvl->GetTerPt( )->begin( );
+          Iter != srcLvl->GetTerPt( )->end( ); Iter++ )
+    {
+        mTerPt.push_back(*Iter);
+    }
+    mNumTerPt = mTerPt.size( );
+}
+
+Level* Level::GetPtr( )
+{
+    return this;
+}
