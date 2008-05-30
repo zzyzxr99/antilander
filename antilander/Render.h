@@ -22,6 +22,7 @@ private:
 	//bool shiftKey;
 	bool gameState;
 	bool doneBuildmode;
+	bool exitEditmode;
     short int mSplashAlpha;
 	BBox mBBoxLander;
     BBox mGameScreen;
@@ -59,6 +60,7 @@ public:
 	void doMoveInput();
 	bool gameRunning();					//gets current gamestate
 	bool EndDraw();
+	bool EndEdit();
 	Point getMouse();					//gets cursor position
 	//bool shiftHeld();
 	bool isLClicked();					//check whether mouse is clicked
