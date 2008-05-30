@@ -4,6 +4,7 @@
 #include "Level.h"
 #include <iostream>
 #include "math.h"
+#include <sstream>
 using namespace std;
 // Definition
 
@@ -23,15 +24,15 @@ GameWorld::GameWorld()
     mGunMoveRnd = false;
     mEndGamePadOcc = 0;
     mFrat = false;
+	lvlCtr = 1;
+	tLevel = new Level();
 }
 
 GameWorld::~GameWorld()
 {
 	// any new operators must have delete matches here
 	// mLanders.capacity();
-
-
-
+	delete tLevel;
 }
 
 void GameWorld::TestSaveLoadLevel()
@@ -799,4 +800,18 @@ int GameWorld::PointCheck()
 {
 	//for (int tp = 1; tp < (numPts); tp++)
 	return 0;
+}
+
+string GameWorld::GetLevName()
+{
+	string name;
+	stringstream out;
+	out << lvlCtr;
+	name = out.str();
+	return ("LEVEL" + name + ".txt");
+}
+
+Level* GameWorld::GetLevel()
+{
+	return tLevel;
 }

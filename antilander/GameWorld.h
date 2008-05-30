@@ -41,6 +41,8 @@ private:
     bool mGunMoveRnd;
     unsigned short mEndGamePadOcc;
     bool mFrat;
+	int lvlCtr;
+	Level* tLevel;
 
 public:
 	GameWorld();
@@ -72,6 +74,9 @@ public:
     void InitLevel( );
     vector<Lander>* GetLanders( );
     unsigned short GetNumLndrScr( );
+
+	string GetLevName ();
+	Level* GetLevel();
 
     void TestSaveLoadLevel();
 	int PointCheck();
