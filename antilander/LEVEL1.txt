@@ -1,33 +1,54 @@
 mTerPt
+0, 90
+20, 90
+90, 180
+110, 180
+190, 270
+210, 270
+310, 360
+330, 360
+430, 270
+450, 270
+530, 180
+550, 180
+619, 90
+639, 90
 mPadPt
+10, 90
+100, 180
+200, 270
+320, 360
+440, 270
+540, 180
+629, 90
 mGunStartPad
-0
+3
 mEndGamePadOcc
 0
 mNumLndrLvl
-0
+10
 mNumLndrScr
-0
+1
 mNumBomb
-0
+10
 mNumMissile
-0
+20
 mBombMxSpd
-0
+100
 mBombAcc
-0
+9.8
 mBombRad
-0
+5
 mLndrDescRate
-0
+30
 mGunReload
-0
+0.5
 mExpRad
-0
+50
 mExpRate
-0
+35
 mMissileSpd
-0
+100
 mLndrPersist
 0
 mFrat

@@ -169,9 +169,10 @@ void GameWorld::SpawnExplosion( Point sLoc )
 
 void GameWorld::InitEverything()
 {
+    InitLevel( );
 	//Init all Entities
-	mGameTerrain.InitTerrain();
-	mGameTerrain.InitPadPoints();
+	//mGameTerrain.InitTerrain();
+	//mGameTerrain.InitPadPoints();
 	/*InitMissiles();*/
 	//InitLanders();
 	//SpawnLander();
