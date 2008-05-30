@@ -91,6 +91,9 @@ public:
 
 	void AddPoint(Point p);
 	void MakePadPtsFromTerrainPts();
+
+    void Clone( Level* srcLvl );
+    Level* GetPtr( );
 };
 
 #endif // _LEVEL_H
