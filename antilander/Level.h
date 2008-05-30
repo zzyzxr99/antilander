@@ -83,6 +83,7 @@ public:
     void SetBombMxSpd( float spd );
     void SetBombAcc( float acc );
     void SetBombRad( float rad );
+	void ClearLevel();
 
     void LoadLevel( string LevString );
     void SaveLevel( string LevString );
