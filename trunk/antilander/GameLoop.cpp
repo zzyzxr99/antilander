@@ -4,7 +4,6 @@
 #include "GameWorld.h"
 #include "Level.h"			//testing
 #include <iostream>
-#include <sstream>
 using namespace std;
 
 int main(int argv, char *args[])
@@ -18,17 +17,8 @@ int main(int argv, char *args[])
 	tWorld->SetGameStatus(knEditMode);
 	tWorld->SetEditStatus(knBuildMode);
 
-	//////////////// load test /////////////////////
-	Level* tLevel = new Level();
-	int lvlCtr = 1;
-	
-	//if (conditions are met to advance level)
-	string name;
-	stringstream out;
-	out << lvlCtr;
-	name = out.str();
-	tLevel->SaveLevel ( "LEVEL" + name + ".txt" );
-	tLevel->LoadLevel ( "LEVEL" + name + ".txt" );
+	tWorld->GetLevel()->LoadLevel(tWorld->GetLevName());
+	tWorld->GetLevel()->SaveLevel(tWorld->GetLevName());
 
 
 	//////////////// load test /////////////////////
