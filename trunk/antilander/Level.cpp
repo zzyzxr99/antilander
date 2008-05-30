@@ -1,4 +1,5 @@
 // Level.cpp
+#include "Constants.h"
 #include "Structs.h"
 #include "Level.h"
 #include <vector>
@@ -11,26 +12,57 @@ using namespace std;
 
 Level::Level( )
 {
-    mNumLndrLvl    = 0;
-    mNumLndrScr    = 0;
+    mNumLndrLvl    = kDefaultLandersPerLevel;
+    mNumLndrScr    = kDefaultLandersPerScreen;
     mLndrPersist   = false;
-    mLndrDescRate  = 0.0F;
-    mNumPad        = 0;
-    mNumTerPt      = 0;
-    mNumMissile    = 0;
-    mMissileSpd    = 0.0F;
-    mGunStartPad   = 0;
+    mLndrDescRate  = kBaseDescendRate;
+    mNumMissile    = kStartAmmo;
+    mMissileSpd    = kMissileStartSpeed;
     mGunMoves      = false;
     mGunMoveRnd    = false;
     mEndGamePadOcc = 0;
-    mGunReload     = 0.0F;
-    mExpRad        = 0.0F;
-    mExpRate       = 0.0F;
+    mGunReload     = kReloadTime;
+    mExpRad        = kExplosionMaxRadiusDefault;
+    mExpRate       = kExplosionExpandRateDefault;
     mFrat          = false;
-    mNumBomb       = 0;
-    mBombMxSpd     = 0.0F;
-    mBombAcc       = 0.0F;
-    mBombRad       = 0.0F;
+    mNumBomb       = kDefaultStartBomb;
+    mBombMxSpd     = kBombMaxSpeed;
+    mBombAcc       = kGravity;
+    mBombRad       = kBombRadius;
+    Point pt;
+    pt.x = 10.0F;
+    pt.y = 90.0F;
+    mPadPt.push_back(pt);
+    pt.x = 100.0F;
+    pt.y = 180.0F;
+    mPadPt.push_back(pt);
+    pt.x = 200.0F;
+    pt.y = 270.0F;
+    mPadPt.push_back(pt);
+    pt.x = 320.0F;
+    pt.y = 360.0F;
+    mPadPt.push_back(pt);
+    pt.x = 440.0F;
+    pt.y = 270.0F;
+    mPadPt.push_back(pt);
+    pt.x = 540.0F;
+    pt.y = 180.0F;
+    mPadPt.push_back(pt);
+    pt.x = 629.0F;
+    pt.y = 90.0F;
+    mPadPt.push_back(pt);
+    mNumPad = mPadPt.size( );
+    vector<Point>::iterator Iter;
+    for ( Iter = mPadPt.begin( ); Iter != mPadPt.end( ); Iter++)
+    {
+        pt.x = Iter->x-10;
+        pt.y = Iter->y;
+        mTerPt.push_back(pt);
+        pt.x += 20;
+        mTerPt.push_back(pt);
+    }
+    mNumTerPt = mTerPt.size( );
+    mGunStartPad = mNumPad/2;
 }
 
 Level::~Level( )

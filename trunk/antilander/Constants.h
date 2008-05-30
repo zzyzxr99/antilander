@@ -13,6 +13,8 @@ const float kSlopeRunTolerance = 0.00001F; // Slope tolerance for vertical lines
 // GameWorld
 const unsigned long kGameStep = 10; // kGameStep is in milliseconds
 const float kGameDivisor = 1000.0F;
+const unsigned short kDefaultLandersPerLevel = 10;
+const unsigned short kDefaultLandersPerScreen = 1;
 
 // window
 // EJR this makes a const char array of char's the correct size - and than we can use it as a const char * in GameLoop
