@@ -26,6 +26,7 @@ private:
     short int mSplashAlpha;
 	BBox mBBoxLander;
     BBox mGameScreen;
+	int mLevelNum;
 
 public:
     Render( );
@@ -78,6 +79,7 @@ public:
 	BBox GetLanderBox();
 	void DrawLevel(Level* l,bool DrawGreen);
     BBox GetGameScreen();
+	int GetLevelNum();
 };
 
 #endif // _RENDER_H;

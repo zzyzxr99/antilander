@@ -76,7 +76,7 @@ public:
     vector<Lander>* GetLanders( );
     unsigned short GetNumLndrScr( );
 
-	string GetLevName ();
+	string GetLevName (int num);
 	Level* GetLevel();
 
     void TestSaveLoadLevel();
