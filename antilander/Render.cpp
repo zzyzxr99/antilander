@@ -65,6 +65,7 @@ Render::Render( )
     mGameScreen.y= 0;
     mGameScreen.w= kWinWidth;
     mGameScreen.h= kWinHeight;
+	mLevelNum = 1;
 }
 
 Render::~Render( )
@@ -435,7 +436,6 @@ void Render::doEditInput()
 			{
 				doneBuildmode = true;
 			}
-			
 	    }
 
 		//if(mEvent.type == SDL_KEYDOWN)
@@ -523,6 +523,12 @@ void Render::doMoveInput()
 			if(plIn.keyPress == SDLK_x)
 			{
 				exitEditmode = true;
+			}
+			if(plIn.keyPress == SDLK_s)
+			{
+				cout << "Input Level Number: ";
+				cin >> mLevelNum;
+				cout << endl;
 			}
 	    }
 
@@ -701,4 +707,9 @@ BBox Render::GetLanderBox()
 BBox Render::GetGameScreen()
 {
     return mGameScreen;
+}
+
+int Render::GetLevelNum()
+{
+	return mLevelNum;
 }

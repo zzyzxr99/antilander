@@ -4,11 +4,11 @@
 #include "GameWorld.h"
 #include "Level.h"			//testing
 #include <iostream>
+
 using namespace std;
 
 int main(int argv, char *args[])
 {
-
 	GameWorld *tWorld;
 	tWorld= new GameWorld();
 
@@ -65,10 +65,7 @@ int main(int argv, char *args[])
 					tWorld->EndEditLvlPts(tWorld->GetRender()->getMouse());
 					tWorld->SetEditStatus(knMoveMode);
 				}
-
-
 			}
-
 
 			else if (tWorld->GetEditStatus() == knMoveMode)
 			{
@@ -86,8 +83,8 @@ int main(int argv, char *args[])
 				if(tWorld->GetRender()->EndEdit())
 				{	
 					tWorld->GetLevel()->MakePadPtsFromTerrainPts();
-					tWorld->GetLevel()->SaveLevel(tWorld->GetLevName());
-					tWorld->GetLevel()->LoadLevel(tWorld->GetLevName());
+					tWorld->GetLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
+					tWorld->GetLevel()->LoadLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
 					tWorld->InitEditLvl();
 					tWorld->SetGameStatus(knPlayMode);
 				}
@@ -99,7 +96,7 @@ int main(int argv, char *args[])
 	}
 
 
-    tWorld->TestSaveLoadLevel();
+//    tWorld->TestSaveLoadLevel();
     // Delete the GameWorld, it will delete all of its members
    	delete tWorld;
 

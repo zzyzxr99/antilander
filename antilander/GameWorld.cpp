@@ -842,11 +842,11 @@ int GameWorld::PointCheck()
 	return 0;
 }
 
-string GameWorld::GetLevName()
+string GameWorld::GetLevName(int num)
 {
 	string name;
 	stringstream out;
-	out << lvlCtr;
+	out << num;
 	name = out.str();
 	return ("LEVEL" + name + ".txt");
 }
