@@ -3,11 +3,20 @@
 #ifndef _RENDER_H
 #define _RENDER_H
 
+extern "C" 
+{
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
+}
+
 #include "Structs.h"
 #include "SDL.h"
 #include "SDL_GFXprimitives.h"
 #include "SDL_ttf.h"
 #include "level.h"
+#include <string>
+
 
 class Render
 {
@@ -27,6 +36,9 @@ private:
 	BBox mBBoxLander;
     BBox mGameScreen;
 	int mLevelNum;
+	bool mConsole;
+	lua_State* luaVM;
+	TTF_Font* conFont;	
 
 public:
     Render( );
@@ -80,6 +92,10 @@ public:
 	void DrawLevel(Level* l,bool DrawGreen);
     BBox GetGameScreen();
 	int GetLevelNum();
+	bool IsConsole();
+	void DrawConsole(char conchar);
+	char DoConsoleIn();
+	void DoLua();
 };
 
 #endif // _RENDER_H;

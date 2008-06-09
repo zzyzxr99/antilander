@@ -32,7 +32,7 @@ GameWorld::~GameWorld()
 {
 	// any new operators must have delete matches here
 	// mLanders.capacity();
-	
+
 }
 
 void GameWorld::TestSaveLoadLevel()
@@ -297,6 +297,13 @@ void GameWorld::DrawEverything( )
               0,255,255,255 );
 	}
 	// end test code for IntersectSegments
+	if(mRender.IsConsole())
+	{
+		//do console key detection
+		ch = mRender.DoConsoleIn();
+		//Draw Console
+		mRender.DrawConsole(ch);
+	}
 	
     SDL_Flip( mRender.getpScreen( ));
 }
@@ -607,6 +614,7 @@ void GameWorld::UpdateEverything( )
             break; // break out of loop - iterator is invalid after erase - only delete one each update cycle
         }
     }
+
 }
 
 bool GameWorld::FireMissile()
@@ -641,6 +649,7 @@ bool GameWorld::MissileSect(vector<Point>::iterator TerArr, Point MissNose, Vect
 	///////// calculate missile nose in relation to base //////////////
 	float M = Direction.y/Direction.x;		
 	float offX = sqrt (289/((M * M) + 1));
+//	float offX = 17/sqrt((M * M) + 1);    works as well
 	float offY = M*offX;
 	MissNose.x += offX;
 	int numTps= mGameTerrain.GetTPts();
@@ -855,3 +864,4 @@ Level* GameWorld::GetLevel()
 {
 	return &mEditLevel;
 }
+

@@ -1,6 +1,7 @@
 #ifndef _GAMEWORLD_H
 #define _GAMEWORLD_H
 
+
 #include "Render.h"
 #include "Lander.h"
 #include "Gunship.h"
@@ -42,6 +43,7 @@ private:
     unsigned short mEndGamePadOcc;
     bool mFrat;
 	int lvlCtr;
+	char ch;
 	
 
 public:
@@ -81,6 +83,9 @@ public:
 
     void TestSaveLoadLevel();
 	int PointCheck();
+
+	//lua commands
+	
 };
 
 #endif // end _GAMEWORLD_H

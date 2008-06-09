@@ -9,6 +9,9 @@
 #include "SDL_ttf.h"
 #include <cmath>
 #include <iostream>
+#include <string>
+#include "string.h"
+
 using namespace std;
 
 Render::Render( )
@@ -64,12 +67,22 @@ Render::Render( )
     mGameScreen.x= 0;
     mGameScreen.y= 0;
     mGameScreen.w= kWinWidth;
-    mGameScreen.h= kWinHeight;
+	mGameScreen.h= kWinHeight;
 	mLevelNum = 1;
+	mConsole = false;
+	luaVM = lua_open();
+	if (luaVM == NULL)
+	{
+		cout << "Lua VM not created!" << endl;
+	}
+	luaL_openlibs(luaVM);
+	conFont = TTF_OpenFont("Compact_Mono.TTF", 15);
 }
 
 Render::~Render( )
 {
+	TTF_CloseFont( conFont );
+	lua_close(luaVM);
     TTF_Quit( );
 	SDL_Quit( );
 }
@@ -343,241 +356,6 @@ SDL_Surface* Render::getpScreen()
 	return screen;
 }
 
-void Render::doInput()
-{
-    plIn.leftClick= false;
-    plIn.rightClick= false;
-    while (SDL_PollEvent(&mEvent))
-    {
-	    if(mEvent.type == SDL_MOUSEMOTION)
-	    {
-		    plIn.mouseMove.x = mEvent.motion.x;
-		    plIn.mouseMove.y = mEvent.motion.y;
-	    }
-		if (mEvent.type == SDL_QUIT)
-		{
-			gameState= false;
-		}
-
-	    if(mEvent.type == SDL_KEYDOWN)
-	    {
-		    plIn.keyPress = mEvent.key.keysym.sym;
-		    if(plIn.keyPress == SDLK_ESCAPE)
-		    {
-			    gameState = false;
-		    }
-	    }
-
-	    if(mEvent.type == SDL_MOUSEBUTTONDOWN)
-	    {
-		    plIn.mousePress.button = mEvent.button.button;
-		    if((plIn.mousePress.button == SDL_BUTTON_LEFT))
-		    {
-			    plIn.leftClick = true;
-			    plIn.tlclicked = true;
-		    }
-		   
-
-		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT )
-		    {
-			    plIn.rightClick = true;
-			    plIn.trclicked = true;
-		    }
-	    }
-
-		if(mEvent.type == SDL_MOUSEBUTTONUP)
-	    {
-		    plIn.mousePress.button = mEvent.button.button;
-		    if(plIn.mousePress.button == SDL_BUTTON_LEFT)
-		    {
-			    plIn.tlclicked = false;
-                plIn.leftClick = false;
-		    }
-
-			if(plIn.mousePress.button == SDL_BUTTON_RIGHT)
-		    {
-			    plIn.trclicked = false;
-                plIn.rightClick = false;
-		    }
-	    }
-    	
-	    if(plIn.leftClick == 1)
-		    cout << "left clicked\n";
-	    if(plIn.rightClick == 1)
-		    cout << "right clicked\n";
-    }
-}
-
-void Render::doEditInput()
-{
-    plIn.leftClick= false;
-	plIn.midClick= false;
-    plIn.rightClick= false;
-    while (SDL_PollEvent(&mEvent))
-    {
-	    if(mEvent.type == SDL_MOUSEMOTION)
-	    {
-		    plIn.mouseMove.x = mEvent.motion.x;
-		    plIn.mouseMove.y = mEvent.motion.y;
-	    }
-		if(mEvent.type == SDL_QUIT)
-		{
-			gameState= false;
-		}
-
-	    if(mEvent.type == SDL_KEYDOWN)
-	    {
-		    plIn.keyPress = mEvent.key.keysym.sym;
-		    if(plIn.keyPress == SDLK_ESCAPE)
-		    {
-			    gameState = false;
-		    }
-			if(plIn.keyPress == SDLK_e)
-			{
-				doneBuildmode = true;
-			}
-	    }
-
-		//if(mEvent.type == SDL_KEYDOWN)
-		//{
-		//	plIn.keyPress = mEvent.key.keysym.sym;
-		//	if(plIn.keyPress == SDLK_LSHIFT)
-		//	{
-		//		shiftKey = true;
-		//	}
-		//}
-
-
-		if(mEvent.type == SDL_MOUSEBUTTONDOWN)
-		{
-			plIn.mousePress.button = mEvent.button.button;
-			if((plIn.mousePress.button == SDL_BUTTON_LEFT))
-			{
-				plIn.leftClick = true;
-				plIn.tlclicked = true;
-			}
-
-
-			if(plIn.mousePress.button == SDL_BUTTON_RIGHT )
-			{
-			    plIn.rightClick = true;
-			    plIn.trclicked = true;
-		    }
-
-			if(plIn.mousePress.button == SDL_BUTTON_MIDDLE)
-			{
-				plIn.midClick = true;
-				plIn.tmclicked = true;
-				doneBuildmode = true;
-			}
-		 
-	    }
-	    if(mEvent.type == SDL_MOUSEBUTTONUP)
-	    {
-		    plIn.mousePress.button = mEvent.button.button;
-		    if(plIn.mousePress.button == SDL_BUTTON_LEFT)
-		    {
-			    plIn.tlclicked = false;
-                plIn.leftClick = false;
-		    }
-		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT)
-		    {
-			    plIn.trclicked = false;
-                plIn.rightClick = false;
-		    }
-
-			if(plIn.mousePress.button == SDL_BUTTON_MIDDLE)
-			{
-				plIn.midClick = false;
-				plIn.tmclicked = false;
-			}
-	    }
-    	
-    }
-}
-
-void Render::doMoveInput()
-{
-    plIn.leftClick= false;
-	plIn.midClick= false;
-    plIn.rightClick= false;
-    while (SDL_PollEvent(&mEvent))
-    {
-	    if(mEvent.type == SDL_MOUSEMOTION)
-	    {
-		    plIn.mouseMove.x = mEvent.motion.x;
-		    plIn.mouseMove.y = mEvent.motion.y;
-	    }
-		if (mEvent.type == SDL_QUIT)
-		{
-			gameState= false;
-		}
-
-	    if(mEvent.type == SDL_KEYDOWN)
-	    {
-		    plIn.keyPress = mEvent.key.keysym.sym;
-		    if(plIn.keyPress == SDLK_ESCAPE)
-		    {
-			    gameState = false;
-		    }
-			if(plIn.keyPress == SDLK_x)
-			{
-				exitEditmode = true;
-			}
-			if(plIn.keyPress == SDLK_s)
-			{
-				cout << "Input Level Number: ";
-				cin >> mLevelNum;
-				cout << endl;
-			}
-	    }
-
-	    if(mEvent.type == SDL_MOUSEBUTTONDOWN)
-	    {
-		    plIn.mousePress.button = mEvent.button.button;
-		    if((plIn.mousePress.button == SDL_BUTTON_LEFT))
-		    {
-			    plIn.leftClick = true;
-			    plIn.tlclicked = true;
-		    }
-		   
-
-		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT )
-		    {
-			    plIn.rightClick = true;
-			    plIn.trclicked = true;
-		    }
-
-			if(plIn.mousePress.button == SDL_BUTTON_MIDDLE)
-			{
-				plIn.midClick = true;
-				plIn.tmclicked = true;
-			}
-		 
-	    }
-	    if(mEvent.type == SDL_MOUSEBUTTONUP)
-	    {
-		    plIn.mousePress.button = mEvent.button.button;
-		    if(plIn.mousePress.button == SDL_BUTTON_LEFT)
-		    {
-			    plIn.tlclicked = false;
-                plIn.leftClick = false;
-		    }
-		    if(plIn.mousePress.button == SDL_BUTTON_RIGHT)
-		    {
-			    plIn.trclicked = false;
-                plIn.rightClick = false;
-		    }
-
-			if(plIn.mousePress.button == SDL_BUTTON_MIDDLE)
-			{
-				plIn.midClick = false;
-				plIn.tmclicked = false;
-			}
-	    }
-    	
-    }
-}
 
 bool Render::gameRunning()
 {
@@ -712,4 +490,89 @@ BBox Render::GetGameScreen()
 int Render::GetLevelNum()
 {
 	return mLevelNum;
+}
+
+bool Render::IsConsole()
+{
+	return mConsole;
+}
+
+void Render::DrawConsole(char conchar)
+{
+	
+
+    SDL_Color foregroundColor = { 255, 255, 255 }; 
+    SDL_Color backgroundColor = { 0, 0, 0 };
+	string str;
+
+	if(conchar != '!' && conchar != '\b' && conchar != '\r')
+	{
+		plIn.conString = plIn.conString + conchar;	
+	}
+	if(conchar == '\b')		
+	{
+		if(!plIn.conString.empty())
+		{
+			plIn.conString.erase(plIn.conString.end()-1);
+		}
+	}
+	if(conchar == '$')
+	{
+		if(!plIn.conString.empty())
+		{
+			plIn.conString.clear();
+		}
+	}
+	str = ">" + plIn.conString; 
+	if(conchar == '\r')
+	{
+		str.erase(str.begin());
+		plIn.luaString = str;
+		DoLua();
+		str = plIn.conString;
+//		plIn.luaString.clear();
+	}
+	SDL_Surface* textSurface = TTF_RenderText_Shaded(conFont, str.c_str(),
+		foregroundColor, backgroundColor);
+	SDL_Rect consoleLoc = { 5,kWinHeight - 20,
+		0,0 };
+	SDL_BlitSurface( textSurface,
+		NULL,
+		screen,
+		&consoleLoc );
+
+	SDL_FreeSurface( textSurface );
+
+	
+
+}
+
+char Render::DoConsoleIn()			//if '!' returned = stop stream
+{
+	char current = '!';
+	if(plIn.keyP != '!') 
+	{
+		current = plIn.keyP;
+		plIn.keyP = '!';
+	}	
+	return current;
+}
+
+void Render::DoLua()
+{
+	int err = luaL_dofile(luaVM, "lua.lua");
+
+	if (err)
+	{
+		cout << lua_tostring(luaVM, -1) << endl;
+	}
+	lua_getfield(luaVM, LUA_GLOBALSINDEX, "conInput");  //lua function conInput
+	lua_pushstring(luaVM, plIn.luaString.c_str());
+
+	if (lua_pcall(luaVM, 1, 1, 0) != 0)
+	{    
+		cout << "Error" << endl;
+	}
+	plIn.conString = (lua_tostring(luaVM, -1));
+	lua_pop(luaVM, 1); 
 }
