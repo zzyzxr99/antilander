@@ -69,20 +69,13 @@ Render::Render( )
     mGameScreen.w= kWinWidth;
 	mGameScreen.h= kWinHeight;
 	mLevelNum = 1;
-	mConsole = false;
-	luaVM = lua_open();
-	if (luaVM == NULL)
-	{
-		cout << "Lua VM not created!" << endl;
-	}
-	luaL_openlibs(luaVM);
 	conFont = TTF_OpenFont("Compact_Mono.TTF", 15);
+	mConsole = false;
 }
 
 Render::~Render( )
 {
 	TTF_CloseFont( conFont );
-	lua_close(luaVM);
     TTF_Quit( );
 	SDL_Quit( );
 }
@@ -492,46 +485,11 @@ int Render::GetLevelNum()
 	return mLevelNum;
 }
 
-bool Render::IsConsole()
+void Render::DrawConsole(string str)
 {
-	return mConsole;
-}
-
-void Render::DrawConsole(char conchar)
-{
-	
-
     SDL_Color foregroundColor = { 255, 255, 255 }; 
     SDL_Color backgroundColor = { 0, 0, 0 };
-	string str;
-
-	if(conchar != '!' && conchar != '\b' && conchar != '\r')
-	{
-		plIn.conString = plIn.conString + conchar;	
-	}
-	if(conchar == '\b')		
-	{
-		if(!plIn.conString.empty())
-		{
-			plIn.conString.erase(plIn.conString.end()-1);
-		}
-	}
-	if(conchar == '$')
-	{
-		if(!plIn.conString.empty())
-		{
-			plIn.conString.clear();
-		}
-	}
-	str = ">" + plIn.conString; 
-	if(conchar == '\r')
-	{
-		str.erase(str.begin());
-		plIn.luaString = str;
-		DoLua();
-		str = plIn.conString;
-//		plIn.luaString.clear();
-	}
+	
 	SDL_Surface* textSurface = TTF_RenderText_Shaded(conFont, str.c_str(),
 		foregroundColor, backgroundColor);
 	SDL_Rect consoleLoc = { 5,kWinHeight - 20,
@@ -542,37 +500,14 @@ void Render::DrawConsole(char conchar)
 		&consoleLoc );
 
 	SDL_FreeSurface( textSurface );
-
-	
-
 }
 
-char Render::DoConsoleIn()			//if '!' returned = stop stream
+playInput* Render::GetInput()
 {
-	char current = '!';
-	if(plIn.keyP != '!') 
-	{
-		current = plIn.keyP;
-		plIn.keyP = '!';
-	}	
-	return current;
+	return &plIn;
 }
 
-void Render::DoLua()
+bool Render::GetConsole()
 {
-	int err = luaL_dofile(luaVM, "lua.lua");
-
-	if (err)
-	{
-		cout << lua_tostring(luaVM, -1) << endl;
-	}
-	lua_getfield(luaVM, LUA_GLOBALSINDEX, "conInput");  //lua function conInput
-	lua_pushstring(luaVM, plIn.luaString.c_str());
-
-	if (lua_pcall(luaVM, 1, 1, 0) != 0)
-	{    
-		cout << "Error" << endl;
-	}
-	plIn.conString = (lua_tostring(luaVM, -1));
-	lua_pop(luaVM, 1); 
+	return mConsole;
 }
