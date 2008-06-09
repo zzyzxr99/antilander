@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)SDL\include&quot;;&quot;$(ProjectDir)SDLgfx\include&quot;;&quot;$(ProjectDir)SDLttf\include&quot;"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)SDL\include&quot;;&quot;$(ProjectDir)SDLgfx\include&quot;;&quot;$(ProjectDir)SDLttf\include&quot;;&quot;$(ProjectDir)Lua\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -63,7 +63,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="SDL.lib SDLmain.LIB sdlgfx.lib SDL_ttf.lib Winmm.lib lua5.1.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(ProjectDir)SDL\lib&quot;;&quot;$(ProjectDir)SDLgfx\lib&quot;;&quot;$(ProjectDir)SDLttf\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(ProjectDir)SDL\lib&quot;;&quot;$(ProjectDir)SDLgfx\lib&quot;;&quot;$(ProjectDir)SDLttf\lib&quot;;&quot;$(ProjectDir)Lua\lib&quot;"
 				IgnoreDefaultLibraryNames="MSVCRT.LIB"
 				GenerateDebugInformation="true"
 				SubSystem="1"
