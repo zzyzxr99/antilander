@@ -50,6 +50,7 @@ struct playInput
 	string conString;
 	string luaString;
 	char conCur;
+	char current;
 	SDLKey keyPress;
 	SDL_MouseButtonEvent mousePress;
 	playInput();

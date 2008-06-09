@@ -1,7 +1,12 @@
 #ifndef _GAMEWORLD_H
 #define _GAMEWORLD_H
 
-
+extern "C" 
+{
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
+}
 #include "Render.h"
 #include "Lander.h"
 #include "Gunship.h"
@@ -43,7 +48,9 @@ private:
     unsigned short mEndGamePadOcc;
     bool mFrat;
 	int lvlCtr;
+	//console and lua variables
 	char ch;
+	lua_State* luaVM;
 	
 
 public:
@@ -84,8 +91,10 @@ public:
     void TestSaveLoadLevel();
 	int PointCheck();
 
-	//lua commands
-	
+	//console commands
+	bool IsConsole();
+	string DoConsoleIn();
+	void DoLua();
 };
 
 #endif // end _GAMEWORLD_H

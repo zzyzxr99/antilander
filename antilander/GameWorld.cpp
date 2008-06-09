@@ -25,14 +25,19 @@ GameWorld::GameWorld()
     mEndGamePadOcc = 0;
     mFrat = false;
 	lvlCtr = 1;
-
+	luaVM = lua_open();
+	if (luaVM == NULL)
+	{
+		cout << "Lua VM not created!" << endl;
+	}
+	luaL_openlibs(luaVM);
 }
 
 GameWorld::~GameWorld()
 {
 	// any new operators must have delete matches here
 	// mLanders.capacity();
-
+	lua_close(luaVM);
 }
 
 void GameWorld::TestSaveLoadLevel()
@@ -297,12 +302,13 @@ void GameWorld::DrawEverything( )
               0,255,255,255 );
 	}
 	// end test code for IntersectSegments
-	if(mRender.IsConsole())
+	
+	// do console stuff
+	if(IsConsole())
 	{
 		//do console key detection
-		ch = mRender.DoConsoleIn();
 		//Draw Console
-		mRender.DrawConsole(ch);
+		mRender.DrawConsole(DoConsoleIn());
 	}
 	
     SDL_Flip( mRender.getpScreen( ));
@@ -865,3 +871,68 @@ Level* GameWorld::GetLevel()
 	return &mEditLevel;
 }
 
+bool GameWorld::IsConsole()
+{
+	return GetRender()->GetConsole();
+}
+
+string GameWorld::DoConsoleIn()			//if '!' returned = stop stream
+{
+	char cnt = GetRender()->GetInput()->current;
+	string str;
+	cnt = '!';
+	if(GetRender()->GetInput()->keyP != '!') 
+	{
+		cnt = GetRender()->GetInput()->keyP;
+		GetRender()->GetInput()->keyP = '!';
+	}
+	GetRender()->GetInput()->current = cnt;
+	
+	if(cnt != '!' && cnt != '\b' && cnt != '\r')
+	{
+		GetRender()->GetInput()->conString = GetRender()->GetInput()->conString + cnt;	
+	}
+	if(cnt == '\b')		
+	{
+		if(!GetRender()->GetInput()->conString.empty())
+		{
+			GetRender()->GetInput()->conString.erase(GetRender()->GetInput()->conString.end()-1);
+		}
+	}
+	else if(cnt == '$')
+	{
+		if(!GetRender()->GetInput()->conString.empty())
+		{
+			GetRender()->GetInput()->conString.clear();
+		}
+	}
+	str = ">" + GetRender()->GetInput()->conString; 
+	if(cnt == '\r')
+	{
+		str.erase(str.begin());
+		GetRender()->GetInput()->luaString = str;
+		DoLua();
+		str = GetRender()->GetInput()->conString;
+//		plIn.luaString.clear();
+	}
+	return str;
+}
+
+void GameWorld::DoLua()
+{
+	int err = luaL_dofile(luaVM, "lua.lua");
+
+	if (err)
+	{
+		cout << lua_tostring(luaVM, -1) << endl;
+	}
+	lua_getfield(luaVM, LUA_GLOBALSINDEX, "conInput");  //lua function conInput
+	lua_pushstring(luaVM, GetRender()->GetInput()->luaString.c_str());
+
+	if (lua_pcall(luaVM, 1, 1, 0) != 0)
+	{    
+		cout << "Error" << endl;
+	}
+	GetRender()->GetInput()->conString = (lua_tostring(luaVM, -1));
+	lua_pop(luaVM, 1); 
+}
