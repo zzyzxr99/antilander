@@ -2,6 +2,9 @@
 #define _STRUCTS_H
 #include "SDL.h"
 #include <cmath>
+#include <string>
+#include <stdafx.h>
+using namespace std;
 
 struct Vect
 {
@@ -33,7 +36,6 @@ float Angle( Point pStart,
 
 float Angle( Vect v );
 
-
 // For input of player
 struct playInput
 {
@@ -44,6 +46,10 @@ struct playInput
 	bool tlclicked;				//temp click variable
 	bool trclicked;             //temp click variable
 	bool tmclicked;
+	char keyP;
+	string conString;
+	string luaString;
+	char conCur;
 	SDLKey keyPress;
 	SDL_MouseButtonEvent mousePress;
 	playInput();

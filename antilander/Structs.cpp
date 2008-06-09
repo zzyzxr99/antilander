@@ -57,6 +57,8 @@ playInput::playInput()
 	tlclicked = 0;
 	trclicked = 0;
 	tmclicked = 0;
+	keyP = '!';
+	luaString = ' ';
 }
 
 IntersectStruct::IntersectStruct()
