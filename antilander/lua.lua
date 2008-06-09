@@ -17,6 +17,9 @@ function conInput(cmd)
 			
 			ret_string = set_com .. " is now " .. set_value
 			return (ret_string)
+		elseif(cmd == "spawn lander") then
+			--spawn a lander
+			return "spawning lander"
 		else
 			return "unidentified command"	
 		end
