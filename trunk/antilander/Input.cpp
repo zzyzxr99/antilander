@@ -158,6 +158,9 @@ void Render::doInput()
 			case SDLK_DELETE :
 				plIn.keyP = '$';
 				break;
+			case SDLK_PERIOD :
+				plIn.keyP = '.';
+				break;
 			default :
 				plIn.keyP = '!';
 			}
