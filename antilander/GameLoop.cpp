@@ -9,15 +9,6 @@ using namespace std;
 
 int main(int argv, char *args[])
 {
-	GameWorld *tWorld;
-	tWorld= new GameWorld();
-
-	SDL_WM_SetCaption( kWinTitle, 0 );
-
-	tWorld->StartGameStepper();
-	tWorld->SetGameStatus(knPlayMode);
-	tWorld->SetEditStatus(knBuildMode);
-
 	GameWorld* tWorld;
 	tWorld= new GameWorld();
 
