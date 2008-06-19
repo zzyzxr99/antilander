@@ -3,7 +3,7 @@
 #include "SDL.h"
 #include <cmath>
 #include <string>
-#include <stdafx.h>
+
 using namespace std;
 
 struct Vect
