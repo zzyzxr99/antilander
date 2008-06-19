@@ -1,0 +1,26 @@
+6/18
+
+- Code review
+- Decide Homework task code/document
+  Level Editor features defined
+
+6/20
+
+Features cbe
+Vadim- Missiles offscreen test ! - Console a command works !
+David- Bomb reload and level paramters into GameWorld !
+Daniel- Spawn based on level parameters !
+Eric- Fratricide !
+Adam- Level editor features start @
+Steven- Scoring scheme finished - start code @
+Joseph- UI feature look Start, Pause, Quit - start code @
+
+6/23
+
+Level editor - Terrain/Pad Points, Save level #, Edit file
+	5*Console change parameters.
+
+Vadim- Schema for level file
+Score/HUD complete for test
+UI- Complete for test
+

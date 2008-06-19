@@ -1,0 +1,48 @@
+AntiLander Prototype features
+2D non scrolling shooter - Lunar Lander theme.
+
+Feature
+-------
+Title Screen - AntiLander
+Turret can shoot missiles and bombs
+Missiles are direct fire to target - can change direction
+Missiles have a reload time
+Target locations for missiles
+Bombs are indirect on ballistic path - can change initial velocity and direction
+Landers can fall to pad - direct vertical path
+Explosions - radial
+Missiles, bombs, Explosions, and landers, how many, how fast, how often, size can vary per level
+Terrain and Landing pads are variable
+Levels - vary parameters
+
+Systems
+-------
+Renderer
+  Turret display missile direction
+Keyboard Mouse IO
+Object factories for Missile, Bomb, Landers
+Collision system
+
+Features not yet implemented fully
+----------------------------------
+Level editor
+Save and Load level
+Console interface
+
+
+Entities
+--------
+Terrain
+Turret
+Landers
+Bombs
+Missiles
+Pads
+Explosions
+Target
+
+Collisions
+----------
+Bombs to Landers, Terrain, Offscreen
+Missiles to Landers, Terrain
+Lander to Terrain (primitive)
