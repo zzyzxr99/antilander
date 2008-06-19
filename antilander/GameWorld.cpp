@@ -660,18 +660,20 @@ bool GameWorld::MissileSect(vector<Point>::iterator TerArr, Point MissNose, Vect
 	MissNose.x += offX;
 	int numTps= mGameTerrain.GetTPts();
 	
+	//missile off screen
+	if(MissNose.x < -10 || MissNose.x > kWinWidth + 10 || MissNose.y < -10 || MissNose.y > kWinHeight + 10)
+	{
+		cout << "Missile offscreen" << endl;
+		return true;
+	}
+
 	int ctr = 0; 
 	int rndMiss = (int)(MissNose.x);
 	Point iter;
 	
-
-
-
 	while ((ctr < (numTps - 1) && ((MissNose.x <= TerArr[ctr].x) || (MissNose.x > TerArr[ctr+1].x))))
 	{
-
 		ctr++;
-
 	}
 
 	if (ctr < (numTps - 1))
