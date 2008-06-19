@@ -11,28 +11,28 @@ class Level
 {
 private:
 
-    unsigned short mNumLndrLvl;
-    unsigned short mNumLndrScr;
-    bool mLndrPersist;
-    float mLndrDescRate;
-    unsigned short mNumPad;
-    vector<Point> mPadPt;
-    unsigned short mNumTerPt;
-    vector<Point> mTerPt;
-    unsigned short mNumMissile;
-    float mMissileSpd;
-    unsigned short mGunStartPad;
-    bool mGunMoves;
-    bool mGunMoveRnd;
-    unsigned short mEndGamePadOcc;
-    float mGunReload;
-    float mExpRad;
-    float mExpRate;
-    bool mFrat;
-    unsigned short mNumBomb;
-    float mBombMxSpd;
-    float mBombAcc;
-    float mBombRad;
+    unsigned short mNumLndrLvl;// !
+    unsigned short mNumLndrScr;// !
+    bool mLndrPersist;         // -
+    float mLndrDescRate;       // !
+    unsigned short mNumPad;    // !
+    vector<Point> mPadPt;      // !
+    unsigned short mNumTerPt;  // !
+    vector<Point> mTerPt;      // !
+    unsigned short mNumMissile;// !
+    float mMissileSpd;         // !    
+    unsigned short mGunStartPad; //!
+    bool mGunMoves;				 //-
+    bool mGunMoveRnd;			 //- 
+    unsigned short mEndGamePadOcc; //!
+    float mGunReload;			   //!
+    float mExpRad;				   //!-
+    float mExpRate;                //!-
+    bool mFrat;					   //!	
+    unsigned short mNumBomb;       //!
+    float mBombMxSpd;			   //!	
+    float mBombAcc;				   //-	
+    float mBombRad;				   //!
 	
 
 public:

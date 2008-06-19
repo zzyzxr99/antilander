@@ -1,0 +1,60 @@
+TODO: General
+
+Features to add
+---------------
+9*Missiles offscreen test
+9*Bomb reload by level parameter
+4*Score rehash - ?
+UI hash - ?
+  5*Start, Pause, Exit
+
+Landers 
+  9*Spawn based on level parameters
+    
+3*Console wired up
+  commands:
+  	restart 
+	set commands for variables - not pts or numpts of terrain or pads
+
+
+Levels 8*
+  50 data levels to be tested
+  How many points MAX
+  GameWorld - Start 1st level, go to next level
+  
+    unsigned short mNumLndrLvl;// !
+    unsigned short mNumLndrScr;// !
+    bool mLndrPersist;         // -
+    float mLndrDescRate;       // !
+    unsigned short mNumPad;    // !
+    vector<Point> mPadPt;      // !
+    unsigned short mNumTerPt;  // !
+    vector<Point> mTerPt;      // !
+    unsigned short mNumMissile;// !
+    float mMissileSpd;         // !    
+    unsigned short mGunStartPad; //!
+    bool mGunMoves;				 //-
+    bool mGunMoveRnd;			 //- 
+    unsigned short mEndGamePadOcc; //!
+    float mGunReload;			   //!
+    float mExpRad;				   //!-
+    float mExpRate;                //!-
+    bool mFrat;					   //!	
+    unsigned short mNumBomb;       //!
+    float mBombMxSpd;			   //!	
+    float mBombAcc;				   //-	
+    float mBombRad;				   //!
+
+Backstory 3*
+  
+Fratricide
+`   7*Explosions exploded missiles, bombs, landers
+    2*Bomb missiles collision for game play decision
+    
+Lose/Gameover screen 5*
+    Get back to UI
+
+Bugs
+----
+Windowed mode grab - need a pause on SDL/Timer
+Edit mode crash on less than 3 pad points. Partly to do with init.
