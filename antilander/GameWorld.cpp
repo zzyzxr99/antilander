@@ -6,31 +6,35 @@
 #include "math.h"
 #include <sstream>
 using namespace std;
-// Definition
+
+//static variables
+lua_State* GameWorld::luaVM;
+unsigned short GameWorld::mNumMissile;
+unsigned short GameWorld::mNumBomb;
+
+int GameWorld::command;
+int GameWorld::value;
 
 GameWorld::GameWorld()
 {
 	// initialize all the member varibles
-	mStarted= false;
+	mStarted		= false;
 	InitEverything();
-	mGameMode= knPlayMode;
+	mGameMode		= knPlayMode;
     mGameStepper.Mark();
-    mNumLndrLvl = 0;
-    mNumLndrScr = 1;
-    mLndrPersist = false;
-    mNumMissile = kStartAmmo;
-    mNumBomb = kDefaultStartBomb;
-    mGunMoves = false;
-    mGunMoveRnd = false;
-    mEndGamePadOcc = 0;
-    mFrat = false;
-	lvlCtr = 1;
-	luaVM = lua_open();
-	if (luaVM == NULL)
-	{
-		cout << "Lua VM not created!" << endl;
-	}
-	luaL_openlibs(luaVM);
+    mNumLndrLvl		= 0;
+    mNumLndrScr		= 1;
+    mLndrPersist	= false;
+    mNumMissile		= 2;
+    mNumBomb		= kDefaultStartBomb;
+    mGunMoves		= false;
+    mGunMoveRnd		= false;
+    mEndGamePadOcc	= 0;
+    mFrat			= false;
+	lvlCtr			= 1;
+	command			= 0;
+	value			= 0;
+	StartLua();
 }
 
 GameWorld::~GameWorld()
@@ -922,12 +926,13 @@ string GameWorld::DoConsoleIn()			//if '!' returned = stop stream
 		str.erase(str.begin());
 		GetRender()->GetInput()->luaString = str;
 		DoLua();
-		str = GetRender()->GetInput()->conString;
-//		plIn.luaString.clear();
+//		str = GetRender()->GetInput()->conString;
+		GetRender()->GetInput()->conString.clear();
 	}
 	return str;
 }
 
+//use this to send command
 void GameWorld::DoLua()
 {
 	int err = luaL_dofile(luaVM, "lua.lua");
@@ -936,13 +941,61 @@ void GameWorld::DoLua()
 	{
 		cout << lua_tostring(luaVM, -1) << endl;
 	}
-	lua_getfield(luaVM, LUA_GLOBALSINDEX, "conInput");  //lua function conInput
+	lua_getfield(luaVM, LUA_GLOBALSINDEX, "conInput");				//call lua function conInput
 	lua_pushstring(luaVM, GetRender()->GetInput()->luaString.c_str());
 
 	if (lua_pcall(luaVM, 1, 1, 0) != 0)
 	{    
-		cout << "Error" << endl;
+		cout << "Error sending string to Lua" << endl;
 	}
-	GetRender()->GetInput()->conString = (lua_tostring(luaVM, -1));
 	lua_pop(luaVM, 1); 
+}
+
+int GameWorld::l_Action(lua_State* LVM)
+{
+	if(lua_gettop(LVM) !=2)
+	{
+		cout << "Incorrect number of parameters passed from Lua" << endl;
+	}
+	else
+	{
+		command = (float)lua_tonumber(LVM, -2);
+		value = (float)lua_tonumber(LVM, -1);
+	//	lua_pushnumber(LVM, 0);
+	}
+	switch(command)
+	{
+	case 1 :
+		SetMissiles((int)value);
+		break;
+	case 2 :
+		SetBombs((int)value);
+		break;
+	}
+	return 0;
+}
+
+void GameWorld::StartLua()
+{
+	luaVM = lua_open();
+	if (luaVM == NULL)
+	{
+		cout << "Lua VM not created!" << endl;
+	}
+	else
+	{
+		luaL_openlibs(luaVM);
+	}
+	lua_register(luaVM,"Action", l_Action);
+
+}
+
+void GameWorld::SetMissiles(int num)
+{
+	mNumMissile = num; 
+}
+
+void GameWorld::SetBombs(int num)
+{
+	mNumBomb = num; 
 }

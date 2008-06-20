@@ -41,8 +41,8 @@ private:
     unsigned short mNumLndrLvl;
     unsigned short mNumLndrScr;
     bool mLndrPersist;
-    unsigned short mNumMissile;
-    unsigned short mNumBomb;
+    static unsigned short mNumMissile;
+    static unsigned short mNumBomb;
     bool mGunMoves;
     bool mGunMoveRnd;
     unsigned short mEndGamePadOcc;
@@ -50,8 +50,11 @@ private:
 	int lvlCtr;
 	//console and lua variables
 	char ch;
-	lua_State* luaVM;
+	static lua_State* luaVM;
+	static int command;
+	static int value;
 	
+
 
 public:
 	GameWorld();
@@ -91,10 +94,19 @@ public:
     void TestSaveLoadLevel();
 	int PointCheck();
 
+	//commands to change variables
+	static void SetMissiles(int num);
+	static void SetBombs(int num);
+
+
 	//console commands
 	bool IsConsole();
 	string DoConsoleIn();
 	void DoLua();
+
+	//lua test commands
+	static void StartLua();
+	static int l_Action(lua_State* LVM);
 };
 
 #endif // end _GAMEWORLD_H

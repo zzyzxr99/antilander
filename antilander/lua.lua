@@ -6,20 +6,16 @@ function conInput(cmd)
 			set_value = tonumber(set_value)
 			
 			if(set_com == "missiles") then
-			--set missiles
+			Action(1,set_value)
 			elseif(set_com == "bombs") then
-			--set bombs
-			elseif(set_com == "reload") then
-			--set reload
+			Action(2,set_value)
+			-- elseif(set_com == "reload") then
+			-- action(3,set_value)			
+			-- elseif(set_com == "missile speed") then
+			-- action(4,set_value)
 			else
 			return "incorrect use of 'set'"
 			end
-			
-			ret_string = set_com .. " is now " .. set_value
-			return (ret_string)
-		elseif(cmd == "spawn lander") then
-			--spawn a lander
-			return "spawning lander"
 		else
 			return "unidentified command"	
 		end
