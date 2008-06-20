@@ -16,8 +16,10 @@ private:
 	long mLastTimeShot;  //uses GetLastShot to ID shot interval (should count down)
 	int mMissileCount;  //uses GetMCount to get missiles remaining
     float mReloadTime;
+    float mBombReloadTime;
     unsigned short mPad;
     ALTimer mGunTimer;
+    ALTimer mBombTimer;
 
 
 public:
@@ -33,7 +35,10 @@ public:
 	void InitGunship(Point P);
     void SetReloadTime( float t );
     float GetReloadTime( );
+    float GetBombReloadTime( );
+    void SetBombReloadTime( float t );
 	bool CanShoot();
+    bool CanBomb( );
     void SetPad( unsigned short pad );
     unsigned short GetPad( );
 };
