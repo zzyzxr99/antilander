@@ -176,7 +176,7 @@ float Level::GetBombAcc( )
 
 float Level::GetBombRad( )
 {
-    return mBombAcc;
+    return mBombRad;
 }
 
 float Level::GetBombReloadTime( )

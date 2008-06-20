@@ -638,7 +638,14 @@ bool GameWorld::FireMissile()
 // EJR only for testing explosion at right click mouse loc
 bool GameWorld::FireBomb()
 {
-	return mRender.isRClicked();
+	if ( mRender.isRClicked() )
+    {
+        if ( mPlayerShip.CanBomb( ) )
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 bool GameWorld::SplashRunning( )
@@ -792,6 +799,7 @@ void GameWorld::InitLevel( )
     // Gunship
     mPlayerShip.SetPad( mCurrentLevel.GetGunStartPad( ) );
     mPlayerShip.SetReloadTime( mCurrentLevel.GetGunReload( ) );
+    mPlayerShip.SetBombReloadTime( mCurrentLevel.GetBombReloadTime( ) );
 
     // Explosion
     Explosion::sSetMaxRadius( mCurrentLevel.GetExpRad( ) );

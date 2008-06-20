@@ -13,6 +13,7 @@ Gunship::Gunship()
     mReloadTime = kReloadTime;
     mPad = kDefaultGunStartPad;
     mGunTimer.Mark();
+    mBombTimer.Mark( );
 // initialize all the member variables
 }
 
@@ -28,7 +29,12 @@ int Gunship::GetDrawGunshipIDX()
 
 bool Gunship::CanShoot()
 {
-	return mGunTimer.CheckElapsedMS(kReloadTime * 1000);
+	return mGunTimer.CheckElapsedMS(mReloadTime * 1000);
+}
+
+bool Gunship::CanBomb( )
+{
+    return mBombTimer.CheckElapsedMS( mBombReloadTime * 1000 );
 }
 
 int Gunship::GetDrawBarrelIDX()
@@ -55,6 +61,16 @@ void Gunship::SetReloadTime( float t )
 float Gunship::GetReloadTime( )
 {
     return mReloadTime;
+}
+
+float Gunship::GetBombReloadTime( )
+{
+    return mBombReloadTime;
+}
+
+void Gunship::SetBombReloadTime( float t )
+{
+    mBombReloadTime = t;
 }
 
 void Gunship::SetPad( unsigned short pad )

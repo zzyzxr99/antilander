@@ -1,0 +1,24 @@
+6/19/2008
+Added to Constants.h
+  kBombReloadTime
+Added to Level.h/.cpp
+  mBombReloadTime
+  GetBombReloadTime( )
+  SetBombReloadTIme( )
+Updated Level::Clone( )
+Added to Gunship.h/.cpp
+  mBombReloadTime
+  GetBombReloadTime( )
+  SetBombReloadTime( )
+  mBombTimer
+  CanBomb( )
+Updated GameWorld::InitLevel( )
+Updated GameWorld::FireBomb( )
+Updated Bomb::Bomb(Point,Vect)
+Fixed Level::GetBombRad( )
+Bug found?
+  If game closed while explosions still extant, are explosions deleted properly?
+    Review of GameWorld::~GameWorld( ) indicates no.
+    In fact, destructor only shuts down luaVM.
+    Needs to delate missiles, bombs, explosions, landers.
+      TO-DO Friday night !!

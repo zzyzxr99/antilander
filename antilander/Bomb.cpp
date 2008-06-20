@@ -50,7 +50,7 @@ Bomb::Bomb(Point StartLoc, Vect InitDir)
 	mVelocity.x = InitDir.x;
 	mVelocity.y = InitDir.y;
     mAcceleration.x= 0;
-    mAcceleration.y= kGravity*kGravity;
+    mAcceleration.y= sAcceleration*sAcceleration;
 	mDrawLoc.x = StartLoc.x;
 	mDrawLoc.y = StartLoc.y;
 
