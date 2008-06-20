@@ -215,6 +215,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\lua.lua"
+				>
+			</File>
+			<File
 				RelativePath=".\Missile.cpp"
 				>
 			</File>

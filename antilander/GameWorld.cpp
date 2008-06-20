@@ -144,7 +144,7 @@ void GameWorld::SpawnLander()
 	sPoint.y= kLanderStartY;
     tPoint.x= pad0[2].x;
     tPoint.y= pad0[2].y;
-    PtrLander= new Lander(sPoint, tPoint, descending, Lander::sGetDescentRate( ) );
+    PtrLander= new Lander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ) );
 	mLanders.push_back(*PtrLander);
 }
 
@@ -433,12 +433,13 @@ void GameWorld::UpdateEverything( )
 	vector<Missile>::iterator misIter;
 	for ( misIter = mMissiles.begin( ); misIter != mMissiles.end( ); misIter++ )
 	{
-		if (misIter->GetStatus( ) == flight)
+		MissileStatusType tStatus= misIter->GetStatus();
+		if (tStatus == knMissileFlying)
 		{
 			if ( misIter->GetLocation( ).Distance(misIter->GetDestination( ) ) < 2 )
 			{
-				misIter->SetStatus(gone);
-                SpawnExplosion( misIter->GetLocation( ) );
+				misIter->SetStatus(knMissileExplode);
+                //SpawnExplosion( misIter->GetLocation( ) );
 			}
 			else
 			{
@@ -451,7 +452,7 @@ void GameWorld::UpdateEverything( )
 				vector<Lander>::iterator landIter;
 				for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
 				{
-					if ( landIter->GetStatus( ) == descending )
+					if ( landIter->GetStatus( ) == knLanderDescending )
 					{
 						LanderTemp= landIter->GetLoc();
 						BBox LBoxTemp= mRender.GetLanderBox();
@@ -460,10 +461,8 @@ void GameWorld::UpdateEverything( )
 
 						if (IntersectBoxes(MBoxTemp, LBoxTemp))
 						{
-							landIter->SetStatus(dead);
-							misIter->SetStatus(gone);
-							SpawnExplosion( landIter->GetLoc( ) );
-							SpawnExplosion( misIter->GetLocation( ) );
+							landIter->SetStatus(knLanderExplode);
+							misIter->SetStatus(knMissileExplode);
 						}
 					}
 
@@ -473,29 +472,35 @@ void GameWorld::UpdateEverything( )
 				misIter->GetDirection();
 				if(this->MissileSect(mGameTerrain.TerrainPts(),misIter->GetLocation(),misIter->GetDirection()))
 				{
-					misIter->SetStatus(gone);	
+					misIter->SetStatus(knMissileExplode);	
 				}
 			}
 		}
+		else if (tStatus == knMissileExplode)
+		{
+			misIter->SetStatus(knMissileDead);
+			SpawnExplosion(misIter->GetLocation());
+		}
+
 	}
 	// Remove a Missile from vector if status is gone
     for ( misIter = mMissiles.begin( ); misIter != mMissiles.end( ); misIter++ )
 	{
-		if (misIter->GetStatus() == gone)
+		if (misIter->GetStatus() == knMissileDead)
 		{
             mMissiles.erase( misIter );
             break;
 		}
 	}
 
-    //move all the Bomb
+    //move all the Bombs
 	vector<Bomb>::iterator bombIter;
 	for ( bombIter = mBombs.begin( ); bombIter != mBombs.end( ); bombIter++ )
 	{
-		if (bombIter->GetStatus( ) == knBombFlying)
+		BombStatusType bStatus= bombIter->GetStatus();
+		if (bStatus == knBombFlying)
 		{
-			// EJR Need to test bomb off screen 
-                Vect bombVel= bombIter->GetVelocity();
+			    Vect bombVel= bombIter->GetVelocity();
                 Vect bombAcc= bombIter->GetAcceleration();
 			    Point temp = MoveEntityAccel(bombIter->GetLocation(),bombVel,bombAcc,elapsedTime);
 				BBox BBoxTemp= bombIter->GetBox();
@@ -506,7 +511,7 @@ void GameWorld::UpdateEverything( )
 				vector<Lander>::iterator landIter;
 				for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
 				{
-					if ( landIter->GetStatus( ) == descending )
+					if ( landIter->GetStatus( ) == knLanderDescending )
 					{
 						LanderTemp= landIter->GetLoc();
 						BBox LBoxTemp= mRender.GetLanderBox();
@@ -515,21 +520,18 @@ void GameWorld::UpdateEverything( )
 
 						if (IntersectBoxes(BBoxTemp, LBoxTemp))
 						{
-							landIter->SetStatus(dead);
-							bombIter->SetStatus(knBombGone);
-							SpawnExplosion( landIter->GetLoc( ) );
-							SpawnExplosion( bombIter->GetLocation( ) );
+							landIter->SetStatus(knLanderExplode);
+							bombIter->SetStatus(knBombExplode);
 						}
 					}
 
 				}	
-                 // EJR need test collide with Terrain
-                // EJR Test outside of world left right or bottom - top we let it fall back in
-                IntersectStruct isOut;
+               
+				IntersectStruct isOut;
                 isOut= OutsideBoxes(BBoxTemp,mRender.GetGameScreen());
                 if ((isOut.mLeft == 1) || (isOut.mRight == 1) || (isOut.mBottom == 1))
                 {
-                    bombIter->SetStatus(knBombGone);
+                    bombIter->SetStatus(knBombDead);
                 }
                 else
                 {
@@ -545,8 +547,7 @@ void GameWorld::UpdateEverything( )
                             if (temp.y >= yInter)
                             {
                                 // intercept is below or equal to line - boom!
-                                bombIter->SetStatus(knBombGone);
-                                SpawnExplosion( temp );
+                                bombIter->SetStatus(knBombExplode);
                                 hitTerrain= true;
                                 break;
                             }
@@ -563,11 +564,16 @@ void GameWorld::UpdateEverything( )
                     }
                 }
 		}
+		else if (bStatus == knBombExplode)
+		{
+			bombIter->SetStatus(knBombDead);
+			SpawnExplosion(bombIter->GetLocation());
+		}
 	}
 	// Remove a Bomb from vector if status is gone
     for ( bombIter = mBombs.begin( ); bombIter != mBombs.end( ); bombIter++ )
 	{
-		if (bombIter->GetStatus() == knBombGone)
+		if (bombIter->GetStatus() == knBombDead)
 		{
             mBombs.erase( bombIter );
             break;
@@ -579,12 +585,13 @@ void GameWorld::UpdateEverything( )
     vector<Lander>::iterator landIter;
     for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
     {
-		if ( landIter->GetStatus( ) == descending )
+		LanderStatusType lStatus= landIter->GetStatus();
+		if ( lStatus == knLanderDescending )
 		{
 			if(landIter->GetLoc().Distance(landIter->GetDest()) < 2 )
 			{
 				landIter->SetLocation(landIter->GetDest().x,landIter->GetDest().y);
-				landIter->SetStatus( landed );
+				landIter->SetStatus( knLanderLanded );
 			}
 			else
 			{
@@ -592,12 +599,17 @@ void GameWorld::UpdateEverything( )
 				landIter->SetLocation(LanderTemp.x,LanderTemp.y);
 			}
 		}
+		else if ( lStatus == knLanderExplode )
+		{
+			landIter->SetStatus(knLanderDead);
+			SpawnExplosion(landIter->GetLoc());
+		}
 
     }
 	// Remove a Lander from vector if dead
     for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
 	{
-		if (landIter->GetStatus() == dead)
+		if (landIter->GetStatus() == knLanderDead)
 		{
             mLanders.erase( landIter );
             break;
@@ -609,9 +621,58 @@ void GameWorld::UpdateEverything( )
     {
         if (iterExpl->GetStatus() == knExplosionOccuring)
         {
-            ExplosionStatusType tStat;
-            tStat= iterExpl->Update(elapsedTime);
-            iterExpl->SetStatus(tStat);
+            ExplosionStatusType eStatus;
+            eStatus= iterExpl->Update(elapsedTime);
+
+			// Fratricide - did I spell it right?
+			// Check if explosion radius hits missile, bomb, lander
+			// Need current radius, current location of Explosion
+			float curRadius= iterExpl->GetCurrentRadius();
+			Point locExpl= iterExpl->GetLocation();
+			Point locCheck;
+			float calcDist;
+			// Landers check
+			vector<Lander>::iterator iterLander;
+			for (iterLander= mLanders.begin(); iterLander != mLanders.end(); iterLander++)
+			{
+				if (iterLander->GetStatus() == knLanderDescending)
+				{
+					locCheck= iterLander->GetLoc();
+					calcDist= locExpl.Distance(locCheck);
+					if (calcDist <= curRadius)
+					{
+						iterLander->SetStatus(knLanderExplode);
+					}
+				}
+			}
+			// Missiles check
+			vector<Missile>::iterator iterMissile;
+			for (iterMissile= mMissiles.begin(); iterMissile != mMissiles.end(); iterMissile++)
+			{
+				if (iterMissile->GetStatus() == knMissileFlying)
+				{
+					locCheck= iterMissile->GetLocation();
+					calcDist= locExpl.Distance(locCheck);
+					if (calcDist <= curRadius)
+					{
+						iterMissile->SetStatus(knMissileExplode);
+					}
+				}
+			}
+			vector<Bomb>::iterator iterBomb;
+			for (iterBomb= mBombs.begin(); iterBomb != mBombs.end(); iterBomb++)
+			{
+				if (iterBomb->GetStatus() == knBombFlying)
+				{
+					locCheck= iterBomb->GetLocation();
+					calcDist= locExpl.Distance(locCheck);
+					if (calcDist <= curRadius)
+					{
+						iterBomb->SetStatus(knBombExplode);
+					}
+				}
+			}
+            iterExpl->SetStatus(eStatus);
         }
     }
     // Remove an Explosion from the vector - do not have to remove all at once

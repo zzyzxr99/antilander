@@ -73,16 +73,16 @@ enum GunshipStatusType { ready = 1,
 // missile
 const float kMissileStartSpeed = 100.0F;
 const float kMissileAcceleration = 10.0F;
-enum MissileStatusType { flight = 1,
-                         boom,
-                         gone };
+enum MissileStatusType { knMissileFlying = 1,
+                         knMissileExplode,
+                         knMissileDead };
 // bomb
 const float kGravity = 9.8F;
 const float kBombRadius = 5.0F;
 const float kBombMaxSpeed = 100.0F;
 enum BombStatusType { knBombFlying = 1,
-                         knBombBoom,
-                         knBombGone };
+                         knBombExplode,
+                         knBombDead };
 const int kWarheadColorR = 255;
 const int kWarheadColorG = 0;
 const int kWarheadColorB = 0;
@@ -100,10 +100,10 @@ const int kFinColorT = 255;
 const float kLanderStartY = -14.0F;
 const float kBaseDescendRate = 30.0F;
 const int kBaseLanderSpeed = 0;
-enum LanderStatusType { descending = 1,
-                        dead,
-                        landed,
-                        exploding };
+enum LanderStatusType { knLanderDescending = 1,
+                        knLanderDead,
+                        knLanderLanded,
+                        knLanderExplode };
 const int kLanderLineR = kForeColorR;
 const int kLanderLineG = kForeColorG;
 const int kLanderLineB = kForeColorB;

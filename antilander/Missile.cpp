@@ -56,7 +56,7 @@ Missile::Missile(Point StartLoc, Point Dest, Vect InitDir)
 	mDrawLoc.y = StartLoc.y;
    	mDrawBankIDX = 0; //does nothing
 	mSpeed = sSpeed;
-	mStatus = flight;
+	mStatus = knMissileFlying;
     Point pts[5];
     pts[0].x =  -4.0F;
     pts[1].x =  -2.0F;
