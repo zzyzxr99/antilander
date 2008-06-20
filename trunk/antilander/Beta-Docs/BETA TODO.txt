@@ -54,7 +54,17 @@ Fratricide
 Lose/Gameover screen 5*
     Get back to UI
 
-Bugs
+Endgame/Wingame conditions 9* - EJR 20080620
+
+
+Bugs - Initials and date for bugs - can be removed when fix tested
 ----
 Windowed mode grab - need a pause on SDL/Timer
 Edit mode crash on less than 3 pad points. Partly to do with init.
+EJR 20080620 - Missile Intersection wiht terrain hits early - breaks immersion
+EJR 20080620 - bomb reload is delayed on start of game
+
+Undocmented Features - Intiails and date for features found
+-------------------
+EJR 20080620 Shoot a bomb at 90 degrees to explode on hitting terrain at gunship, than
+  start firing missiles. ;)

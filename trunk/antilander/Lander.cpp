@@ -16,7 +16,7 @@ Lander::Lander()
 	mDrawLoc.y= 0;
 	mDestination.x= 0;
 	mDestination.y= 0;
-	mStatus= descending;
+	mStatus= knLanderDescending;
 	mDescentRate= sDescentRate;
 	mDir.x= 0;
 	mDir.y= 0;
