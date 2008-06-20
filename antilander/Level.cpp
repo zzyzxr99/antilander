@@ -12,23 +12,24 @@ using namespace std;
 
 Level::Level( )
 {
-    mNumLndrLvl    = kDefaultLandersPerLevel;
-    mNumLndrScr    = kDefaultLandersPerScreen;
-    mLndrPersist   = false;
-    mLndrDescRate  = kBaseDescendRate;
-    mNumMissile    = kStartAmmo;
-    mMissileSpd    = kMissileStartSpeed;
-    mGunMoves      = false;
-    mGunMoveRnd    = false;
-    mEndGamePadOcc = 0;
-    mGunReload     = kReloadTime;
-    mExpRad        = kExplosionMaxRadiusDefault;
-    mExpRate       = kExplosionExpandRateDefault;
-    mFrat          = false;
-    mNumBomb       = kDefaultStartBomb;
-    mBombMxSpd     = kBombMaxSpeed;
-    mBombAcc       = kGravity;
-    mBombRad       = kBombRadius;
+    mNumLndrLvl     = kDefaultLandersPerLevel;
+    mNumLndrScr     = kDefaultLandersPerScreen;
+    mLndrPersist    = false;
+    mLndrDescRate   = kBaseDescendRate;
+    mNumMissile     = kStartAmmo;
+    mMissileSpd     = kMissileStartSpeed;
+    mGunMoves       = false;
+    mGunMoveRnd     = false;
+    mEndGamePadOcc  = 0;
+    mGunReload      = kReloadTime;
+    mExpRad         = kExplosionMaxRadiusDefault;
+    mExpRate        = kExplosionExpandRateDefault;
+    mFrat           = false;
+    mNumBomb        = kDefaultStartBomb;
+    mBombMxSpd      = kBombMaxSpeed;
+    mBombAcc        = kGravity;
+    mBombRad        = kBombRadius;
+    mBombReloadTime = kBombReloadTime;
     Point pt;
     pt.x = 10.0F;
     pt.y = 90.0F;
@@ -178,6 +179,11 @@ float Level::GetBombRad( )
     return mBombAcc;
 }
 
+float Level::GetBombReloadTime( )
+{
+    return mBombReloadTime;
+}
+
 void Level::SetNumLndrLvl( unsigned short landers )
 {
     mNumLndrLvl = landers;
@@ -275,6 +281,11 @@ void Level::SetBombAcc( float acc )
 void Level::SetBombRad( float rad )
 {
     mBombRad = rad;
+}
+
+void Level::SetBombReloadTime( float t )
+{
+    mBombReloadTime = t;
 }
 void Level::ClearLevel( )
 {
@@ -522,25 +533,27 @@ void Level::MakePadPtsFromTerrainPts()
 
 void Level::Clone( Level* srcLvl )
 {
-    mNumLndrLvl    = srcLvl->GetNumLndrLvl( );
-    mNumLndrScr    = srcLvl->GetNumLndrScr( );
-    mLndrPersist   = srcLvl->GetLndrPersist( );
-    mLndrDescRate  = srcLvl->GetLndrDescRate( );
-    mNumMissile    = srcLvl->GetNumMissile( );
-    mMissileSpd    = srcLvl->GetMissileSpd( );
-    mGunStartPad   = srcLvl->GetGunStartPad( );
-    mGunMoves      = srcLvl->GetGunMoves( );
-    mGunMoveRnd    = srcLvl->GetGunMoveRnd( );
-    mEndGamePadOcc = srcLvl->GetEndGamePadOcc( );
-    mGunReload     = srcLvl->GetGunReload( );
-    mExpRad        = srcLvl->GetExpRad( );
-    mExpRate       = srcLvl->GetExplRate( );
-    mFrat          = srcLvl->GetFrat( );
-    mNumBomb       = srcLvl->GetNumBomb( );
-    mBombMxSpd     = srcLvl->GetBombMxSpd( );
-    mBombAcc       = srcLvl->GetBombAcc( );
-    mBombRad       = srcLvl->GetBombRad( );
+    mNumLndrLvl     = srcLvl->GetNumLndrLvl( );
+    mNumLndrScr     = srcLvl->GetNumLndrScr( );
+    mLndrPersist    = srcLvl->GetLndrPersist( );
+    mLndrDescRate   = srcLvl->GetLndrDescRate( );
+    mNumMissile     = srcLvl->GetNumMissile( );
+    mMissileSpd     = srcLvl->GetMissileSpd( );
+    mGunStartPad    = srcLvl->GetGunStartPad( );
+    mGunMoves       = srcLvl->GetGunMoves( );
+    mGunMoveRnd     = srcLvl->GetGunMoveRnd( );
+    mEndGamePadOcc  = srcLvl->GetEndGamePadOcc( );
+    mGunReload      = srcLvl->GetGunReload( );
+    mExpRad         = srcLvl->GetExpRad( );
+    mExpRate        = srcLvl->GetExplRate( );
+    mFrat           = srcLvl->GetFrat( );
+    mNumBomb        = srcLvl->GetNumBomb( );
+    mBombMxSpd      = srcLvl->GetBombMxSpd( );
+    mBombAcc        = srcLvl->GetBombAcc( );
+    mBombRad        = srcLvl->GetBombRad( );
+    mBombReloadTime = srcLvl->GetBombReloadTime( );
 
+    mPadPt.clear( );
     vector<Point>::iterator Iter;
     for ( Iter = srcLvl->GetPadpt( )->begin( );
           Iter != srcLvl->GetPadpt( )->end( ); Iter++ )
@@ -549,6 +562,7 @@ void Level::Clone( Level* srcLvl )
     }
     mNumPad = mPadPt.size( );
 
+    mTerPt.clear( );
     for ( Iter = srcLvl->GetTerPt( )->begin( );
           Iter != srcLvl->GetTerPt( )->end( ); Iter++ )
     {
