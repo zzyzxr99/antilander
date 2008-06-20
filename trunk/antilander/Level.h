@@ -33,6 +33,7 @@ private:
     float mBombMxSpd;			   //!	
     float mBombAcc;				   //-	
     float mBombRad;				   //!
+    float mBombReloadTime;
 	
 
 public:
@@ -62,6 +63,7 @@ public:
     float GetBombMxSpd( );
     float GetBombAcc( );
     float GetBombRad( );
+    float GetBombReloadTime( );
 
     void SetNumLndrLvl( unsigned short landers );
     void SetNumLndrScr( unsigned short landers );
@@ -83,6 +85,7 @@ public:
     void SetBombMxSpd( float spd );
     void SetBombAcc( float acc );
     void SetBombRad( float rad );
+    void SetBombReloadTime( float t );
 	void ClearLevel();
 
     void LoadLevel( string LevString );

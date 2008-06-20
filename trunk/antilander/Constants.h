@@ -61,6 +61,7 @@ const float kBaseGunSpeed = 0.0F;
 const float kGunshipStartX = (float)(kWinWidth) / 2.0F;
 const float kGunshipStartY = (float)(kWinHeight - kFloorHeight);
 const float kReloadTime = 0.5F;
+const float kBombReloadTime = 0.5F;
 const unsigned short kDefaultGunStartPad = 0;
 const int kGunshipLineR = kForeColorR;
 const int kGunshipLineG = kForeColorG;
