@@ -1,0 +1,21 @@
+Constants.h
+  Changed LanderStatusType, MissileStatusType, BombStatusType
+  All status enumerated types start with kn ( 'constant' 'enumerated' )
+  All status names have entity they belong to. knLanderDescending
+  All status names have action or activity that is occuring with status
+  All types have a kn****Dead and kn****Explode
+  kn****Dead is to removed from GameWorld
+  kn****Explode is explode at location on next update.
+
+GameWorld::UpdateEverything()
+  added code to check for explosion radius enveloping landers, missiles, bombs
+  ready for more testing
+
+Lander.cpp and Missile.cpp - changed status enumerated initial values
+
+Undocumented feature appeared - shooting inside explosion at gunship - lots of explosions
+
+Bombs hitting bombs or bombs hitting missiles ? need implement for test
+
+
+
