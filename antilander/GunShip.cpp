@@ -87,12 +87,12 @@ void Gunship::SetBombReloadTime( float t )
     mBombReloadTime = t;
 }
 
-void Gunship::SetPad( unsigned short pad )
+void Gunship::SetPad( USINT pad )
 {
     mPad = pad;
 }
 
-unsigned short Gunship::GetPad( )
+USINT Gunship::GetPad( )
 {
     return mPad;
 }

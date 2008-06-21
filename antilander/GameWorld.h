@@ -29,25 +29,23 @@ private:
 	vector<Missile> mMissiles;
     vector<Bomb> mBombs;
     vector<Explosion> mExplosions;
-	Gunship mPlayerShip;
+	static Gunship mPlayerShip;
 	Terrain mGameTerrain;
 	void InitEverything();
 	void InitMissiles();
 	void InitLanders();
     GameStatusType mGameMode;
-	
-	
 	EditStatusType mEditMode;
-	Level mEditLevel;
-	Level mCurrentLevel;
-    unsigned short mNumLndrLvl;
-    unsigned short mNumLndrScr;
-    bool mLndrPersist;
-    static unsigned short mNumMissile;
-    static unsigned short mNumBomb;
+	static Level mEditLevel;
+	static Level mCurrentLevel;
+    static USINT mNumLndrLvl;
+    static USINT mNumLndrScr;
+    static bool mLndrPersist;
+    static USINT mNumMissile;
+    static USINT mNumBomb;
     bool mGunMoves;
     bool mGunMoveRnd;
-    unsigned short mEndGamePadOcc;
+    USINT mEndGamePadOcc;
     bool mFrat;
 	int lvlCtr;
 	//console and lua variables
@@ -83,7 +81,6 @@ public:
 	void SetGameStatus(GameStatusType status);
 	void SetEditStatus(EditStatusType status);
 
-
 	GameStatusType GetGameStatus();
 	EditStatusType GetEditStatus();
 	void AddEditLevelPoint(Point p);
@@ -93,7 +90,7 @@ public:
     void InitLevel( );
     void InitEditLvl( );
     vector<Lander>* GetLanders( );
-    unsigned short GetNumLndrScr( );
+    USINT GetNumLndrScr( );
 
 	string GetLevName (int num);
 	Level* GetLevel();
@@ -101,11 +98,6 @@ public:
 
     void TestSaveLoadLevel();
 	int PointCheck();
-
-	//commands to change variables
-	static void SetMissiles(int num);
-	static void SetBombs(int num);
-
 
 	//console commands
 	bool IsConsole();

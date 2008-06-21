@@ -9,6 +9,15 @@
 #include <string>
 using namespace std;
 
+//static variables
+float Level::mGunReload;
+float Level::mLndrDescRate;
+float Level::mMissileSpd;
+USINT Level::mGunStartPad;
+float Level::mBombReloadTime;
+float Level::mBombMxSpd;
+float Level::mBombAcc;
+float Level::mBombRad;
 
 Level::Level( )
 {
@@ -69,12 +78,12 @@ Level::Level( )
 Level::~Level( )
 { }
 
-unsigned short Level::GetNumLndrLvl( )
+USINT Level::GetNumLndrLvl( )
 {
     return mNumLndrLvl;
 }
 
-unsigned short Level::GetNumLndrScr( )
+USINT Level::GetNumLndrScr( )
 {
     return mNumLndrScr;
 }
@@ -89,7 +98,7 @@ float Level::GetLndrDescRate( )
     return mLndrDescRate;
 }
 
-unsigned short Level::GetNumPad( )
+USINT Level::GetNumPad( )
 {
     return mNumPad;
 }
@@ -99,7 +108,7 @@ vector<Point>* Level::GetPadpt( )
     return &mPadPt;
 }
 
-unsigned short Level::GetNumTerPt( )
+USINT Level::GetNumTerPt( )
 {
     return mNumTerPt;
 }
@@ -109,7 +118,7 @@ vector<Point>* Level::GetTerPt()
     return &mTerPt;
 }
 
-unsigned short Level::GetNumMissile( )
+USINT Level::GetNumMissile( )
 {
     return mNumMissile;
 }
@@ -119,7 +128,7 @@ float Level::GetMissileSpd( )
     return mMissileSpd;
 }
 
-unsigned short Level::GetGunStartPad( )
+USINT Level::GetGunStartPad( )
 {
     return mGunStartPad;
 }
@@ -134,7 +143,7 @@ bool Level::GetGunMoveRnd( )
     return mGunMoveRnd;
 }
 
-unsigned short Level::GetEndGamePadOcc( )
+USINT Level::GetEndGamePadOcc( )
 {
     return mEndGamePadOcc;
 }
@@ -159,7 +168,7 @@ bool Level::GetFrat( )
     return mFrat;
 }
 
-unsigned short Level::GetNumBomb( )
+USINT Level::GetNumBomb( )
 {
     return mNumBomb;
 }
@@ -184,11 +193,11 @@ float Level::GetBombReloadTime( )
     return mBombReloadTime;
 }
 
-void Level::SetNumLndrLvl( unsigned short landers )
+void Level::SetNumLndrLvl( USINT landers )
 {
     mNumLndrLvl = landers;
 }
-void Level::SetNumLndrScr( unsigned short landers )
+void Level::SetNumLndrScr( USINT landers )
 {
     mNumLndrScr = landers;
 }
@@ -203,17 +212,17 @@ void Level::SetLndrDescRate( float rate )
     mLndrDescRate = rate;
 }
 
-void Level::SetNumPad( unsigned short pads )
+void Level::SetNumPad( USINT pads )
 {
     mNumPad = pads;
 }
 
-void Level::SetNumTerPt( unsigned short points )
+void Level::SetNumTerPt( USINT points )
 {
     mNumTerPt = points;
 }
 
-void Level::SetNumMissile( unsigned short missiles )
+void Level::SetNumMissile( USINT missiles )
 {
     mNumMissile = missiles;
 }
@@ -223,7 +232,7 @@ void Level::SetMissileSpd( float speed )
     mMissileSpd = speed;
 }
 
-void Level::SetGunStartPad( unsigned short pad )
+void Level::SetGunStartPad( USINT pad )
 {
     mGunStartPad = pad;
 }
@@ -238,7 +247,7 @@ void Level::SetGunMoveRnd( bool moveRnd )
     mGunMoveRnd = moveRnd;
 }
 
-void Level::SetEndGamePadOcc( unsigned short pads )
+void Level::SetEndGamePadOcc( USINT pads )
 {
     mEndGamePadOcc = pads;
 }
@@ -263,7 +272,7 @@ void Level::SetFrat( bool frat )
     mFrat = frat;
 }
 
-void Level::SetNumBomb( unsigned short num )
+void Level::SetNumBomb( USINT num )
 {
     mNumBomb = num;
 }
@@ -363,27 +372,27 @@ void Level::LoadLevel( string LevString )
 		}		
 		else if(!str[j].compare(index[2]))
 		{
-			SetGunStartPad((unsigned short)(atoi(str[j+1].c_str())));
+			SetGunStartPad((USINT)(atoi(str[j+1].c_str())));
 		}
 		else if(!str[j].compare(index[3]))
 		{
-			SetEndGamePadOcc((unsigned short)(atoi(str[j+1].c_str())));
+			SetEndGamePadOcc((USINT)(atoi(str[j+1].c_str())));
 		}
 		else if(!str[j].compare(index[4]))
 		{
-			SetNumLndrLvl((unsigned short)(atoi(str[j+1].c_str())));
+			SetNumLndrLvl((USINT)(atoi(str[j+1].c_str())));
 		}
 		else if(!str[j].compare(index[5]))
 		{
-			SetNumLndrScr((unsigned short)(atoi(str[j+1].c_str())));
+			SetNumLndrScr((USINT)(atoi(str[j+1].c_str())));
 		}
 		else if(!str[j].compare(index[6]))
 		{
-			SetNumBomb((unsigned short)(atoi(str[j+1].c_str())));
+			SetNumBomb((USINT)(atoi(str[j+1].c_str())));
 		}
 		else if(!str[j].compare(index[7]))
 		{
-			SetNumMissile((unsigned short)(atoi(str[j+1].c_str())));
+			SetNumMissile((USINT)(atoi(str[j+1].c_str())));
 		}
 		else if(!str[j].compare(index[8]))
 		{
