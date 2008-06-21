@@ -52,7 +52,7 @@ private:
 	char ch;
 	static lua_State* luaVM;
 	static int command;
-	static int value;
+	static float value;
 	
 
 
