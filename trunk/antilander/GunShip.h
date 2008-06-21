@@ -17,7 +17,7 @@ private:
 	int mMissileCount;  //uses GetMCount to get missiles remaining
     float mReloadTime;
     float mBombReloadTime;
-    unsigned short mPad;
+    USINT mPad;
     ALTimer mGunTimer;
     ALTimer mBombTimer;
     bool m1stMissile;
@@ -40,8 +40,8 @@ public:
     void SetBombReloadTime( float t );
 	bool CanShoot();
     bool CanBomb( );
-    void SetPad( unsigned short pad );
-    unsigned short GetPad( );
+    void SetPad( USINT pad );
+    USINT GetPad( );
 };
 
 #endif

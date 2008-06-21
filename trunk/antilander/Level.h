@@ -2,6 +2,7 @@
 #ifndef _LEVEL_H
 #define _LEVEL_H
 #include "Structs.h"
+#include "Constants.h"
 #include <vector>
 #include <string>
 
@@ -11,81 +12,80 @@ class Level
 {
 private:
 
-    unsigned short mNumLndrLvl;// !
-    unsigned short mNumLndrScr;// !
-    bool mLndrPersist;         // -
-    float mLndrDescRate;       // !
-    unsigned short mNumPad;    // !
+    USINT mNumLndrLvl;
+    USINT mNumLndrScr;
+    bool mLndrPersist;         
+    static float mLndrDescRate;       
+    USINT mNumPad;    
     vector<Point> mPadPt;      // !
-    unsigned short mNumTerPt;  // !
+    USINT mNumTerPt;  // !
     vector<Point> mTerPt;      // !
-    unsigned short mNumMissile;// !
-    float mMissileSpd;         // !    
-    unsigned short mGunStartPad; //!
+    USINT mNumMissile;
+    static float mMissileSpd;             
+    static USINT mGunStartPad; //!
     bool mGunMoves;				 //-
     bool mGunMoveRnd;			 //- 
-    unsigned short mEndGamePadOcc; //!
-    float mGunReload;			   //!
+    USINT mEndGamePadOcc; //!
+    static float mGunReload;			   
     float mExpRad;				   //!-
     float mExpRate;                //!-
     bool mFrat;					   //!	
-    unsigned short mNumBomb;       //!
-    float mBombMxSpd;			   //!	
-    float mBombAcc;				   //-	
-    float mBombRad;				   //!
-    float mBombReloadTime;
+    USINT mNumBomb;       
+    static float mBombMxSpd;			  	
+    static float mBombAcc;				   
+    static float mBombRad;				   
+    static float mBombReloadTime;
 	
-
 public:
 
     Level( );
     ~Level( );
 
-    unsigned short GetNumLndrLvl( );
-    unsigned short GetNumLndrScr( );
+    USINT GetNumLndrLvl( );
+    USINT GetNumLndrScr( );
     bool GetLndrPersist( );
     float GetLndrDescRate( );
-    unsigned short GetNumPad( );
+    USINT GetNumPad( );
     vector<Point>* GetPadpt( );				//need this too
-    unsigned short GetNumTerPt( );
+    USINT GetNumTerPt( );
     vector<Point>* GetTerPt( );				//need this
-    unsigned short GetNumMissile( );
+    USINT GetNumMissile( );
     float GetMissileSpd( );
-    unsigned short GetGunStartPad( );
+    USINT GetGunStartPad( );
     bool GetGunMoves( );
     bool GetGunMoveRnd( );
-    unsigned short GetEndGamePadOcc( );
+    USINT GetEndGamePadOcc( );
     float GetGunReload( );
     float GetExpRad( );
     float GetExplRate( );
     bool GetFrat( );
-    unsigned short GetNumBomb( );
+    USINT GetNumBomb( );
     float GetBombMxSpd( );
     float GetBombAcc( );
     float GetBombRad( );
     float GetBombReloadTime( );
 
-    void SetNumLndrLvl( unsigned short landers );
-    void SetNumLndrScr( unsigned short landers );
+    void SetNumLndrLvl( USINT landers );
+    void SetNumLndrScr( USINT landers );
     void SetLndrPersist( bool persist );
-    void SetLndrDescRate( float rate );
-    void SetNumPad( unsigned short pads );
-    void SetNumTerPt( unsigned short points );
-    void SetNumMissile( unsigned short missiles );
-    void SetMissileSpd( float speed );
-    void SetGunStartPad( unsigned short pad );
+    static void SetLndrDescRate( float rate );
+    void SetNumPad( USINT pads );
+    void SetNumTerPt( USINT points );
+    void SetNumMissile( USINT missiles );
+    static void SetMissileSpd( float speed );
+    static void SetGunStartPad( USINT pad );
     void SetGunMoves( bool moves );
     void SetGunMoveRnd( bool moveRnd );
-    void SetEndGamePadOcc( unsigned short pads );
-    void SetGunReload( float reloadTime );
+    void SetEndGamePadOcc( USINT pads );
+    static void SetGunReload( float reloadTime );
     void SetExpRad( float radius );
     void SetExpRate( float rate );
     void SetFrat( bool frat );
-    void SetNumBomb( unsigned short num );
-    void SetBombMxSpd( float spd );
-    void SetBombAcc( float acc );
-    void SetBombRad( float rad );
-    void SetBombReloadTime( float t );
+    void SetNumBomb( USINT num );
+    static void SetBombMxSpd( float spd );
+    static void SetBombAcc( float acc );
+    static void SetBombRad( float rad );
+    static void SetBombReloadTime( float t );
 	void ClearLevel();
 
     void LoadLevel( string LevString );

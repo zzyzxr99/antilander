@@ -7,14 +7,17 @@
 #include <cmath>
 using namespace std;
 
+//TYPEDEF
+typedef unsigned short USINT;
+
 // math
 const float kPi = acos( -1.0F );
 const float kSlopeRunTolerance = 0.00001F; // Slope tolerance for vertical lines - nearly zero run
 // GameWorld
 const unsigned long kGameStep = 10; // kGameStep is in milliseconds
 const float kGameDivisor = 1000.0F;
-const unsigned short kDefaultLandersPerLevel = 10;
-const unsigned short kDefaultLandersPerScreen = 1;
+const USINT kDefaultLandersPerLevel = 10;
+const USINT kDefaultLandersPerScreen = 1;
 
 // window
 // EJR this makes a const char array of char's the correct size - and than we can use it as a const char * in GameLoop
@@ -62,7 +65,7 @@ const float kGunshipStartX = (float)(kWinWidth) / 2.0F;
 const float kGunshipStartY = (float)(kWinHeight - kFloorHeight);
 const float kReloadTime = 0.5F;
 const float kBombReloadTime = 3.0F;
-const unsigned short kDefaultGunStartPad = 0;
+const USINT kDefaultGunStartPad = 0;
 const int kGunshipLineR = kForeColorR;
 const int kGunshipLineG = kForeColorG;
 const int kGunshipLineB = kForeColorB;
@@ -132,6 +135,7 @@ enum EditStatusType { knBuildMode = 1,
 const int knMKill = 50;
 const int knBKill = 75;
 const int knFKill = 100;
+
 #endif // _CONSTANTS_H
 
 // comment

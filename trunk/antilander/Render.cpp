@@ -311,7 +311,7 @@ void Render::DrawLevel(Level* l,bool DrawGreen)
 	vector<Point> *vPts;
 	vector<Point>::iterator iterPoint;
 	vPts= l->GetTerPt();
-	unsigned short numPts= l->GetNumTerPt();
+	USINT numPts= l->GetNumTerPt();
 	if (numPts > 0)
 	{
 		iterPoint= vPts->begin();
