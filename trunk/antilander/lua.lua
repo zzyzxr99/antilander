@@ -10,7 +10,7 @@ function conInput(cmd)
 			Action(1,set_value)
 			elseif(set_com == "bombs") then
 			Action(2,set_value)
-			elseif(set_com == "reload") then
+			elseif(set_com == "missilereload") then
 			Action(3,set_value)
 			elseif(set_com == "landlevel") then
 			Action(4,set_value)
