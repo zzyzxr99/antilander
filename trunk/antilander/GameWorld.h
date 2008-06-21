@@ -87,6 +87,7 @@ public:
 	GameStatusType GetGameStatus();
 	EditStatusType GetEditStatus();
 	void AddEditLevelPoint(Point p);
+	void AddEditPadPoint(Point p);
 	void EndEditLvlPts(Point p);
     void SpawnLander();
     void InitLevel( );

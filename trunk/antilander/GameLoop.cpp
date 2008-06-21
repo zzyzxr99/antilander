@@ -21,7 +21,7 @@ int main(int argv, char *args[])
 	tWorld->SetGameStatus(knPlayMode);
 	tWorld->SetEditStatus(knBuildMode);
 
-
+    tWorld->GetLevel()->ClearLevel();
 
 	if (tWorld->GetGameStatus() == knPlayMode)
 	{
@@ -71,6 +71,11 @@ int main(int argv, char *args[])
 				if (tWorld->GetRender()->isLClicked())
 				{
 					tWorld->AddEditLevelPoint(tWorld->GetRender()->getMouse());
+				}
+
+				if (tWorld->GetRender()->isRClicked())
+				{
+					tWorld->AddEditPadPoint(tWorld->GetRender()->getMouse());
 				}
 
 				if (tWorld->GetRender()->EndDraw())

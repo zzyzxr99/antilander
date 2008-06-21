@@ -866,6 +866,28 @@ void GameWorld::AddEditLevelPoint(Point p)
 		p.x= 0;
 	}
 	mEditLevel.AddPoint(p);
+	
+}
+
+
+void GameWorld::AddEditPadPoint(Point p)
+{
+	//Identify the last point in the vector
+	vector<Point> *ptrTer;
+	ptrTer=	mEditLevel.GetTerPt();
+	if (ptrTer->size() > 0)
+	{
+		vector<Point>::reference end= ptrTer->back();
+		//retriev the Y axis
+		p.y = ptrTer->back().y;
+		//add 22 to the x axis
+		//p.x = ptrTer->back().x+22;
+
+
+		//insert that point when right mouse is clicked
+		mEditLevel.AddPoint(p);
+	}
+	
 }
 
 void GameWorld::EndEditLvlPts(Point p)

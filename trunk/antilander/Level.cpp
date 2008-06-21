@@ -514,6 +514,13 @@ void Level::AddPoint(Point p)
 	mTerPt.push_back (p);
 	mNumTerPt= mTerPt.size();
 }
+
+void Level::AddPad(Point p)
+{
+	mTerPt.push_back (p);
+	mNumTerPt= mTerPt.size();
+}
+
 void Level::MakePadPtsFromTerrainPts()
 {
 	mPadPt.clear();
@@ -530,6 +537,7 @@ void Level::MakePadPtsFromTerrainPts()
 		}
 		
 	}
+	mNumPad= mPadPt.size();
 
 }
 

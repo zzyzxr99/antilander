@@ -94,6 +94,7 @@ public:
     void EJRTestLoadLevel(string filename);
 
 	void AddPoint(Point p);
+	void AddPad(Point p);
 	void MakePadPtsFromTerrainPts();
 
     void Clone( Level* srcLvl );
