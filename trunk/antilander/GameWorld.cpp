@@ -13,7 +13,7 @@ unsigned short GameWorld::mNumMissile;
 unsigned short GameWorld::mNumBomb;
 
 int GameWorld::command;
-int GameWorld::value;
+float GameWorld::value;
 
 GameWorld::GameWorld()
 {
@@ -1020,7 +1020,7 @@ int GameWorld::l_Action(lua_State* LVM)
 	}
 	else
 	{
-		command = (float)lua_tonumber(LVM, -2);
+		command = (int)lua_tonumber(LVM, -2);
 		value = (float)lua_tonumber(LVM, -1);
 	//	lua_pushnumber(LVM, 0);
 	}
@@ -1030,7 +1030,7 @@ int GameWorld::l_Action(lua_State* LVM)
 		SetMissiles((int)value);
 		break;
 	case 2 :
-		SetBombs((int)value);
+		SetBombs((float)value);
 		break;
 	}
 	return 0;
