@@ -29,7 +29,7 @@ private:
 	vector<Missile> mMissiles;
     vector<Bomb> mBombs;
     vector<Explosion> mExplosions;
-	static Gunship mPlayerShip;
+	Gunship mPlayerShip;
 	Terrain mGameTerrain;
 	void InitEverything();
 	void InitMissiles();
@@ -38,11 +38,11 @@ private:
 	EditStatusType mEditMode;
 	static Level mEditLevel;
 	static Level mCurrentLevel;
-    static USINT mNumLndrLvl;
-    static USINT mNumLndrScr;
-    static bool mLndrPersist;
-    static USINT mNumMissile;
-    static USINT mNumBomb;
+    USINT mNumLndrLvl;
+    USINT mNumLndrScr;
+    bool mLndrPersist;
+    USINT mNumMissile;
+    USINT mNumBomb;
     bool mGunMoves;
     bool mGunMoveRnd;
     USINT mEndGamePadOcc;
