@@ -197,7 +197,7 @@ void GameWorld::SpawnExplosion( Point sLoc )
 
 void GameWorld::InitEverything()
 {
-	mTempLevel->LoadLevel("LEVEL1.TXT");
+	mTempLevel->LoadLevel("LEVEL1.txt");
 	mCurrentLevel.Clone(mTempLevel);
     InitLevel( );
 	//Init all Entities
