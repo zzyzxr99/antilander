@@ -1,5 +1,6 @@
-function conInput(cmd)		
-		if (string.find(cmd, "set")~= nil) then
+function conInput(cmd)
+	local set_com,set_value -- MAKE one time variables local!
+  		if (string.find(cmd, "set")~= nil) then
 			set_com = string.sub(cmd,5,-1)
 			set_value = string.sub(set_com,(string.find(set_com," "))+1,-1)
 			set_com = string.sub(set_com,1,string.len(set_com) - string.len(set_value) - 1)
@@ -9,12 +10,29 @@ function conInput(cmd)
 			Action(1,set_value)
 			elseif(set_com == "bombs") then
 			Action(2,set_value)
+			elseif(set_com == "numlanders") then
+			Action(3,set_value)
+			elseif(set_com == "scrlanders") then
+			Action(4,set_value)
 			-- elseif(set_com == "reload") then
 			-- action(3,set_value)			
 			-- elseif(set_com == "missile speed") then
 			-- action(4,set_value)
 			else
-			return "incorrect use of 'set'"
+				return "incorrect use of 'set'"
+			end
+			
+-- EJR added 'spawn' command that takes 1 parameter 'bomb' or 'missile'	
+		
+		elseif (string.find(cmd,"spawn")~= nil ) then
+		    set_com = string.sub(cmd,7,-1)
+
+			if (set_com == "bomb") then
+				Action(100,0)
+			elseif (set_com == "missile") then
+			    Action(101,0)
+			elseif (set_com == "lander") then
+			    Action(102,0)
 			end
 		else
 			return "unidentified command"	

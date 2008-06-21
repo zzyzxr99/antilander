@@ -9,10 +9,12 @@
 
 using namespace std;
 
+GameWorld* tWorld;
+
 int main(int argv, char *args[])
 {
 	srand(clock());
-	GameWorld* tWorld; 
+ 
 	tWorld= new GameWorld();
 
 	SDL_WM_SetCaption( kWinTitle, 0 );
