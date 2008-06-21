@@ -53,7 +53,7 @@ private:
 	static lua_State* luaVM;
 	static int command;
 	static float value;
-	
+	Level* mTempLevel;
 
 
 public:
@@ -90,6 +90,7 @@ public:
 
 	string GetLevName (int num);
 	Level* GetLevel();
+	Level* GetCurLevel();
 
     void TestSaveLoadLevel();
 	int PointCheck();

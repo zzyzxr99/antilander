@@ -313,6 +313,8 @@ void Level::ClearLevel( )
 }
 void Level::LoadLevel( string LevString )
 {
+	mTerPt.clear();
+	mPadPt.clear();
 	vector<Point>::iterator iterTer = mTerPt.begin();
 	vector<Point>::iterator iterPad = mPadPt.begin();
 	int ctr = 0;
