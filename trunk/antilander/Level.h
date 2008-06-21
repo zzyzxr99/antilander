@@ -15,26 +15,26 @@ private:
     USINT mNumLndrLvl;
     USINT mNumLndrScr;
     bool mLndrPersist;         
-    static float mLndrDescRate;       
+    float mLndrDescRate;       
     USINT mNumPad;    
     vector<Point> mPadPt;      // !
     USINT mNumTerPt;  // !
     vector<Point> mTerPt;      // !
     USINT mNumMissile;
-    static float mMissileSpd;             
-    static USINT mGunStartPad; //!
+    float mMissileSpd;             
+    USINT mGunStartPad; //!
     bool mGunMoves;				 //-
     bool mGunMoveRnd;			 //- 
     USINT mEndGamePadOcc; //!
-    static float mGunReload;			   
+    float mGunReload;			   
     float mExpRad;				   //!-
     float mExpRate;                //!-
     bool mFrat;					   //!	
     USINT mNumBomb;       
-    static float mBombMxSpd;			  	
-    static float mBombAcc;				   
-    static float mBombRad;				   
-    static float mBombReloadTime;
+    float mBombMxSpd;			  	
+    float mBombAcc;				   
+    float mBombRad;				   
+    float mBombReloadTime;
 	
 public:
 
@@ -68,24 +68,24 @@ public:
     void SetNumLndrLvl( USINT landers );
     void SetNumLndrScr( USINT landers );
     void SetLndrPersist( bool persist );
-    static void SetLndrDescRate( float rate );
+    void SetLndrDescRate( float rate );
     void SetNumPad( USINT pads );
     void SetNumTerPt( USINT points );
     void SetNumMissile( USINT missiles );
-    static void SetMissileSpd( float speed );
-    static void SetGunStartPad( USINT pad );
+    void SetMissileSpd( float speed );
+    void SetGunStartPad( USINT pad );
     void SetGunMoves( bool moves );
     void SetGunMoveRnd( bool moveRnd );
     void SetEndGamePadOcc( USINT pads );
-    static void SetGunReload( float reloadTime );
+    void SetGunReload( float reloadTime );
     void SetExpRad( float radius );
     void SetExpRate( float rate );
     void SetFrat( bool frat );
     void SetNumBomb( USINT num );
-    static void SetBombMxSpd( float spd );
-    static void SetBombAcc( float acc );
-    static void SetBombRad( float rad );
-    static void SetBombReloadTime( float t );
+    void SetBombMxSpd( float spd );
+    void SetBombAcc( float acc );
+    void SetBombRad( float rad );
+    void SetBombReloadTime( float t );
 	void ClearLevel();
 
     void LoadLevel( string LevString );

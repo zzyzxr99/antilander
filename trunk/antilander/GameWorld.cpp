@@ -13,15 +13,11 @@ Level GameWorld::mCurrentLevel;
 Level GameWorld::mEditLevel;
 int GameWorld::command;
 float GameWorld::value;
-Gunship GameWorld::mPlayerShip;
+
 
 extern GameWorld *tWorld;
 
-USINT GameWorld::mNumMissile;
-USINT GameWorld::mNumBomb;
-USINT GameWorld::mNumLndrLvl;
-USINT GameWorld::mNumLndrScr;
-bool GameWorld::mLndrPersist;
+
 
 
 GameWorld::GameWorld()
@@ -733,8 +729,6 @@ void GameWorld::UpdateEverything( )
         }
     }
 	//update all values
-	
-	// GameWorld
 
 	// Lander
     Lander::sSetDescentRate( mCurrentLevel.GetLndrDescRate( ) );
@@ -1124,21 +1118,21 @@ int GameWorld::l_Action(lua_State* LVM)
 	switch(command)
 	{
 	case 1 :
-		mNumMissile = (int)value;
+		tWorld->mNumMissile = (int)value;
 		break;
 	case 2 :
-		mNumBomb = (int)value;
+		tWorld->mNumBomb = (int)value;
 	case 3 :
 		mCurrentLevel.SetGunReload(value);
 		break;
 	case 4 : 	
-		mNumLndrLvl = (int)value;
+		tWorld->mNumLndrLvl = (int)value;
 		break;
 	case 5 :
-		mNumLndrScr = (int)value; 
+		tWorld->mNumLndrScr = (int)value; 
 		break;
 	case 6 :
-		mLndrPersist = (bool)value;
+		tWorld->mLndrPersist = (bool)value;
 		break;
 	case 7 : 
 		mCurrentLevel.SetLndrDescRate(value);

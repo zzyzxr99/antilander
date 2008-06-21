@@ -10,14 +10,6 @@
 using namespace std;
 
 //static variables
-float Level::mGunReload;
-float Level::mLndrDescRate;
-float Level::mMissileSpd;
-USINT Level::mGunStartPad;
-float Level::mBombReloadTime;
-float Level::mBombMxSpd;
-float Level::mBombAcc;
-float Level::mBombRad;
 
 Level::Level( )
 {
