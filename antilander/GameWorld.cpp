@@ -9,13 +9,20 @@ using namespace std;
 
 //static variables
 lua_State* GameWorld::luaVM;
-unsigned short GameWorld::mNumMissile;
-unsigned short GameWorld::mNumBomb;
-
+Level GameWorld::mCurrentLevel;
+Level GameWorld::mEditLevel;
 int GameWorld::command;
 float GameWorld::value;
+Gunship GameWorld::mPlayerShip;
 
 extern GameWorld *tWorld;
+
+USINT GameWorld::mNumMissile;
+USINT GameWorld::mNumBomb;
+USINT GameWorld::mNumLndrLvl;
+USINT GameWorld::mNumLndrScr;
+bool GameWorld::mLndrPersist;
+
 
 GameWorld::GameWorld()
 {
@@ -28,7 +35,7 @@ GameWorld::GameWorld()
     mNumLndrLvl		= 0;
     mNumLndrScr		= 1;
     mLndrPersist	= false;
-    mNumMissile		= 2;
+    mNumMissile		= kStartAmmo;
     mNumBomb		= kDefaultStartBomb;
     mGunMoves		= false;
     mGunMoveRnd		= false;
@@ -165,8 +172,6 @@ void GameWorld::SpawnLander()
 		PtrLander= new Lander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ) );
 		mLanders.push_back(*PtrLander);
 	}
-
-
 }
 
 void GameWorld::TestSpawnExplosion()
@@ -727,6 +732,29 @@ void GameWorld::UpdateEverything( )
             break; // break out of loop - iterator is invalid after erase - only delete one each update cycle
         }
     }
+	//update all values
+	
+	// GameWorld
+
+	// Lander
+    Lander::sSetDescentRate( mCurrentLevel.GetLndrDescRate( ) );
+
+    // Missile
+    Missile::sSetSpeed( mCurrentLevel.GetMissileSpd( ) );
+
+    // Gunship
+    mPlayerShip.SetPad( mCurrentLevel.GetGunStartPad( ) );
+    mPlayerShip.SetReloadTime( mCurrentLevel.GetGunReload( ) );
+    mPlayerShip.SetBombReloadTime( mCurrentLevel.GetBombReloadTime( ) );
+
+    // Explosion
+    /*Explosion::sSetMaxRadius( mCurrentLevel.GetExpRad( ) );
+    Explosion::sSetExpansionRate( mCurrentLevel.GetExplRate( ) );*/
+
+    // Bomb
+    Bomb::sSetSpeed( mCurrentLevel.GetBombMxSpd( ) );
+    Bomb::sSetAcceleration( mCurrentLevel.GetBombAcc( ) );
+    Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
 
 }
 
@@ -985,7 +1013,7 @@ vector<Lander>* GameWorld::GetLanders( )
     return &mLanders;
 }
 
-unsigned short GameWorld::GetNumLndrScr( )
+USINT GameWorld::GetNumLndrScr( )
 {
     return mNumLndrScr;
 }
@@ -1096,26 +1124,52 @@ int GameWorld::l_Action(lua_State* LVM)
 	switch(command)
 	{
 	case 1 :
-		SetMissiles((int)value);
+		mNumMissile = (int)value;
 		break;
 	case 2 :
-		SetBombs((float)value);
-        break;
-    case 3 :
-        tWorld->mNumLndrLvl= (int)value;
-        break;
-    case 4 :
-        tWorld->mNumLndrScr= (int)value;
-        break;
-    case 100 :
-        tWorld->SpawnBomb();
-        break;
-    case 101 :
-        tWorld->SpawnMissile();
-        break;
+		mNumBomb = (int)value;
+	case 3 :
+		mCurrentLevel.SetGunReload(value);
+		break;
+	case 4 : 	
+		mNumLndrLvl = (int)value;
+		break;
+	case 5 :
+		mNumLndrScr = (int)value; 
+		break;
+	case 6 :
+		mLndrPersist = (bool)value;
+		break;
+	case 7 : 
+		mCurrentLevel.SetLndrDescRate(value);
+		break;
+	case 8 :
+		mCurrentLevel.SetMissileSpd(value);
+		break;
+	case 9 :
+		mCurrentLevel.SetGunStartPad((USINT)value);
+		break;
+	case 10 :
+		mCurrentLevel.SetBombReloadTime(value);
+		break;
+	case 11 :
+		mCurrentLevel.SetBombAcc(value);
+		break;
+	case 12 :
+		mCurrentLevel.SetBombMxSpd(value);
+		break;
+	case 13 :
+		mCurrentLevel.SetBombRad(value);
+		break;
+	case 100 :
+		tWorld->SpawnBomb();
+		break;
+	case 101 :
+		tWorld->SpawnMissile();
+		break;
 	case 102 :
-        tWorld->SpawnLander();
-        break;
+		tWorld->SpawnLander();
+		break;
 	}
 	return 0;
 }
@@ -1135,15 +1189,7 @@ void GameWorld::StartLua()
 
 }
 
-void GameWorld::SetMissiles(int num)
-{
-	mNumMissile = num; 
-}
 
-void GameWorld::SetBombs(int num)
-{
-	mNumBomb = num; 
-}
 int GameWorld::GetScore()
 {
 	return TotalScore;
