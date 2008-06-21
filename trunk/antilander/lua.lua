@@ -10,16 +10,30 @@ function conInput(cmd)
 			Action(1,set_value)
 			elseif(set_com == "bombs") then
 			Action(2,set_value)
-			elseif(set_com == "numlanders") then
+			elseif(set_com == "reload") then
 			Action(3,set_value)
-			elseif(set_com == "scrlanders") then
+			elseif(set_com == "landlevel") then
 			Action(4,set_value)
-			-- elseif(set_com == "reload") then
-			-- action(3,set_value)			
-			-- elseif(set_com == "missile speed") then
-			-- action(4,set_value)
+			elseif(set_com == "landscreen") then
+			Action(5,set_value)
+			elseif(set_com == "landpersist") then
+			Action(6,set_value)
+			elseif(set_com == "landrate") then
+			Action(7,set_value)
+			elseif(set_com == "missilespeed") then
+			Action(8,set_value)
+			elseif(set_com == "pad") then
+			Action(9,set_value)
+			elseif(set_com == "bombreload") then
+			Action(10,set_value)
+			elseif(set_com == "bombspeed") then
+			Action(11,set_value)
+			elseif(set_com == "bombacc") then
+			Action(12,set_value)
+			elseif(set_com == "bombrad") then
+			Action(13,set_value)
 			else
-				return "incorrect use of 'set'"
+			return "nothing"
 			end
 			
 -- EJR added 'spawn' command that takes 1 parameter 'bomb' or 'missile'	
