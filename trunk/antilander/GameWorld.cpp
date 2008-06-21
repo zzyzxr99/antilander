@@ -19,6 +19,7 @@ GameWorld::GameWorld()
 {
 	// initialize all the member varibles
 	mStarted		= false;
+	mTempLevel = new Level();
 	InitEverything();
 	mGameMode		= knPlayMode;
     mGameStepper.Mark();
@@ -35,6 +36,7 @@ GameWorld::GameWorld()
 	command			= 0;
 	value			= 0;
 	StartLua();
+	
 }
 
 GameWorld::~GameWorld()
@@ -42,6 +44,7 @@ GameWorld::~GameWorld()
 	// any new operators must have delete matches here
 	// mLanders.capacity();
 	lua_close(luaVM);
+	delete mTempLevel;
 }
 
 void GameWorld::TestSaveLoadLevel()
@@ -140,7 +143,7 @@ void GameWorld::SpawnLander()
     vector<Point>::iterator pad0;
 	pad0= mGameTerrain.PadPts();
 	Point sPoint,tPoint;
-	sPoint.x= pad0[2].x;
+	sPoint.x= pad0[2].x;	    //magic number - needs to DIE!
 	sPoint.y= kLanderStartY;
     tPoint.x= pad0[2].x;
     tPoint.y= pad0[2].y;
@@ -178,6 +181,8 @@ void GameWorld::SpawnExplosion( Point sLoc )
 
 void GameWorld::InitEverything()
 {
+	mTempLevel->LoadLevel("LEVEL1.TXT");
+	mCurrentLevel.Clone(mTempLevel);
     InitLevel( );
 	//Init all Entities
 	//mGameTerrain.InitTerrain();
@@ -186,10 +191,9 @@ void GameWorld::InitEverything()
 	//InitLanders();
 	//SpawnLander();
 	int numpts= mGameTerrain.GetNumPadPts();
-    vector<Point>::iterator fP= mGameTerrain.PadPts();
+    //vector<Point>::iterator fP= mGameTerrain.PadPts();
 	// Did not check num pad pts!
-	mPlayerShip.InitGunship(fP[3]);
-
+	//mPlayerShip.InitGunship(fP[3]);
     // EJR Explosions - None to init there are done during results
 }
 
@@ -944,6 +948,11 @@ string GameWorld::GetLevName(int num)
 Level* GameWorld::GetLevel()
 {
 	return &mEditLevel;
+}
+
+Level* GameWorld::GetCurLevel()
+{
+	return &mCurrentLevel;
 }
 
 bool GameWorld::IsConsole()
