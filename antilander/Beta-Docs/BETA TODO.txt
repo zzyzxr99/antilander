@@ -2,52 +2,50 @@ TODO: General
 
 Features to add
 ---------------
-9*Missiles offscreen test
-9*Bomb reload by level parameter
-4*Score rehash - ?
+9*Missiles offscreen test - 20080620 tests
+9*Bomb reload by level parameter - 20080620 initial to canshoot
+4*Score rehash - 20086020 - running score will work
 UI hash - ?
+  20080620 -
+  
+	Start/Play
+  	Quit
+  
+	RenderMenu functions
+	Menu mode
+  
   5*Start, Pause, Exit
 
-Landers 
+Landers - 20080620 algorith spawning multi landers
   9*Spawn based on level parameters
+    Algorithm:
+	pick delay range randomly  0 - RANGEVAL
+      wait delay - if up then try spawn lander
+      try spawn lander
+         check available - onscreen
+         get pad random pad pt - not player pad pt
+         spawn
     
 3*Console wired up
   commands:
-  	restart 
-	set commands for variables - not pts or numpts of terrain or pads
 
+  ? 20080620 ?
+  set gameworld parameters
+  restart game
 
 Levels 8*
+  20080620 -
+  Draw mode - "h" makes horizontal line
+  Move mode save - calc pad pts before save
+  Load default filename "Level1.txt"
+
   50 data levels to be tested
   How many points MAX
   GameWorld - Start 1st level, go to next level
   
-    unsigned short mNumLndrLvl;// !
-    unsigned short mNumLndrScr;// !
-    bool mLndrPersist;         // -
-    float mLndrDescRate;       // !
-    unsigned short mNumPad;    // !
-    vector<Point> mPadPt;      // !
-    unsigned short mNumTerPt;  // !
-    vector<Point> mTerPt;      // !
-    unsigned short mNumMissile;// !
-    float mMissileSpd;         // !    
-    unsigned short mGunStartPad; //!
-    bool mGunMoves;				 //-
-    bool mGunMoveRnd;			 //- 
-    unsigned short mEndGamePadOcc; //!
-    float mGunReload;			   //!
-    float mExpRad;				   //!-
-    float mExpRate;                //!-
-    bool mFrat;					   //!	
-    unsigned short mNumBomb;       //!
-    float mBombMxSpd;			   //!	
-    float mBombAcc;				   //-	
-    float mBombRad;				   //!
-
-Backstory 3*
+Backstory 3* - 20080620 no progress
   
-Fratricide
+Fratricide - 20080620 need more testing
 `   7*Explosions exploded missiles, bombs, landers
     2*Bomb missiles collision for game play decision
     
