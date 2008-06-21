@@ -35,6 +35,8 @@ private:
 	void InitMissiles();
 	void InitLanders();
     GameStatusType mGameMode;
+	
+	
 	EditStatusType mEditMode;
 	Level mEditLevel;
 	Level mCurrentLevel;
@@ -80,6 +82,8 @@ public:
 	bool RightMouseHeld();
 	void SetGameStatus(GameStatusType status);
 	void SetEditStatus(EditStatusType status);
+
+
 	GameStatusType GetGameStatus();
 	EditStatusType GetEditStatus();
 	void AddEditLevelPoint(Point p);
