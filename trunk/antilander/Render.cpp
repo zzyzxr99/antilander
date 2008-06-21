@@ -469,7 +469,7 @@ void Render::DrawBox(BBox box)
                    (int)(box.y),
                    (int)(box.x + box.w),
                    (int)(box.y + box.h),
-                   255,255,255,127 );
+                  7,150,255,127 );
 }
 
 
