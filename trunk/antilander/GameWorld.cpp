@@ -19,7 +19,7 @@ GameWorld::GameWorld()
 {
 	// initialize all the member varibles
 	mStarted		= false;
-	mTempLevel = new Level();
+	mTempLevel		= new Level();
 	InitEverything();
 	mGameMode		= knPlayMode;
     mGameStepper.Mark();

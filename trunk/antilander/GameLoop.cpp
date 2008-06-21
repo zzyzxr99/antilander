@@ -15,7 +15,7 @@ int main(int argv, char *args[])
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
-	tWorld->SetGameStatus(knEditMode);
+	tWorld->SetGameStatus(knPlayMode);
 	tWorld->SetEditStatus(knBuildMode);
 
 	if (tWorld->GetGameStatus() == knEditMode)
@@ -79,7 +79,9 @@ int main(int argv, char *args[])
 					Point mp= (tWorld->GetRender()->getMouse());
 					
 				}
+				//////////////////////////	Load Level Test  //////////////////////////
 				tWorld->GetLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
+				///////////////////////////////////////////////////////////////////////
 				if(tWorld->GetRender()->EndEdit())
 				{	
 					tWorld->GetLevel()->MakePadPtsFromTerrainPts();
