@@ -55,8 +55,8 @@ const int kTerrainFillB = kBackColorB;
 const int kTerrainFillT = kBackColorT;
 
 // gunship
-const int kStartAmmo = 30;
-const int kDefaultStartBomb = 10;
+const int kStartAmmo = 300;
+const int kDefaultStartBomb = 100;
 const float kBaseGunSpeed = 0.0F;
 const float kGunshipStartX = (float)(kWinWidth) / 2.0F;
 const float kGunshipStartY = (float)(kWinHeight - kFloorHeight);

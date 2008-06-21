@@ -21,11 +21,17 @@ int main(int argv, char *args[])
 	tWorld->SetGameStatus(knPlayMode);
 	tWorld->SetEditStatus(knBuildMode);
 
-	if (tWorld->GetGameStatus() == knEditMode)
+
+
+	if (tWorld->GetGameStatus() == knPlayMode)
 	{
 //		Level*L= tWorld->GetLevel();
 		tWorld->GetLevel()->ClearLevel();
 	}
+
+	
+
+
 	//////////////// load test /////////////////////
 
 	while (tWorld->GetRender()->gameRunning())
@@ -51,6 +57,11 @@ int main(int argv, char *args[])
 				tWorld->UpdateEverything( );
 			}
 			tWorld->DrawEverything();
+			
+			
+				
+
+
 		}
 		else if (tWorld->GetGameStatus() == knEditMode)
 		{

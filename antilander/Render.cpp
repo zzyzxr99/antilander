@@ -471,6 +471,8 @@ void Render::DrawBox(BBox box)
                    (int)(box.y + box.h),
                    255,255,255,127 );
 }
+
+
 BBox Render::GetLanderBox()
 {
 	return mBBoxLander;

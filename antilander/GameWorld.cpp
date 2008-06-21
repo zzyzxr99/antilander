@@ -336,7 +336,25 @@ void GameWorld::DrawEverything( )
 		//Draw Console
 		mRender.DrawConsole(DoConsoleIn());
 	}
-		mRender.DrawScore(TotalScore);
+
+	//this is temp draw menu
+
+	mRender.DrawScore(TotalScore);
+
+
+	Point tmenuBox;
+	BBox box;
+
+	tmenuBox.x = 300;
+	tmenuBox.y = 300;
+	box.x = -100;
+	box.y = -50;
+	box.w = 100;
+	box.h = 200;
+
+	mRender.DrawBox(tmenuBox,box);
+			
+	
     SDL_Flip( mRender.getpScreen( ));
 }
 
