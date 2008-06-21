@@ -1038,7 +1038,7 @@ Level* GameWorld::GetLevel()
 	return &mEditLevel;
 }
 
-Level* GameWorld::GetCurLevel()
+Level* GameWorld::GetCurrentLevel()
 {
 	return &mCurrentLevel;
 }

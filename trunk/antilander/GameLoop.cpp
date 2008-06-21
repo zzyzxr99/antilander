@@ -20,7 +20,7 @@ int main(int argv, char *args[])
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
-	tWorld->SetGameStatus(knPlayMode);
+	tWorld->SetGameStatus(knEditMode);
 	tWorld->SetEditStatus(knBuildMode);
 
     tWorld->GetLevel()->ClearLevel();
@@ -101,7 +101,7 @@ int main(int argv, char *args[])
 					
 				}
 				//////////////////////////	Load Level Test  //////////////////////////
-				tWorld->GetLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
+				tWorld->GetCurrentLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
 				///////////////////////////////////////////////////////////////////////
 				if(tWorld->GetRender()->EndEdit())
 				{	

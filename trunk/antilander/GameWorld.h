@@ -94,7 +94,7 @@ public:
 
 	string GetLevName (int num);
 	Level* GetLevel();
-	Level* GetCurLevel();
+	Level* GetCurrentLevel();
 
     void TestSaveLoadLevel();
 	int PointCheck();
