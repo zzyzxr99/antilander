@@ -54,7 +54,6 @@ private:
 	static int command;
 	static float value;
 	Level* mTempLevel;
-	static int value;
 	//Score	
 	int TotalScore;
 

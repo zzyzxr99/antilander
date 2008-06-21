@@ -7,6 +7,10 @@ mTerPt
 540, 150
 639, 209
 mPadPt
+390, 159
+484, 177
+540, 150
+639, 209
 mGunStartPad
 3
 mEndGamePadOcc
