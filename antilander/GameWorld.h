@@ -54,6 +54,9 @@ private:
 	static int command;
 	static float value;
 	Level* mTempLevel;
+	static int value;
+	//Score	
+	int TotalScore;
 
 
 public:
@@ -108,6 +111,8 @@ public:
 	//lua test commands
 	static void StartLua();
 	static int l_Action(lua_State* LVM);
+	//Total Score
+	int GetScore();
 };
 
 #endif // end _GAMEWORLD_H

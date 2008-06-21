@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include "string.h"
+#include <sstream>
 
 using namespace std;
 
@@ -510,4 +511,20 @@ playInput* Render::GetInput()
 bool Render::GetConsole()
 {
 	return mConsole;
+}
+void Render::DrawScore(int Score)
+{
+	stringstream SS;
+	SS << "Score : " << Score;
+    TTF_Font* ScoreFont = TTF_OpenFont("QUERROUND.TTF", 12);
+    SDL_Color txtForeColor = { 0, 254, 254 };
+	SDL_Surface* textSurface = TTF_RenderText_Blended( ScoreFont, SS.str().c_str(), txtForeColor );
+    SDL_Rect ScoreLoc = { 15,kWinHeight - 70,
+                           0,0 };
+    SDL_BlitSurface( textSurface,
+                     NULL,
+                     screen,
+                     &ScoreLoc );
+    SDL_FreeSurface( textSurface );
+    TTF_CloseFont( ScoreFont );
 }

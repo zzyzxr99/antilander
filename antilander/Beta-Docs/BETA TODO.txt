@@ -61,6 +61,10 @@ Windowed mode grab - need a pause on SDL/Timer
 Edit mode crash on less than 3 pad points. Partly to do with init.
 EJR 20080620 - Missile Intersection wiht terrain hits early - breaks immersion
 EJR 20080620 - bomb reload is delayed on start of game
+SMB 20080620 - Missles explode when tilted to the right side of the screen
+		before they can fully leave the turret.
+SMB 20080620 - Missiles can explode off screen IF you move the window when the missile is near the target
+
 
 Undocmented Features - Intiails and date for features found
 -------------------

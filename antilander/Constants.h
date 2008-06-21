@@ -127,6 +127,11 @@ enum GameStatusType { knPlayMode = 1,
 					  knEditMode };
 enum EditStatusType { knBuildMode = 1,
                       knMoveMode };
+
+//SCORE
+const int knMKill = 50;
+const int knBKill = 75;
+const int knFKill = 100;
 #endif // _CONSTANTS_H
 
 // comment
