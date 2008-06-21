@@ -141,14 +141,30 @@ void GameWorld::SpawnLander()
 {
 	Lander *PtrLander;
     vector<Point>::iterator pad0;
-	pad0= mGameTerrain.PadPts();
-	Point sPoint,tPoint;
-	sPoint.x= pad0[2].x;	    //magic number - needs to DIE!
-	sPoint.y= kLanderStartY;
-    tPoint.x= pad0[2].x;
-    tPoint.y= pad0[2].y;
-    PtrLander= new Lander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ) );
-	mLanders.push_back(*PtrLander);
+	vector<Lander>::iterator iterLander;
+	int curLanders = 0;
+	for (iterLander = mLanders.begin() ; iterLander != mLanders.end() ; iterLander++)
+	{
+		if (iterLander->GetStatus() == knLanderDescending)
+		{
+			curLanders++;
+		}
+	}
+
+	if ( (mNumLndrLvl >= 0) && ( curLanders < mNumLndrScr) )
+	{
+		pad0= mGameTerrain.PadPts();
+		Point sPoint,tPoint;
+		int spawnLoc = rand()%mGameTerrain.GetNumPadPts();
+		sPoint.x= pad0[spawnLoc].x;
+		sPoint.y= kLanderStartY;
+		tPoint.x= pad0[spawnLoc].x;
+		tPoint.y= pad0[spawnLoc].y;
+		PtrLander= new Lander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ) );
+		mLanders.push_back(*PtrLander);
+	}
+
+
 }
 
 void GameWorld::TestSpawnExplosion()

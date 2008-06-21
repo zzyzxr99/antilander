@@ -4,11 +4,14 @@
 #include "GameWorld.h"
 #include "Level.h"			//testing
 #include <iostream>
+#include <ctime>
+
 
 using namespace std;
 
 int main(int argv, char *args[])
 {
+	srand(clock());
 	GameWorld* tWorld; 
 	tWorld= new GameWorld();
 
