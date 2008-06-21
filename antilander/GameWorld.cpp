@@ -15,6 +15,8 @@ unsigned short GameWorld::mNumBomb;
 int GameWorld::command;
 float GameWorld::value;
 
+extern GameWorld *tWorld;
+
 GameWorld::GameWorld()
 {
 	// initialize all the member varibles
@@ -1098,7 +1100,22 @@ int GameWorld::l_Action(lua_State* LVM)
 		break;
 	case 2 :
 		SetBombs((float)value);
-		break;
+        break;
+    case 3 :
+        tWorld->mNumLndrLvl= (int)value;
+        break;
+    case 4 :
+        tWorld->mNumLndrScr= (int)value;
+        break;
+    case 100 :
+        tWorld->SpawnBomb();
+        break;
+    case 101 :
+        tWorld->SpawnMissile();
+        break;
+	case 102 :
+        tWorld->SpawnLander();
+        break;
 	}
 	return 0;
 }
