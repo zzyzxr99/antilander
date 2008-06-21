@@ -36,7 +36,7 @@ GameWorld::GameWorld()
 	command			= 0;
 	value			= 0;
 	StartLua();
-	
+	TotalScore		= 0;
 }
 
 GameWorld::~GameWorld()
@@ -218,6 +218,8 @@ void GameWorld::DrawEverything( )
         mRender.DecSplashAlpha( 1 );
     }
 
+
+
     vector<Lander>::iterator landIter;
     for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
     {
@@ -318,7 +320,7 @@ void GameWorld::DrawEverything( )
 		//Draw Console
 		mRender.DrawConsole(DoConsoleIn());
 	}
-	
+		mRender.DrawScore(TotalScore);
     SDL_Flip( mRender.getpScreen( ));
 }
 
@@ -1068,4 +1070,8 @@ void GameWorld::SetMissiles(int num)
 void GameWorld::SetBombs(int num)
 {
 	mNumBomb = num; 
+}
+int GameWorld::GetScore()
+{
+	return TotalScore;
 }

@@ -89,6 +89,7 @@ public:
 	void DrawConsole(string str);
 	playInput* GetInput();
 	bool GetConsole();
+	void DrawScore(int Score);
 };
 
 #endif // _RENDER_H;
