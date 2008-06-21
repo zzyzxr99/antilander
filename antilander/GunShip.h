@@ -20,7 +20,8 @@ private:
     unsigned short mPad;
     ALTimer mGunTimer;
     ALTimer mBombTimer;
-
+    bool m1stMissile;
+    bool m1stBomb;
 
 public:
 	Gunship();

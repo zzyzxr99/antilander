@@ -14,6 +14,8 @@ Gunship::Gunship()
     mPad = kDefaultGunStartPad;
     mGunTimer.Mark();
     mBombTimer.Mark( );
+    m1stMissile = true;
+    m1stBomb = true;
 // initialize all the member variables
 }
 
@@ -29,11 +31,23 @@ int Gunship::GetDrawGunshipIDX()
 
 bool Gunship::CanShoot()
 {
+    if ( m1stMissile )
+    {
+        m1stMissile = false;
+        mGunTimer.Mark( );
+        return true;
+    }
 	return mGunTimer.CheckElapsedMS(mReloadTime * 1000);
 }
 
 bool Gunship::CanBomb( )
 {
+    if ( m1stBomb )
+    {
+        m1stBomb = false;
+        mBombTimer.Mark( );
+        return true;
+    }
     return mBombTimer.CheckElapsedMS( mBombReloadTime * 1000 );
 }
 
