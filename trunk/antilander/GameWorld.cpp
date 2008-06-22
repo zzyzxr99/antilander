@@ -506,6 +506,7 @@ void GameWorld::UpdateEverything( )
 						{
 							landIter->SetStatus(knLanderExplode);
 							misIter->SetStatus(knMissileExplode);
+							TotalScore = TotalScore + knMKill;
 						}
 					}
 
@@ -565,6 +566,7 @@ void GameWorld::UpdateEverything( )
 						{
 							landIter->SetStatus(knLanderExplode);
 							bombIter->SetStatus(knBombExplode);
+							TotalScore = TotalScore + knBKill;
 						}
 					}
 
@@ -685,6 +687,7 @@ void GameWorld::UpdateEverything( )
 					if (calcDist <= curRadius)
 					{
 						iterLander->SetStatus(knLanderExplode);
+						TotalScore = TotalScore + knFKill;
 					}
 				}
 			}
