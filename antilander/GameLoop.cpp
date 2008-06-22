@@ -23,12 +23,12 @@ int main(int argv, char *args[])
 	tWorld->SetGameStatus(knPlayMode);
 	tWorld->SetEditStatus(knBuildMode);
 
-    tWorld->GetLevel()->ClearLevel();
+    tWorld->GetEditLevel()->ClearLevel();
 
 	if (tWorld->GetGameStatus() == knPlayMode)
 	{
 //		Level*L= tWorld->GetLevel();
-		tWorld->GetLevel()->ClearLevel();
+		tWorld->GetEditLevel()->ClearLevel();
 	}
 
 	
@@ -105,9 +105,9 @@ int main(int argv, char *args[])
 				///////////////////////////////////////////////////////////////////////
 				if(tWorld->GetRender()->EndEdit())
 				{	
-					tWorld->GetLevel()->MakePadPtsFromTerrainPts();
-				//	tWorld->GetLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
-				//	tWorld->GetLevel()->LoadLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
+					tWorld->GetEditLevel()->MakePadPtsFromTerrainPts();
+				//	tWorld->GetEditLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
+				//	tWorld->GetEditLevel()->LoadLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
 					tWorld->InitEditLvl();
 					tWorld->SetGameStatus(knPlayMode);
 				}
