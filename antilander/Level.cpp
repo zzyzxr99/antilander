@@ -320,9 +320,9 @@ void Level::LoadLevel( string LevString )
 	vector<Point>::iterator iterPad = mPadPt.begin();
 	int ctr = 0;
 	string str[100];		
-	char * cstr, *p;
+	char *cstr, *p;
 	cstr = new char [15];
-	char *index[] = {"mTerPt","mPadPt","mGunStartPad","mEndGamePadOcc","mNumLndrLvl","mNumLndrScr","mNumBomb","mNumMissile","mBombMxSpd",
+	char* index[] = {"mTerPt","mPadPt","mGunStartPad","mEndGamePadOcc","mNumLndrLvl","mNumLndrScr","mNumBomb","mNumMissile","mBombMxSpd",
 					 "mBombAcc","mBombRad","mLndrDescRate","mGunReload","mExpRad","mExpRate","mMissileSpd","mLndrPersist","mFrat","mGunMoves",
 					 "mGunMoveRnd","mBombReloadTime","LAST"};		//index of strings to compare
 	ifstream infile(LevString.c_str());

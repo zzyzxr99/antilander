@@ -793,7 +793,7 @@ bool GameWorld::MissileSect(vector<Point>::iterator TerArr, Point MissNose, Vect
 {
 	///////// calculate missile nose in relation to base //////////////
 	float M = Direction.y/Direction.x;		
-	float offX = sqrt (289/((M * M) + 1));
+	float offX = sqrt (256/((M * M) + 1));
 //	float offX = 17/sqrt((M * M) + 1);    works as well
 	float offY = M*offX;
 	MissNose.x += offX;
