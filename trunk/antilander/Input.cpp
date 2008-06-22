@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 void Render::doInput()
 {
     plIn.leftClick= false;
@@ -329,6 +330,12 @@ void Render::doMoveInput()
 				cin >> mLevelNum;
 				cout << endl;
 			}
+			if(plIn.keyPress == SDLK_p)
+			{
+				cout << "Enter starting pad number: ";
+				cin >> plIn.startPad;
+				cout << endl;
+			}
 	    }
 
 	    if(mEvent.type == SDL_MOUSEBUTTONDOWN)
@@ -377,4 +384,3 @@ void Render::doMoveInput()
     	
     }
 }
-

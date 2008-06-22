@@ -20,7 +20,7 @@ int main(int argv, char *args[])
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
-	tWorld->SetGameStatus(knPlayMode);
+	tWorld->SetGameStatus(knEditMode);
 	tWorld->SetEditStatus(knBuildMode);
 
     tWorld->GetEditLevel()->ClearLevel();
@@ -100,15 +100,21 @@ int main(int argv, char *args[])
 					Point mp= (tWorld->GetRender()->getMouse());
 					
 				}
-				//////////////////////////	Load Level Test  //////////////////////////
-				tWorld->GetCurrentLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
-				///////////////////////////////////////////////////////////////////////
 				if(tWorld->GetRender()->EndEdit())
 				{	
 					tWorld->GetEditLevel()->MakePadPtsFromTerrainPts();
 				//	tWorld->GetEditLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
 				//	tWorld->GetEditLevel()->LoadLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
 					tWorld->InitEditLvl();
+					tWorld->GetEditLevel()->SaveLevel("default.txt");
+					tWorld->GetCurrentLevel()->LoadLevel("default.txt");
+					vector<Point>::iterator iter = tWorld->GetCurrentLevel()->GetPadpt()->begin();
+					int temp = tWorld->GetRender()->GetInput()->startPad; 
+					for(int j = 0; j < temp; j++)
+					{
+						&iter++;
+					}
+					tWorld->GetGunship()->InitGunship(*iter);
 					tWorld->SetGameStatus(knPlayMode);
 				}
 

@@ -95,6 +95,7 @@ public:
 	string GetLevName (int num);
 	Level* GetEditLevel();
 	Level* GetCurrentLevel();
+	Gunship* GetGunship();
 
     void TestSaveLoadLevel();
 	int PointCheck();
@@ -107,6 +108,7 @@ public:
 	//lua test commands
 	static void StartLua();
 	static int l_Action(lua_State* LVM);
+	
 	//Total Score
 	int GetScore();
 };
