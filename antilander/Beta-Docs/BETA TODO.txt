@@ -34,7 +34,7 @@ Landers - 20080620 algorith spawning multi landers
   restart game
 
 Levels 8*
-  20080620 -
+s  20080620 -
   Draw mode - "h" makes horizontal line
   Move mode save - calc pad pts before save
   Load default filename "Level1.txt"

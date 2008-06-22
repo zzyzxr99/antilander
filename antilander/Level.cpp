@@ -324,7 +324,7 @@ void Level::LoadLevel( string LevString )
 	cstr = new char [15];
 	char *index[] = {"mTerPt","mPadPt","mGunStartPad","mEndGamePadOcc","mNumLndrLvl","mNumLndrScr","mNumBomb","mNumMissile","mBombMxSpd",
 					 "mBombAcc","mBombRad","mLndrDescRate","mGunReload","mExpRad","mExpRate","mMissileSpd","mLndrPersist","mFrat","mGunMoves",
-					 "mGunMoveRnd","LAST"};		//index of strings to compare
+					 "mGunMoveRnd","mBombReloadTime","LAST"};		//index of strings to compare
 	ifstream infile(LevString.c_str());
 	Point pt;
 	while (!infile.eof())
@@ -434,6 +434,10 @@ void Level::LoadLevel( string LevString )
 		{
 			SetGunMoveRnd((bool)(atoi(str[j+1].c_str())));
 		}
+		else if(!str[j].compare(index[20]))
+		{
+			SetBombReloadTime((float)(atof(str[j+1].c_str())));
+		}
 
 	}
 
@@ -471,6 +475,8 @@ void Level::SaveLevel( string LevString )
 	outfile << "mFrat" << endl;				outfile << mFrat << endl;
 	outfile << "mGunMoves" << endl;			outfile << mGunMoves << endl;
     outfile << "mGunMoveRnd" << endl;		outfile << mGunMoveRnd << endl;
+	//////////////////////////////////////////////////////////////////////////////
+	outfile << "mBombReloadTime" << endl;	outfile << mBombReloadTime << endl;	
 	outfile << "LAST" << endl;
 }
 

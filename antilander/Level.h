@@ -34,7 +34,7 @@ private:
     float mBombMxSpd;			  	
     float mBombAcc;				   
     float mBombRad;				   
-    float mBombReloadTime;
+    float mBombReloadTime;		
 	
 public:
 
