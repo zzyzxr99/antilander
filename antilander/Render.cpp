@@ -15,6 +15,7 @@
 
 using namespace std;
 
+
 Render::Render( )
 {
     mSplashAlpha = 255;

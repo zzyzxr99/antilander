@@ -200,8 +200,8 @@ void GameWorld::SpawnExplosion( Point sLoc )
 
 void GameWorld::InitEverything()
 {
-	mTempLevel->LoadLevel("default.txt");
-	mCurrentLevel.Clone(mTempLevel);
+	/*mTempLevel->LoadLevel("default.txt");
+	mCurrentLevel.Clone(mTempLevel);*/
     InitLevel( );
 	//Init all Entities
 	//mGameTerrain.InitTerrain();
@@ -1192,4 +1192,9 @@ void GameWorld::StartLua()
 int GameWorld::GetScore()
 {
 	return TotalScore;
+}
+
+Gunship* GameWorld::GetGunship()
+{
+	return &mPlayerShip;
 }
