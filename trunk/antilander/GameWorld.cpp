@@ -237,8 +237,6 @@ void GameWorld::DrawEverything( )
         mRender.DecSplashAlpha( 1 );
     }
 
-
-
     vector<Lander>::iterator landIter;
     for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
     {
@@ -644,6 +642,8 @@ void GameWorld::UpdateEverything( )
 			{
 				LanderTemp= MoveEntity( landIter->GetLoc(),landIter->GetDir(), landIter->GetSpeed(), elapsedTime);
 				landIter->SetLocation(LanderTemp.x,LanderTemp.y);
+                // EJR Lander watcher
+                cout << "Lander x,y: " << LanderTemp.x << " " << LanderTemp.y << endl;
 			}
 		}
 		else if ( lStatus == knLanderExplode )
