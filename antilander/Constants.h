@@ -32,7 +32,7 @@ const int kForeColorR = 255;
 const int kForeColorG = 255;
 const int kForeColorB = 255;
 const int kForeColorT = 255;
-const int kSplashFadeRate = 100;
+const int kSplashFadeRate = 150;
 
 // for IntersectBoxesStatus - to return information about where out of bounds
 // each value can be combine using powers of 2

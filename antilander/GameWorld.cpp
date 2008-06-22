@@ -348,12 +348,12 @@ void GameWorld::DrawEverything( )
 	Point tmenuBox;
 	BBox box;
 
-	tmenuBox.x = 300;
-	tmenuBox.y = 300;
+	tmenuBox.x = 375;
+	tmenuBox.y = 200;
 	box.x = -100;
-	box.y = -50;
+	box.y = -100;
 	box.w = 100;
-	box.h = 200;
+	box.h = 100;
 
 	mRender.DrawBox(tmenuBox,box);
 			
