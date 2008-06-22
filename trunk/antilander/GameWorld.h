@@ -93,7 +93,7 @@ public:
     USINT GetNumLndrScr( );
 
 	string GetLevName (int num);
-	Level* GetLevel();
+	Level* GetEditLevel();
 	Level* GetCurrentLevel();
 
     void TestSaveLoadLevel();
