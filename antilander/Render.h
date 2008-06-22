@@ -79,6 +79,7 @@ public:
 	short int GetSplashAlpha( );
     void DecSplashAlpha( short int amt );
     void DrawSplash( );
+	/*bool DrawMenu();*/
     void DrawBox( Point loc,
                   BBox box );
 	void DrawBox(BBox box);

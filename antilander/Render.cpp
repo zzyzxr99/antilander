@@ -441,7 +441,7 @@ void Render::DrawSplash( )
     SDL_Surface* textSurface = TTF_RenderText_Blended( splashFont,
                                                        "anti lander",
                                                        txtForeColor );
-    SDL_Rect splashLoc = { 200,100,
+    SDL_Rect splashLoc = { 200,25,
                            0,0 };
     SDL_BlitSurface( textSurface,
                      NULL,
@@ -450,6 +450,13 @@ void Render::DrawSplash( )
     SDL_FreeSurface( textSurface );
     TTF_CloseFont( splashFont );
 }
+//////Draw Menu////
+//bool Render::DrawMenu()
+//{
+//	
+//	return false;
+//	
+//}
 
 void Render::DrawBox( Point loc,
                       BBox box )
