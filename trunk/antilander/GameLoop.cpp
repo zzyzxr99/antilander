@@ -110,11 +110,19 @@ int main(int argv, char *args[])
 					tWorld->GetCurrentLevel()->LoadLevel("default.txt");
 					vector<Point>::iterator iter = tWorld->GetCurrentLevel()->GetPadpt()->begin();
 					int temp = tWorld->GetRender()->GetInput()->startPad; 
-					for(int j = 0; j < temp; j++)
+					if(temp > tWorld->GetCurrentLevel()->GetPadpt()->size()-1)
 					{
-						&iter++;
+						cout << "Non existant pad point - using default '0' " << endl;
+						tWorld->GetGunship()->InitGunship(*iter);
 					}
-					tWorld->GetGunship()->InitGunship(*iter);
+					else
+					{
+						for(int j = 0; j < temp; j++)
+						{
+							&iter++;
+						}
+						tWorld->GetGunship()->InitGunship(*iter);
+					}
 					tWorld->SetGameStatus(knPlayMode);
 				}
 
