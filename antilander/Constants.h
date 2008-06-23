@@ -34,6 +34,19 @@ const int kForeColorB = 255;
 const int kForeColorT = 255;
 const int kSplashFadeRate = 150;
 
+//Menu
+
+const int kMenuWidth= 150;
+const int kMenuHeight= 150;
+const unsigned char kMenuRvalue= 255;
+const unsigned char kMenuGvalue= 255;
+const unsigned char kMenuBvalue= 255;
+const unsigned char kMenuAvalue= 255;
+
+const int kMenuDrawX=(kWinWidth/2)-(kMenuWidth/2);
+const int kMenuDrawY= 60;
+
+
 // for IntersectBoxesStatus - to return information about where out of bounds
 // each value can be combine using powers of 2
 // knOutLeft | knOutTop means outside of boxes left and up/top

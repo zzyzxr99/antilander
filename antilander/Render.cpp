@@ -452,13 +452,53 @@ void Render::DrawSplash( )
     SDL_FreeSurface( textSurface );
     TTF_CloseFont( splashFont );
 }
-//////Draw Menu////
-//bool Render::DrawMenu()
-//{
-//	
-//	return false;
-//	
-//}
+////Draw Menu////
+void Render::DrawMenu()
+{
+	rectangleRGBA( screen,
+                   kMenuDrawX,
+                   kMenuDrawY,
+                   kMenuDrawX+ kMenuWidth,
+                   kMenuDrawY+ kMenuHeight,
+                   kMenuRvalue,kMenuGvalue,kMenuBvalue,kMenuAvalue);
+
+	TTF_Font* startFont = TTF_OpenFont("QUERROUND.TTF", 12);
+	SDL_Color txtForeColor = { 0,254,254};
+    SDL_Surface* startSurface = TTF_RenderText_Blended( startFont,
+                                                       "Start", 
+														txtForeColor );
+    SDL_Rect startLoc = { kMenuDrawX+5,kMenuDrawY+20,
+                           0,0 };
+
+	hlineRGBA(screen, kMenuDrawX+5, kMenuDrawX+18, kMenuDrawY+40, 255, 255, 255, 254);
+	
+	SDL_BlitSurface( startSurface,
+                     NULL,
+                     screen,
+                     &startLoc );
+	
+	
+	SDL_Surface* quitSurface = TTF_RenderText_Blended( startFont,
+                                                       "Quit", 
+														txtForeColor );
+    SDL_Rect quitLoc = { kMenuDrawX+5,kMenuDrawY+50,
+                           0,0 };
+	hlineRGBA(screen, kMenuDrawX+5, kMenuDrawX+18, kMenuDrawY+70, 255, 255, 255, 254);
+	
+	SDL_BlitSurface( quitSurface,
+                     NULL,
+                     screen,
+                     &quitLoc );
+    
+	SDL_FreeSurface( startSurface );
+	SDL_FreeSurface( quitSurface );
+
+    TTF_CloseFont( startFont);
+}
+
+//void Render::DrawMenuItems
+
+
 
 //void Render::DrawBox( Point loc,
 //                      BBox box )
