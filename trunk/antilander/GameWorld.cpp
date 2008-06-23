@@ -1005,6 +1005,18 @@ void GameWorld::InitEditLvl( )
     Bomb::sSetSpeed( mEditLevel.GetBombMxSpd( ) );
     Bomb::sSetAcceleration( mEditLevel.GetBombAcc( ) );
     Bomb::sSetRadius( mEditLevel.GetBombRad( ) );
+
+	if(*GetRender()->IsSave())
+					{
+						*GetRender()->IsSave() = false;
+						GetEditLevel()->SaveLevel(GetLevName(GetRender()->GetLevelNum()));
+						GetCurrentLevel()->LoadLevel(GetLevName(GetRender()->GetLevelNum()));
+					}
+					else
+					{
+						GetEditLevel()->SaveLevel("default.txt");
+						GetCurrentLevel()->LoadLevel("default.txt");
+					}
 }
 
 vector<Lander>* GameWorld::GetLanders( )
