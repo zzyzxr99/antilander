@@ -73,6 +73,7 @@ Render::Render( )
 	mLevelNum = 1;
 	conFont = TTF_OpenFont("Compact_Mono.TTF", 15);
 	mConsole = false;
+	mSave = false;
 }
 
 Render::~Render( )
@@ -537,4 +538,9 @@ void Render::DrawScore(int Score)
                      &ScoreLoc );
     SDL_FreeSurface( textSurface );
     TTF_CloseFont( ScoreFont );
+}
+
+bool* Render::IsSave()
+{
+	return &mSave;
 }
