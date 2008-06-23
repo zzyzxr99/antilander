@@ -343,19 +343,7 @@ void GameWorld::DrawEverything( )
 	mRender.DrawScore(TotalScore);
 
 
-	Point tmenuBox;
-	BBox box;
-
-	tmenuBox.x = 375;
-	tmenuBox.y = 200;
-	box.x = -100;
-	box.y = -100;
-	box.w = 100;
-	box.h = 100;
-
-
-
-//	mRender.DrawBox(tmenuBox,box);
+	mRender.DrawMenu();
 			
 	
     SDL_Flip( mRender.getpScreen( ));
