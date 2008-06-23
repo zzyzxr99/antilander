@@ -33,6 +33,7 @@ private:
 	TTF_Font* conFont;	
 	bool mConsole;
 	int mLevelNum;
+	bool mSave;
 
 public:
     Render( );
@@ -91,6 +92,7 @@ public:
 	playInput* GetInput();
 	bool GetConsole();
 	void DrawScore(int Score);
+	bool* IsSave();
 };
 
 #endif // _RENDER_H;

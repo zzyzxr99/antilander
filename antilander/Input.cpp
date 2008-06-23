@@ -326,7 +326,7 @@ void Render::doMoveInput()
 			}
 			if(plIn.keyPress == SDLK_s)
 			{
-				cout << "Input Level Number: ";
+				cout << "Input level number to save to: ";
 				cin >> mLevelNum;
 				cout << endl;
 			}
@@ -334,6 +334,7 @@ void Render::doMoveInput()
 			{
 				cout << "Enter starting pad number: ";
 				cin >> plIn.startPad;
+				mSave = true;
 				cout << endl;
 			}
 	    }
