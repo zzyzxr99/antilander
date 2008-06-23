@@ -1,0 +1,15 @@
+Antilander is a Real-Time* Single-Player Game* in the Third-Person View* in which the player has the Continuous Goal* to Survive* attack by an Enemy* force. Acting through an immobile Avatar*, the player executes Dexerity-Based Actions*, specifically simplified Aim & Shoot*, in an attempt to exert Area Control* over a region of a two-dimensional Reconfigurable Game World*, expending Limited Resources* in a Preventing Goal* against the computer's Asymmetric Goal* to Traverse* the sky from top to ground to Goal Points*. When the computer achieves a Goal Point*, the player loses a Parallel Life*, and the computer suffers Ability Loss* as the number of Goal Points* the player must Guard* decreases.
+
+The player has Imperfect Information* concerning the computer's Resources* (how many Units* are available and simultaneously deployable) and Goals* (how many Goal Points* must be achieved to cause Player Elimination*).
+
+When the computer has exhausted its available Units* for a given Level*, the player advances to the next Level*.
+
+Thoughts & Questions
+
+Unclear at this point in the design is the Individual Penalty* of losing all Parallel Lives* and suffering Player Elimination*. On Player Elimination*, do we want to end the Play Session* or cause the player to lose a Life*, which would give the player a sense of Hovering Closure* on subsequent Levels*.
+
+Various methods of Eliminating* Enemy* Units* differently affect the player's Score*. Do we want the Goal* of clearing a Level* worth additional points? Further, do we want to Reward* the player with additional Lives* for higher Score*. Do we want a High Score List*?
+
+Do we want to award more points for hitting a lander lower on the screen than for higher? That would let the player affect the Risk/Reward* ratio.
+
+* Capitalized and asterisked terms are named patterns from _Patterns_in_Game_Design_ by Staffan Bjork and Jussik Holopainen.
