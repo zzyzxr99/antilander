@@ -80,9 +80,9 @@ public:
     void DecSplashAlpha( short int amt );
     void DrawSplash( );
 	/*bool DrawMenu();*/
-    void DrawBox( Point loc,
-                  BBox box );
-	void DrawBox(BBox box);
+//    void DrawBox( Point loc,
+//                  BBox box );
+//	void DrawBox(BBox box);
 	BBox GetLanderBox();
 	void DrawLevel(Level* l,bool DrawGreen);
     BBox GetGameScreen();

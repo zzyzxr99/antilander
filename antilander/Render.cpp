@@ -232,10 +232,10 @@ void Render::DrawTerrain( SDL_Surface *scrn,
                   Round( tPts[i+1].y ),
                   255,255,255,255 );
     }
-    for ( int i = 0; i < numTP-1; i++ )
+   /* for ( int i = 0; i < numTP-1; i++ )
     {
 		DrawBox(boxes[i]);
-    }
+    }*/
 }
 
 void Render::DrawCrosshair( SDL_Surface* scrn,
@@ -459,26 +459,26 @@ void Render::DrawSplash( )
 //	
 //}
 
-void Render::DrawBox( Point loc,
-                      BBox box )
-{
-    rectangleRGBA( screen,
-                   (int)(loc.x + box.x),
-                   (int)(loc.y + box.y),
-                   (int)(loc.x + box.x + box.w),
-                   (int)(loc.y + box.y + box.h),
-                   255,255,255,127 );
-}
+//void Render::DrawBox( Point loc,
+//                      BBox box )
+//{
+//    rectangleRGBA( screen,
+//                   (int)(loc.x + box.x),
+//                   (int)(loc.y + box.y),
+//                   (int)(loc.x + box.x + box.w),
+//                   (int)(loc.y + box.y + box.h),
+//                   255,255,255,127 );
+//}
 
-void Render::DrawBox(BBox box)
-{
-    rectangleRGBA( screen,
-                   (int)(box.x),
-                   (int)(box.y),
-                   (int)(box.x + box.w),
-                   (int)(box.y + box.h),
-                  7,150,255,127 );
-}
+//void Render::DrawBox(BBox box)
+//{
+//    rectangleRGBA( screen,
+//                   (int)(box.x),
+//                   (int)(box.y),
+//                   (int)(box.x + box.w),
+//                   (int)(box.y + box.h),
+//                  7,150,255,127 );
+//}
 
 
 BBox Render::GetLanderBox()
