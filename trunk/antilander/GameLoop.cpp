@@ -107,22 +107,6 @@ int main(int argv, char *args[])
 				//	tWorld->GetEditLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
 				//	tWorld->GetEditLevel()->LoadLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
 					tWorld->InitEditLvl();
-					
-					vector<Point>::iterator iter = tWorld->GetCurrentLevel()->GetPadpt()->begin();
-					int temp = tWorld->GetRender()->GetInput()->startPad; 
-					if(temp > tWorld->GetCurrentLevel()->GetPadpt()->size()-1)
-					{
-						cout << "Non existant pad point - using default '0' " << endl;
-						tWorld->GetGunship()->InitGunship(*iter);
-					}
-					else
-					{
-						for(int j = 0; j < temp; j++)
-						{
-							&iter++;
-						}
-						tWorld->GetGunship()->InitGunship(*iter);
-					}
 					tWorld->SetGameStatus(knPlayMode);
 				}
 
