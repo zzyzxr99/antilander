@@ -1007,16 +1007,31 @@ void GameWorld::InitEditLvl( )
     Bomb::sSetRadius( mEditLevel.GetBombRad( ) );
 
 	if(*GetRender()->IsSave())
-					{
-						*GetRender()->IsSave() = false;
-						GetEditLevel()->SaveLevel(GetLevName(GetRender()->GetLevelNum()));
-						GetCurrentLevel()->LoadLevel(GetLevName(GetRender()->GetLevelNum()));
-					}
-					else
-					{
-						GetEditLevel()->SaveLevel("default.txt");
-						GetCurrentLevel()->LoadLevel("default.txt");
-					}
+	{
+		*GetRender()->IsSave() = false;
+		GetEditLevel()->SaveLevel(GetLevName(GetRender()->GetLevelNum()));
+		GetCurrentLevel()->LoadLevel(GetLevName(GetRender()->GetLevelNum()));
+	}
+	else
+	{
+		GetEditLevel()->SaveLevel("default.txt");
+		GetCurrentLevel()->LoadLevel("default.txt");
+	}
+	vector<Point>::iterator iter = GetCurrentLevel()->GetPadpt()->begin();
+	int temp = GetRender()->GetInput()->startPad; 
+	if(temp > GetCurrentLevel()->GetPadpt()->size()-1)
+	{
+		cout << "Non existant pad point - using default '0' " << endl;
+		GetGunship()->InitGunship(*iter);
+	}
+	else
+	{
+		for(int j = 0; j < temp; j++)
+		{
+			&iter++;
+		}
+		tWorld->GetGunship()->InitGunship(*iter);
+	}
 }
 
 vector<Lander>* GameWorld::GetLanders( )
