@@ -108,18 +108,6 @@ int main(int argv, char *args[])
 				//	tWorld->GetEditLevel()->LoadLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
 					tWorld->InitEditLvl();
 					
-					if(*tWorld->GetRender()->IsSave())
-					{
-						*tWorld->GetRender()->IsSave() = false;
-						tWorld->GetEditLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
-						tWorld->GetCurrentLevel()->LoadLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
-					}
-					else
-					{
-						tWorld->GetEditLevel()->SaveLevel("default.txt");
-						tWorld->GetCurrentLevel()->LoadLevel("default.txt");
-					}
-					
 					vector<Point>::iterator iter = tWorld->GetCurrentLevel()->GetPadpt()->begin();
 					int temp = tWorld->GetRender()->GetInput()->startPad; 
 					if(temp > tWorld->GetCurrentLevel()->GetPadpt()->size()-1)
