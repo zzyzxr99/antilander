@@ -42,10 +42,7 @@ int main(int argv, char *args[])
 		{
 			tWorld->GetRender()->doInput();
 
-            if ( tWorld->GetLanders( )->size( ) < tWorld->GetNumLndrScr( ) )
-            {
-                tWorld->SpawnLander( );
-            }
+           
 			if (tWorld->FireMissile())
 			{
 				tWorld->SpawnMissile();
@@ -58,6 +55,10 @@ int main(int argv, char *args[])
 			{
 				tWorld->UpdateEverything( );
 			}
+			 if ( tWorld->GetLanders( )->size( ) < tWorld->GetNumLndrScr( ) )
+            {
+                tWorld->SpawnLander( );
+            }
 			tWorld->DrawEverything();
 			
 			

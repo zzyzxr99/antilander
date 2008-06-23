@@ -242,7 +242,7 @@ void GameWorld::DrawEverything( )
     {
         mRender.DrawLander( mRender.getpScreen( ),
                             &(landIter->GetLoc( )));
-		mRender.DrawBox(landIter->GetLoc(), mRender.GetLanderBox());
+//		mRender.DrawBox(landIter->GetLoc(), mRender.GetLanderBox());
     }
 
     vector<Missile>::iterator misIter;
@@ -254,8 +254,8 @@ void GameWorld::DrawEverything( )
         mRender.DrawCrosshair( mRender.getpScreen( ),
                                &(misIter->GetTarget( )),
                                255,0,0 );
-        mRender.DrawBox( misIter->GetLocation( ),
-                         misIter->GetBox( ) );
+//        mRender.DrawBox( misIter->GetLocation( ),
+//                         misIter->GetBox( ) );
     }
 
     vector<Bomb>::iterator bombIter;
@@ -355,7 +355,7 @@ void GameWorld::DrawEverything( )
 
 
 
-	mRender.DrawBox(tmenuBox,box);
+//	mRender.DrawBox(tmenuBox,box);
 			
 	
     SDL_Flip( mRender.getpScreen( ));
