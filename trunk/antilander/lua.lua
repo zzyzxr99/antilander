@@ -26,9 +26,9 @@ function conInput(cmd)
 			Action(9,set_value)
 			elseif(set_com == "bombreload") then
 			Action(10,set_value)
-			elseif(set_com == "bombspeed") then
-			Action(11,set_value)
 			elseif(set_com == "bombacc") then
+			Action(11,set_value)
+			elseif(set_com == "bombspeed") then
 			Action(12,set_value)
 			elseif(set_com == "bombrad") then
 			Action(13,set_value)
