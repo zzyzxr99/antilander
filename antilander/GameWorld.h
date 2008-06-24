@@ -32,8 +32,6 @@ private:
 	Gunship mPlayerShip;
 	Terrain mGameTerrain;
 	void InitEverything();
-	void InitMissiles();
-	void InitLanders();
     GameStatusType mGameMode;
 	EditStatusType mEditMode;
 	static Level mEditLevel;
