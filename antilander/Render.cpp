@@ -584,3 +584,8 @@ bool* Render::IsSave()
 {
 	return &mSave;
 }
+
+bool* Render::IsPause()
+{
+	return &mPause;
+}
