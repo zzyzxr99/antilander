@@ -70,7 +70,7 @@ Render::Render( )
     mGameScreen.y= 0;
     mGameScreen.w= kWinWidth;
 	mGameScreen.h= kWinHeight;
-	mLevelNum = 1;
+	mLevelNum = 0;
 	conFont = TTF_OpenFont("Compact_Mono.TTF", 15);
 	mConsole = false;
 	mSave = false;

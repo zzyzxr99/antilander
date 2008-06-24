@@ -42,18 +42,18 @@ void Render::doInput()
 						mConsole = true;
 					}
 					break;
-					////////////////////////////// pause test ////////////////////////////
-				case SDLK_p :
-					if(mPause == true)
-					{
-						mPause = false;
-					}
-					else
-					{
-						mPause = true;
-					}
-					break;
-					////////////////////////////			  ////////////////////////////
+				//	////////////////////////////// pause test ////////////////////////////
+				//case SDLK_p :
+				//	if(mPause == true)
+				//	{
+				//		mPause = false;
+				//	}
+				//	else
+				//	{
+				//		mPause = true;
+				//	}
+				//	break;
+				//	////////////////////////////			  ////////////////////////////
 				}
 			}
 			else
