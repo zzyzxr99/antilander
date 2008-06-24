@@ -74,6 +74,7 @@ Render::Render( )
 	conFont = TTF_OpenFont("Compact_Mono.TTF", 15);
 	mConsole = false;
 	mSave = false;
+	mPause = false;
 }
 
 Render::~Render( )
