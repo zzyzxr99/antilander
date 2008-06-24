@@ -1203,7 +1203,7 @@ void GameWorld::CheckPause()
 {
 	while(*mRender.IsPause())
 	{
-		mRender.doInput();
+		mRender.doMenuInput();
 		ResetTimers();
 	}
 }

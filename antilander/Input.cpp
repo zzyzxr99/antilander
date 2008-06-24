@@ -355,6 +355,10 @@ void Render::doMenuInput()
 			{
 				gameState = false;
 			}
+			if(plIn.keyPress == SDLK_s)
+			{
+				mStart = true;
+			}
 		}
 	}
 }
