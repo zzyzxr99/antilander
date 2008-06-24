@@ -330,6 +330,34 @@ void Render::doEditInput()
 
 	}
 }
+void Render::doMenuInput()
+{
+	while (SDL_PollEvent(&mEvent))
+	{
+		if(mEvent.type == SDL_MOUSEMOTION)
+		{
+			plIn.mouseMove.x = mEvent.motion.x;
+			plIn.mouseMove.y = mEvent.motion.y;
+		}
+		if(mEvent.type == SDL_QUIT)
+		{
+			gameState= false;
+		}
+
+		if(mEvent.type == SDL_KEYDOWN)
+		{
+			plIn.keyPress = mEvent.key.keysym.sym;
+			/*if(plIn.keyPress == SDLK_ESCAPE)
+			{
+				gameState = false;
+			}*/
+			if(plIn.keyPress == SDLK_q)
+			{
+				gameState = false;
+			}
+		}
+	}
+}
 
 void Render::doMoveInput()
 {
