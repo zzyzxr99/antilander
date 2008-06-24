@@ -24,3 +24,22 @@ Vadim- Schema for level file
 Score/HUD complete for test
 UI- Complete for test
 
+Addendum:
+Spawn lander factory !alogithm - implemented
+Init level - !Alogrithm - implemented
+Hash out endgame and next level
+Hash out game modes - including end - menu, etc
+Score modularity -
+Missiles colliding early with terrian - ERIC
+
+6/25
+
+Endgame functioning and next level functioning
+UI Start, Pause, Edit, Quit
+
+
+6/27
+
+
+
+
