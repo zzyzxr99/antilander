@@ -440,7 +440,6 @@ void Level::LoadLevel( string LevString )
 		}
 
 	}
-
 	delete [] cstr;
 }
 

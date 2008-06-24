@@ -19,13 +19,11 @@ extern GameWorld *tWorld;
 
 
 
-
 GameWorld::GameWorld()
 {
 	// initialize all the member varibles
 	mStarted		= false;
 	mTempLevel		= new Level();
-	InitEverything();
 	mGameMode		= knPlayMode;
     mGameStepper.Mark();
     mNumLndrLvl		= 0;
@@ -42,6 +40,8 @@ GameWorld::GameWorld()
 	value			= 0;
 	StartLua();
 	TotalScore		= 0;
+	mCurrentLevel.LoadLevel("default.txt");
+	InitEverything();	
 }
 
 GameWorld::~GameWorld()
@@ -212,7 +212,7 @@ void GameWorld::InitEverything()
 	int numpts= mGameTerrain.GetNumPadPts();
     vector<Point>::iterator fP= mGameTerrain.PadPts();
 	// Did not check num pad pts!
-	mPlayerShip.InitGunship(fP[3]);
+	mPlayerShip.InitGunship(fP[0]);
     // EJR Explosions - None to init there are done during results
 }
 
@@ -722,7 +722,6 @@ void GameWorld::UpdateEverything( )
         }
     }
 	//update all values
-
 	// Lander
     Lander::sSetDescentRate( mCurrentLevel.GetLndrDescRate( ) );
 
