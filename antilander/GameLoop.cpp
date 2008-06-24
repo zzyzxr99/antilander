@@ -53,10 +53,8 @@ int main(int argv, char *args[])
 			{
 				tWorld->UpdateEverything( );
 			}
-			 if ( tWorld->GetLanders( )->size( ) < tWorld->GetNumLndrScr( ) )
-            {
-                tWorld->SpawnLander( );
-            }
+			tWorld->CheckSpawnLander();
+
 			tWorld->DrawEverything();
 			
 			

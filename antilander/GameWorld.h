@@ -46,6 +46,7 @@ private:
     USINT mEndGamePadOcc;
     bool mFrat;
 	int lvlCtr;
+	int mNumLndrsToGo;
 	//console and lua variables
 	char ch;
 	static lua_State* luaVM;
@@ -98,7 +99,7 @@ public:
 
     void TestSaveLoadLevel();
 	int PointCheck();
-
+	void CheckSpawnLander();
 	//console commands
 	bool IsConsole();
 	string DoConsoleIn();
