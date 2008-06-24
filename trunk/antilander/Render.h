@@ -35,6 +35,7 @@ private:
 	int mLevelNum;
 	bool mSave;
 	bool mPause;
+	bool mStart;
 
 public:
     Render( );
@@ -97,6 +98,7 @@ public:
 	void DrawScore(int Score);
 	bool* IsSave();
 	bool* IsPause();
+	bool* IsStart();
 };
 
 #endif // _RENDER_H;

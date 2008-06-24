@@ -64,7 +64,10 @@ int main(int argv, char *args[])
 		{
 			tWorld->GetRender()->DrawMenu();
 			tWorld->GetRender()->doMenuInput();
-			
+			if (*tWorld->GetRender()->IsStart())
+			{
+				tWorld->SetGameStatus(knPlayMode);
+			}
 		}
 //====================Edit Mode========================
 		else if (tWorld->GetGameStatus() == knEditMode)

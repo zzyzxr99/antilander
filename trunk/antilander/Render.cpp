@@ -75,6 +75,7 @@ Render::Render( )
 	mConsole = false;
 	mSave = false;
 	mPause = false;
+	mStart = false;
 }
 
 Render::~Render( )
@@ -591,4 +592,9 @@ bool* Render::IsSave()
 bool* Render::IsPause()
 {
 	return &mPause;
+}
+
+bool* Render::IsStart()
+{
+	return &mStart;
 }
