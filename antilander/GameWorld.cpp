@@ -162,7 +162,7 @@ void GameWorld::InitEverything()
 	int numpts= mGameTerrain.GetNumPadPts();
     vector<Point>::iterator fP= mGameTerrain.PadPts();
 	// Did not check num pad pts!
-	mPlayerShip.InitGunship(fP[0]);
+	mPlayerShip.InitGunship(fP[mCurrentLevel.GetGunStartPad()]);
     // EJR Explosions - None to init there are done during results
 }
 
