@@ -118,6 +118,8 @@ void GameWorld::SpawnLander()
 		tPoint.y= pad0[spawnLoc].y;
 		PtrLander= new Lander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ) );
 		mLanders.push_back(*PtrLander);
+		_ASSERTE(mNumLndrsToGo > 0);
+		mNumLndrsToGo--;
 }
 
 
@@ -821,6 +823,11 @@ bool GameWorld::MissileSect(vector<Point>::iterator TerArr, Point MissNose, Vect
 	return false;
 }
 
+void GameWorld::LanderLanded ()
+{
+	mNumLndrsLanded++;
+}
+
 bool GameWorld::LeftMouseHeld()
 {
 	return mRender.isLeftHeld();
@@ -896,6 +903,7 @@ void GameWorld::InitLevel( )
     // GameWorld
     mNumLndrLvl = mCurrentLevel.GetNumLndrLvl( );
 	mNumLndrsToGo = mNumLndrLvl;
+	mNumLndrsLanded = 0;
     mNumLndrScr = mCurrentLevel.GetNumLndrScr( );
     mLndrPersist = mCurrentLevel.GetLndrPersist( );
     mNumMissile = mCurrentLevel.GetNumMissile( );
@@ -1030,19 +1038,22 @@ int GameWorld::PointCheck()
 
 void GameWorld::CheckSpawnLander()
 {
-	vector<Lander>::iterator iterLander;
-	int curLanders = 0;
-	for (iterLander = mLanders.begin() ; iterLander != mLanders.end() ; iterLander++)
+	if (mNumLndrsToGo > 0)
 	{
-		if (iterLander->GetStatus() == knLanderDescending)
+		vector<Lander>::iterator iterLander;
+		int curLanders = 0;
+		for (iterLander = mLanders.begin() ; iterLander != mLanders.end() ; iterLander++)
 		{
-			curLanders++;
+			if (iterLander->GetStatus() == knLanderDescending)
+			{
+				curLanders++;
+			}
 		}
-	}
 
-	if ( ( curLanders < mNumLndrScr) )
-	{
-		tWorld->SpawnLander( );
+		if ( ( curLanders < mNumLndrScr) )
+		{
+			tWorld->SpawnLander( );
+		}
 	}
 }
 string GameWorld::GetLevName(int num)

@@ -47,6 +47,7 @@ private:
     bool mFrat;
 	int lvlCtr;
 	int mNumLndrsToGo;
+	int mNumLndrsLanded;
 	//console and lua variables
 	char ch;
 	static lua_State* luaVM;
@@ -74,6 +75,7 @@ public:
 	bool SplashRunning( );
     void SpawnExplosion( Point sLoc );
     bool MissileSect(vector<Point>::iterator TerArr, Point MissNose, Vect Direction);
+	void LanderLanded ();
 
 	bool LeftMouseHeld();
 	bool RightMouseHeld();
