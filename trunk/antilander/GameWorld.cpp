@@ -293,7 +293,7 @@ void GameWorld::DrawEverything( )
 	mRender.DrawScore(TotalScore);
 
 
-	mRender.DrawMenu();
+	//mRender.DrawMenu();
 			
 	
     SDL_Flip( mRender.getpScreen( ));

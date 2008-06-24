@@ -66,6 +66,7 @@ public:
 	SDL_Surface* getpScreen();			//gets a pointer to the surface (screen)
 	void doInput();						//gets, processes input
 	void doEditInput();					//gets, processes editor input
+	void doMenuInput();
 	void doMoveInput();
 	bool gameRunning();					//gets current gamestate
 	bool EndDraw();
