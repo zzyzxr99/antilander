@@ -70,8 +70,8 @@ public:
     void UpdateEverything( );
 	bool FireMissile();
     bool FireBomb(); // 
-    void TestSpawnExplosion();// onlt for spawning explosion at mouse on right click
-    bool SplashRunning( );
+
+	bool SplashRunning( );
     void SpawnExplosion( Point sLoc );
     bool MissileSect(vector<Point>::iterator TerArr, Point MissNose, Vect Direction);
 
@@ -97,7 +97,7 @@ public:
 	Level* GetCurrentLevel();
 	Gunship* GetGunship();
 
-    void TestSaveLoadLevel();
+   
 	int PointCheck();
 	void CheckSpawnLander();
 	//console commands
