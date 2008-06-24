@@ -926,6 +926,10 @@ void GameWorld::InitLevel( )
     mGunMoveRnd = mCurrentLevel.GetGunMoveRnd( );
     mEndGamePadOcc = mCurrentLevel.GetEndGamePadOcc( );
     mFrat = mCurrentLevel.GetFrat( );
+    mLanders.clear( );
+    mMissiles.clear( );
+    mBombs.clear( );
+    mExplosions.clear( );
 
     // Terrain
     mGameTerrain.SetNumPadPts( mCurrentLevel.GetNumPad( ) );
