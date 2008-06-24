@@ -111,6 +111,7 @@ public:
 	
 	//Total Score
 	int GetScore();
+	void AddScore(int Score, int Val);
 };
 
 #endif // end _GAMEWORLD_H
