@@ -494,7 +494,7 @@ void GameWorld::UpdateEverything( )
 						{
 							landIter->SetStatus(knLanderExplode);
 							misIter->SetStatus(knMissileExplode);
-							TotalScore = TotalScore + knMKill;
+							AddScore(TotalScore, knMKill);
 						}
 					}
 
@@ -554,7 +554,7 @@ void GameWorld::UpdateEverything( )
 						{
 							landIter->SetStatus(knLanderExplode);
 							bombIter->SetStatus(knBombExplode);
-							TotalScore = TotalScore + knBKill;
+							AddScore(TotalScore, knBKill);
 						}
 					}
 
@@ -677,7 +677,7 @@ void GameWorld::UpdateEverything( )
 					if (calcDist <= curRadius)
 					{
 						iterLander->SetStatus(knLanderExplode);
-						TotalScore = TotalScore + knFKill;
+						AddScore(TotalScore, knFKill);
 					}
 				}
 			}
@@ -1211,4 +1211,8 @@ int GameWorld::GetScore()
 Gunship* GameWorld::GetGunship()
 {
 	return &mPlayerShip;
+}
+void GameWorld::AddScore(int Score, int Val)
+{
+	TotalScore = Score + Val;
 }
