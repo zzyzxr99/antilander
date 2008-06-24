@@ -8,11 +8,13 @@ Features to add
 UI hash - ?
   20080620 -
   
-	Start/Play
-  	Quit
-  
-	RenderMenu functions
-	Menu mode
+GameLoop Modes
+	Intro
+	Start/Resume
+	Edit
+	Pause/Menu
+	Level Transition
+  	End
   
   5*Start, Pause, Exit
 
