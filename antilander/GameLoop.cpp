@@ -20,7 +20,7 @@ int main(int argv, char *args[])
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
-	tWorld->SetGameStatus(knPlayMode);
+	tWorld->SetGameStatus(knMenuMode);
 	tWorld->SetEditStatus(knBuildMode);
 
     tWorld->GetEditLevel()->ClearLevel();
@@ -41,6 +41,7 @@ int main(int argv, char *args[])
 		if (tWorld->GetGameStatus() == knPlayMode)
 		{
 			tWorld->GetRender()->doInput();
+			
 			if (tWorld->FireMissile())
 			{
 				tWorld->SpawnMissile();
@@ -56,12 +57,16 @@ int main(int argv, char *args[])
 			tWorld->CheckSpawnLander();
 
 			tWorld->DrawEverything();
-			
-			
-				
-
 
 		}
+//====================Menu Mode========================
+		else if (tWorld->GetGameStatus() == knMenuMode)
+		{
+			tWorld->GetRender()->DrawMenu();
+			tWorld->GetRender()->doMenuInput();
+			
+		}
+//====================Edit Mode========================
 		else if (tWorld->GetGameStatus() == knEditMode)
 		{
 			if (tWorld->GetEditStatus() == knBuildMode)

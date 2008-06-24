@@ -140,7 +140,11 @@ const float kExplosionStartRadiusDefault= 0.0F;
 enum ExplosionStatusType { knExplosionOccuring = 1,
                            knExplosionDone };
 enum GameStatusType { knPlayMode = 1,
-					  knEditMode };
+					  knEditMode,
+					  knMenuMode,
+					  knIntroMode,
+					  knLevTransMode,
+					  knEndMode };
 enum EditStatusType { knBuildMode = 1,
                       knMoveMode };
 

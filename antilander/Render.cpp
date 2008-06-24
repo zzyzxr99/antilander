@@ -495,6 +495,8 @@ void Render::DrawMenu()
 	SDL_FreeSurface( quitSurface );
 
     TTF_CloseFont( startFont);
+
+	SDL_Flip( screen );
 }
 
 //void Render::DrawMenuItems
