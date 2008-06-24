@@ -603,6 +603,8 @@ void GameWorld::UpdateEverything( )
 			{
 				landIter->SetLocation(landIter->GetDest().x,landIter->GetDest().y);
 				landIter->SetStatus( knLanderLanded );
+				LanderLanded();
+				cout << mNumLndrsLanded << " lander(s) have landed" << endl;
 			}
 			else
 			{
