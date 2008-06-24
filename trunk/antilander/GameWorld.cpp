@@ -108,18 +108,7 @@ void GameWorld::SpawnLander()
 {
 	Lander *PtrLander;
     vector<Point>::iterator pad0;
-	vector<Lander>::iterator iterLander;
-	int curLanders = 0;
-	for (iterLander = mLanders.begin() ; iterLander != mLanders.end() ; iterLander++)
-	{
-		if (iterLander->GetStatus() == knLanderDescending)
-		{
-			curLanders++;
-		}
-	}
 
-	if ( (mNumLndrLvl >= 0) && ( curLanders < mNumLndrScr) )
-	{
 		pad0= mGameTerrain.PadPts();
 		Point sPoint,tPoint;
 		int spawnLoc = rand()%mGameTerrain.GetNumPadPts();
@@ -129,7 +118,6 @@ void GameWorld::SpawnLander()
 		tPoint.y= pad0[spawnLoc].y;
 		PtrLander= new Lander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ) );
 		mLanders.push_back(*PtrLander);
-	}
 }
 
 void GameWorld::TestSpawnExplosion()
@@ -881,6 +869,7 @@ void GameWorld::InitLevel( )
 {
     // GameWorld
     mNumLndrLvl = mCurrentLevel.GetNumLndrLvl( );
+	mNumLndrsToGo = mNumLndrLvl;
     mNumLndrScr = mCurrentLevel.GetNumLndrScr( );
     mLndrPersist = mCurrentLevel.GetLndrPersist( );
     mNumMissile = mCurrentLevel.GetNumMissile( );
@@ -1013,6 +1002,23 @@ int GameWorld::PointCheck()
 	return 0;
 }
 
+void GameWorld::CheckSpawnLander()
+{
+	vector<Lander>::iterator iterLander;
+	int curLanders = 0;
+	for (iterLander = mLanders.begin() ; iterLander != mLanders.end() ; iterLander++)
+	{
+		if (iterLander->GetStatus() == knLanderDescending)
+		{
+			curLanders++;
+		}
+	}
+
+	if ( ( curLanders < mNumLndrScr) )
+	{
+		tWorld->SpawnLander( );
+	}
+}
 string GameWorld::GetLevName(int num)
 {
 	string name;
