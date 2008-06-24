@@ -703,7 +703,11 @@ void GameWorld::UpdateEverything( )
     Bomb::sSetSpeed( mCurrentLevel.GetBombMxSpd( ) );
     Bomb::sSetAcceleration( mCurrentLevel.GetBombAcc( ) );
     Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
-
+	while(*mRender.IsPause())
+	{
+		mRender.doInput();
+		ResetTimers();
+	}
 }
 
 bool GameWorld::FireMissile()
