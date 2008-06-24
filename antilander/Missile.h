@@ -9,6 +9,7 @@ private:
 	MissileStatusType mStatus;
 	Point mDrawLoc; //uses GetLocation to point out the missile's place
 	Point mDestination; //X and Y cord for where the missile was told to go by clicking the mouse
+	Point mNose;
 	float mSpeed; //uses GetSpeed to change its firing speed
 	Vect mDirection; //Uses Vect GetDirection to find its direction
 	int mDrawBankIDX; //Graphic for the missile
@@ -34,7 +35,7 @@ public:
 	MissileStatusType GetStatus();
 	void SetStatus(MissileStatusType stat);
     BBox GetBox( );
-
+	Point GetNoseLoc();
     //static member functions
     static void sSetSpeed( float speed );
     static float sGetSpeed( );

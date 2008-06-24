@@ -60,12 +60,12 @@ Missile::Missile(Point StartLoc, Point Dest, Vect InitDir)
     Point pts[5];
     pts[0].x =  -4.0F;
     pts[1].x =  -2.0F;
-    pts[2].x =   0.0F;
+    pts[2].x =   0.0F; // Nose X
     pts[3].x =   2.0F;
     pts[4].x =   4.0F;
     pts[0].y =   0.0F;
     pts[1].y = -12.0F;
-    pts[2].y = -17.0F;
+    pts[2].y = -17.0F; // Nose Y
     pts[3].y = -12.0F;
     pts[4].y =   0.0F;
     float locToTarg = atan2( mDirection.y,
@@ -78,6 +78,11 @@ Missile::Missile(Point StartLoc, Point Dest, Vect InitDir)
                                            pts[i].x );
         pts[i].x = dist * cos( pntToOrg );
         pts[i].y = dist * sin( pntToOrg );
+		// Set the nose of the missile
+		if (i == 2)
+		{
+			mNose= pts[i];
+		}
     }
     float minX = pts[0].x;
     float minY = pts[0].y;
@@ -148,4 +153,9 @@ void Missile::sSetSpeed(float speed)
 float Missile::sGetSpeed( )
 {
     return sSpeed;
+}
+
+Point Missile::GetNoseLoc()
+{
+	return mNose;
 }

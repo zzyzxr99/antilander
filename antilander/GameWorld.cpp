@@ -52,11 +52,11 @@ GameWorld::~GameWorld()
 	delete mTempLevel;
 }
 
-void GameWorld::TestSaveLoadLevel()
-{
-    mEditLevel.EJRTestSaveLevel("TestLevel.LEV");
-    mEditLevel.EJRTestLoadLevel("TestLevel.LEV");
-}
+
+
+
+
+
 
 void GameWorld::SpawnMissile()
 {
@@ -120,17 +120,15 @@ void GameWorld::SpawnLander()
 		mLanders.push_back(*PtrLander);
 }
 
-void GameWorld::TestSpawnExplosion()
-{
-    Explosion *newExpl;
-    Point sLoc= mRender.getMouse();
-    newExpl= new Explosion(sLoc,
-                           kExplosionMaxRadiusDefault,
-                           kExplosionExpandRateDefault,
-                           kExplosionInnerColorDefault,
-                           kExplosionOuterColorDefault);
-    mExplosions.push_back(*newExpl);
-}
+
+
+
+
+
+
+
+
+
 
 void GameWorld::SpawnExplosion( Point sLoc )
 {
@@ -449,19 +447,47 @@ void GameWorld::UpdateEverything( )
 					}
 
 				}	
-				misIter->SetLocation(temp);
-				Point newtemp;
-				misIter->GetDirection();
-				if(this->MissileSect(mGameTerrain.TerrainPts(),misIter->GetLocation(),misIter->GetDirection()))
+				float yInter;
+				bool hitTerrain= false;
+				// Check if Missle is below terrain
+				int numtps= mGameTerrain.GetTPts();
+				Point testPt= misIter->GetNoseLoc();
+				testPt.x+= temp.x;
+				testPt.y+= temp.y;
+				vector<Point>::iterator terrIter= mGameTerrain.TerrainPts();
+				for (int tps= 0; tps < (numtps-1); tps++)
+				{
+					if (CalcYIntercept(testPt,terrIter[tps],terrIter[tps+1],&yInter))
+					{
+						if (testPt.y >= yInter)
+						{
+							// intercept is below or equal to line - boom!
+							misIter->SetStatus(knMissileExplode);
+							hitTerrain= true;
+							break;
+						}
+					}
+				}
+				if (!hitTerrain)
+				{
+					misIter->SetLocation(temp);
+
+					
+				}
+				/*if(this->MissileSect(mGameTerrain.TerrainPts(),misIter->GetLocation(),misIter->GetDirection()))
 				{
 					misIter->SetStatus(knMissileExplode);	
-				}
+				}*/
 			}
 		}
 		else if (tStatus == knMissileExplode)
 		{
+			Point explPt= misIter->GetLocation();
+			Point nosePt= misIter->GetNoseLoc();
+			explPt.x+= nosePt.x;
+			explPt.y+= nosePt.y;
 			misIter->SetStatus(knMissileDead);
-			SpawnExplosion(misIter->GetLocation());
+			SpawnExplosion(explPt);
 		}
 
 	}
@@ -581,7 +607,7 @@ void GameWorld::UpdateEverything( )
 				LanderTemp= MoveEntity( landIter->GetLoc(),landIter->GetDir(), landIter->GetSpeed(), elapsedTime);
 				landIter->SetLocation(LanderTemp.x,LanderTemp.y);
                 // EJR Lander watcher
-                cout << "Lander x,y: " << LanderTemp.x << " " << LanderTemp.y << endl;
+ //               cout << "Lander x,y: " << LanderTemp.x << " " << LanderTemp.y << endl;
 			}
 		}
 		else if ( lStatus == knLanderExplode )
