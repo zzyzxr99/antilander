@@ -71,6 +71,7 @@ void Terrain::InitTerrain()
 {
     // *************************************************************************
     // intialize the number of Terrain points so we can loop thru them to draw
+    mTerrainPts.clear( );
     Point tp;
 	tp.x= 0;
 	tp.y= 400;
@@ -153,6 +154,7 @@ void Terrain::InitPadPoints()
 {
 
     // EJR hard coded still - can be exceptions
+    mPadPts.clear( );
     Point pTemp;
     pTemp.x= (mTerrainPts[0].x + mTerrainPts[1].x)/2;
     pTemp.y= (mTerrainPts[0].y);
