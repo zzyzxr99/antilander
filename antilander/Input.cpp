@@ -21,8 +21,8 @@ void Render::doInput()
 			gameState= false;
 		}
 
-	    if(mEvent.type == SDL_KEYDOWN)
-	    {
+		if(mEvent.type == SDL_KEYDOWN)
+		{
 			plIn.keyPress = mEvent.key.keysym.sym;
 			switch(plIn.keyPress)
 			{
@@ -39,6 +39,9 @@ void Render::doInput()
 					mConsole = true;
 				}
 				break;
+
+				if(mConsole)
+				{
 			case SDLK_a :
 				plIn.keyP = 'a';
 				break;
@@ -164,8 +167,9 @@ void Render::doInput()
 				break;
 			default :
 				plIn.keyP = '!';
+				}
 			}
-	    }
+		}
 
 	    if(mEvent.type == SDL_MOUSEBUTTONDOWN)
 	    {
