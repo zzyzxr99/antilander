@@ -57,31 +57,6 @@ void GameWorld::TestSaveLoadLevel()
     mEditLevel.EJRTestSaveLevel("TestLevel.LEV");
     mEditLevel.EJRTestLoadLevel("TestLevel.LEV");
 }
-void GameWorld::InitMissiles()
-{
-	Missile* PtrMissile;
-    Point* loc ;
-	loc	= mPlayerShip.GetLoc();
-    loc->x = 50.0F;
-    loc->y = 300.0F;
-    Point targ;
-    targ.x = 100.0F;
-    targ.y = 108.0F;
-	PtrMissile = new Missile( *loc,
-                              targ );
-	mMissiles.push_back(*PtrMissile);
-/////////////// extra to test multi-missile render //////////////////////
- /*   loc.x = 50.0F;
-    loc.y = 200.0F;
-    targ.x = 200.0F;
-    targ.y = 100.0F;
-	PtrMissile = new Missile( loc,
-                              targ );
-	mMissiles.push_back(*PtrMissile);*/
-/////////////// extra to test multi-missile render //////////////////////
-	SpawnMissile();
-
-}
 
 void GameWorld::SpawnMissile()
 {
@@ -127,19 +102,6 @@ void GameWorld::SpawnBomb()
 	    mBombs.push_back(*PtrBomb);
         mNumBomb--;
     }
-}
-
-void GameWorld::InitLanders()
-{
-	Lander *PtrLander;
-	PtrLander= new Lander();
-    PtrLander->SetLocation( 100,100 );
-	mLanders.push_back(*PtrLander);
-/////////////// extra to test multi-lander render //////////////////////
-    PtrLander= new Lander();
-    PtrLander->SetLocation( 300,50 );
-	mLanders.push_back(*PtrLander);
-/////////////// extra to test multi-lander render //////////////////////
 }
 
 void GameWorld::SpawnLander()
