@@ -703,11 +703,7 @@ void GameWorld::UpdateEverything( )
     Bomb::sSetSpeed( mCurrentLevel.GetBombMxSpd( ) );
     Bomb::sSetAcceleration( mCurrentLevel.GetBombAcc( ) );
     Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
-	while(*mRender.IsPause())
-	{
-		mRender.doInput();
-		ResetTimers();
-	}
+	CheckPause();
 }
 
 bool GameWorld::FireMissile()
@@ -1195,4 +1191,13 @@ Gunship* GameWorld::GetGunship()
 void GameWorld::AddScore(int Score, int Val)
 {
 	TotalScore = Score + Val;
+}
+
+void GameWorld::CheckPause()
+{
+	while(*mRender.IsPause())
+	{
+		mRender.doInput();
+		ResetTimers();
+	}
 }
