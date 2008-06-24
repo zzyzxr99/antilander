@@ -943,6 +943,7 @@ void GameWorld::InitLevel( )
     mPlayerShip.SetPad( mCurrentLevel.GetGunStartPad( ) );
     mPlayerShip.SetReloadTime( mCurrentLevel.GetGunReload( ) );
     mPlayerShip.SetBombReloadTime( mCurrentLevel.GetBombReloadTime( ) );
+    mPlayerShip.ResetShots( );
 
     // Explosion
     Explosion::sSetMaxRadius( mCurrentLevel.GetExpRad( ) );
@@ -953,6 +954,15 @@ void GameWorld::InitLevel( )
     Bomb::sSetSpeed( mCurrentLevel.GetBombMxSpd( ) );
     Bomb::sSetAcceleration( mCurrentLevel.GetBombAcc( ) );
     Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
+
+    // GameWorld
+    ResetTimers( );
+}
+
+void GameWorld::ResetTimers( )
+{
+    mPlayerShip.ResetTimers( );
+    mGameStepper.Mark( );
 }
 
 void GameWorld::InitEditLvl( )

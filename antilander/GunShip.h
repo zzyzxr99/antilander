@@ -42,6 +42,8 @@ public:
     bool CanBomb( );
     void SetPad( USINT pad );
     USINT GetPad( );
+    void ResetTimers( );
+    void ResetShots( );
 };
 
 #endif

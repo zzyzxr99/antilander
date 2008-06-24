@@ -96,3 +96,15 @@ USINT Gunship::GetPad( )
 {
     return mPad;
 }
+
+void Gunship::ResetTimers( )
+{
+    mGunTimer.Mark( );
+    mBombTimer.Mark( );
+}
+
+void Gunship::ResetShots( )
+{
+    m1stMissile = true;
+    m1stBomb = true;
+}
