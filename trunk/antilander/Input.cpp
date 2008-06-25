@@ -374,6 +374,10 @@ void Render::doMenuInput()
 			{
 				mStart = true;
 			}
+			if(plIn.keyPress == SDLK_e)
+			{
+				// needs to change gamestatus to editor mode???
+			}
 		}
 	}
 }
