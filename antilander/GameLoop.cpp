@@ -20,7 +20,7 @@ int main(int argv, char *args[])
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
-	tWorld->SetGameStatus(knEditMode);
+	tWorld->SetGameStatus(knMenuMode);
 	tWorld->SetEditStatus(knBuildMode);
 
     tWorld->GetEditLevel()->ClearLevel();
