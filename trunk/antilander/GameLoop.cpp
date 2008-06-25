@@ -20,7 +20,7 @@ int main(int argv, char *args[])
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
-	tWorld->SetGameStatus(knMenuMode);
+	tWorld->SetGameStatus(knIntroMode);
 	tWorld->SetEditStatus(knBuildMode);
 
     tWorld->GetEditLevel()->ClearLevel();
@@ -31,7 +31,6 @@ int main(int argv, char *args[])
 		tWorld->GetEditLevel()->ClearLevel();
 	}
 
-	
 
 	//////////////// load test /////////////////////
 
@@ -59,6 +58,8 @@ int main(int argv, char *args[])
 			{
 				tWorld->SetGameStatus(knMenuMode);
 			}
+
+            tWorld->CheckWinLose( );
 
 			tWorld->DrawEverything();
 
@@ -122,6 +123,34 @@ int main(int argv, char *args[])
 
 			tWorld->EditDrawEverything();
 		}
+
+//=================End Mode===========================//
+        if ( tWorld->GetGameStatus( ) == knEndMode )
+        {
+            if ( tWorld->CheckTick( ) )
+			{
+				tWorld->UpdateEverything( );
+			}
+            tWorld->DrawEverything( );
+        }
+//=============Level Transition mode=================//
+        if ( tWorld->GetGameStatus( ) == knLevTransMode )
+        {
+            if ( tWorld->CheckTick( ) )
+			{
+				tWorld->UpdateEverything( );
+			}
+            tWorld->DrawEverything( );
+        }
+//===================Intro Mode======================//
+        if ( tWorld->GetGameStatus( ) == knIntroMode )
+        {
+            if ( tWorld->CheckTick( ) )
+			{
+				tWorld->UpdateEverything( );
+			}
+            tWorld->DrawEverything( );
+        }
 	}
 
 

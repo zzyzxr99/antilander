@@ -21,7 +21,7 @@ Level::Level( )
     mMissileSpd     = kMissileStartSpeed;
     mGunMoves       = false;
     mGunMoveRnd     = false;
-    mEndGamePadOcc  = 0;
+    mEndGamePadOcc  = kLanderPadGoal;
     mGunReload      = kReloadTime;
     mExpRad         = kExplosionMaxRadiusDefault;
     mExpRate        = kExplosionExpandRateDefault;
@@ -298,7 +298,7 @@ void Level::ClearLevel( )
     mMissileSpd    = kMissileStartSpeed;
     mGunMoves      = false;
     mGunMoveRnd    = false;
-    mEndGamePadOcc = 0;
+    mEndGamePadOcc = kLanderPadGoal;
     mGunReload     = kReloadTime;
     mExpRad        = kExplosionMaxRadiusDefault;
     mExpRate       = kExplosionExpandRateDefault;

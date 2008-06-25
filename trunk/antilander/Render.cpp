@@ -18,7 +18,8 @@ using namespace std;
 
 Render::Render( )
 {
-    mSplashAlpha = 255;
+    mSplashAlpha = 0;
+    mSplashFade = knFadeIn;
     mMissileDrawPts[0].x =   -4.0F;
     mMissileDrawPts[1].x =    4.0F;
     mMissileDrawPts[2].x =    0.0F;
@@ -415,17 +416,17 @@ short int Render::GetSplashAlpha( )
     return mSplashAlpha;
 }
 
-void Render::DecSplashAlpha( short amt )
+void Render::StepSplashAlpha( short amt )
 {
-    if ( amt < 0 )
+    if ( amt < -10 )
     {
-        amt = 0;
+        amt = -10;
     }
-    else if ( amt > 255 )
+    else if ( amt > 10 )
     {
-        amt = 255;
+        amt = 10;
     }
-    mSplashAlpha -= amt;
+    mSplashAlpha += amt;
     if ( mSplashAlpha < 0 )
     {
         mSplashAlpha = 0;
@@ -434,16 +435,49 @@ void Render::DecSplashAlpha( short amt )
     {
         mSplashAlpha = 255;
     }
+    if ( mSplashAlpha == 255 )
+    {
+        mSplashFade = knFadeOut;
+    }
+    else if ( mSplashAlpha == 0 )
+    {
+        mSplashFade = knFadeDone;
+    }
 }
 
-void Render::DrawSplash( )
+FadeType Render::GetSplashFade( )
+{
+    return mSplashFade;
+}
+
+void Render::SetSplashFade(FadeType fade)
+{
+    mSplashFade = fade;
+}
+
+void Render::DrawSplash(GameStatusType status)
 {
     TTF_Font* splashFont = TTF_OpenFont("QUERROUND.TTF", 24);
+    string splashText;
+    switch ( status )
+    {
+    case knIntroMode:
+        splashText = "anti lander";
+        break;
+    case knEndMode:
+        splashText = "game over";
+        break;
+    case knLevTransMode:
+        splashText = "level clear";
+    default:
+        splashText = "splash error";
+        break;
+    }
     SDL_Color txtForeColor = { 0,
                                mSplashAlpha,
                                mSplashAlpha };
     SDL_Surface* textSurface = TTF_RenderText_Blended( splashFont,
-                                                       "anti lander",
+                                                       splashText.c_str( ),
                                                        txtForeColor );
     SDL_Rect splashLoc = { 200,25,
                            0,0 };
@@ -627,4 +661,14 @@ bool* Render::IsPause()
 bool* Render::IsStart()
 {
 	return &mStart;
+}
+
+void Render::Start( )
+{
+    mStart = true;
+}
+
+void Render::Stop( )
+{
+    mStart = false;
 }

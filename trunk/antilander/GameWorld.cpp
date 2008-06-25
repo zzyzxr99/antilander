@@ -122,16 +122,6 @@ void GameWorld::SpawnLander()
 		mNumLndrsToGo--;
 }
 
-
-
-
-
-
-
-
-
-
-
 void GameWorld::SpawnExplosion( Point sLoc )
 {
     Explosion *newExpl;
@@ -145,7 +135,6 @@ void GameWorld::SpawnExplosion( Point sLoc )
     // Test setting static variables
     //Explosion::sSetMaxRadius( newExpl->GetMaxRadius( ) + 10.0F );
     //Explosion::sSetExpansionRate( newExpl->GetExpansionRate( ) + 5.0F );
-
 }
 
 void GameWorld::InitEverything()
@@ -181,10 +170,11 @@ void GameWorld::DrawEverything( )
                          mGameTerrain.GetTPts( ),
 						 mGameTerrain.TerBox());
 
-    if ( mRender.GetSplashAlpha( ) > 0 )
+    if ( mGameMode == knIntroMode ||
+         mGameMode == knLevTransMode ||
+         mGameMode == knEndMode )
     {
-        mRender.DrawSplash( );
-        mRender.DecSplashAlpha( 1 );
+        mRender.DrawSplash( mGameMode );
     }
 
     vector<Lander>::iterator landIter;
@@ -195,25 +185,28 @@ void GameWorld::DrawEverything( )
 //		mRender.DrawBox(landIter->GetLoc(), mRender.GetLanderBox());
     }
 
-    vector<Missile>::iterator misIter;
-    for ( misIter = mMissiles.begin( ); misIter != mMissiles.end( ); misIter++ )
+    // DWL draw missiles and bombs only in knPlayMode
+    if ( mGameMode == knPlayMode )
     {
-        mRender.DrawMissile( mRender.getpScreen( ),
-                             &(misIter->GetLocation( )),
-                             &(misIter->GetTarget( )));
-        mRender.DrawCrosshair( mRender.getpScreen( ),
-                               &(misIter->GetTarget( )),
-                               255,0,0 );
-//        mRender.DrawBox( misIter->GetLocation( ),
-//                         misIter->GetBox( ) );
-    }
-
-    vector<Bomb>::iterator bombIter;
-    for ( bombIter = mBombs.begin( ); bombIter != mBombs.end( ); bombIter++ )
-    {
-        mRender.DrawBomb( mRender.getpScreen( ),
-                             &(bombIter->GetLocation( )),
-                             bombIter->sGetRadius());
+        vector<Missile>::iterator misIter;
+        for ( misIter = mMissiles.begin( ); misIter != mMissiles.end( ); misIter++ )
+        {
+            mRender.DrawMissile( mRender.getpScreen( ),
+                                 &(misIter->GetLocation( )),
+                                 &(misIter->GetTarget( )));
+            mRender.DrawCrosshair( mRender.getpScreen( ),
+                                   &(misIter->GetTarget( )),
+                                   255,0,0 );
+         // mRender.DrawBox( misIter->GetLocation( ),
+         //                  misIter->GetBox( ) );
+        }
+        vector<Bomb>::iterator bombIter;
+        for ( bombIter = mBombs.begin( ); bombIter != mBombs.end( ); bombIter++ )
+        {
+            mRender.DrawBomb( mRender.getpScreen( ),
+                                 &(bombIter->GetLocation( )),
+                                 bombIter->sGetRadius());
+        }
     }
 
     mRender.DrawMissile( mRender.getpScreen( ),
@@ -237,48 +230,6 @@ void GameWorld::DrawEverything( )
                                   iterExpl->GetInnerColor());
         }
     }
-
-	//// Temp test for IntersectSegments
-	//Point *p1= mPlayerShip.GetLoc();
-	//Point p2= mRender.getMouse();
-
-	//lineRGBA( mRender.getpScreen(),
- //                 Round( (*p1).x ),
- //                 Round( (*p1).y),
- //                 Round( p2.x),
- //                 Round( p2.y),
- //                 255,255,255,255 );
-
-	//Point p3,p4;
-	//p3.x= 150.0;
-	//p3.y= 128.0;
-	//p4.x= 151.0;
-	//p4.y= 200.0;
-
-	//lineRGBA( mRender.getpScreen(),
- //             Round( p3.x ),
- //             Round( p3.y),
- //             Round( p4.x),
- //             Round( p4.y),
- //             255,255,255,255 );
-
-	//Point p5;
-	//if (IntersectSegments(*p1,p2,p3,p4,&p5))
-	//{
-	//		lineRGBA( mRender.getpScreen(),
- //             Round( p5.x-5 ),
- //             Round( p5.y-5),
- //             Round( p5.x+5),
- //             Round( p5.y+5),
- //             0,255,255,255 );
-	//		lineRGBA( mRender.getpScreen(),
- //             Round( p5.x+5 ),
- //             Round( p5.y-5),
- //             Round( p5.x-5),
- //             Round( p5.y+5),
- //             0,255,255,255 );
-	//}
-	//// end test code for IntersectSegments
 	
 	// do console stuff
 	if(IsConsole())
@@ -329,49 +280,6 @@ void GameWorld::EditDrawEverything()
     mRender.DrawCrosshair( mRender.getpScreen( ),
 					       &mRender.getMouse( ),
 					       0,255,0);
-
-	// Temp test for IntersectSegments
-	/*Point *p1= mPlayerShip.GetLoc();
-	Point p2= mRender.getMouse();
-
-	lineRGBA( mRender.getpScreen(),
-                  Round( (*p1).x ),
-                  Round( (*p1).y),
-                  Round( p2.x),
-                  Round( p2.y),
-                  255,255,255,255 );
-
-	Point p3,p4;
-	p3.x= 150.0;
-	p3.y= 128.0;
-	p4.x= 151.0;
-	p4.y= 200.0;
-
-	lineRGBA( mRender.getpScreen(),
-              Round( p3.x ),
-              Round( p3.y),
-              Round( p4.x),
-              Round( p4.y),
-              255,255,255,255 );
-
-	Point p5;
-	if (IntersectSegments(*p1,p2,p3,p4,&p5))
-	{
-			lineRGBA( mRender.getpScreen(),
-              Round( p5.x-5 ),
-              Round( p5.y-5),
-              Round( p5.x+5),
-              Round( p5.y+5),
-              0,255,255,255 );
-			lineRGBA( mRender.getpScreen(),
-              Round( p5.x+5 ),
-              Round( p5.y-5),
-              Round( p5.x-5),
-              Round( p5.y+5),
-              0,255,255,255 );
-	}*/
-	// end test code for IntersectSegments
-
 	
     SDL_Flip( mRender.getpScreen( ));
 }
@@ -389,16 +297,6 @@ Render* GameWorld::GetRender( )
 
 bool GameWorld::CheckTick( )
 {
-/*	unsigned long curTime,timePassed;
-    curTime= mGameStepper.CurrentTimeMS();
-	timePassed= curTime - mLastTimeStamp;
-	if (timePassed >= kGameStep)
-	{
-		mLastElapsedTime= (float)(timePassed)/1000.0F;
-		mLastTimeStamp= curTime;
-		return true;
-	}
-	*/
     if (mGameStepper.CheckElapsedMS(kGameStep))
     {
         return true;
@@ -722,6 +620,27 @@ void GameWorld::UpdateEverything( )
     Bomb::sSetAcceleration( mCurrentLevel.GetBombAcc( ) );
     Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
 	CheckPause();
+
+    // Splash
+    if ( mGameMode == knIntroMode ||
+         mGameMode == knLevTransMode ||
+         mGameMode == knEndMode )
+    {
+        if ( mRender.GetSplashFade( ) == knFadeIn )
+        {
+            mRender.StepSplashAlpha(1);
+        }
+        else if ( mRender.GetSplashFade( ) == knFadeOut )
+        {
+            mRender.StepSplashAlpha(-1);
+        }
+        else if ( mRender.GetSplashFade( ) == knFadeDone )
+        {
+            mGameMode = knMenuMode;
+            mRender.SetSplashFade(knFadeIn);
+            StopRender( );
+        }
+    }
 }
 
 bool GameWorld::FireMissile()
@@ -1058,6 +977,19 @@ void GameWorld::CheckSpawnLander()
 		}
 	}
 }
+
+void GameWorld::CheckWinLose( )
+{
+    if ( mNumLndrsLanded >= mEndGamePadOcc )
+    {
+        mGameMode = knEndMode;
+    }
+    else if ( mNumLndrsToGo <= 0 )
+    {
+        mGameMode = knLevTransMode;
+    }
+}
+
 string GameWorld::GetLevName(int num)
 {
 	string name;
@@ -1245,4 +1177,14 @@ void GameWorld::CheckPause()
 		mRender.doMenuInput();
 		ResetTimers();
 	}
+}
+
+void GameWorld::StartRender( )
+{
+    mRender.Start( );
+}
+
+void GameWorld::StopRender( )
+{
+    mRender.Stop( );
 }

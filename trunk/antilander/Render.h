@@ -28,6 +28,7 @@ private:
 	bool doneBuildmode;
 	bool exitEditmode;
     short int mSplashAlpha;
+    FadeType mSplashFade;
 	BBox mBBoxLander;
 	BBox mGameScreen;
 	TTF_Font* conFont;	
@@ -81,8 +82,10 @@ public:
 	bool isRightHeld();
 	bool isMidHeld();
 	short int GetSplashAlpha( );
-    void DecSplashAlpha( short int amt );
-    void DrawSplash( );
+    void StepSplashAlpha(short amt);
+    FadeType GetSplashFade( );
+    void SetSplashFade(FadeType fade);
+    void DrawSplash(GameStatusType status);
 	void DrawMenu();
 	
 //    void DrawBox( Point loc,
@@ -99,6 +102,8 @@ public:
 	bool* IsSave();
 	bool* IsPause();
 	bool* IsStart();
+    void Start( );
+    void Stop( );
 };
 
 #endif // _RENDER_H;
