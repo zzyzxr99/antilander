@@ -54,12 +54,12 @@ int main(int argv, char *args[])
 			}
 			tWorld->CheckSpawnLander();
 
+            tWorld->CheckWinLose( );
+
 			if (*tWorld->GetRender()->IsPause())
 			{
 				tWorld->SetGameStatus(knMenuMode);
 			}
-
-            tWorld->CheckWinLose( );
 
 			tWorld->DrawEverything();
 
