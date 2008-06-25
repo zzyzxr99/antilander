@@ -882,7 +882,7 @@ void GameWorld::AddEditPadPoint(Point p)
 		//retriev the Y axis
 		p.y = ptrTer->back().y;
 		//add 22 to the x axis
-		p.x = ptrTer->back().x+22;
+		p.x = ptrTer->back().x+30;
 
 
 		//insert that point when right mouse is clicked

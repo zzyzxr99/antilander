@@ -20,7 +20,7 @@ int main(int argv, char *args[])
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
-	tWorld->SetGameStatus(knMenuMode);
+	tWorld->SetGameStatus(knEditMode);
 	tWorld->SetEditStatus(knBuildMode);
 
     tWorld->GetEditLevel()->ClearLevel();
@@ -54,6 +54,11 @@ int main(int argv, char *args[])
 				tWorld->UpdateEverything( );
 			}
 			tWorld->CheckSpawnLander();
+
+			if (*tWorld->GetRender()->IsPause())
+			{
+				tWorld->SetGameStatus(knMenuMode);
+			}
 
 			tWorld->DrawEverything();
 
