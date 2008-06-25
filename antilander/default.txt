@@ -27,7 +27,7 @@ mPadPt
 mGunStartPad
 3
 mEndGamePadOcc
-0
+3
 mNumLndrLvl
 10
 mNumLndrScr

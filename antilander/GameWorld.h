@@ -70,12 +70,12 @@ public:
     bool CheckTick( );
     void UpdateEverything( );
 	bool FireMissile();
-    bool FireBomb(); // 
+    bool FireBomb();
 
 	bool SplashRunning( );
     void SpawnExplosion( Point sLoc );
     bool MissileSect(vector<Point>::iterator TerArr, Point MissNose, Vect Direction);
-	void LanderLanded ();
+	void LanderLanded();
 
 	bool LeftMouseHeld();
 	bool RightMouseHeld();
@@ -102,6 +102,7 @@ public:
    
 	int PointCheck();
 	void CheckSpawnLander();
+    void CheckWinLose( );
 	//console commands
 	bool IsConsole();
 	string DoConsoleIn();
@@ -116,6 +117,8 @@ public:
 	void AddScore(int Score, int Val);
 	
 	void CheckPause();
+    void StartRender( );
+    void StopRender( );
 };
 
 #endif // end _GAMEWORLD_H

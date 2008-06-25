@@ -116,6 +116,7 @@ const int kFinColorT = 255;
 const float kLanderStartY = -14.0F;
 const float kBaseDescendRate = 30.0F;
 const int kBaseLanderSpeed = 0;
+const USINT kLanderPadGoal = 3;
 enum LanderStatusType { knLanderDescending = 1,
                         knLanderDead,
                         knLanderLanded,
@@ -147,6 +148,11 @@ enum GameStatusType { knPlayMode = 1,
 					  knEndMode };
 enum EditStatusType { knBuildMode = 1,
                       knMoveMode };
+
+// Render
+enum FadeType { knFadeIn = 1,
+                knFadeOut,
+                knFadeDone };
 
 //SCORE
 const int knMKill = 50;
