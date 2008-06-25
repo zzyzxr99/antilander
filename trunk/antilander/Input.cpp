@@ -28,10 +28,18 @@ void Render::doInput()
 			{
 				switch(plIn.keyPress)
 				{
-
+//===========Menu / Pause========================
 				case SDLK_ESCAPE :
-					gameState = false;
+					if(mPause == true)
+					{
+						mPause = false;
+					}
+					else
+					{
+						mPause = true;
+					}
 					break;
+					
 				case SDLK_BACKQUOTE :
 					if(mConsole == true)
 					{
@@ -347,10 +355,17 @@ void Render::doMenuInput()
 		if(mEvent.type == SDL_KEYDOWN)
 		{
 			plIn.keyPress = mEvent.key.keysym.sym;
-			/*if(plIn.keyPress == SDLK_ESCAPE)
+			if(plIn.keyPress == SDLK_ESCAPE)
 			{
-				gameState = false;
-			}*/
+				if(mPause == true)
+					{
+						mPause = false;
+					}
+					else
+					{
+						mPause = true;
+					}
+			}
 			if(plIn.keyPress == SDLK_q)
 			{
 				gameState = false;
