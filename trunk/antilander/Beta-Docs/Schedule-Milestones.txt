@@ -40,6 +40,8 @@ UI Start, Pause, Edit, Quit
 
 6/27
 
+Be able to test 2 levels. Start at level 1 and end at level 2. A complete game.
+All lose conditions.
 
 
 
