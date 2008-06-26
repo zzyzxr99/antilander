@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 GameWorld* tWorld;
 
 int main(int argv, char *args[])

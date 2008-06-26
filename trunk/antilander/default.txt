@@ -25,9 +25,9 @@ mPadPt
 522, 236
 567, 348
 mGunStartPad
-0
+2
 mEndGamePadOcc
-1
+4
 mNumLndrLvl
 30
 mNumLndrScr
