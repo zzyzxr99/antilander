@@ -687,3 +687,8 @@ bool* Render::IsEdit()
 {
 	return &mEdit;
 }
+
+void Render::SetGameState(bool state)
+{
+	gameState = state;
+}

@@ -1,0 +1,50 @@
+commands
+--------
+
+all of the commands use the following syntax:
+
+<command> <value>
+
+*dont forget the space inbetween the command and value
+
+
+
+set commands
+------------
+
+set commands are followed by a value of the type specified
+
+
+set missiles 		<USINT>		sets number of missiles
+set bombs		<USINT>		sets number of bombs
+set missilereload	<float>		sets missile reload rate
+set landlevel		<USINT>		sets number of landers per level
+set landscreen		<USINT>		sets number of landers on screen
+set landpersist		<bool>		sets something(i think its whether landers stay or disappear)
+set landrate		<float>		dont know what this sets
+set missilespeed	<float>		sets speed of missiles
+set pad			<USINT>		supposed to set gunship location, but it doesnt
+set bombreload		<float>		sets bomb reload rate
+set bombacc		<float>		sets gravity for bombs
+set bombspeed		<float>		sets speed of bombs
+set bombrad		<float>		sets size of bombs
+
+
+other commands
+--------------
+
+the save and load commands are followed by an int (the number of the level you wish to save/load)
+
+
+save			<int>		save a level
+load			<int>		load a level
+restart					reload level
+quit					quit game
+
+
+notes
+-----
+
+-all valid commands will reload the level upon execution
+-the restart and quit commands don't take any values
+-the pad command doesn't work

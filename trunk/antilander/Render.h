@@ -107,6 +107,7 @@ public:
 	bool* IsEdit();
     void Start( );
     void Stop( );
+	void SetGameState(bool state);
 };
 
 #endif // _RENDER_H;

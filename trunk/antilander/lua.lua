@@ -49,6 +49,8 @@ function conInput(cmd)
 			set_value = string.sub(cmd,9,-1)
 			set_value = tonumber(set_value)
 			Action(92,0)
+		elseif (string.find(cmd, "quit")~= nil) then
+			Action(93,0)
 		else
 			Action(0,0)
 		end
