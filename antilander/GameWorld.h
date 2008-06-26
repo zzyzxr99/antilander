@@ -17,6 +17,7 @@ extern "C"
 #include "ALTimer.h"
 #include <vector>
 #include "Level.h"
+#include "Score.h"
 using namespace std;
 
 class GameWorld

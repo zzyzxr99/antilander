@@ -227,6 +227,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Score.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Structs.cpp"
 				>
 			</File>
@@ -282,6 +286,10 @@
 			</File>
 			<File
 				RelativePath=".\Render.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Score.h"
 				>
 			</File>
 			<File
