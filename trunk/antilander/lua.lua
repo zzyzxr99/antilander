@@ -40,7 +40,6 @@ function conInput(cmd)
 		
 		elseif (string.find(cmd,"spawn")~= nil ) then
 		    set_com = string.sub(cmd,7,-1)
-
 			if (set_com == "bomb") then
 				Action(100,0)
 			elseif (set_com == "missile") then
@@ -48,8 +47,21 @@ function conInput(cmd)
 			elseif (set_com == "lander") then
 			    Action(102,0)
 			end
+			
+		elseif (string.find(cmd, "save")~= nil) then
+			set_value = string.sub(cmd,6,-1)
+			set_value = tonumber(set_value)
+			Action(90,set_value)
+		elseif (string.find(cmd, "load")~= nil) then
+			set_value = string.sub(cmd,6,-1)
+			set_value = tonumber(set_value)
+			Action(91,set_value)
+		elseif (string.find(cmd, "restart")~= nil) then
+			set_value = string.sub(cmd,9,-1)
+			set_value = tonumber(set_value)
+			Action(92,0)
 		else
-			return "unidentified command"	
+			Action(0,0)
 		end
 end
 

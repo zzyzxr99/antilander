@@ -35,12 +35,11 @@ GameWorld::GameWorld()
     mGunMoveRnd		= false;
     mEndGamePadOcc	= 0;
     mFrat			= false;
-	lvlCtr			= 1;
+	lvlCtr			= 0;
 	command			= 0;
 	value			= 0;
 	StartLua();
 	TotalScore		= 0;
-	mCurrentLevel.LoadLevel("default.txt");
 	InitEverything();	
 }
 
@@ -139,6 +138,14 @@ void GameWorld::SpawnExplosion( Point sLoc )
 
 void GameWorld::InitEverything()
 {
+	if(lvlCtr == 0)
+	{
+		mCurrentLevel.LoadLevel("default.txt");
+	}
+	else
+	{
+		mCurrentLevel.LoadLevel(GetLevName(lvlCtr));
+	}
 	/*mTempLevel->LoadLevel("default.txt");
 	mCurrentLevel.Clone(mTempLevel);*/
     InitLevel( );
@@ -1149,6 +1156,17 @@ int GameWorld::l_Action(lua_State* LVM)
 	case 13 :
 		mCurrentLevel.SetBombRad(value);
 		break;
+	case 90 :
+		tWorld->GetCurrentLevel()->SaveLevel(tWorld->GetLevName((int)value));
+		*tWorld->GetLvlCtr() = (USINT)value;
+		break;
+	case 91 :
+		tWorld->GetCurrentLevel()->LoadLevel(tWorld->GetLevName((int)value));
+		*tWorld->GetLvlCtr() = (USINT)value;
+		break;
+	case 92 :
+		cout << "restarting" << endl; //restart - by default all the cases restart the level
+		break;
 	case 100 :
 		tWorld->SpawnBomb();
 		break;
@@ -1158,6 +1176,10 @@ int GameWorld::l_Action(lua_State* LVM)
 	case 102 :
 		tWorld->SpawnLander();
 		break;
+	}
+	if(command != 0)
+	{
+		tWorld->InitEverything();
 	}
 	return 0;
 }
@@ -1209,4 +1231,9 @@ void GameWorld::StartRender( )
 void GameWorld::StopRender( )
 {
     mRender.Stop( );
+}
+
+USINT* GameWorld::GetLvlCtr( )
+{
+	return &lvlCtr;
 }
