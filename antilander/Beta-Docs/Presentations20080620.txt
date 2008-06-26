@@ -1,0 +1,85 @@
+Vadim:
+Missiles offscreen tested 
+set commands from console
+  change gameworld playing
+  change editing level
+
+David:
+constants fed initial default level
+   Level gives those values to gameworld
+      
+   Tested
+
+   Clone level function
+
+Daniel:
+landers spawn - places
+   get random pad pt
+   spawn point of lander
+   
+   stacking behavoir?
+      check for existing lander at x point of current landers
+      
+   check number of landers on screen against level
+
+   gameworld:: ?
+
+Joseph:
+Start up menu-
+   Intro screen lander landing - gunship - terrain
+	clone running game
+
+   Menu pops up
+      Enter - Start
+      L - Load
+      E - Editor
+      C - Credits
+      H - Help
+      ESC - Quits
+
+   Pause ? Show menu
+
+   Hash out graphics and options
+
+Adam:
+Level editor features-
+   Edit mode ----> Draw Mode ----> Move mode (pause time)
+                      Left click consecutive points (first special)
+                      Right click 
+
+   Need landing pad action for horizontal instead of drawing flat
+   
+   Finish draw mode takes flat spots and makes points.
+	Check minium pad points and points
+	Hit S does something -
+
+   Needs data for level paired with default data
+
+Steven:
+Score stuff
+   bound box collision
+   missile to lander 50
+   bomb to lander 75
+   fratricide to lander 100
+
+   goes in gameworld
+      check for collision
+	 add to score
+
+   running score
+	game world
+
+   off to side caluclations from collision
+
+   
+   
+            
+
+   - Save
+   
+            
+
+
+      
+      
+      

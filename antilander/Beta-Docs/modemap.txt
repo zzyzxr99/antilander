@@ -1,0 +1,38 @@
+INTRO
+  show splash
+  goto menu
+  no input
+PLAY
+  init level or resume
+  esc to menu
+  ~ to console
+  win to level transition
+  lose to end game
+  right-click fire missile
+  left-click fire bomb
+  if parameter change then reset level
+EDIT
+  clear edit level
+  start build mode
+  left-click add terrain point
+  right-click add pad point
+  middle-click finish and go to move mode
+  move mode
+  s input from console: level number
+  p input from console: pad number
+  x set current level to edit level and goto menu
+MENU/PAUSE
+  s to play (New Game)
+  e to edit (hide this)
+  q to os   (Quit)
+  esc to play (Resume)
+ENDGAME
+  splash
+  clear all
+  to menu
+  no input
+LEVEL TRANSITION
+  splash
+  load next level
+  to play
+  no input
