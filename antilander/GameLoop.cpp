@@ -62,7 +62,6 @@ int main(int argv, char *args[])
 			}
 
 			tWorld->DrawEverything();
-
 		}
 //====================Menu Mode========================
 		else if (tWorld->GetGameStatus() == knMenuMode)

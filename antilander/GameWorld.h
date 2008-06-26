@@ -45,7 +45,7 @@ private:
     bool mGunMoveRnd;
     USINT mEndGamePadOcc;
     bool mFrat;
-	int lvlCtr;
+	USINT lvlCtr;
 	int mNumLndrsToGo;
 	int mNumLndrsLanded;
 	//console and lua variables
@@ -119,6 +119,8 @@ public:
 	void CheckPause();
     void StartRender( );
     void StopRender( );
+
+	USINT* GetLvlCtr( );
 };
 
 #endif // end _GAMEWORLD_H

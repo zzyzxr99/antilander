@@ -68,9 +68,6 @@ void Render::doInput()
 			{
 				switch(plIn.keyPress)
 				{
-				case SDLK_ESCAPE :
-					gameState = false;
-					break;
 				case SDLK_BACKQUOTE :
 					if(mConsole == true)
 					{
