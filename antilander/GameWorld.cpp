@@ -1162,6 +1162,26 @@ int GameWorld::l_Action(lua_State* LVM)
 	case 13 :
 		mCurrentLevel.SetBombRad(value);
 		break;
+	case 90 :
+		tWorld->GetCurrentLevel()->SaveLevel(tWorld->GetLevName((int)value));
+		*tWorld->GetLvlCtr() = (USINT)value;
+		break;
+	case 91 :
+		tWorld->GetCurrentLevel()->LoadLevel(tWorld->GetLevName((int)value));
+		*tWorld->GetLvlCtr() = (USINT)value;
+		break;
+	case 92 :
+		cout << "restarting" << endl; //restart - by default all the cases restart the level
+		break;
+	//case 100 :
+	//	tWorld->SpawnBomb();
+	//	break;
+	//case 101 :
+	//	tWorld->SpawnMissile();
+	//	break;
+	//case 102 :
+	//	tWorld->SpawnLander();
+	//	break;
 	}
 	if(command != 0)
 	{
