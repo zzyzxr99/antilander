@@ -37,6 +37,7 @@ private:
 	bool mSave;
 	bool mPause;
 	bool mStart;
+	bool mEdit;
 
 public:
     Render( );
@@ -103,6 +104,7 @@ public:
 	bool* IsSave();
 	bool* IsPause();
 	bool* IsStart();
+	bool* IsEdit();
     void Start( );
     void Stop( );
 };

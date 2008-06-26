@@ -71,6 +71,14 @@ int main(int argv, char *args[])
 			{
 				tWorld->SetGameStatus(knPlayMode);
 			}
+			else if(*tWorld->GetRender()->IsEdit())
+			{
+				*tWorld->GetRender()->IsEdit() = false;
+
+				tWorld->SetGameStatus(knEditMode);
+				tWorld->SetEditStatus(knBuildMode);
+				tWorld->GetEditLevel()->ClearLevel();
+			}
 		}
 //====================Edit Mode========================
 		else if (tWorld->GetGameStatus() == knEditMode)
