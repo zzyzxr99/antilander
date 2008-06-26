@@ -469,6 +469,7 @@ void Render::DrawSplash(GameStatusType status)
         break;
     case knLevTransMode:
         splashText = "level clear";
+        break;
     default:
         splashText = "splash error";
         break;
