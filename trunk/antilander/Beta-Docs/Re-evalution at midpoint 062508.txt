@@ -1,2 +1,32 @@
 Re-evalution 062508
 -------------------
+Eric bug list
+-------------
+Edit menu item 'E' does not go to editor
+
+Start - play game to "Supspected End" - lander spawns
+"Splash Error" - "ends" again can start again same lander
+moves. Can't move mouse 
+
+Start - do nothing - goes to game over - 
+lander spawned anyway went down while "Game Over" displayed again.
+(There was time elapsed during me starting again)
+
+Start - let game go - ESC to pause. 'Q' does not quit.
+Addendum - Start game - ESC 'q' ESC quits
+
+Feature questions
+-----------------
+Could not move mouse during any splash. Good?
+Question of random spawn landers.
+Question of number of spawned landers or landed go to next level or endgame?
+
+TODO
+----
+Wire up Edit!
+Mode discussion ESC pause. How to unpause?
+
+Bug - ESC going to menu/pause does not always draw
+Bug - ESC to menu unpause, click does not shoot missile? Reload timers suspect for pause
+Bug - game does not detect focus change in window -
+Bug - console mode is affecting input for menu

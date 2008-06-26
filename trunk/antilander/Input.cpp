@@ -26,7 +26,7 @@ void Render::doInput()
 			plIn.keyPress = mEvent.key.keysym.sym;
 			if (!mConsole)
 			{
-				switch(plIn.keyPress)
+			switch(plIn.keyPress)
 				{
 //===========Menu / Pause========================
 				case SDLK_ESCAPE :
