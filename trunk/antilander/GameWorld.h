@@ -87,7 +87,7 @@ public:
 	void AddEditLevelPoint(Point p);
 	void AddEditPadPoint(Point p);
 	void EndEditLvlPts(Point p);
-    void SpawnLander();
+    void SpawnLander(Point sPoint, Point tPoint);
     void InitLevel( );
     void ResetTimers( );
     void InitEditLvl( );

@@ -103,22 +103,14 @@ void GameWorld::SpawnBomb()
     }
 }
 
-void GameWorld::SpawnLander()
+void GameWorld::SpawnLander(Point sPoint, Point tPoint)
 {
 	Lander *PtrLander;
-    vector<Point>::iterator pad0;
 
-		pad0= mGameTerrain.PadPts();
-		Point sPoint,tPoint;
-		int spawnLoc = rand()%mGameTerrain.GetNumPadPts();
-		sPoint.x= pad0[spawnLoc].x;
-		sPoint.y= kLanderStartY;
-		tPoint.x= pad0[spawnLoc].x;
-		tPoint.y= pad0[spawnLoc].y;
-		PtrLander= new Lander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ) );
-		mLanders.push_back(*PtrLander);
-		_ASSERTE(mNumLndrsToGo > 0);
-		mNumLndrsToGo--;
+	PtrLander= new Lander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ) );
+	mLanders.push_back(*PtrLander);
+	_ASSERTE(mNumLndrsToGo > 0);
+	mNumLndrsToGo--;
 }
 
 void GameWorld::SpawnExplosion( Point sLoc )
@@ -1002,7 +994,20 @@ void GameWorld::CheckSpawnLander()
 
 		if ( ( curLanders < mNumLndrScr) )
 		{
-			tWorld->SpawnLander( );
+			//mPlayerShip.GetPad( ); gunship location
+			vector<Point>::iterator pad0;
+
+			pad0= mGameTerrain.PadPts();
+			Point sPoint,tPoint;
+			int spawnLoc = rand()%mGameTerrain.GetNumPadPts();
+			sPoint.x= pad0[spawnLoc].x;
+			sPoint.y= kLanderStartY;
+			tPoint.x= pad0[spawnLoc].x;
+			tPoint.y= pad0[spawnLoc].y;
+			
+			if(spawnLoc != mPlayerShip.GetPad( ))
+			tWorld->SpawnLander(sPoint, tPoint);
+
 		}
 	}
 }
@@ -1155,26 +1160,6 @@ int GameWorld::l_Action(lua_State* LVM)
 		break;
 	case 13 :
 		mCurrentLevel.SetBombRad(value);
-		break;
-	case 90 :
-		tWorld->GetCurrentLevel()->SaveLevel(tWorld->GetLevName((int)value));
-		*tWorld->GetLvlCtr() = (USINT)value;
-		break;
-	case 91 :
-		tWorld->GetCurrentLevel()->LoadLevel(tWorld->GetLevName((int)value));
-		*tWorld->GetLvlCtr() = (USINT)value;
-		break;
-	case 92 :
-		cout << "restarting" << endl; //restart - by default all the cases restart the level
-		break;
-	case 100 :
-		tWorld->SpawnBomb();
-		break;
-	case 101 :
-		tWorld->SpawnMissile();
-		break;
-	case 102 :
-		tWorld->SpawnLander();
 		break;
 	}
 	if(command != 0)
