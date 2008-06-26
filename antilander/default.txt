@@ -25,9 +25,9 @@ mPadPt
 522, 236
 567, 348
 mGunStartPad
-3
+0
 mEndGamePadOcc
-3
+1
 mNumLndrLvl
 10
 mNumLndrScr
@@ -37,7 +37,7 @@ mNumBomb
 mNumMissile
 300
 mBombMxSpd
-100
+1000
 mBombAcc
 9.8
 mBombRad
