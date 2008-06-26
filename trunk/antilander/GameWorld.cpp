@@ -240,6 +240,7 @@ void GameWorld::DrawEverything( )
 
 	//this is temp draw menu
 
+	
 	mRender.DrawScore(TotalScore);
 
 
@@ -341,7 +342,8 @@ void GameWorld::UpdateEverything( )
 						{
 							landIter->SetStatus(knLanderExplode);
 							misIter->SetStatus(knMissileExplode);
-							AddScore(TotalScore, knMKill);
+							
+						AddScore(TotalScore, knMKill);
 						}
 					}
 
@@ -429,7 +431,7 @@ void GameWorld::UpdateEverything( )
 						{
 							landIter->SetStatus(knLanderExplode);
 							bombIter->SetStatus(knBombExplode);
-							AddScore(TotalScore, knBKill);
+						AddScore(TotalScore, knBKill);
 						}
 					}
 
