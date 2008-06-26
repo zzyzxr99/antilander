@@ -12,9 +12,11 @@
 #include <string>
 #include "string.h"
 #include <sstream>
+#include "GameWorld.h"
 
 using namespace std;
 
+extern GameWorld *tWorld;
 
 Render::Render( )
 {
@@ -359,6 +361,11 @@ SDL_Surface* Render::getpScreen()
 bool Render::gameRunning()
 {
 	return gameState;
+}
+
+bool Render::arePlaying()
+{
+	return playState;
 }
 
 //bool Render::shiftHeld()

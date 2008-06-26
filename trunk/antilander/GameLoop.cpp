@@ -31,10 +31,10 @@ int main(int argv, char *args[])
 	}
 
 
-	//////////////// load test /////////////////////
-
 	while (tWorld->GetRender()->gameRunning())
 	{
+
+//==================Play Mode=====================
 		if (tWorld->GetGameStatus() == knPlayMode)
 		{
 			tWorld->GetRender()->doInput();
