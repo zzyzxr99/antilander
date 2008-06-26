@@ -1,9 +1,11 @@
 #include <iostream>
 #include "Structs.h"
 #include "Render.h"
+#include "GameWorld.h"
 
 using namespace std;
 
+extern GameWorld *tWorld;
 
 void Render::doInput()
 {
@@ -339,13 +341,14 @@ void Render::doMenuInput()
 {
 	while (SDL_PollEvent(&mEvent))
 	{
-		if(mEvent.type == SDL_MOUSEMOTION)
+		/*if(mEvent.type == SDL_MOUSEMOTION)
 		{
 			plIn.mouseMove.x = mEvent.motion.x;
 			plIn.mouseMove.y = mEvent.motion.y;
-		}
+		}*/
 		if(mEvent.type == SDL_QUIT)
 		{
+			
 			gameState= false;
 		}
 
@@ -354,14 +357,8 @@ void Render::doMenuInput()
 			plIn.keyPress = mEvent.key.keysym.sym;
 			if(plIn.keyPress == SDLK_ESCAPE)
 			{
-				if(mPause == true)
-					{
-						mPause = false;
-					}
-					else
-					{
-						mPause = true;
-					}
+				tWorld->GetRender()->IsStart();
+				mPause = false;
 			}
 			if(plIn.keyPress == SDLK_q)
 			{

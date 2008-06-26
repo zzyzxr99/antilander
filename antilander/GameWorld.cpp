@@ -24,6 +24,7 @@ GameWorld::GameWorld()
 	// initialize all the member varibles
 	mStarted		= false;
 	mTempLevel		= new Level();
+
 	mGameMode		= knPlayMode;
     mGameStepper.Mark();
     mNumLndrLvl		= 10;

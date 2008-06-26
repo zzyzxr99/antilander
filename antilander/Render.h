@@ -12,7 +12,6 @@
 #include "level.h"
 #include <string>
 
-
 class Render
 {
 private:
@@ -25,6 +24,7 @@ private:
 	playInput plIn;				//player input
 	//bool shiftKey;
 	bool gameState;
+	bool playState;  //for checking if a level is started
 	bool doneBuildmode;
 	bool exitEditmode;
     short int mSplashAlpha;
@@ -71,6 +71,7 @@ public:
 	void doMenuInput();
 	void doMoveInput();
 	bool gameRunning();					//gets current gamestate
+	bool arePlaying();
 	bool EndDraw();
 	bool EndEdit();
 	Point getMouse();					//gets cursor position
