@@ -2,22 +2,21 @@
 #define _SCORE_H
 
 #include "Structs.h"
+#include "ALTimer.h"
 #include "SDL.h"
-#include "SDL_GFXprimitives.h"
-#include "SDL_ttf.h"
 
 class Score
 {
 private:
-	SDL_Surface* screen;
-	TTF_Font* conFont;	
-	//int TotalScore;
+	Point mDrawLoc;
+	ALTimer mScoreTime;
+	int mScoreValue;
+	SDL_Color mScoreColor;
+
 public:
 	Score();
+	// Score( parameters )
 	~Score();
-	SDL_Surface* getpScreen();
 	//void DrawScore(int Score);
-	int GetScore();
-	void AddScore(int Score, int Val);
 };
 #endif

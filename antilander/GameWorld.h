@@ -30,6 +30,7 @@ private:
 	vector<Missile> mMissiles;
     vector<Bomb> mBombs;
     vector<Explosion> mExplosions;
+	vector<Score> mScoreAnims;
 	Gunship mPlayerShip;
 	Terrain mGameTerrain;
 	void InitEverything();
@@ -57,8 +58,7 @@ private:
 	Level* mTempLevel;
 	//Score	
 	int TotalScore;
-
-
+	
 public:
 	GameWorld();
 	~GameWorld();
