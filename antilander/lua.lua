@@ -35,18 +35,7 @@ function conInput(cmd)
 			else
 			return "nothing"
 			end
-			
--- EJR added 'spawn' command that takes 1 parameter 'bomb' or 'missile'	
-		
-		elseif (string.find(cmd,"spawn")~= nil ) then
-		    set_com = string.sub(cmd,7,-1)
-			if (set_com == "bomb") then
-				Action(100,0)
-			elseif (set_com == "missile") then
-			    Action(101,0)
-			elseif (set_com == "lander") then
-			    Action(102,0)
-			end
+				
 			
 		elseif (string.find(cmd, "save")~= nil) then
 			set_value = string.sub(cmd,6,-1)
