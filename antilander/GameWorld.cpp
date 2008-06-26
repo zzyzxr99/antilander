@@ -1173,7 +1173,10 @@ int GameWorld::l_Action(lua_State* LVM)
 		*tWorld->GetLvlCtr() = (USINT)value;
 		break;
 	case 92 :
-		cout << "restarting" << endl; //restart - by default all the cases restart the level
+		//restart - by default all the cases restart the level
+		break;
+	case 93 :
+		tWorld->GetRender()->SetGameState(false);
 		break;
 	//case 100 :
 	//	tWorld->SpawnBomb();
