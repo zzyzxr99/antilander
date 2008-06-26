@@ -657,6 +657,7 @@ void Render::DrawScore(int Score)
     TTF_CloseFont( ScoreFont );
 }
 
+
 bool* Render::IsSave()
 {
 	return &mSave;
