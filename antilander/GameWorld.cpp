@@ -634,12 +634,34 @@ void GameWorld::UpdateEverything( )
         {
             mRender.StepSplashAlpha(-1);
         }
-        else if ( mRender.GetSplashFade( ) == knFadeDone )
+        else if ( mRender.GetSplashFade( ) == knFadeDone
+                  &&
+                  mGameMode == knIntroMode )
         {
             mGameMode = knMenuMode;
             mRender.SetSplashFade(knFadeIn);
             StopRender( );
         }
+        else if ( mRender.GetSplashFade( ) == knFadeDone
+                  &&
+                  mGameMode == knEndMode )
+        {
+            mGameMode = knMenuMode;
+         // mCurrentLevel.ClearLevel( );
+            InitLevel( );
+            mRender.SetSplashFade(knFadeIn);
+            StopRender( );
+        }
+        else if ( mRender.GetSplashFade( ) == knFadeDone
+                  &&
+                  mGameMode == knLevTransMode )
+        {
+            mGameMode = knMenuMode;
+            InitLevel( );
+            mRender.SetSplashFade(knFadeIn);
+            StopRender( );
+        }
+
     }
 }
 
