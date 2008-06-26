@@ -79,6 +79,7 @@ Render::Render( )
 	mSave = false;
 	mPause = false;
 	mStart = false;
+	mEdit = false;
 }
 
 Render::~Render( )
@@ -679,4 +680,9 @@ void Render::Start( )
 void Render::Stop( )
 {
     mStart = false;
+}
+
+bool* Render::IsEdit()
+{
+	return &mEdit;
 }

@@ -942,8 +942,9 @@ void GameWorld::InitEditLvl( )
 	}
 	else
 	{
-		GetEditLevel()->SaveLevel("default.txt");
-		GetCurrentLevel()->LoadLevel("default.txt");
+		/*GetEditLevel()->SaveLevel("default.txt");
+		GetCurrentLevel()->LoadLevel("default.txt");*/
+		mCurrentLevel.Clone(&mEditLevel);
 	}
 	vector<Point>::iterator iter = GetCurrentLevel()->GetPadpt()->begin();
 	int temp = GetRender()->GetInput()->startPad; 

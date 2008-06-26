@@ -360,17 +360,22 @@ void Render::doMenuInput()
 				tWorld->GetRender()->IsStart();
 				mPause = false;
 			}
-			if(plIn.keyPress == SDLK_q)
+			else if(plIn.keyPress == SDLK_q)
 			{
 				gameState = false;
 			}
-			if(plIn.keyPress == SDLK_s)
+			else if(plIn.keyPress == SDLK_s)
 			{
 				mStart = true;
 			}
-			if(plIn.keyPress == SDLK_e)
+			else if(plIn.keyPress == SDLK_e)
 			{
 				// needs to change gamestatus to editor mode???
+				if(mEdit == false)
+				{
+					mEdit = true;
+					mPause = false;
+				}
 			}
 		}
 	}
