@@ -26,7 +26,7 @@ GameWorld::GameWorld()
 	mTempLevel		= new Level();
 	mGameMode		= knPlayMode;
     mGameStepper.Mark();
-    mNumLndrLvl		= 0;
+    mNumLndrLvl		= 10;
     mNumLndrScr		= 1;
     mLndrPersist	= false;
     mNumMissile		= kStartAmmo;
@@ -50,12 +50,6 @@ GameWorld::~GameWorld()
 	lua_close(luaVM);
 	delete mTempLevel;
 }
-
-
-
-
-
-
 
 void GameWorld::SpawnMissile()
 {
@@ -212,9 +206,14 @@ void GameWorld::DrawEverything( )
 					     mPlayerShip.GetLoc( ),
 					     &(mRender.getMouse( )));
 
-    mRender.DrawCrosshair( mRender.getpScreen( ),
-					       &mRender.getMouse( ),
-					       0,255,0);
+    if ( mGameMode == knPlayMode
+         ||
+         mGameMode == knEditMode )
+    {
+        mRender.DrawCrosshair( mRender.getpScreen( ),
+					           &mRender.getMouse( ),
+					           0,255,0);
+    }
 
     vector<Explosion>::iterator iterExpl;
     for (iterExpl= mExplosions.begin(); iterExpl != mExplosions.end(); iterExpl++)
@@ -600,24 +599,24 @@ void GameWorld::UpdateEverything( )
     }
 	//update all values
 	// Lander
-    Lander::sSetDescentRate( mCurrentLevel.GetLndrDescRate( ) );
+    //Lander::sSetDescentRate( mCurrentLevel.GetLndrDescRate( ) );
 
-    // Missile
-    Missile::sSetSpeed( mCurrentLevel.GetMissileSpd( ) );
+    //// Missile
+    //Missile::sSetSpeed( mCurrentLevel.GetMissileSpd( ) );
 
-    // Gunship
-    mPlayerShip.SetPad( mCurrentLevel.GetGunStartPad( ) );
-    mPlayerShip.SetReloadTime( mCurrentLevel.GetGunReload( ) );
-    mPlayerShip.SetBombReloadTime( mCurrentLevel.GetBombReloadTime( ) );
+    //// Gunship
+    //mPlayerShip.SetPad( mCurrentLevel.GetGunStartPad( ) );
+    //mPlayerShip.SetReloadTime( mCurrentLevel.GetGunReload( ) );
+    //mPlayerShip.SetBombReloadTime( mCurrentLevel.GetBombReloadTime( ) );
 
-    // Explosion
-    /*Explosion::sSetMaxRadius( mCurrentLevel.GetExpRad( ) );
-    Explosion::sSetExpansionRate( mCurrentLevel.GetExplRate( ) );*/
+    //// Explosion
+    ///*Explosion::sSetMaxRadius( mCurrentLevel.GetExpRad( ) );
+    //Explosion::sSetExpansionRate( mCurrentLevel.GetExplRate( ) );*/
 
-    // Bomb
-    Bomb::sSetSpeed( mCurrentLevel.GetBombMxSpd( ) );
-    Bomb::sSetAcceleration( mCurrentLevel.GetBombAcc( ) );
-    Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
+    //// Bomb
+    //Bomb::sSetSpeed( mCurrentLevel.GetBombMxSpd( ) );
+    //Bomb::sSetAcceleration( mCurrentLevel.GetBombAcc( ) );
+    //Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
 	CheckPause();
 
     // Splash
@@ -655,7 +654,7 @@ void GameWorld::UpdateEverything( )
                   &&
                   mGameMode == knLevTransMode )
         {
-            mGameMode = knMenuMode;
+            mGameMode = knPlayMode;
             InitLevel( );
             mRender.SetSplashFade(knFadeIn);
             StopRender( );
