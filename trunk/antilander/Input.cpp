@@ -37,10 +37,10 @@ void Render::doInput()
 						tWorld->SetGameStatus(knMenuMode);
 						mPause = true;
 					}
-					/*else
+					else
 					{
 						mPause = false;
-					}*/
+					}
 					break;
 					
 				case SDLK_BACKQUOTE :
