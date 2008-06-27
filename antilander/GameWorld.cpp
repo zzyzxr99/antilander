@@ -41,7 +41,17 @@ GameWorld::GameWorld()
 	value			= 0;
 	StartLua();
 	TotalScore		= 0;
-	InitEverything();	
+	if(lvlCtr == 0)
+	{
+		mCurrentLevel.LoadLevel("default.txt");
+	}
+	else
+	{
+		mCurrentLevel.LoadLevel(GetLevName(lvlCtr));
+	}
+	InitEverything();
+	/*vector<Point>::iterator fP= mGameTerrain.PadPts();
+	mPlayerShip.InitGunship(fP[mCurrentLevel.GetGunStartPad()]);*/
 }
 
 GameWorld::~GameWorld()
@@ -125,14 +135,7 @@ void GameWorld::SpawnExplosion( Point sLoc )
 
 void GameWorld::InitEverything()
 {
-	if(lvlCtr == 0)
-	{
-		mCurrentLevel.LoadLevel("default.txt");
-	}
-	else
-	{
-		mCurrentLevel.LoadLevel(GetLevName(lvlCtr));
-	}
+	
 	/*mTempLevel->LoadLevel("default.txt");
 	mCurrentLevel.Clone(mTempLevel);*/
     InitLevel( );
@@ -142,10 +145,11 @@ void GameWorld::InitEverything()
 	/*InitMissiles();*/
 	//InitLanders();
 	//SpawnLander();
-	int numpts= mGameTerrain.GetNumPadPts();
-    vector<Point>::iterator fP= mGameTerrain.PadPts();
-	// Did not check num pad pts!
-	mPlayerShip.InitGunship(fP[mCurrentLevel.GetGunStartPad()]);
+	//int numpts= mGameTerrain.GetNumPadPts();
+//	tWorld->SetGunPad(mCurrentLevel.GetGunStartPad());
+	
+//	vector<Point>::iterator fP= mGameTerrain.PadPts();
+	//	mPlayerShip.InitGunship(fP[mCurrentLevel.GetGunStartPad()]);
     // EJR Explosions - None to init there are done during results
 }
 
@@ -664,6 +668,9 @@ void GameWorld::UpdateEverything( )
         }
 
     }
+
+	//update gunship location
+	
 }
 
 bool GameWorld::FireMissile()
@@ -874,7 +881,7 @@ void GameWorld::InitLevel( )
     Missile::sSetSpeed( mCurrentLevel.GetMissileSpd( ) );
 
     // Gunship
-    mPlayerShip.SetPad( mCurrentLevel.GetGunStartPad( ) );
+//    mPlayerShip.SetPad( mCurrentLevel.GetGunStartPad( ) );
     mPlayerShip.SetReloadTime( mCurrentLevel.GetGunReload( ) );
     mPlayerShip.SetBombReloadTime( mCurrentLevel.GetBombReloadTime( ) );
     mPlayerShip.ResetShots( );
@@ -891,6 +898,9 @@ void GameWorld::InitLevel( )
 
     // GameWorld
     ResetTimers( );
+
+	vector<Point>::iterator fP= mGameTerrain.PadPts();
+	mPlayerShip.InitGunship(fP[mCurrentLevel.GetGunStartPad()]);
 }
 
 void GameWorld::ResetTimers( )
@@ -937,33 +947,9 @@ void GameWorld::InitEditLvl( )
     Bomb::sSetAcceleration( mEditLevel.GetBombAcc( ) );
     Bomb::sSetRadius( mEditLevel.GetBombRad( ) );
 
-	if(*GetRender()->IsSave())
-	{
-		*GetRender()->IsSave() = false;
-		GetEditLevel()->SaveLevel(GetLevName(GetRender()->GetLevelNum()));
-		GetCurrentLevel()->LoadLevel(GetLevName(GetRender()->GetLevelNum()));
-	}
-	else
-	{
-		/*GetEditLevel()->SaveLevel("default.txt");
-		GetCurrentLevel()->LoadLevel("default.txt");*/
-		mCurrentLevel.Clone(&mEditLevel);
-	}
-	vector<Point>::iterator iter = GetCurrentLevel()->GetPadpt()->begin();
-	int temp = GetRender()->GetInput()->startPad; 
-	if(temp > GetCurrentLevel()->GetPadpt()->size()-1)
-	{
-		cout << "Non existant pad point - using default '0' " << endl;
-		GetGunship()->InitGunship(*iter);
-	}
-	else
-	{
-		for(int j = 0; j < temp; j++)
-		{
-			&iter++;
-		}
-		tWorld->GetGunship()->InitGunship(*iter);
-	}
+
+	mCurrentLevel.Clone(&mEditLevel);
+
 }
 
 vector<Lander>* GameWorld::GetLanders( )
@@ -1151,7 +1137,7 @@ int GameWorld::l_Action(lua_State* LVM)
 		mCurrentLevel.SetMissileSpd(value);
 		break;
 	case 9 :
-		mCurrentLevel.SetGunStartPad((USINT)value);
+		tWorld->SetGunPad((USINT)value);
 		break;
 	case 10 :
 		mCurrentLevel.SetBombReloadTime(value);
@@ -1248,4 +1234,17 @@ void GameWorld::StopRender( )
 USINT* GameWorld::GetLvlCtr( )
 {
 	return &lvlCtr;
+}
+
+void GameWorld::SetGunPad(USINT num)
+{
+	if(num > GetCurrentLevel()->GetPadpt()->size()-1)
+	{
+		cout << "Non existant pad point - using default '0' " << endl;
+		mCurrentLevel.SetGunStartPad(0);
+	}
+	else
+	{
+		mCurrentLevel.SetGunStartPad(num);
+	}
 }

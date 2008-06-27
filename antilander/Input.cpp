@@ -409,19 +409,6 @@ void Render::doMoveInput()
 			{
 				exitEditmode = true;
 			}
-			if(plIn.keyPress == SDLK_s)
-			{
-				mSave = true;
-				cout << "Input level number to save to: ";
-				cin >> mLevelNum;
-				cout << endl;
-			}
-			if(plIn.keyPress == SDLK_p)
-			{
-				cout << "Enter starting pad number: ";
-				cin >> plIn.startPad;
-				cout << endl;
-			}
 		}
 
 		if(mEvent.type == SDL_MOUSEBUTTONDOWN)

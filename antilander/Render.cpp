@@ -76,7 +76,6 @@ Render::Render( )
 	mLevelNum = 0;
 	conFont = TTF_OpenFont("Compact_Mono.TTF", 15);
 	mConsole = false;
-	mSave = false;
 	mPause = false;
 	mStart = false;
 	mEdit = false;
@@ -658,10 +657,6 @@ void Render::DrawScore(int Score)
 }
 
 
-bool* Render::IsSave()
-{
-	return &mSave;
-}
 
 bool* Render::IsPause()
 {
@@ -691,4 +686,14 @@ bool* Render::IsEdit()
 void Render::SetGameState(bool state)
 {
 	gameState = state;
+}
+
+void Render::SetEndEdit(bool num)
+{
+	exitEditmode = num;
+}
+
+void Render::SetEndDraw (bool num)
+{
+	doneBuildmode = num;
 }
