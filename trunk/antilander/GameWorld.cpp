@@ -868,6 +868,7 @@ void GameWorld::InitLevel( )
 
     // Lander
     Lander::sSetDescentRate( mCurrentLevel.GetLndrDescRate( ) );
+    Lander::sResetLanderCount( );
 
     // Missile
     Missile::sSetSpeed( mCurrentLevel.GetMissileSpd( ) );
@@ -1021,7 +1022,7 @@ void GameWorld::CheckWinLose( )
     {
         mGameMode = knEndMode;
     }
-    else if ( mNumLndrsToGo <= 0 )
+    else if ( Lander::sGetLanderCount( ) >= mNumLndrLvl )
     {
         mGameMode = knLevTransMode;
     }

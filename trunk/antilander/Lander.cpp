@@ -3,6 +3,7 @@
 // Definition
 
 float Lander::sDescentRate = kBaseDescendRate;
+unsigned short Lander::sLanderCount = 0;
 
 void Lander::SetLocation(float x, float y)
 {
@@ -67,6 +68,12 @@ Point Lander::GetDest()
 void Lander::SetStatus( LanderStatusType status )
 {
 	mStatus = status;
+    if ( status == knLanderLanded
+         ||
+         status == knLanderExplode )
+    {
+        sCountLander( );
+    }
 }
 
 LanderStatusType Lander::GetStatus( )
@@ -82,4 +89,19 @@ void Lander::sSetDescentRate( float spd )
 float Lander::sGetDescentRate( )\
 {
     return sDescentRate;
+}
+
+void Lander::sCountLander( )
+{
+    sLanderCount++;
+}
+
+unsigned short Lander::sGetLanderCount( )
+{
+    return sLanderCount;
+}
+
+void Lander::sResetLanderCount( )
+{
+    sLanderCount = 0;
 }
