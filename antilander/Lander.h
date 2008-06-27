@@ -16,6 +16,7 @@ private:
 
     // static member variables
     static float sDescentRate;
+    static unsigned short sLanderCount;
 
 public:
 	Lander();
@@ -35,6 +36,9 @@ public:
     // static member functions
     static void sSetDescentRate( float spd );
     static float sGetDescentRate( );
+    static void sCountLander( );
+    static unsigned short sGetLanderCount( );
+    static void sResetLanderCount( );
 };
 
 #endif 
