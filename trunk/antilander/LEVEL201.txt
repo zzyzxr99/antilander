@@ -37,15 +37,15 @@ mPadPt
 mGunStartPad
 5
 mEndGamePadOcc
-3
+6
 mNumLndrLvl
-10
+20
 mNumLndrScr
-1
+2
 mNumBomb
-100
+20
 mNumMissile
-300
+20
 mBombMxSpd
 100
 mBombAcc
@@ -55,7 +55,7 @@ mBombRad
 mLndrDescRate
 30
 mGunReload
-0.5
+0.25
 mExpRad
 50
 mExpRate
@@ -71,5 +71,5 @@ mGunMoves
 mGunMoveRnd
 0
 mBombReloadTime
-0.5
+0.25
 LAST
