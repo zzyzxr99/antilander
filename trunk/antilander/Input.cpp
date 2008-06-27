@@ -32,14 +32,15 @@ void Render::doInput()
 				{
 //===========Menu / Pause========================
 				case SDLK_ESCAPE :
-					if(mPause == true)
+					if(mPause == false)
 					{
-						mPause = false;
-					}
-					else
-					{
+						tWorld->SetGameStatus(knMenuMode);
 						mPause = true;
 					}
+					/*else
+					{
+						mPause = false;
+					}*/
 					break;
 					
 				case SDLK_BACKQUOTE :

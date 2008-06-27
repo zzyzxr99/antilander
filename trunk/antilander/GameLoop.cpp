@@ -27,7 +27,7 @@ int main(int argv, char *args[])
 	if (tWorld->GetGameStatus() == knPlayMode)
 	{
 //		Level*L= tWorld->GetLevel();
-		tWorld->GetEditLevel()->ClearLevel();
+		tWorld->GetEditLevel()->ClearLevel();  //shouldn't this be set to ...GetCurrentLevel...?
 	}
 
 
