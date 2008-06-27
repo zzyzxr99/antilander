@@ -122,6 +122,7 @@ public:
     void StopRender( );
 
 	USINT* GetLvlCtr( );
+	void SetGunPad(USINT num);
 };
 
 #endif // end _GAMEWORLD_H

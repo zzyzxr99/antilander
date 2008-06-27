@@ -75,9 +75,9 @@ int main(int argv, char *args[])
 			{
 				*tWorld->GetRender()->IsEdit() = false;
 
+				tWorld->GetEditLevel()->ClearLevel();
 				tWorld->SetGameStatus(knEditMode);
 				tWorld->SetEditStatus(knBuildMode);
-				tWorld->GetEditLevel()->ClearLevel();
 			}
 		}
 //====================Edit Mode========================
@@ -98,6 +98,7 @@ int main(int argv, char *args[])
 
 				if (tWorld->GetRender()->EndDraw())
 				{
+					tWorld->GetRender()->SetEndDraw(false);
 					tWorld->EndEditLvlPts(tWorld->GetRender()->getMouse());
 					tWorld->SetEditStatus(knMoveMode);
 				}
@@ -118,6 +119,7 @@ int main(int argv, char *args[])
 				}
 				if(tWorld->GetRender()->EndEdit())
 				{	
+					tWorld->GetRender()->SetEndEdit(false);
 					tWorld->GetEditLevel()->MakePadPtsFromTerrainPts();
 				//	tWorld->GetEditLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
 				//	tWorld->GetEditLevel()->LoadLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));

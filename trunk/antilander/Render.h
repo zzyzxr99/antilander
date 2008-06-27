@@ -34,7 +34,6 @@ private:
 	TTF_Font* conFont;	
 	bool mConsole;
 	int mLevelNum;
-	bool mSave;
 	bool mPause;
 	bool mStart;
 	bool mEdit;
@@ -75,6 +74,8 @@ public:
 	bool arePlaying();
 	bool EndDraw();
 	bool EndEdit();
+	void SetEndEdit(bool num);
+	void SetEndDraw(bool num);
 	Point getMouse();					//gets cursor position
 	//bool shiftHeld();
 	bool isLClicked();					//check whether mouse is clicked
@@ -101,7 +102,6 @@ public:
 	playInput* GetInput();
 	bool GetConsole();
 	void DrawScore(int Score);
-	bool* IsSave();
 	bool* IsPause();
 	bool* IsStart();
 	bool* IsEdit();
