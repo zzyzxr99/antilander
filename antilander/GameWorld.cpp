@@ -1128,22 +1128,23 @@ int GameWorld::l_Action(lua_State* LVM)
 	switch(command)
 	{
 	case 1 :
-		tWorld->mNumMissile = (int)value;
+		mCurrentLevel.SetNumMissile((int)value);
 		break;
 	case 2 :
-		tWorld->mNumBomb = (int)value;
+		mCurrentLevel.SetNumBomb((int)value);
+		break;
 		break;
 	case 3 :
 		mCurrentLevel.SetGunReload(value);
 		break;
 	case 4 : 	
-		tWorld->mNumLndrLvl = (int)value;
+		mCurrentLevel.SetNumLndrLvl((int)value);
 		break;
 	case 5 :
 		mCurrentLevel.SetNumLndrScr((int)value); 
 		break;
 	case 6 :
-		tWorld->mLndrPersist = (bool)value;
+		mCurrentLevel.SetLndrPersist((bool)value);
 		break;
 	case 7 : 
 		mCurrentLevel.SetLndrDescRate(value);
