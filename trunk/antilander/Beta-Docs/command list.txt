@@ -21,7 +21,7 @@ set missilereload	<float>		sets missile reload rate
 set landlevel		<USINT>		sets number of landers per level
 set landscreen		<USINT>		sets number of landers on screen
 set landpersist		<bool>		sets something(i think its whether landers stay or disappear)
-set landrate		<float>		dont know what this sets
+set landrate		<float>		sets speed of landers
 set missilespeed	<float>		sets speed of missiles
 set pad			<USINT>		supposed to set gunship location, but it doesnt
 set bombreload		<float>		sets bomb reload rate
