@@ -91,18 +91,11 @@ Render::~Render( )
 void Render::DrawGunship( SDL_Surface* scrn,
                           Point* gunLoc )
 {
-    /*Point tempMouse;
-    tempMouse.x = gunLoc->x;
-    tempMouse.y = 1;*/
     ellipseRGBA( scrn,
                  Round( gunLoc->x ),
                  Round( gunLoc->y ),
                  9,9,
                  255,255,255,255 );
-    /*DrawMissile( scrn,
-                 gunLoc,
-                 &tempMouse );*/
-
 }
 
 void Render::DrawMissile( SDL_Surface* scrn,
@@ -231,6 +224,9 @@ void Render::DrawTerrain( SDL_Surface *scrn,
         filledPolygonRGBA( scrn,
                            x,y,4,
                            0,0,0,255 );
+    }
+    for ( int i = 0; i < numTP-1; i++ )
+    {
 		lineRGBA( scrn,
                   Round( tPts[i].x ),
                   Round( tPts[i].y ),
@@ -238,6 +234,8 @@ void Render::DrawTerrain( SDL_Surface *scrn,
                   Round( tPts[i+1].y ),
                   255,255,255,255 );
     }
+
+    //Bounding boxes
    /* for ( int i = 0; i < numTP-1; i++ )
     {
 		DrawBox(boxes[i]);
