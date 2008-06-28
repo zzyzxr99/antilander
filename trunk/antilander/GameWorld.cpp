@@ -250,7 +250,10 @@ void GameWorld::DrawEverything( )
 
 	//mRender.DrawMenu();
 			
-	
+	if (mGameMode == knMenuMode)
+	{
+		mRender.DrawMenu();
+	}
     SDL_Flip( mRender.getpScreen( ));
 }
 
@@ -624,7 +627,7 @@ void GameWorld::UpdateEverything( )
     //Bomb::sSetSpeed( mCurrentLevel.GetBombMxSpd( ) );
     //Bomb::sSetAcceleration( mCurrentLevel.GetBombAcc( ) );
     //Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
-	CheckPause();
+	//CheckPause();
 
     // Splash
     if ( mGameMode == knIntroMode ||
