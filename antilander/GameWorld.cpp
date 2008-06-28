@@ -999,9 +999,9 @@ void GameWorld::CheckSpawnLander()
 
 		if ( ( curLanders < mNumLndrScr) )
 		{
-			//mPlayerShip.GetPad( ); gunship location
-			vector<Point>::iterator pad0;
 
+			vector<Point>::iterator pad0;
+			bool doSpawn = true;
 			pad0= mGameTerrain.PadPts();
 			Point sPoint,tPoint;
 			int spawnLoc = rand()%mGameTerrain.GetNumPadPts();
@@ -1010,8 +1010,26 @@ void GameWorld::CheckSpawnLander()
 			tPoint.x= pad0[spawnLoc].x;
 			tPoint.y= pad0[spawnLoc].y;
 			
-			if(spawnLoc != mPlayerShip.GetPad( ))
-			tWorld->SpawnLander(sPoint, tPoint);
+			if(spawnLoc == mPlayerShip.GetPad( ))// gunship location
+			{
+				doSpawn = false;
+			}
+			else
+			{
+				for (iterLander = mLanders.begin(); iterLander != mLanders.end(); iterLander++)
+				{
+					if ((iterLander->GetStatus() == knLanderDescending || iterLander->GetStatus() == knLanderLanded)
+						&& iterLander->GetLoc().x == tPoint.x)
+					{
+						doSpawn = false;
+					}
+				}
+			}
+
+			if (doSpawn == true)
+			{
+				tWorld->SpawnLander(sPoint, tPoint);
+			}
 
 		}
 	}
