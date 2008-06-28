@@ -656,6 +656,8 @@ void GameWorld::UpdateEverything( )
                   &&
                   mGameMode == knIntroMode )
         {
+			lvlCtr = 1;
+			mCurrentLevel.LoadLevel(GetLevName(lvlCtr));
             mGameMode = knMenuMode;
             mRender.SetSplashFade(knFadeIn);
             StopRender( );
@@ -664,6 +666,8 @@ void GameWorld::UpdateEverything( )
                   &&
                   mGameMode == knEndMode )
         {
+			lvlCtr = 1;
+			mCurrentLevel.LoadLevel(GetLevName(lvlCtr));
             mGameMode = knMenuMode;
          // mCurrentLevel.ClearLevel( );
             InitLevel( );
@@ -675,6 +679,8 @@ void GameWorld::UpdateEverything( )
                   &&
                   mGameMode == knLevTransMode )
         {
+			lvlCtr = 2;											//magic number must DIE!
+			mCurrentLevel.LoadLevel(GetLevName(lvlCtr));		//magic number must DIE!
             mGameMode = knPlayMode;
             InitLevel( );
             mRender.SetSplashFade(knFadeIn);
