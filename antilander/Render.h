@@ -101,7 +101,7 @@ public:
 	void DrawConsole(string str);
 	playInput* GetInput();
 	bool GetConsole();
-	void DrawScore(int Score);
+	//void DrawScore(int Score);
 	bool* IsPause();
 	bool* IsStart();
 	bool* IsEdit();

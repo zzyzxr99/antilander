@@ -57,7 +57,8 @@ private:
 	static float value;
 	Level* mTempLevel;
 	//Score	
-	int TotalScore;
+	//int TotalScore;
+	Score mScore;
 	
 public:
 	GameWorld();
@@ -114,8 +115,8 @@ public:
 	static int l_Action(lua_State* LVM);
 	
 	//Total Score
-	int GetScore();
-	void AddScore(int Score, int Val);
+	//int GetScore();
+	Score* GetScore();
 	
 	void CheckPause();
     void StartRender( );
