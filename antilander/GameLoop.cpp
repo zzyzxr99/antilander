@@ -57,34 +57,13 @@ int main(int argv, char *args[])
 
             tWorld->CheckWinLose( );
 
-			/*if (*tWorld->GetRender()->IsPause())
-			{
-				tWorld->SetGameStatus(knMenuMode);
-			}*/
-
 			tWorld->DrawEverything();
 		}
 //====================Menu Mode========================
 		else if (tWorld->GetGameStatus() == knMenuMode)
 		{
 			tWorld->GetRender()->doMenuInput();
-			if (*tWorld->GetRender()->IsStart())
-			{
-				/*if (!tWorld->GetRender()->IsPause())
-				{
-					tWorld->SetGameStatus(knPlayMode);
-				}*/
-			}
-			else if(*tWorld->GetRender()->IsEdit())
-			{
-				*tWorld->GetRender()->IsEdit() = false;
-
-				tWorld->GetEditLevel()->ClearLevel();
-				tWorld->SetGameStatus(knEditMode);
-				tWorld->SetEditStatus(knBuildMode);
-			}
-			tWorld->DrawEverything();
-			
+			tWorld->DrawEverything();	
 		}
 //====================Edit Mode========================
 		else if (tWorld->GetGameStatus() == knEditMode)
@@ -92,50 +71,13 @@ int main(int argv, char *args[])
 			if (tWorld->GetEditStatus() == knBuildMode)
 			{
 				tWorld->GetRender()->doEditInput();
-				if (tWorld->GetRender()->isLClicked())
-				{
-					tWorld->AddEditLevelPoint(tWorld->GetRender()->getMouse());
-				}
-
-				if (tWorld->GetRender()->isRClicked())
-				{
-					tWorld->AddEditPadPoint(tWorld->GetRender()->getMouse());
-				}
-
-				if (tWorld->GetRender()->EndDraw())
-				{
-					tWorld->GetRender()->SetEndDraw(false);
-					tWorld->EndEditLvlPts(tWorld->GetRender()->getMouse());
-					tWorld->SetEditStatus(knMoveMode);
-				}
+				
 			}
 
 			else if (tWorld->GetEditStatus() == knMoveMode)
 			{
-				/*if(tWorld->GetRender()->isRClicked())
-				{
-					tWorld->SetEditStatus(knBuildMode);
-				}*/
-
+			
 				tWorld->GetRender()->doMoveInput();
-				if (tWorld->GetRender()->isLClicked())
-				{
-					Point mp= (tWorld->GetRender()->getMouse());
-					
-				}
-				if(tWorld->GetRender()->EndEdit())
-				{	
-					tWorld->GetRender()->SetEndEdit(false);
-					tWorld->GetEditLevel()->MakePadPtsFromTerrainPts();
-				//	tWorld->GetEditLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
-				//	tWorld->GetEditLevel()->LoadLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
-					Level *curLevel = tWorld->GetCurrentLevel();
-					Level *editLevel = tWorld->GetEditLevel();
-					editLevel->SetGunStartPad(0);
-					curLevel->Clone(editLevel);
-					tWorld->InitLevel();
-					tWorld->SetGameStatus(knPlayMode);
-				}
 
 			}
 
