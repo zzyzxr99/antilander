@@ -40,7 +40,6 @@ GameWorld::GameWorld()
 	command			= 0;
 	value			= 0;
 	StartLua();
-	TotalScore		= 0;
 	if(lvlCtr == 0)
 	{
 		mCurrentLevel.LoadLevel("default.txt");
@@ -254,11 +253,9 @@ void GameWorld::DrawEverything( )
 	}
 
 	//this is temp draw menu
-
 	
-	mRender.DrawScore(TotalScore);
-
-
+	//mRender.DrawScore(TotalScore);
+	mScore.DrawScore(mScore.GetTotalScore(), mRender.getpScreen());
 	//mRender.DrawMenu();
 			
 	if (mGameMode == knMenuMode)
@@ -324,7 +321,7 @@ bool GameWorld::CheckTick( )
 
 void GameWorld::UpdateEverything( )
 {
-
+	int TotalScore = mScore.GetTotalScore();
     float elapsedTime= mGameStepper.LastInterval();
 	//move all the missiles
 	vector<Missile>::iterator misIter;
@@ -360,8 +357,8 @@ void GameWorld::UpdateEverything( )
 						{
 							landIter->SetStatus(knLanderExplode);
 							misIter->SetStatus(knMissileExplode);
-							
-						AddScore(TotalScore, knMKill);
+							mScore.AddScore(TotalScore, knMKill);
+						//AddScore(TotalScore, knMKill);
 						}
 					}
 
@@ -449,7 +446,8 @@ void GameWorld::UpdateEverything( )
 						{
 							landIter->SetStatus(knLanderExplode);
 							bombIter->SetStatus(knBombExplode);
-						AddScore(TotalScore, knBKill);
+						//AddScore(TotalScore, knBKill);
+						mScore.AddScore(TotalScore, knBKill);
 						}
 					}
 
@@ -574,7 +572,8 @@ void GameWorld::UpdateEverything( )
 					if (calcDist <= curRadius)
 					{
 						iterLander->SetStatus(knLanderExplode);
-						AddScore(TotalScore, knFKill);
+						mScore.AddScore(TotalScore, knFKill);
+						//AddScore(TotalScore, knFKill);
 					}
 				}
 			}
@@ -1214,20 +1213,15 @@ void GameWorld::StartLua()
 }
 
 
-int GameWorld::GetScore()
-{
-	return TotalScore;
-}
+//int GameWorld::GetScore()
+//{
+//	return TotalScore;
+//}
 
 Gunship* GameWorld::GetGunship()
 {
 	return &mPlayerShip;
 }
-void GameWorld::AddScore(int Score, int Val)
-{
-	TotalScore = Score + Val;
-}
-
 void GameWorld::CheckPause()
 {
 	while(*mRender.IsPause())
@@ -1263,4 +1257,8 @@ void GameWorld::SetGunPad(USINT num)
 	{
 		mCurrentLevel.SetGunStartPad(num);
 	}
+}
+Score* GameWorld::GetScore()
+{
+	return &mScore;
 }

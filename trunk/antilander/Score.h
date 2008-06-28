@@ -12,11 +12,14 @@ private:
 	ALTimer mScoreTime;
 	int mScoreValue;
 	SDL_Color mScoreColor;
+	int TotalScore;
 
 public:
 	Score();
 	// Score( parameters )
 	~Score();
-	//void DrawScore(int Score);
+	int GetTotalScore();
+	void AddScore(int Score, int Val);
+	void DrawScore(int Score, SDL_Surface* screen);
 };
 #endif
