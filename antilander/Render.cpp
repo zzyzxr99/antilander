@@ -646,7 +646,7 @@ void Render::DrawScore(int Score)
     TTF_Font* ScoreFont = TTF_OpenFont("QUERROUND.TTF", 12);
     SDL_Color txtForeColor = { 0, 254, 254 };
 	SDL_Surface* textSurface = TTF_RenderText_Blended( ScoreFont, SS.str().c_str(), txtForeColor );
-    SDL_Rect ScoreLoc = { 15,kWinHeight - 70,
+    SDL_Rect ScoreLoc = { kWinWidth - 380 ,10 ,
                            0,0 };
     SDL_BlitSurface( textSurface,
                      NULL,
