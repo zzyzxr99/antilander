@@ -129,7 +129,11 @@ int main(int argv, char *args[])
 					tWorld->GetEditLevel()->MakePadPtsFromTerrainPts();
 				//	tWorld->GetEditLevel()->SaveLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
 				//	tWorld->GetEditLevel()->LoadLevel(tWorld->GetLevName(tWorld->GetRender()->GetLevelNum()));
-					tWorld->InitEditLvl();
+					Level *curLevel = tWorld->GetCurrentLevel();
+					Level *editLevel = tWorld->GetEditLevel();
+					editLevel->SetGunStartPad(0);
+					curLevel->Clone(editLevel);
+					tWorld->InitLevel();
 					tWorld->SetGameStatus(knPlayMode);
 				}
 
