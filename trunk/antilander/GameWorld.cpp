@@ -81,10 +81,9 @@ void GameWorld::SpawnMissile()
 
 	    //Add to Vector
 	    //PtrMissile = new Missile(*Start, Destin, Dir);
-		Missile MyMissile(*Start,Destin,Dir);
-	    mMissiles.push_back(MyMissile);
+		Missile localMissile(*Start,Destin,Dir);
+	    mMissiles.push_back(localMissile);
         mNumMissile--;
-		
     }
 }
 
@@ -104,31 +103,41 @@ void GameWorld::SpawnBomb()
 	    //Direction
 	    Vect Dir= MakeVect(*Start,Destin);
         //Add to Vector
-	    PtrBomb = new Bomb(*Start, Dir);
-	    mBombs.push_back(*PtrBomb);
+	    //PtrBomb = new Bomb(*Start, Dir);
+        Bomb localBomb(*Start, Dir);
+	    mBombs.push_back(localBomb);
         mNumBomb--;
     }
 }
 
 void GameWorld::SpawnLander(Point sPoint, Point tPoint)
 {
-	Lander *PtrLander;
+	//Lander *PtrLander;
+	//PtrLander= new Lander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ) );
 
-	PtrLander= new Lander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ) );
-	mLanders.push_back(*PtrLander);
+    Lander localLander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ));
+
+	mLanders.push_back(localLander);
 	_ASSERTE(mNumLndrsToGo > 0);
 	mNumLndrsToGo--;
 }
 
 void GameWorld::SpawnExplosion( Point sLoc )
 {
-    Explosion *newExpl;
-    newExpl= new Explosion( sLoc,
-                            Explosion::sGetMaxRadius( ),
-                            Explosion::sGetExpansionRate( ),
-                            kExplosionInnerColorDefault,
-                            kExplosionOuterColorDefault);
-    mExplosions.push_back(*newExpl);
+    //Explosion *newExpl;
+    //newExpl= new Explosion( sLoc,
+    //                        Explosion::sGetMaxRadius( ),
+    //                        Explosion::sGetExpansionRate( ),
+    //                        kExplosionInnerColorDefault,
+    //                        kExplosionOuterColorDefault);
+
+    Explosion localExplosion( sLoc,
+                              Explosion::sGetMaxRadius( ),
+                              Explosion::sGetExpansionRate( ),
+                              kExplosionInnerColorDefault,
+                              kExplosionOuterColorDefault );
+
+    mExplosions.push_back(localExplosion);
 
     // Test setting static variables
     //Explosion::sSetMaxRadius( newExpl->GetMaxRadius( ) + 10.0F );
