@@ -21,5 +21,6 @@ public:
 	int GetTotalScore();
 	void AddScore(int Score, int Val);
 	void DrawScore(int Score, SDL_Surface* screen);
+	void ClearScore();
 };
 #endif

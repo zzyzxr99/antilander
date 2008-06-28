@@ -667,6 +667,7 @@ void GameWorld::UpdateEverything( )
             mGameMode = knMenuMode;
          // mCurrentLevel.ClearLevel( );
             InitLevel( );
+			mScore.ClearScore();
             mRender.SetSplashFade(knFadeIn);
             StopRender( );
         }

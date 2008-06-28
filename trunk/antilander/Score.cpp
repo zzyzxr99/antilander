@@ -43,4 +43,7 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
     SDL_FreeSurface( textSurface );
     TTF_CloseFont( ScoreFont );
 }
-
+void Score::ClearScore()
+{
+	TotalScore = 0;
+}
