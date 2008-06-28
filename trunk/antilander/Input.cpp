@@ -389,6 +389,7 @@ void Render::doMenuInput()
 			{
 				mStart = true;
 				mPause = false;
+				/*tWorld->GetCurrentLevel()->LoadLevel("LEVEL01.txt");*/
 				tWorld->InitLevel();
 				tWorld->SetGameStatus(knPlayMode);
 			}
