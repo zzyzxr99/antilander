@@ -886,10 +886,12 @@ void GameWorld::InitLevel( )
     Missile::sSetSpeed( mCurrentLevel.GetMissileSpd( ) );
 
     // Gunship
-//    mPlayerShip.SetPad( mCurrentLevel.GetGunStartPad( ) );
+    mPlayerShip.SetPad( mCurrentLevel.GetGunStartPad( ) );
     mPlayerShip.SetReloadTime( mCurrentLevel.GetGunReload( ) );
     mPlayerShip.SetBombReloadTime( mCurrentLevel.GetBombReloadTime( ) );
     mPlayerShip.ResetShots( );
+	vector<Point>::iterator fP= mGameTerrain.PadPts();
+	mPlayerShip.InitGunship(fP[mCurrentLevel.GetGunStartPad()]);
 
     // Explosion
     Explosion::sSetMaxRadius( mCurrentLevel.GetExpRad( ) );
@@ -904,8 +906,7 @@ void GameWorld::InitLevel( )
     // GameWorld
     ResetTimers( );
 
-	vector<Point>::iterator fP= mGameTerrain.PadPts();
-	mPlayerShip.InitGunship(fP[mCurrentLevel.GetGunStartPad()]);
+
 }
 
 void GameWorld::ResetTimers( )
