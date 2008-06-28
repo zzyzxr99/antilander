@@ -313,9 +313,9 @@ void Render::doEditInput()
 				plIn.tmclicked = true;
 				doneBuildmode = true;
 			}
-
 		}
-		if(mEvent.type == SDL_MOUSEBUTTONUP)
+
+		else if(mEvent.type == SDL_MOUSEBUTTONUP)
 		{
 			plIn.mousePress.button = mEvent.button.button;
 			if(plIn.mousePress.button == SDL_BUTTON_LEFT)
@@ -336,6 +336,22 @@ void Render::doEditInput()
 			}
 		}
 
+	}
+	if (plIn.leftClick)
+	{
+		tWorld->AddEditLevelPoint(plIn.mouseMove);
+	}
+
+	if (plIn.rightClick)
+	{
+		tWorld->AddEditPadPoint(plIn.mouseMove);
+	}
+
+	if (doneBuildmode)
+	{
+		doneBuildmode = false;
+		tWorld->EndEditLvlPts(plIn.mouseMove);
+		tWorld->SetEditStatus(knMoveMode);
 	}
 }
 void Render::doMenuInput()
@@ -386,6 +402,13 @@ void Render::doMenuInput()
 				}
 			}
 		}
+	}
+	if(mEdit)
+	{
+		mEdit = false;
+		tWorld->GetEditLevel()->ClearLevel();
+		tWorld->SetGameStatus(knEditMode);
+		tWorld->SetEditStatus(knBuildMode);
 	}
 }
 
@@ -462,6 +485,17 @@ void Render::doMoveInput()
 				plIn.tmclicked = false;
 			}
 		}
+	}
 
+	if(exitEditmode)
+	{	
+		exitEditmode = false;
+		tWorld->GetEditLevel()->MakePadPtsFromTerrainPts();
+		Level *curLevel = tWorld->GetCurrentLevel();
+		Level *editLevel = tWorld->GetEditLevel();
+		editLevel->SetGunStartPad(0);
+		curLevel->Clone(editLevel);
+		tWorld->InitLevel();
+		tWorld->SetGameStatus(knPlayMode);
 	}
 }
