@@ -55,21 +55,23 @@ int main(int argv, char *args[])
 
             tWorld->CheckWinLose( );
 
-			if (*tWorld->GetRender()->IsPause())
+			/*if (*tWorld->GetRender()->IsPause())
 			{
 				tWorld->SetGameStatus(knMenuMode);
-			}
+			}*/
 
 			tWorld->DrawEverything();
 		}
 //====================Menu Mode========================
 		else if (tWorld->GetGameStatus() == knMenuMode)
 		{
-			tWorld->GetRender()->DrawMenu();
 			tWorld->GetRender()->doMenuInput();
 			if (*tWorld->GetRender()->IsStart())
 			{
-				tWorld->SetGameStatus(knPlayMode);
+				/*if (!tWorld->GetRender()->IsPause())
+				{
+					tWorld->SetGameStatus(knPlayMode);
+				}*/
 			}
 			else if(*tWorld->GetRender()->IsEdit())
 			{
@@ -79,6 +81,8 @@ int main(int argv, char *args[])
 				tWorld->SetGameStatus(knEditMode);
 				tWorld->SetEditStatus(knBuildMode);
 			}
+			tWorld->DrawEverything();
+			
 		}
 //====================Edit Mode========================
 		else if (tWorld->GetGameStatus() == knEditMode)

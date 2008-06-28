@@ -522,7 +522,7 @@ void Render::DrawMenu()
                    kMenuDrawX+ kMenuWidth,
                    kMenuDrawY+ kMenuHeight,
                    kMenuRvalue,kMenuGvalue,kMenuBvalue,kMenuAvalue);
-//// Start /////
+////// Start /////
 	TTF_Font* startFont = TTF_OpenFont("QUERROUND.TTF", 12);
 	
     SDL_Surface* startSurface = TTF_RenderText_Blended( startFont,
@@ -569,7 +569,7 @@ void Render::DrawMenu()
 
     TTF_CloseFont( startFont);
 
-	SDL_Flip( screen );
+	//SDL_Flip( screen );
 }
 
 //void Render::DrawMenuItems

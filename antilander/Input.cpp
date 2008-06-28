@@ -37,10 +37,10 @@ void Render::doInput()
 						tWorld->SetGameStatus(knMenuMode);
 						mPause = true;
 					}
-					else
+			/*		else
 					{
 						mPause = false;
-					}
+					}*/
 					break;
 					
 				case SDLK_BACKQUOTE :
@@ -358,8 +358,12 @@ void Render::doMenuInput()
 			plIn.keyPress = mEvent.key.keysym.sym;
 			if(plIn.keyPress == SDLK_ESCAPE)
 			{
-				tWorld->GetRender()->IsStart();
-				mPause = false;
+				if (mPause)
+				{
+					mPause = false;
+					tWorld->SetGameStatus(knPlayMode);
+					tWorld->ResetTimers();
+				}
 			}
 			else if(plIn.keyPress == SDLK_q)
 			{
@@ -368,6 +372,9 @@ void Render::doMenuInput()
 			else if(plIn.keyPress == SDLK_s)
 			{
 				mStart = true;
+				mPause = false;
+				tWorld->InitLevel();
+				tWorld->SetGameStatus(knPlayMode);
 			}
 			else if(plIn.keyPress == SDLK_e)
 			{
