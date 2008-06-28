@@ -43,5 +43,10 @@ UI Start, Pause, Edit, Quit
 Be able to test 2 levels. Start at level 1 and end at level 2. A complete game.
 All loss conditions working.
 
+6/30
+
+Loops thru levels until it cannot find one.
+Everyone has 5 levels made and played.
+
 
 

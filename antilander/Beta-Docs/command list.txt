@@ -7,8 +7,6 @@ all of the commands use the following syntax:
 
 *dont forget the space inbetween the command and value
 
-
-
 set commands
 ------------
 
@@ -34,7 +32,6 @@ other commands
 --------------
 
 the save and load commands are followed by an int (the number of the level you wish to save/load)
-
 
 save			<int>		save a level
 load			<int>		load a level
