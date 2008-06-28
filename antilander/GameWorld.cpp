@@ -80,9 +80,11 @@ void GameWorld::SpawnMissile()
 	    Dir = UnitVect(*Start, Destin);
 
 	    //Add to Vector
-	    PtrMissile = new Missile(*Start, Destin, Dir);
-	    mMissiles.push_back(*PtrMissile);
+	    //PtrMissile = new Missile(*Start, Destin, Dir);
+		Missile MyMissile(*Start,Destin,Dir);
+	    mMissiles.push_back(MyMissile);
         mNumMissile--;
+		
     }
 }
 
@@ -1121,6 +1123,7 @@ int GameWorld::l_Action(lua_State* LVM)
 		break;
 	case 2 :
 		tWorld->mNumBomb = (int)value;
+		break;
 	case 3 :
 		mCurrentLevel.SetGunReload(value);
 		break;
@@ -1128,7 +1131,7 @@ int GameWorld::l_Action(lua_State* LVM)
 		tWorld->mNumLndrLvl = (int)value;
 		break;
 	case 5 :
-		tWorld->mNumLndrScr = (int)value; 
+		mCurrentLevel.SetNumLndrScr((int)value); 
 		break;
 	case 6 :
 		tWorld->mLndrPersist = (bool)value;
