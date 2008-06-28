@@ -68,5 +68,4 @@ mGunMoveRnd
 mBombReloadTime
 3
 LAST
-
-Adam
+--Adam
