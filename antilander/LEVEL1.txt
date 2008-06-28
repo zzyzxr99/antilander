@@ -83,3 +83,4 @@ mGunMoveRnd
 mBombReloadTime
 3
 LAST
+--Vadim level
