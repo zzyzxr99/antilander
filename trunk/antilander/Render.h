@@ -11,6 +11,7 @@
 #include "SDL_ttf.h"
 #include "level.h"
 #include <string>
+#include "ALTimer.h"
 
 class Render
 {
@@ -37,6 +38,7 @@ private:
 	bool mPause;
 	bool mStart;
 	bool mEdit;
+	ALTimer mStarTimer;
 
 public:
     Render( );
@@ -46,6 +48,7 @@ public:
     void DrawMissile( SDL_Surface* scrn,
                       Point* loc,
                       Point* targ );
+	void DrawStars(SDL_Surface* scrn, Point* loc, int size, float radius);
     void DrawBomb( SDL_Surface* scrn,
                       Point* loc, float radius);
     void DrawLander( SDL_Surface* scrn,
@@ -108,6 +111,7 @@ public:
     void Start( );
     void Stop( );
 	void SetGameState(bool state);
+
 };
 
 #endif // _RENDER_H;

@@ -59,6 +59,7 @@ private:
 	//Score	
 	//int TotalScore;
 	Score mScore;
+	Point mStars[125];
 	
 public:
 	GameWorld();
@@ -101,7 +102,6 @@ public:
 	Level* GetCurrentLevel();
 	Gunship* GetGunship();
 
-   
 	int PointCheck();
 	void CheckSpawnLander();
     void CheckWinLose( );
@@ -124,6 +124,8 @@ public:
 
 	USINT* GetLvlCtr( );
 	void SetGunPad(USINT num);
+
+	void InitStars( );
 };
 
 #endif // end _GAMEWORLD_H
