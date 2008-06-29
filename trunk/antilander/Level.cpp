@@ -312,8 +312,13 @@ void Level::ClearLevel( )
 	mTerPt.clear();
 	mPadPt.clear();
 }
-void Level::LoadLevel( string LevString )
+bool Level::LoadLevel( string LevString )
 {
+	ifstream infile(LevString.c_str());
+    if ( !infile )
+    {
+        return false;
+    }
 	mTerPt.clear();
 	mPadPt.clear();
 	vector<Point>::iterator iterTer = mTerPt.begin();
@@ -325,7 +330,6 @@ void Level::LoadLevel( string LevString )
 	char* index[] = {"mTerPt","mPadPt","mGunStartPad","mEndGamePadOcc","mNumLndrLvl","mNumLndrScr","mNumBomb","mNumMissile","mBombMxSpd",
 					 "mBombAcc","mBombRad","mLndrDescRate","mGunReload","mExpRad","mExpRate","mMissileSpd","mLndrPersist","mFrat","mGunMoves",
 					 "mGunMoveRnd","mBombReloadTime","LAST"};		//index of strings to compare
-	ifstream infile(LevString.c_str());
 	Point pt;
 	while (!infile.eof())
 	{
@@ -441,6 +445,8 @@ void Level::LoadLevel( string LevString )
 
 	}
 	delete [] cstr;
+    infile.close( );
+    return true;
 }
 
 void Level::SaveLevel( string LevString )
