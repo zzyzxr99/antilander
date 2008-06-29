@@ -88,7 +88,7 @@ public:
     void SetBombReloadTime( float t );
 	void ClearLevel();
 
-    void LoadLevel( string LevString );
+    bool LoadLevel( string LevString );
     void SaveLevel( string LevString );
     void EJRTestSaveLevel(string filename);
     void EJRTestLoadLevel(string filename);

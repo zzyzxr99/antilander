@@ -66,7 +66,6 @@ void GameWorld::SpawnMissile()
     if ( mNumMissile > 0 )
     {
 	    //set Missile at Gunship Location EVERYTIME
-	    Missile *PtrMissile;
 	    Point *Start;
 	    Start = mPlayerShip.GetLoc();
 
@@ -79,8 +78,7 @@ void GameWorld::SpawnMissile()
 	    Dir = UnitVect(*Start, Destin);
 
 	    //Add to Vector
-	    //PtrMissile = new Missile(*Start, Destin, Dir);
-		Missile localMissile(*Start,Destin,Dir);
+	    Missile localMissile(*Start,Destin,Dir);
 	    mMissiles.push_back(localMissile);
         mNumMissile--;
     }
@@ -91,7 +89,6 @@ void GameWorld::SpawnBomb()
     if ( mNumBomb > 0 )
     {
 	    //set Missile at Gunship Location EVERYTIME
-	    Bomb *PtrBomb;
 	    Point *Start;
 	    Start = mPlayerShip.GetLoc();
 
@@ -102,8 +99,7 @@ void GameWorld::SpawnBomb()
 	    //Direction
 	    Vect Dir= MakeVect(*Start,Destin);
         //Add to Vector
-	    //PtrBomb = new Bomb(*Start, Dir);
-        Bomb localBomb(*Start, Dir);
+	    Bomb localBomb(*Start, Dir);
 	    mBombs.push_back(localBomb);
         mNumBomb--;
     }
@@ -644,6 +640,7 @@ void GameWorld::UpdateEverything( )
          mGameMode == knLevTransMode ||
          mGameMode == knEndMode )
     {
+        bool levelExist;
         if ( mRender.GetSplashFade( ) == knFadeIn )
         {
             mRender.StepSplashAlpha(1);
@@ -656,8 +653,14 @@ void GameWorld::UpdateEverything( )
                   &&
                   mGameMode == knIntroMode )
         {
-			lvlCtr = 1;
-			mCurrentLevel.LoadLevel(GetLevName(lvlCtr));
+            for ( lvlCtr = 1; lvlCtr <= 50; lvlCtr++ )
+            {
+			    levelExist = mCurrentLevel.LoadLevel(GetLevName(lvlCtr));
+                if(levelExist)
+                {
+                    break;
+                }
+            }
             mGameMode = knMenuMode;
             mRender.SetSplashFade(knFadeIn);
             StopRender( );
@@ -666,8 +669,14 @@ void GameWorld::UpdateEverything( )
                   &&
                   mGameMode == knEndMode )
         {
-			lvlCtr = 1;
-			mCurrentLevel.LoadLevel(GetLevName(lvlCtr));
+            for ( lvlCtr = 1; lvlCtr <= 50; lvlCtr++ )
+            {
+			    levelExist = mCurrentLevel.LoadLevel(GetLevName(lvlCtr));
+                if(levelExist)
+                {
+                    break;
+                }
+            }
             mGameMode = knMenuMode;
          // mCurrentLevel.ClearLevel( );
             InitLevel( );
@@ -679,8 +688,28 @@ void GameWorld::UpdateEverything( )
                   &&
                   mGameMode == knLevTransMode )
         {
-			lvlCtr = 2;											//magic number must DIE!
-			mCurrentLevel.LoadLevel(GetLevName(lvlCtr));		//magic number must DIE!
+            bool search1_50 = false;
+            do
+            {
+                levelExist = mCurrentLevel.LoadLevel(GetLevName(++lvlCtr));
+                if(levelExist)
+                {
+                    break;
+                }
+                if ( lvlCtr >= 50 )
+                {
+                    if ( search1_50 == true )
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        lvlCtr = 0;
+                        search1_50 = true;
+                        continue;
+                    }
+                }
+            } while ( lvlCtr <= 50 );
             mGameMode = knPlayMode;
             InitLevel( );
             mRender.SetSplashFade(knFadeIn);
