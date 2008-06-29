@@ -51,6 +51,7 @@ GameWorld::GameWorld()
 	InitEverything();
 	/*vector<Point>::iterator fP= mGameTerrain.PadPts();
 	mPlayerShip.InitGunship(fP[mCurrentLevel.GetGunStartPad()]);*/
+	InitStars();
 }
 
 GameWorld::~GameWorld()
@@ -165,6 +166,10 @@ void GameWorld::DrawEverything( )
                   NULL,
                   SDL_MapRGB( mRender.getpScreen( )->format,
                               0,0,0 ));
+
+	mRender.DrawStars( mRender.getpScreen( ),
+                                 mStars, sizeof(mStars)/8,
+                                 2);
 
     mRender.DrawGunship( mRender.getpScreen( ),
                          mPlayerShip.GetLoc( ));
@@ -1316,4 +1321,16 @@ void GameWorld::SetGunPad(USINT num)
 Score* GameWorld::GetScore()
 {
 	return &mScore;
+}
+
+void GameWorld::InitStars()
+{
+	srand(1532);
+	for(int j=0; j<125; j++)
+	{
+		Point temp;
+		temp.x = rand() % (kWinWidth-1);
+		temp.y = rand() % (kWinHeight-1);
+		mStars[j] = temp;
+	}
 }

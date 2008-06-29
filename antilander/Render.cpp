@@ -142,6 +142,39 @@ void Render::DrawMissile( SDL_Surface* scrn,
                        255,0,0,255 );
 }
 
+void Render::DrawStars( SDL_Surface* scrn, Point* loc, int size, float radius)
+{
+	for(int j=0; j<size; j++)
+	{
+		filledCircleRGBA(scrn,
+			Round(loc[j].x),
+			Round(loc[j].y),
+			Round(radius/2.0F),
+			255,255,255,
+			80);
+	}
+	for(int j=0; j<30; j++)
+	{
+		int temp = rand() % 125;
+		filledCircleRGBA(scrn,
+			Round(loc[j*7].x),
+			Round(loc[j*7].y),
+			Round(radius/2.0F),
+			255,255,255,
+			150);
+	}
+	for(int j=0; j<10; j++)
+	{
+		int temp = rand() % 125;
+		filledCircleRGBA(scrn,
+			Round(loc[j*12].x),
+			Round(loc[j*12].y),
+			Round(radius/2.0F),
+			255,255,255,
+			230);
+	}
+}
+
 void Render::DrawBomb( SDL_Surface* scrn,
                           Point* loc, float radius )
 {
@@ -695,3 +728,4 @@ void Render::SetEndDraw (bool num)
 {
 	doneBuildmode = num;
 }
+
