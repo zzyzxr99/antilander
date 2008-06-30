@@ -62,3 +62,4 @@ mGunMoveRnd
 mBombReloadTime
 1
 LAST
+Author: Dave
