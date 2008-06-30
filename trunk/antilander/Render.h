@@ -39,6 +39,10 @@ private:
 	bool mStart;
 	bool mEdit;
 	ALTimer mStarTimer;
+	SDL_Rect startLoc;
+	SDL_Rect quitLoc;
+	SDL_Rect editLoc;
+	SDL_Color txtForeColor;
 
 public:
     Render( );
