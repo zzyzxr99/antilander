@@ -262,6 +262,9 @@ void GameWorld::DrawEverything( )
 	if (mGameMode == knMenuMode)
 	{
 		mRender.DrawMenu();
+		mRender.DrawCrosshair( mRender.getpScreen( ),
+					       &mRender.getMouse( ),
+					       0,255,0);
 	}
     SDL_Flip( mRender.getpScreen( ));
 }

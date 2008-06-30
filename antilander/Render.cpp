@@ -79,6 +79,10 @@ Render::Render( )
 	mPause = false;
 	mStart = false;
 	mEdit = false;
+	quitLoc.x = kMenuDrawX+5; quitLoc.y = kMenuDrawY+50; quitLoc.h = 0; quitLoc.w = 0;
+	editLoc.x = kMenuDrawX+5; editLoc.y = kMenuDrawY+75; editLoc.h = 0; editLoc.w = 0;
+	startLoc.x = kMenuDrawX+5; startLoc.y = kMenuDrawY+25; startLoc.h = 0; startLoc.w = 0;
+	txtForeColor.b = 255; txtForeColor.g = 255; txtForeColor.r = 0;
 }
 
 Render::~Render( )
@@ -537,9 +541,7 @@ void Render::DrawMenu()
                    kMenuDrawY+ kMenuHeight,
                    0,0,0,255);
 	TTF_Font* splashFont = TTF_OpenFont("QUERROUND.TTF", 24);
-    SDL_Color txtForeColor = { 0,
-                               255,
-                               255 };
+    
     SDL_Surface* textSurface = TTF_RenderText_Blended( splashFont,
                                                        "Menu - Paused",
                                                        txtForeColor );
@@ -561,12 +563,10 @@ void Render::DrawMenu()
                    kMenuRvalue,kMenuGvalue,kMenuBvalue,kMenuAvalue);
 ////// Start /////
 	TTF_Font* startFont = TTF_OpenFont("QUERROUND.TTF", 12);
-	
+
     SDL_Surface* startSurface = TTF_RenderText_Blended( startFont,
                                                        "Start", 
 														txtForeColor );
-    SDL_Rect startLoc = { kMenuDrawX+5,kMenuDrawY+25,
-                           0,0 };
 
 	hlineRGBA(screen, kMenuDrawX+5, kMenuDrawX+18, kMenuDrawY+45, 255, 255, 255, 254);
 	
@@ -579,9 +579,7 @@ void Render::DrawMenu()
 	SDL_Surface* quitSurface = TTF_RenderText_Blended( startFont,
                                                        "Quit", 
 														txtForeColor );
-    SDL_Rect quitLoc = { kMenuDrawX+5,kMenuDrawY+50,
-                           0,0 };
-	hlineRGBA(screen, kMenuDrawX+5, kMenuDrawX+18, kMenuDrawY+70, 255, 255, 255, 254);
+  	hlineRGBA(screen, kMenuDrawX+5, kMenuDrawX+18, kMenuDrawY+70, 255, 255, 255, 254);
 	
 	SDL_BlitSurface( quitSurface,
                      NULL,
@@ -591,8 +589,7 @@ void Render::DrawMenu()
 	SDL_Surface* editSurface = TTF_RenderText_Blended( startFont,
                                                        "Editor", 
 														txtForeColor );
-    SDL_Rect editLoc = { kMenuDrawX+5,kMenuDrawY+75,
-                           0,0 };
+  
 	hlineRGBA(screen, kMenuDrawX+5, kMenuDrawX+18, kMenuDrawY+95, 255, 255, 255, 254);
 	
 	SDL_BlitSurface( editSurface,
