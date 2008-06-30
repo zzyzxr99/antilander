@@ -74,3 +74,4 @@ mGunMoveRnd
 mBombReloadTime
 .5
 LAST
+Author: Dave
