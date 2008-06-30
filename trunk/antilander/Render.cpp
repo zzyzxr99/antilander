@@ -530,6 +530,12 @@ void Render::DrawSplash(GameStatusType status)
 ////Draw Menu Title ////
 void Render::DrawMenu()
 {
+	boxRGBA( screen,
+                   kMenuDrawX,
+                   kMenuDrawY,
+                   kMenuDrawX+ kMenuWidth,
+                   kMenuDrawY+ kMenuHeight,
+                   0,0,0,255);
 	TTF_Font* splashFont = TTF_OpenFont("QUERROUND.TTF", 24);
     SDL_Color txtForeColor = { 0,
                                255,
