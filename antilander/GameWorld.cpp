@@ -167,6 +167,12 @@ void GameWorld::DrawEverything( )
                   SDL_MapRGB( mRender.getpScreen( )->format,
                               0,0,0 ));
 
+	if ( mGameMode == knIntroMode ||
+         mGameMode == knLevTransMode ||
+         mGameMode == knEndMode )
+    {
+        mRender.DrawSplash( mGameMode );
+    }
 	mRender.DrawStars( mRender.getpScreen( ),
                                  mStars, sizeof(mStars)/8,
                                  2);
@@ -179,12 +185,7 @@ void GameWorld::DrawEverything( )
                          mGameTerrain.GetTPts( ),
 						 mGameTerrain.TerBox());
 
-    if ( mGameMode == knIntroMode ||
-         mGameMode == knLevTransMode ||
-         mGameMode == knEndMode )
-    {
-        mRender.DrawSplash( mGameMode );
-    }
+   
 
     vector<Lander>::iterator landIter;
     for ( landIter = mLanders.begin( ); landIter != mLanders.end( ); landIter++ )
@@ -251,9 +252,13 @@ void GameWorld::DrawEverything( )
 	//this is temp draw menu
 	
 	//mRender.DrawScore(TotalScore);
-	mScore.DrawScore(mScore.GetTotalScore(), mRender.getpScreen());
+	
 	//mRender.DrawMenu();
-			
+	if( mGameMode != knIntroMode)
+	{
+		mScore.DrawScore(mScore.GetTotalScore(), mRender.getpScreen());
+	}
+
 	if (mGameMode == knMenuMode)
 	{
 		mRender.DrawMenu();
@@ -270,6 +275,7 @@ void GameWorld::DrawEverything( )
 					           &mRender.getMouse( ),
 					           0,255,0);
     }
+	
 
     SDL_Flip( mRender.getpScreen( ));
 }
