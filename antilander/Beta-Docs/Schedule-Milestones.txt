@@ -48,5 +48,9 @@ All loss conditions working.
 Loops thru levels until it cannot find one.
 Everyone has 5 levels made and played.
 
+7/2
 
+All warnings at level 3 (!) are evaluated and considered removed
+All 50 levels played, tested, ordered
+HUD near build complete with Missile, Bomb, Lander
 
