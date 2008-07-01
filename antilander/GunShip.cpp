@@ -37,7 +37,7 @@ bool Gunship::CanShoot()
         mGunTimer.Mark( );
         return true;
     }
-	return mGunTimer.CheckElapsedMS(mReloadTime * 1000);
+	return mGunTimer.CheckElapsedMS((unsigned long)(mReloadTime * 1000));
 }
 
 bool Gunship::CanBomb( )
@@ -48,7 +48,7 @@ bool Gunship::CanBomb( )
         mBombTimer.Mark( );
         return true;
     }
-    return mBombTimer.CheckElapsedMS( mBombReloadTime * 1000 );
+    return mBombTimer.CheckElapsedMS((unsigned long)(mBombReloadTime * 1000));
 }
 
 int Gunship::GetDrawBarrelIDX()
