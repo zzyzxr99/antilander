@@ -1,0 +1,41 @@
+
+50 Levels made, played, ordered
+ - Test visual and play continuity
+ - level data cleanup
+
+ERIC-
+Missile offscreen test - EJR
+
+VADIM-
+400 speed missile should not go past target
+Missile gets to target at its nose
+Explosion radius and rate commands for console
+
+DAVE-
+Mouse pointer draw on TOP of explosion/everything
+Warning removal level 3
+
+DANIEL-
+Backstory and instructors in README.txt
+
+ADAM-
+Make bomb draw where gunship is to address - showing missile and bomb
+  availability
+
+STEVEN-
+Score Reset on pause/start after having accumulated some score
+
+JOSEPH-
+Menu - pause removed - changed background color on menu fill
+
+ERIC and whoever I pickon-
+Decide editor enable/disable for easy 2 builds
+ - Build with #define/#ifdef for editor/console optional
+
+STEVEN and VADIM
+HUD - missile and bomb shapes with numbers near score.
+     Landers to kill and landers to land on end game.
+
+Final build-
+Fullscreen mode on build/test - VISTA test!
+No windows console.
