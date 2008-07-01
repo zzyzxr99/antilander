@@ -387,7 +387,7 @@ void Render::doMenuInput()
 			{
 				gameState = false;
 			}
-			else if(plIn.keyPress == SDLK_s)
+			else if(plIn.keyPress == SDLK_n)
 			{
 				mStart = true;
 				mPause = false;
