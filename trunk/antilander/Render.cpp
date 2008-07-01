@@ -60,7 +60,7 @@ Render::Render( )
     TTF_Init( );
 	SDL_ShowCursor (SDL_DISABLE);
 //	screen = SDL_SetVideoMode( kWinWidth, kWinHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
-	screen = SDL_SetVideoMode( kWinWidth, kWinHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
+	screen = SDL_SetVideoMode( kWinWidth, kWinHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
 	plIn.mouseMove.x = 50;
 	plIn.mouseMove.y = 50;
 	gameState = true;
