@@ -3,7 +3,7 @@
  - Test visual and play continuity
  - level data cleanup
 
-ERIC-
+ERIC- COMPLETE - TESTED
 Missile offscreen test - EJR
 
 VADIM-

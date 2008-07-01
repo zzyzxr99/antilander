@@ -64,6 +64,7 @@
 				AdditionalDependencies="SDL.lib SDLmain.LIB sdlgfx.lib SDL_ttf.lib Winmm.lib lua5.1.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)SDL\lib&quot;;&quot;$(ProjectDir)SDLgfx\lib&quot;;&quot;$(ProjectDir)SDLttf\lib&quot;;&quot;$(ProjectDir)Lua\lib&quot;"
+				IgnoreAllDefaultLibraries="false"
 				IgnoreDefaultLibraryNames="MSVCRT.LIB"
 				GenerateDebugInformation="true"
 				SubSystem="1"
