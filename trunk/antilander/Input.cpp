@@ -393,6 +393,7 @@ void Render::doMenuInput()
 				mPause = false;
 				/*tWorld->GetCurrentLevel()->LoadLevel("LEVEL01.txt");*/
 				tWorld->InitLevel();
+				tWorld->GetScore()->ClearScore();
 				tWorld->SetGameStatus(knPlayMode);
 			}
 			else if(plIn.keyPress == SDLK_e)
