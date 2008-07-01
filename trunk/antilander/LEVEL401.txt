@@ -48,7 +48,7 @@ mBombAcc
 mBombRad
 5
 mLndrDescRate
-20
+15
 mGunReload
 0.5
 mExpRad
