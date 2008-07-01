@@ -1229,6 +1229,12 @@ int GameWorld::l_Action(lua_State* LVM)
 	case 13 :
 		mCurrentLevel.SetBombRad(value);
 		break;
+	case 14 :
+		mCurrentLevel.SetExpRad(value);
+		break;
+	case 15 :
+		mCurrentLevel.SetExpRate(value);
+		break;
 	case 90 :
 		tWorld->GetCurrentLevel()->SaveLevel(tWorld->GetLevName((int)value));
 		*tWorld->GetLvlCtr() = (USINT)value;
