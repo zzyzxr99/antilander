@@ -1210,7 +1210,14 @@ int GameWorld::l_Action(lua_State* LVM)
 		mCurrentLevel.SetNumLndrScr((int)value); 
 		break;
 	case 6 :
-		mCurrentLevel.SetLndrPersist((bool)value);
+        if ( value > 0 )
+        {
+    		mCurrentLevel.SetLndrPersist(true);
+        }
+        else
+        {
+    		mCurrentLevel.SetLndrPersist(false);
+        }
 		break;
 	case 7 : 
 		mCurrentLevel.SetLndrDescRate(value);
@@ -1342,8 +1349,8 @@ void GameWorld::InitStars()
 	for(int j=0; j<125; j++)
 	{
 		Point temp;
-		temp.x = rand() % (kWinWidth-1);
-		temp.y = rand() % (kWinHeight-1);
+		temp.x = (float)(rand() % (kWinWidth-1));
+		temp.y = (float)(rand() % (kWinHeight-1));
 		mStars[j] = temp;
 	}
 }
