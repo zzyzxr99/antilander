@@ -366,39 +366,42 @@ void GameWorld::UpdateEverything( )
 						//AddScore(TotalScore, knMKill);
 						}
 					}
-
-				}	
-				float yInter;
-				bool hitTerrain= false;
-				// Check if Missle is below terrain
-				int numtps= mGameTerrain.GetTPts();
-				Point testPt= misIter->GetNoseLoc();
-				testPt.x+= temp.x;
-				testPt.y+= temp.y;
-				vector<Point>::iterator terrIter= mGameTerrain.TerrainPts();
-				for (int tps= 0; tps < (numtps-1); tps++)
+				}
+				IntersectStruct isOut;
+				isOut= OutsideBoxes(MBoxTemp,mRender.GetGameScreen());
+				if ((isOut.mLeft == 1) || (isOut.mRight == 1) || (isOut.mBottom == 1) ||
+					(isOut.mTop == 1))
 				{
-					if (CalcYIntercept(testPt,terrIter[tps],terrIter[tps+1],&yInter))
+					misIter->SetStatus(knMissileDead);
+				} 
+				else
+				{
+					float yInter;
+					bool hitTerrain= false;
+					// Check if Missle is below terrain
+					int numtps= mGameTerrain.GetTPts();
+					Point testPt= misIter->GetNoseLoc();
+					testPt.x+= temp.x;
+					testPt.y+= temp.y;
+					vector<Point>::iterator terrIter= mGameTerrain.TerrainPts();
+					for (int tps= 0; tps < (numtps-1); tps++)
 					{
-						if (testPt.y >= yInter)
+						if (CalcYIntercept(testPt,terrIter[tps],terrIter[tps+1],&yInter))
 						{
-							// intercept is below or equal to line - boom!
-							misIter->SetStatus(knMissileExplode);
-							hitTerrain= true;
-							break;
+							if (testPt.y >= yInter)
+							{
+								// intercept is below or equal to line - boom!
+								misIter->SetStatus(knMissileExplode);
+								hitTerrain= true;
+								break;
+							}
 						}
 					}
+					if (!hitTerrain)
+					{
+						misIter->SetLocation(temp);
+					}
 				}
-				if (!hitTerrain)
-				{
-					misIter->SetLocation(temp);
-
-					
-				}
-				/*if(this->MissileSect(mGameTerrain.TerrainPts(),misIter->GetLocation(),misIter->GetDirection()))
-				{
-					misIter->SetStatus(knMissileExplode);	
-				}*/
 			}
 		}
 		else if (tStatus == knMissileExplode)
