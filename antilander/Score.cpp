@@ -32,10 +32,16 @@ void Score::AddScore(int Score, int Val)
 }
 void Score::DrawScore(int Score, SDL_Surface* screen)
 {
+	//draw score
 	stringstream SS, bomb, miss;
 	SS << "Score : " << Score;
 	bomb << tWorld->GetNumBombs();
 	miss << tWorld->GetNumMissiles();
+	Point missPt, bombPt, missPt2;
+	bombPt.x = kWinWidth-420; bombPt.y = 20;
+	missPt.x = kWinWidth-490; missPt.y = 27;
+	missPt2.x = missPt.x; missPt2.y = 10;
+
     TTF_Font* ScoreFont = TTF_OpenFont("QUERROUND.TTF", 12);
     SDL_Color txtForeColor = { 0, 254, 254 };
 	SDL_Surface* textSurface = TTF_RenderText_Blended( ScoreFont, SS.str().c_str(), txtForeColor );
@@ -47,24 +53,26 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
                      &ScoreLoc );
 	TTF_CloseFont( ScoreFont );
 
-
-	TTF_Font* hudFont = TTF_OpenFont("QUERROUND.TTF", 10);
+	//draw missile count
+	TTF_Font* hudFont = TTF_OpenFont("QUERROUND.TTF", 9);
 	SDL_Surface* missSurface = TTF_RenderText_Blended( hudFont, miss.str().c_str(), txtForeColor );
-	SDL_Rect MissLoc = { kWinWidth - 530 ,10 ,
+	SDL_Rect MissLoc = { kWinWidth - 480 ,13 ,
                            0,0 };
 	SDL_BlitSurface( missSurface,
                      NULL,
                      screen,
                      &MissLoc );
 
-
+	//draw bomb count
 	SDL_Surface* bombSurface = TTF_RenderText_Blended( hudFont, bomb.str().c_str(), txtForeColor );
-	SDL_Rect BombLoc = { kWinWidth - 450 ,10 ,
+	SDL_Rect BombLoc = { kWinWidth - 410 ,13 ,
                            0,0 };
 	SDL_BlitSurface( bombSurface,
                      NULL,
                      screen,
                      &BombLoc );
+	tWorld->GetRender()->DrawBomb(screen,&bombPt,5);
+	tWorld->GetRender()->DrawMissile(screen,&missPt,&missPt2);
     
 	TTF_CloseFont( hudFont );
 	SDL_FreeSurface( textSurface );
