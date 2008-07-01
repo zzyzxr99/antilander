@@ -51,11 +51,11 @@ mEndGamePadOcc
 mNumLndrLvl
 10
 mNumLndrScr
-1
+2
 mNumBomb
-100
+5
 mNumMissile
-300
+25
 mBombMxSpd
 100
 mBombAcc
