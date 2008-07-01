@@ -540,19 +540,9 @@ void Render::DrawMenu()
                    kMenuDrawX+ kMenuWidth,
                    kMenuDrawY+ kMenuHeight,
                    0,0,0,255);
+
+	
 	TTF_Font* splashFont = TTF_OpenFont("QUERROUND.TTF", 24);
-    
-    SDL_Surface* textSurface = TTF_RenderText_Blended( splashFont,
-                                                       "Menu - Paused",
-                                                       txtForeColor );
-    SDL_Rect splashLoc = { 200,25,
-                           0,0 };
-    SDL_BlitSurface( textSurface,
-                     NULL,
-                     screen,
-                     &splashLoc );
-    SDL_FreeSurface( textSurface );
-    TTF_CloseFont( splashFont );
 	
 	///// Draw menu Box////
 	rectangleRGBA( screen,
@@ -561,16 +551,18 @@ void Render::DrawMenu()
                    kMenuDrawX+ kMenuWidth,
                    kMenuDrawY+ kMenuHeight,
                    kMenuRvalue,kMenuGvalue,kMenuBvalue,kMenuAvalue);
+
+
 ////// Start /////
 	TTF_Font* startFont = TTF_OpenFont("QUERROUND.TTF", 12);
 
-    SDL_Surface* startSurface = TTF_RenderText_Blended( startFont,
-                                                       "Start", 
+    SDL_Surface* newSurface = TTF_RenderText_Blended( startFont,
+                                                       "New", 
 														txtForeColor );
 
 	hlineRGBA(screen, kMenuDrawX+5, kMenuDrawX+18, kMenuDrawY+45, 255, 255, 255, 254);
 	
-	SDL_BlitSurface( startSurface,
+	SDL_BlitSurface( newSurface,
                      NULL,
                      screen,
                      &startLoc );
@@ -597,11 +589,10 @@ void Render::DrawMenu()
                      screen,
                      &editLoc );
     
-	SDL_FreeSurface( startSurface );
+	SDL_FreeSurface( newSurface );
 	SDL_FreeSurface( quitSurface );
 	SDL_FreeSurface( editSurface );
 
-    TTF_CloseFont( startFont);
 
 	//SDL_Flip( screen );
 }
