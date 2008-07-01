@@ -222,15 +222,6 @@ void GameWorld::DrawEverything( )
 					     mPlayerShip.GetLoc( ),
 					     &(mRender.getMouse( )));
 
-    if ( mGameMode == knPlayMode
-         ||
-         mGameMode == knEditMode )
-    {
-        mRender.DrawCrosshair( mRender.getpScreen( ),
-					           &mRender.getMouse( ),
-					           0,255,0);
-    }
-
     vector<Explosion>::iterator iterExpl;
     for (iterExpl= mExplosions.begin(); iterExpl != mExplosions.end(); iterExpl++)
     {
@@ -266,6 +257,16 @@ void GameWorld::DrawEverything( )
 					       &mRender.getMouse( ),
 					       0,255,0);
 	}
+
+    if ( mGameMode == knPlayMode
+         ||
+         mGameMode == knEditMode )
+    {
+        mRender.DrawCrosshair( mRender.getpScreen( ),
+					           &mRender.getMouse( ),
+					           0,255,0);
+    }
+
     SDL_Flip( mRender.getpScreen( ));
 }
 
