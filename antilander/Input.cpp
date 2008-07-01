@@ -447,12 +447,12 @@ void Render::doMenuInput()
 		tWorld->SetEditStatus(knBuildMode);
 	}
 	TTF_Font* startFont = TTF_OpenFont("QUERROUND.TTF", 12);
-	if(getMouse().x > 245 && getMouse().x < 395 && getMouse().y	> 110 && getMouse().y < 130 && plIn.leftClick == true)
+	if(getMouse().x > kMenuDrawX && getMouse().x < kMenuDrawX+kMenuWidth && getMouse().y > kMenuDrawY+50 && getMouse().y < kMenuDrawY+70 )
 	{
 		cout << "Quit highlighted!!" << endl;
 		gameState = false;
 	}
-	else if(getMouse().x > 245 && getMouse().x < 395 && getMouse().y > 135 && getMouse().y < 155 && plIn.leftClick == true)
+	else if(getMouse().x > kMenuDrawX && getMouse().x < kMenuDrawX+kMenuWidth && getMouse().y > kMenuDrawY+75 && getMouse().y < kMenuDrawY+95 && plIn.leftClick == true)
 	{
 		if(mEdit == false)
 		{
@@ -460,7 +460,7 @@ void Render::doMenuInput()
 			mPause = false;
 		}
 	}
-	else if(getMouse().x > 245 && getMouse().x < 395 && getMouse().y > 85 && getMouse().y < 105 && plIn.leftClick == true)
+	else if(getMouse().x > kMenuDrawX && getMouse().x < kMenuDrawX+kMenuWidth && getMouse().y > kMenuDrawY+25 && getMouse().y < kMenuDrawY+45 && plIn.leftClick == true)
 	{
 		cout << "Start highlighted!!" << endl;
 		mStart = true;
