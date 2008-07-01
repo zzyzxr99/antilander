@@ -126,6 +126,8 @@ public:
 	void SetGunPad(USINT num);
 
 	void InitStars( );
+	USINT GetNumBombs( );
+	USINT GetNumMissiles( );
 };
 
 #endif // end _GAMEWORLD_H

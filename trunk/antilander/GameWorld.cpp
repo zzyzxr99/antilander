@@ -1358,3 +1358,12 @@ void GameWorld::InitStars()
 		mStars[j] = temp;
 	}
 }
+
+USINT GameWorld::GetNumBombs( )
+{
+	return mNumBomb;
+}
+USINT GameWorld::GetNumMissiles( )
+{
+	return mNumMissile;
+}

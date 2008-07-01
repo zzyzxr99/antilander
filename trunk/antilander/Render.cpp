@@ -544,7 +544,7 @@ void Render::DrawMenu()
                    kMenuDrawY,
                    kMenuDrawX+ kMenuWidth,
                    kMenuDrawY+ kMenuHeight,
-                   80,80,80,125);
+                   80,80,80,150);
 
 
 	
