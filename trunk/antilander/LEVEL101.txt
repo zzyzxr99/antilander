@@ -36,13 +36,13 @@ mGunStartPad
 mEndGamePadOcc
 3
 mNumLndrLvl
-10
+13
 mNumLndrScr
-1
+2
 mNumBomb
-100
+20
 mNumMissile
-300
+0
 mBombMxSpd
 100
 mBombAcc
