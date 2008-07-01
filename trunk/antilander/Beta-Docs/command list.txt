@@ -26,6 +26,8 @@ set bombreload		<float>		sets bomb reload rate
 set bombacc		<float>		sets gravity for bombs
 set bombspeed		<float>		*not implemented* sets speed of bombs
 set bombrad		<float>		sets size of bombs
+set exprad		<float>		sets explosion radius
+set exprate		<float>		sets explosion rate
 
 
 other commands

@@ -32,6 +32,10 @@ function conInput(cmd)
 			Action(12,set_value)
 			elseif(set_com == "bombrad") then
 			Action(13,set_value)
+			elseif(set_com == "exprad") then
+			Action(14,set_value)
+			elseif(set_com == "exprate") then
+			Action(15,set_value)
 			else
 			return "nothing"
 			end
