@@ -42,13 +42,13 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 	missPt.x = kWinWidth-490; missPt.y = 27;
 	missPt2.x = missPt.x; missPt2.y = 10;
 	Sint16 ptX[4] = {kWinWidth-505, kWinWidth-135, kWinWidth-140, kWinWidth-500}; 
-	Sint16 ptY[4] = {7, 7, 33, 33};
+	Sint16 ptY[4] = {7, 7, 31, 31};
 
 	filledPolygonRGBA(   screen,
 						 ptX,
 						 ptY,
 						 4,
-						 80,80,80,150);
+						 80,80,80,125);
 
     TTF_Font* ScoreFont = TTF_OpenFont("QUERROUND.TTF", 12);
     SDL_Color txtForeColor = { 0, 254, 254 };
@@ -82,7 +82,7 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 	tWorld->GetRender()->DrawBomb(screen,&bombPt,5);
 	tWorld->GetRender()->DrawMissile(screen,&missPt,&missPt2);
     
-	polygonRGBA( screen, 
+	aapolygonRGBA( screen, 
 				 ptX, 
 				 ptY, 
 				 4,
