@@ -335,7 +335,7 @@ void GameWorld::UpdateEverything( )
 		MissileStatusType tStatus= misIter->GetStatus();
 		if (tStatus == knMissileFlying)
 		{
-			if ( misIter->GetLocation( ).Distance(misIter->GetDestination( ) ) < 2 )
+			if ( misIter->GetLocation( ).Distance(misIter->GetDestination( ) ) < 17 )
 			{
 				misIter->SetStatus(knMissileExplode);
                 //SpawnExplosion( misIter->GetLocation( ) );
