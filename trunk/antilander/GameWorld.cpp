@@ -218,6 +218,10 @@ void GameWorld::DrawEverything( )
         }
     }
 
+	mRender.DrawBomb (mRender.getpScreen(),
+		              mPlayerShip.GetLoc(),
+					  5);
+
     mRender.DrawMissile( mRender.getpScreen( ),
 					     mPlayerShip.GetLoc( ),
 					     &(mRender.getMouse( )));
