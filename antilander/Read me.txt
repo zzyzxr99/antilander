@@ -1,0 +1,54 @@
+               _____                              ___
+  /\    |\  |    |    |   |      /\   |\  |  |\   |    |\
+ /__\   | \ |    |    |   |     /__\  | \ |  | |  |-   |/
+/    \  |  \|    |    |   |__  /    \ |  \|  |/   |__  |\
+
+-----------------------------------------------------------------------------
+STORY
+-----------------------------------------------------------------------------
+You are Earth's last line of defense against the evil Reticlians, an alien race bent on occupying and enslaving all of Earth. You must travel through fifty of Earths most crucial areas to fight for your very life!
+
+-----------------------------------------------------------------------------
+THE HERO
+-----------------------------------------------------------------------------
+You play as the gunship, which travels all around the world fending off landers wherever you are needed. Shoot as many landers as you can.
+
+-----------------------------------------------------------------------------
+THE ENEMY
+-----------------------------------------------------------------------------
+Landers! Legeons of them. They wont stop until they have conquered all of Earth. Don't let them land or they will deploy an impenetrable shield. If too many of them land, they will overrun your gunship, and you are doomed.
+-----------------------------------------------------------------------------
+GAMEPLAY
+-----------------------------------------------------------------------------
+Move the mouse to indicate where you want to fire, using the crosshair reticle.
+
+Left Click  -- Fire Missile
+	Note that it takes time for your missile to reach its target, so aim below it.
+
+Right Click -- Fire Bomb
+	The bomb arcs, which is good for hitting enemys behind mountains. Note that your bomb will fire faster the further away your reticle is from your gunship.
+
+-----------------------------------------------------------------------------
+MENU
+-----------------------------------------------------------------------------
+The Menu automatically pops up when the game first starts. While in menu, pressing the "S" key or clicking on "Start" will begin a new game. Pressing the "Q" key or clicking on "Quit" will exit out of the game. The menu can also be accessed during the game by hitting the "Esc" key. You can then hit "Esc" again or choose the "Start" option to resume your current game.
+
+-----------------------------------------------------------------------------
+CREDITS
+-----------------------------------------------------------------------------
+
+Strategy Cumputers Antilander Team--
+
+	Eric Riel - Project Manager
+
+	Joseph Andres - Programmer
+
+	Steven Bartle - Programmer
+
+	David Lawson - Programmer
+
+	Vadim Nuniyants - Programmer
+
+	Adam Quinn - Programmer
+
+	Daniel Sturtevant - Programmer
