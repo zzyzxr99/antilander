@@ -531,20 +531,22 @@ void Render::DrawSplash(GameStatusType status)
     SDL_FreeSurface( textSurface );
     TTF_CloseFont( splashFont );
 }
+
+
 ////Draw Menu Title ////
 void Render::DrawMenu()
 {
-	boxRGBA( screen,
+	///// Draw menu Box////
+	
+	boxRGBA(       screen,
                    kMenuDrawX,
                    kMenuDrawY,
                    kMenuDrawX+ kMenuWidth,
                    kMenuDrawY+ kMenuHeight,
-                   0,0,0,255);
+                   100,100,100,255);
+
 
 	
-	TTF_Font* splashFont = TTF_OpenFont("QUERROUND.TTF", 24);
-	
-	///// Draw menu Box////
 	rectangleRGBA( screen,
                    kMenuDrawX,
                    kMenuDrawY,

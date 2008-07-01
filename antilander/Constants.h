@@ -37,7 +37,7 @@ const int kSplashFadeRate = 150;
 //Menu
 
 const int kMenuWidth= 80;
-const int kMenuHeight= 150;
+const int kMenuHeight= 100;
 const unsigned char kMenuRvalue= 255;
 const unsigned char kMenuGvalue= 255;
 const unsigned char kMenuBvalue= 255;
