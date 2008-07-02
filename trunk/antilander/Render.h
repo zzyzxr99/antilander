@@ -51,7 +51,8 @@ public:
                       Point* gunLoc );
     void DrawMissile( SDL_Surface* scrn,
                       Point* loc,
-                      Point* targ );
+                      Point* targ, 
+					  float scale = 1.0F);
 	void DrawStars(SDL_Surface* scrn, Point* loc, int size, float radius);
     void DrawBomb( SDL_Surface* scrn,
                       Point* loc, float radius);

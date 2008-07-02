@@ -105,12 +105,14 @@ void Render::DrawGunship( SDL_Surface* scrn,
 
 void Render::DrawMissile( SDL_Surface* scrn,
                           Point* loc,
-                          Point* targ )
+                          Point* targ,
+						  float scale)
 {
     Point pts[7];
     for ( int i = 0; i < 7; i++ )
     {
-        pts[i] = mMissileDrawPts[i];
+        pts[i].x = mMissileDrawPts[i].x*scale;
+		pts[i].y = mMissileDrawPts[i].y*scale;
     }
     float locToTarg = atan2( (float)(targ->y - loc->y), (float)(targ->x - loc->x) );
     float rotAngle = locToTarg - kPi/2;
