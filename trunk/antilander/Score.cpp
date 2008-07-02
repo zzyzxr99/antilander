@@ -4,9 +4,6 @@
 #include "SDL.h"
 #include "SDL_GFXprimitives.h"
 #include "SDL_ttf.h"
-#include <string>
-#include "string.h"
-#include <sstream>
 #include "GameWorld.h"
 
 using namespace std;
@@ -16,6 +13,11 @@ extern GameWorld *tWorld;
 Score::Score()
 {
 	TotalScore = 0;
+	bombPt.x = kWinWidth-420; bombPt.y = 8;
+	missPt.x = kWinWidth-490; missPt.y = 12;
+	missPt2.x = missPt.x; missPt2.y = 0;
+	landPt.x = kWinWidth-216; landPt.y = 7;
+	
 	// init Point etc
 }
 Score::~Score()
@@ -32,26 +34,17 @@ void Score::AddScore(int Score, int Val)
 }
 void Score::DrawScore(int Score, SDL_Surface* screen)
 {
-	//draw score
-	stringstream SS, bomb, miss, land;
+	stringstream SS, bomb, miss, land, landed;
+
 	SS << "Score : " << Score;
+	landed << "__ __ __";
+	
 	bomb << tWorld->GetNumBombs();
 	miss << tWorld->GetNumMissiles();
 	land << tWorld->GetLandToGo();
-	Point missPt, bombPt, missPt2, landPt;
-	bombPt.x = kWinWidth-420; bombPt.y = 8;
-	missPt.x = kWinWidth-490; missPt.y = 12;
-	missPt2.x = missPt.x; missPt2.y = 0;
-	landPt.x = kWinWidth-180; landPt.y = 7;
-	Sint16 ptX[4] = {kWinWidth-505, kWinWidth-135, kWinWidth-140, kWinWidth-500}; 
-	Sint16 ptY[4] = {-1, -1, 16, 16};
-
-	filledPolygonRGBA(   screen,
-						 ptX,
-						 ptY,
-						 4,
-						 80,80,80,125);
-
+	
+	DrawIcons(screen);
+	
     TTF_Font* ScoreFont = TTF_OpenFont("QUERROUND.TTF", 10);
     SDL_Color txtForeColor = { 0, 254, 254 };
 	SDL_Surface* textSurface = TTF_RenderText_Blended( ScoreFont, SS.str().c_str(), txtForeColor );
@@ -81,33 +74,79 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
                      NULL,
                      screen,
                      &BombLoc );
-	tWorld->GetRender()->DrawBomb(screen,&bombPt,5);
-	tWorld->GetRender()->DrawMissile(screen,&missPt,&missPt2,0.6F);
-	tWorld->GetRender()->DrawLander(screen,&landPt,0.5F);
-    
-	aapolygonRGBA( screen, 
-				 ptX, 
-				 ptY, 
-				 4,
-                 kMenuRvalue,kMenuGvalue,kMenuBvalue,kMenuAvalue);
 
-	//draw landers
+	//draw lander count
 	SDL_Surface* landSurface = TTF_RenderText_Blended( hudFont, land.str().c_str(), txtForeColor );
-	SDL_Rect LandLoc = { kWinWidth - 170 , 3,
+	SDL_Rect LandLoc = { kWinWidth - 206 , 3,
                            0,0 };
 	SDL_BlitSurface( landSurface,
                      NULL,
                      screen,
                      &LandLoc );
+	
+	//draw landed count
+	SDL_Surface* landedSurface = TTF_RenderText_Blended( hudFont, landed.str().c_str(), txtForeColor );
+	SDL_Rect LandedLoc = { kWinWidth - 185 , 4,
+                           0,0 };
+	SDL_BlitSurface( landedSurface,
+                     NULL,
+                     screen,
+                     &LandedLoc );
 
 	TTF_CloseFont( hudFont );
 	SDL_FreeSurface( textSurface );
 	SDL_FreeSurface( missSurface );
 	SDL_FreeSurface( bombSurface );
 	SDL_FreeSurface( landSurface );
-    
+    SDL_FreeSurface( landedSurface );
 }
 void Score::ClearScore()
 {
 	TotalScore = 0;
+}
+
+void Score::DrawIcons(SDL_Surface* screen)
+{
+	Sint16 ptX[4] = {kWinWidth-505, kWinWidth-135, kWinWidth-140, kWinWidth-500}; 
+	Sint16 ptY[4] = {-1, -1, 16, 16};
+	landedPt[0].x = kWinWidth-182; landedPt[0].y = 6;
+	landedPt[1].x = landedPt[0].x+14; landedPt[1].y = 6;
+	landedPt[2].x = landedPt[1].x+14; landedPt[2].y = 6;
+
+	filledPolygonRGBA(   screen,
+						 ptX,
+						 ptY,
+						 4,
+						 80,80,80,125);
+
+	tWorld->GetRender()->DrawBomb(screen,&bombPt,5);
+	tWorld->GetRender()->DrawMissile(screen,&missPt,&missPt2,0.6F);
+	tWorld->GetRender()->DrawLander(screen,&landPt,0.5F);
+    
+	switch(tWorld->GetLandLanded())
+	{
+	case 1:
+		tWorld->GetRender()->DrawLander(screen,&landedPt[0],0.3F);
+		break;
+	case 2:
+		tWorld->GetRender()->DrawLander(screen,&landedPt[0],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[1],0.3F);
+		break;
+	case 3:
+		tWorld->GetRender()->DrawLander(screen,&landedPt[0],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[1],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[2],0.3F);
+		break;
+	case 4:
+		tWorld->GetRender()->DrawLander(screen,&landedPt[0],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[1],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[2],0.3F);
+		break;
+	}
+	
+	aapolygonRGBA( screen, 
+				 ptX, 
+				 ptY, 
+				 4,
+                 kMenuRvalue,kMenuGvalue,kMenuBvalue,kMenuAvalue);
 }

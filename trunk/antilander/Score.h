@@ -4,6 +4,8 @@
 #include "Structs.h"
 #include "ALTimer.h"
 #include "SDL.h"
+#include <sstream>
+#include <string>
 
 class Score
 {
@@ -13,6 +15,8 @@ private:
 	int mScoreValue;
 	SDL_Color mScoreColor;
 	int TotalScore;
+	Point missPt, bombPt, missPt2, landPt;
+	Point landedPt[3];
 
 public:
 	Score();
@@ -22,5 +26,6 @@ public:
 	void AddScore(int Score, int Val);
 	void DrawScore(int Score, SDL_Surface* screen);
 	void ClearScore();
+	void DrawIcons(SDL_Surface* screen);
 };
 #endif
