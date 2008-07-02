@@ -237,12 +237,12 @@ void Render::DrawLander( SDL_Surface* scrn,
         filledEllipseRGBA( scrn,
                            Round( landerLoc->x + mLanderDrawPts[0].x ),
                            Round( landerLoc->y + mLanderDrawPts[0].y ),
-                           8*scale,8*scale,
+                           Round(8*scale),Round(8*scale),
                            0,0,0,255 );
         ellipseRGBA( scrn,
                      Round( landerLoc->x + mLanderDrawPts[0].x ),
                      Round( landerLoc->y + mLanderDrawPts[0].y ),
-                     8*scale,8*scale,
+                     Round(8*scale),Round(8*scale),
                      255,255,255,255 );
 }
 
