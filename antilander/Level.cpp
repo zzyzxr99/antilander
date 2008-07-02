@@ -325,8 +325,7 @@ bool Level::LoadLevel( string LevString )
 	vector<Point>::iterator iterPad = mPadPt.begin();
 	int ctr = 0;
 	string str[100];		
-	char *cstr, *p;
-	cstr = new char [15];
+	string p;
 	char* index[] = {"mTerPt","mPadPt","mGunStartPad","mEndGamePadOcc","mNumLndrLvl","mNumLndrScr","mNumBomb","mNumMissile","mBombMxSpd",
 					 "mBombAcc","mBombRad","mLndrDescRate","mGunReload","mExpRad","mExpRate","mMissileSpd","mLndrPersist","mFrat","mGunMoves",
 					 "mGunMoveRnd","mBombReloadTime","LAST"};		//index of strings to compare
@@ -343,11 +342,12 @@ bool Level::LoadLevel( string LevString )
 		{
 			for (int l = j+1; str[l].compare(index[1]); l++)
 			{
-				strcpy(cstr, str[l].c_str());
-				p = strtok(cstr,",");
-				pt.x = (float)atof(p);
-				p = strtok(NULL," ");
-				pt.y = (float)atof(p);
+                p = str[l].substr( 0,
+                                   str[l].find(",") );
+                pt.x = (float)atof(p.c_str( ));
+                p = str[l].substr( str[l].find(" ")+1,
+                                   str[l].length( ) );
+                pt.y = (float)atof(p.c_str( ));
 				mTerPt.push_back(pt);
 				cout << pt.x << " " << pt.y << endl;
 			}
@@ -357,11 +357,12 @@ bool Level::LoadLevel( string LevString )
 		{
 			for (int l = j+1, k = 0; str[l].compare(index[2]); l++, k++)
 			{
-				strcpy (cstr, str[l].c_str());
-				p = strtok(cstr,",");
-				pt.x = (float)atof(p);
-				p = strtok(NULL," ");
-				pt.y = (float)atof(p);
+                p = str[l].substr( 0,
+                                   str[l].find(",") );
+                pt.x = (float)atof(p.c_str( ));
+                p = str[l].substr( str[l].find(" ")+1,
+                                   str[l].length( ) );
+                pt.y = (float)atof(p.c_str( ));
 				mPadPt.push_back(pt);
 			}
 			mNumPad = mPadPt.size();
@@ -472,7 +473,6 @@ bool Level::LoadLevel( string LevString )
 		}
 
 	}
-	delete [] cstr;
     infile.close( );
     return true;
 }
