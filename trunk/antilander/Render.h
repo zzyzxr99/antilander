@@ -57,7 +57,8 @@ public:
     void DrawBomb( SDL_Surface* scrn,
                       Point* loc, float radius);
     void DrawLander( SDL_Surface* scrn,
-                     Point* landerLoc );
+                     Point* landerLoc,
+					 float scale = 1.0F);
     void DrawTerrain( SDL_Surface* scrn,
         vector<Point>::iterator tPts,
                       int numTP,

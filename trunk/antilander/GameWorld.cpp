@@ -1369,7 +1369,18 @@ USINT GameWorld::GetNumBombs( )
 {
 	return mNumBomb;
 }
+
 USINT GameWorld::GetNumMissiles( )
 {
 	return mNumMissile;
+}
+
+USINT GameWorld::GetLandToGo( )
+{
+	return mNumLndrsToGo;
+}
+
+USINT GameWorld::GetLandLanded( )
+{
+	return mNumLndrsLanded;
 }

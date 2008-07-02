@@ -207,41 +207,42 @@ void Render::DrawBomb( SDL_Surface* scrn,
 }
 
 void Render::DrawLander( SDL_Surface* scrn,
-                         Point* landerLoc )
+                         Point* landerLoc,
+						 float scale)
 {
         lineRGBA( scrn,
-                  Round( landerLoc->x + mLanderDrawPts[0].x ),
-                  Round( landerLoc->y + mLanderDrawPts[0].y ),
-                  Round( landerLoc->x + mLanderDrawPts[1].x ),
-                  Round( landerLoc->y + mLanderDrawPts[1].y ),
+                  Round( landerLoc->x + mLanderDrawPts[0].x*scale ),
+                  Round( landerLoc->y + mLanderDrawPts[0].y*scale ),
+                  Round( landerLoc->x + mLanderDrawPts[1].x*scale ),
+                  Round( landerLoc->y + mLanderDrawPts[1].y*scale ),
                   255,255,255,255 );
         lineRGBA( scrn,
-                  Round( landerLoc->x + mLanderDrawPts[1].x ),
-                  Round( landerLoc->y + mLanderDrawPts[1].y ),
-                  Round( landerLoc->x + mLanderDrawPts[3].x ),
-                  Round( landerLoc->y + mLanderDrawPts[3].y ),
+                  Round( landerLoc->x + mLanderDrawPts[1].x*scale ),
+                  Round( landerLoc->y + mLanderDrawPts[1].y*scale ),
+                  Round( landerLoc->x + mLanderDrawPts[3].x*scale ),
+                  Round( landerLoc->y + mLanderDrawPts[3].y*scale ),
                   255,255,255,255 );
         lineRGBA( scrn,
-                  Round( landerLoc->x + mLanderDrawPts[0].x ),
-                  Round( landerLoc->y + mLanderDrawPts[0].y ),
-                  Round( landerLoc->x + mLanderDrawPts[2].x ),
-                  Round( landerLoc->y + mLanderDrawPts[2].y ),
+                  Round( landerLoc->x + mLanderDrawPts[0].x*scale ),
+                  Round( landerLoc->y + mLanderDrawPts[0].y*scale ),
+                  Round( landerLoc->x + mLanderDrawPts[2].x*scale ),
+                  Round( landerLoc->y + mLanderDrawPts[2].y*scale ),
                   255,255,255,255 );
         lineRGBA( scrn,
-                  Round( landerLoc->x + mLanderDrawPts[2].x ),
-                  Round( landerLoc->y + mLanderDrawPts[2].y ),
-                  Round( landerLoc->x + mLanderDrawPts[4].x ),
-                  Round( landerLoc->y + mLanderDrawPts[4].y ),
+                  Round( landerLoc->x + mLanderDrawPts[2].x*scale ),
+                  Round( landerLoc->y + mLanderDrawPts[2].y*scale ),
+                  Round( landerLoc->x + mLanderDrawPts[4].x*scale ),
+                  Round( landerLoc->y + mLanderDrawPts[4].y*scale ),
                   255,255,255,255 );
         filledEllipseRGBA( scrn,
                            Round( landerLoc->x + mLanderDrawPts[0].x ),
                            Round( landerLoc->y + mLanderDrawPts[0].y ),
-                           8,8,
+                           8*scale,8*scale,
                            0,0,0,255 );
         ellipseRGBA( scrn,
                      Round( landerLoc->x + mLanderDrawPts[0].x ),
                      Round( landerLoc->y + mLanderDrawPts[0].y ),
-                     8,8,
+                     8*scale,8*scale,
                      255,255,255,255 );
 }
 
