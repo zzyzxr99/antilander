@@ -42,7 +42,7 @@ void Render::doInput()
 						mPause = false;
 					}*/
 					break;
-					
+#ifndef	_RELEASE				
 				case SDLK_BACKQUOTE :
 					if(mConsole == true)
 					{
@@ -53,20 +53,10 @@ void Render::doInput()
 						mConsole = true;
 					}
 					break;
-				//	////////////////////////////// pause test ////////////////////////////
-				//case SDLK_p :
-				//	if(mPause == true)
-				//	{
-				//		mPause = false;
-				//	}
-				//	else
-				//	{
-				//		mPause = true;
-				//	}
-				//	break;
-				//	////////////////////////////			  ////////////////////////////
+#endif
 				}
 			}
+#ifndef _RELEASE
 			else
 			{
 				switch(plIn.keyPress)
@@ -208,6 +198,7 @@ void Render::doInput()
 					plIn.keyP = '!';
 				}
 			}
+#endif
 		}
 
 		if(mEvent.type == SDL_MOUSEBUTTONDOWN)
@@ -396,6 +387,7 @@ void Render::doMenuInput()
 				tWorld->GetScore()->ClearScore();
 				tWorld->SetGameStatus(knPlayMode);
 			}
+#ifndef _RELEASE
 			else if(plIn.keyPress == SDLK_e)
 			{
 				// needs to change gamestatus to editor mode???
@@ -405,6 +397,7 @@ void Render::doMenuInput()
 					mPause = false;
 				}
 			}
+#endif
 		}
 		if(mEvent.type == SDL_MOUSEBUTTONDOWN)
 		{
@@ -452,6 +445,7 @@ void Render::doMenuInput()
 		cout << "Quit highlighted!!" << endl;
 		gameState = false;
 	}
+#ifndef _RELEASE
 	else if(getMouse().x > kMenuDrawX && getMouse().x < kMenuDrawX+kMenuWidth && getMouse().y > kMenuDrawY+75 && getMouse().y < kMenuDrawY+95 && plIn.leftClick == true)
 	{
 		if(mEdit == false)
@@ -460,6 +454,7 @@ void Render::doMenuInput()
 			mPause = false;
 		}
 	}
+#endif
 	else if(getMouse().x > kMenuDrawX && getMouse().x < kMenuDrawX+kMenuWidth && getMouse().y > kMenuDrawY+25 && getMouse().y < kMenuDrawY+45 && plIn.leftClick == true)
 	{
 		cout << "Start highlighted!!" << endl;

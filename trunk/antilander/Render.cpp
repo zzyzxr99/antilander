@@ -583,6 +583,7 @@ void Render::DrawMenu()
                      NULL,
                      screen,
                      &quitLoc );
+#ifndef _RELEASE
 	///// Editor /////
 	SDL_Surface* editSurface = TTF_RenderText_Blended( startFont,
                                                        "Editor", 
@@ -591,13 +592,14 @@ void Render::DrawMenu()
 	hlineRGBA(screen, kMenuDrawX+5, kMenuDrawX+18, kMenuDrawY+95, 255, 255, 255, 254);
 	
 	SDL_BlitSurface( editSurface,
-                     NULL,
+					 NULL,
                      screen,
                      &editLoc );
-    
+	SDL_FreeSurface( editSurface );
+#endif    
 	SDL_FreeSurface( newSurface );
 	SDL_FreeSurface( quitSurface );
-	SDL_FreeSurface( editSurface );
+	
 
 
 	//SDL_Flip( screen );
