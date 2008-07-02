@@ -1,0 +1,84 @@
+mTerPt
+0, 412
+30, 412
+60, 412
+60, 472
+90, 472
+120, 472
+150, 472
+180, 472
+210, 472
+240, 472
+270, 472
+300, 472
+330, 472
+360, 472
+390, 472
+420, 472
+450, 472
+480, 472
+510, 472
+540, 472
+570, 472
+570, 443
+639, 443
+mPadPt
+15, 412
+45, 412
+75, 472
+105, 472
+135, 472
+165, 472
+195, 472
+225, 472
+255, 472
+285, 472
+315, 472
+345, 472
+375, 472
+405, 472
+435, 472
+465, 472
+495, 472
+525, 472
+555, 472
+604.5, 443
+mGunStartPad
+7
+mEndGamePadOcc
+3
+mNumLndrLvl
+30
+mNumLndrScr
+10
+mNumBomb
+100
+mNumMissile
+300
+mBombMxSpd
+100
+mBombAcc
+9.8
+mBombRad
+5
+mLndrDescRate
+30
+mGunReload
+0.5
+mExpRad
+50
+mExpRate
+35
+mMissileSpd
+100
+mLndrPersist
+0
+mFrat
+0
+mGunMoves
+0
+mGunMoveRnd
+0
+mBombReloadTime
+3
+LAST
