@@ -521,8 +521,8 @@ void Render::DrawSplash(GameStatusType status)
         break;
     }
     SDL_Color txtForeColor = { 0,
-                               mSplashAlpha,
-                               mSplashAlpha };
+                               (Uint8)mSplashAlpha,
+                               (Uint8)mSplashAlpha };
     SDL_Surface* textSurface = TTF_RenderText_Blended( splashFont,
                                                        splashText.c_str( ),
                                                        txtForeColor );

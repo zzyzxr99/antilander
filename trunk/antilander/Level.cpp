@@ -343,7 +343,7 @@ bool Level::LoadLevel( string LevString )
 		{
 			for (int l = j+1; str[l].compare(index[1]); l++)
 			{
-				strcpy (cstr, str[l].c_str());
+				strcpy(cstr, str[l].c_str());
 				p = strtok(cstr,",");
 				pt.x = (float)atof(p);
 				p = strtok(NULL," ");
@@ -424,19 +424,47 @@ bool Level::LoadLevel( string LevString )
 		}
 		else if(!str[j].compare(index[16]))
 		{
-			SetLndrPersist((bool)(atoi(str[j+1].c_str())));
+            if ( atoi(str[j+1].c_str( )) > 0 )
+            {
+    			SetLndrPersist(true);
+            }
+            else
+            {
+                SetLndrPersist(false);
+            }
 		}
 		else if(!str[j].compare(index[17]))
 		{
-			SetFrat((bool)(atoi(str[j+1].c_str())));
+			if (atoi(str[j+1].c_str( )) > 0 )
+            {
+                SetFrat(true);
+            }
+            else
+            {
+                SetFrat(false);
+            }
 		}
 		else if(!str[j].compare(index[18]))
 		{
-			SetGunMoves((bool)(atoi(str[j+1].c_str())));
+			if ( atoi(str[j+1].c_str( )) > 0 )
+            {
+                SetGunMoves(true);
+            }
+            else
+            {
+                SetGunMoves(false);
+            }
 		}
 		else if(!str[j].compare(index[19]))
 		{
-			SetGunMoveRnd((bool)(atoi(str[j+1].c_str())));
+			if ( atoi(str[j+1].c_str( )) > 0 )
+            {
+                SetGunMoveRnd(true);
+            }
+            else
+            {
+                SetGunMoveRnd(false);
+            }
 		}
 		else if(!str[j].compare(index[20]))
 		{
