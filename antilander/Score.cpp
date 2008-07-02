@@ -33,14 +33,16 @@ void Score::AddScore(int Score, int Val)
 void Score::DrawScore(int Score, SDL_Surface* screen)
 {
 	//draw score
-	stringstream SS, bomb, miss;
+	stringstream SS, bomb, miss, land;
 	SS << "Score : " << Score;
 	bomb << tWorld->GetNumBombs();
 	miss << tWorld->GetNumMissiles();
-	Point missPt, bombPt, missPt2;
+	land << tWorld->GetLandToGo();
+	Point missPt, bombPt, missPt2, landPt;
 	bombPt.x = kWinWidth-420; bombPt.y = 8;
 	missPt.x = kWinWidth-490; missPt.y = 12;
 	missPt2.x = missPt.x; missPt2.y = 0;
+	landPt.x = kWinWidth-180; landPt.y = 7;
 	Sint16 ptX[4] = {kWinWidth-505, kWinWidth-135, kWinWidth-140, kWinWidth-500}; 
 	Sint16 ptY[4] = {-1, -1, 16, 16};
 
@@ -81,6 +83,7 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
                      &BombLoc );
 	tWorld->GetRender()->DrawBomb(screen,&bombPt,5);
 	tWorld->GetRender()->DrawMissile(screen,&missPt,&missPt2,0.6F);
+	tWorld->GetRender()->DrawLander(screen,&landPt,0.5F);
     
 	aapolygonRGBA( screen, 
 				 ptX, 
@@ -88,10 +91,20 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 				 4,
                  kMenuRvalue,kMenuGvalue,kMenuBvalue,kMenuAvalue);
 
+	//draw landers
+	SDL_Surface* landSurface = TTF_RenderText_Blended( hudFont, land.str().c_str(), txtForeColor );
+	SDL_Rect LandLoc = { kWinWidth - 170 , 3,
+                           0,0 };
+	SDL_BlitSurface( landSurface,
+                     NULL,
+                     screen,
+                     &LandLoc );
+
 	TTF_CloseFont( hudFont );
 	SDL_FreeSurface( textSurface );
 	SDL_FreeSurface( missSurface );
 	SDL_FreeSurface( bombSurface );
+	SDL_FreeSurface( landSurface );
     
 }
 void Score::ClearScore()

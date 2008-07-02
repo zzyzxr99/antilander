@@ -96,6 +96,8 @@ public:
     void InitEditLvl( );
     vector<Lander>* GetLanders( );
     USINT GetNumLndrScr( );
+	USINT GetLandToGo( );
+	USINT GetLandLanded( );
 
 	string GetLevName (int num);
 	Level* GetEditLevel();
