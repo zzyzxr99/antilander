@@ -38,11 +38,11 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 	bomb << tWorld->GetNumBombs();
 	miss << tWorld->GetNumMissiles();
 	Point missPt, bombPt, missPt2;
-	bombPt.x = kWinWidth-420; bombPt.y = 20;
-	missPt.x = kWinWidth-490; missPt.y = 27;
-	missPt2.x = missPt.x; missPt2.y = 10;
+	bombPt.x = kWinWidth-420; bombPt.y = 8;
+	missPt.x = kWinWidth-490; missPt.y = 12;
+	missPt2.x = missPt.x; missPt2.y = 0;
 	Sint16 ptX[4] = {kWinWidth-505, kWinWidth-135, kWinWidth-140, kWinWidth-500}; 
-	Sint16 ptY[4] = {7, 7, 31, 31};
+	Sint16 ptY[4] = {-1, -1, 16, 16};
 
 	filledPolygonRGBA(   screen,
 						 ptX,
@@ -50,10 +50,10 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 						 4,
 						 80,80,80,125);
 
-    TTF_Font* ScoreFont = TTF_OpenFont("QUERROUND.TTF", 12);
+    TTF_Font* ScoreFont = TTF_OpenFont("QUERROUND.TTF", 10);
     SDL_Color txtForeColor = { 0, 254, 254 };
 	SDL_Surface* textSurface = TTF_RenderText_Blended( ScoreFont, SS.str().c_str(), txtForeColor );
-    SDL_Rect ScoreLoc = { kWinWidth - 370 ,10 ,
+    SDL_Rect ScoreLoc = { kWinWidth - 370 ,0 ,
                            0,0 };
     SDL_BlitSurface( textSurface,
                      NULL,
@@ -62,9 +62,9 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 	TTF_CloseFont( ScoreFont );
 
 	//draw missile count
-	TTF_Font* hudFont = TTF_OpenFont("QUERROUND.TTF", 9);
+	TTF_Font* hudFont = TTF_OpenFont("QUERROUND.TTF", 7);
 	SDL_Surface* missSurface = TTF_RenderText_Blended( hudFont, miss.str().c_str(), txtForeColor );
-	SDL_Rect MissLoc = { kWinWidth - 480 ,13 ,
+	SDL_Rect MissLoc = { kWinWidth - 480 , 3,
                            0,0 };
 	SDL_BlitSurface( missSurface,
                      NULL,
@@ -73,14 +73,14 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 
 	//draw bomb count
 	SDL_Surface* bombSurface = TTF_RenderText_Blended( hudFont, bomb.str().c_str(), txtForeColor );
-	SDL_Rect BombLoc = { kWinWidth - 410 ,13 ,
+	SDL_Rect BombLoc = { kWinWidth - 410 , 3,
                            0,0 };
 	SDL_BlitSurface( bombSurface,
                      NULL,
                      screen,
                      &BombLoc );
 	tWorld->GetRender()->DrawBomb(screen,&bombPt,5);
-	tWorld->GetRender()->DrawMissile(screen,&missPt,&missPt2);
+	tWorld->GetRender()->DrawMissile(screen,&missPt,&missPt2,0.6F);
     
 	aapolygonRGBA( screen, 
 				 ptX, 
