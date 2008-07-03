@@ -1,9 +1,13 @@
 NUM	AESTHETIC	GAMEPLAY	DIFFICULTY	NOTES
-01 - 	
-02 -
-03 -
-04 -
-05 -
-06 -
-07 -
-08 -
+01 - 	8		5		2
+02 -	6		6		3		Fix last pad
+03 -	6		7		6
+04 -	7		10		8		Skilled
+05 -	7		9		9		Skilled
+06 -	7		8		6		
+07 -	6		9		7		Skilled
+08 -	5		7		6
+09 -	6		6		4		
+10 -	5		4		10		Pre-Knowledge
+11 -	6		7		7			
+12 -	7		8		9		Pre-Something
