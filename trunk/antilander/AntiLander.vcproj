@@ -63,7 +63,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="SDL.lib SDLmain.LIB sdlgfx.lib SDL_ttf.lib Winmm.lib lua5.1.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(ProjectDir)SDL\lib&quot;;&quot;$(ProjectDir)SDLgfx\lib&quot;;&quot;$(ProjectDir)SDLttf\lib&quot;;&quot;$(ProjectDir)Lua\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(ProjectDir)SDL\lib&quot;;&quot;$(ProjectDir)SDLgfx\lib&quot;;&quot;$(ProjectDir)SDLttf\lib&quot;;&quot;$(ProjectDir)Lua\lib\dynamic&quot;"
 				IgnoreAllDefaultLibraries="false"
 				IgnoreDefaultLibraryNames="MSVCRT.LIB"
 				GenerateDebugInformation="true"
@@ -119,7 +119,8 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)SDL\include&quot;;&quot;$(ProjectDir)SDLgfx\include&quot;;&quot;$(ProjectDir)SDLttf\include&quot;;&quot;$(ProjectDir)Lua\include&quot;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;_RELEASE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
@@ -137,7 +138,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="SDL.lib SDLmain.LIB sdlgfx.lib SDL_ttf.lib Winmm.lib lua5.1.lib"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories="&quot;$(ProjectDir)SDL\lib&quot;;&quot;$(ProjectDir)SDLgfx\lib&quot;;&quot;$(ProjectDir)SDLttf\lib&quot;;&quot;$(ProjectDir)Lua\lib\static&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
