@@ -16,7 +16,7 @@ private:
 	SDL_Color mScoreColor;
 	int TotalScore;
 	Point missPt, bombPt, missPt2, landPt;
-	Point landedPt[3];
+	Point landedPt[7];
 
 public:
 	Score();

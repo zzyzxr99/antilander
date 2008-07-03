@@ -120,8 +120,8 @@ void Score::ClearScore()
 
 void Score::DrawIcons(SDL_Surface* screen)
 {
-	Sint16 ptX[7] = {kWinWidth-505, kWinWidth-135, kWinWidth-140, kWinWidth-500}; 
-	Sint16 ptY[7] = {-1, -1, 16, 16};
+	Sint16 ptX[4] = {kWinWidth-505, kWinWidth-135, kWinWidth-140, kWinWidth-500}; 
+	Sint16 ptY[4] = {-1, -1, 16, 16};
 	landedPt[0].x = kWinWidth-237; landedPt[0].y = 6;
 	landedPt[1].x = landedPt[0].x+14; landedPt[1].y = 6;
 	landedPt[2].x = landedPt[1].x+14; landedPt[2].y = 6;
