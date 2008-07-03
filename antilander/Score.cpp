@@ -14,9 +14,9 @@ Score::Score()
 {
 	TotalScore = 0;
 	bombPt.x = kWinWidth-420; bombPt.y = 8;
-	missPt.x = kWinWidth-490; missPt.y = 12;
+	missPt.x = kWinWidth-485; missPt.y = 12;
 	missPt2.x = missPt.x; missPt2.y = 0;
-	landPt.x = kWinWidth-216; landPt.y = 7;
+	landPt.x = kWinWidth-285; landPt.y = 7;
 	
 	// init Point etc
 }
@@ -35,20 +35,22 @@ void Score::AddScore(int Score, int Val)
 void Score::DrawScore(int Score, SDL_Surface* screen)
 {
 	stringstream SS, bomb, miss, land, landed;
-
-	SS << "Score : " << Score;
-	landed << "__ __ __";
+	SS << Score;
+	for(int j=0; j<tWorld->GetEndGamePadOcc(); j++)
+	{
+		landed << "__ ";
+	}
 	
-	bomb << "x" << tWorld->GetNumBombs();
-	miss << "x" << tWorld->GetNumMissiles();
-	land << "x" << tWorld->GetLandToGo();
+	bomb << "!" << tWorld->GetNumBombs();
+	miss << "!" << tWorld->GetNumMissiles();
+	land << "!" << tWorld->GetLandToGo();
 	
 	DrawIcons(screen);
 	
     TTF_Font* ScoreFont = TTF_OpenFont("QUERROUND.TTF", 10);
     SDL_Color txtForeColor = { 0, 254, 254 };
 	SDL_Surface* textSurface = TTF_RenderText_Blended( ScoreFont, SS.str().c_str(), txtForeColor );
-    SDL_Rect ScoreLoc = { kWinWidth - 370 ,0 ,
+    SDL_Rect ScoreLoc = { kWinWidth - 365 ,0 ,
                            0,0 };
     SDL_BlitSurface( textSurface,
                      NULL,
@@ -77,7 +79,7 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 
 	//draw lander count
 	SDL_Surface* landSurface = TTF_RenderText_Blended( hudFont, land.str().c_str(), txtForeColor );
-	SDL_Rect LandLoc = { kWinWidth - 206 , 3,
+	SDL_Rect LandLoc = { kWinWidth - 272 , 3,
                            0,0 };
 	SDL_BlitSurface( landSurface,
                      NULL,
@@ -86,7 +88,7 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 	
 	//draw landed count
 	SDL_Surface* landedSurface = TTF_RenderText_Blended( hudFont, landed.str().c_str(), txtForeColor );
-	SDL_Rect LandedLoc = { kWinWidth - 185 , 4,
+	SDL_Rect LandedLoc = { kWinWidth - 240 , 4,
                            0,0 };
 	SDL_BlitSurface( landedSurface,
                      NULL,
@@ -107,11 +109,15 @@ void Score::ClearScore()
 
 void Score::DrawIcons(SDL_Surface* screen)
 {
-	Sint16 ptX[4] = {kWinWidth-505, kWinWidth-135, kWinWidth-140, kWinWidth-500}; 
-	Sint16 ptY[4] = {-1, -1, 16, 16};
-	landedPt[0].x = kWinWidth-182; landedPt[0].y = 6;
+	Sint16 ptX[7] = {kWinWidth-505, kWinWidth-135, kWinWidth-140, kWinWidth-500}; 
+	Sint16 ptY[7] = {-1, -1, 16, 16};
+	landedPt[0].x = kWinWidth-237; landedPt[0].y = 6;
 	landedPt[1].x = landedPt[0].x+14; landedPt[1].y = 6;
 	landedPt[2].x = landedPt[1].x+14; landedPt[2].y = 6;
+	landedPt[3].x = landedPt[2].x+14; landedPt[3].y = 6;
+	landedPt[4].x = landedPt[3].x+14; landedPt[4].y = 6;
+	landedPt[5].x = landedPt[4].x+14; landedPt[5].y = 6;
+	landedPt[6].x = landedPt[5].x+14; landedPt[6].y = 6;
 
 	filledPolygonRGBA(   screen,
 						 ptX,
@@ -141,6 +147,31 @@ void Score::DrawIcons(SDL_Surface* screen)
 		tWorld->GetRender()->DrawLander(screen,&landedPt[0],0.3F);
 		tWorld->GetRender()->DrawLander(screen,&landedPt[1],0.3F);
 		tWorld->GetRender()->DrawLander(screen,&landedPt[2],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[3],0.3F);
+		break;
+	case 5:
+		tWorld->GetRender()->DrawLander(screen,&landedPt[0],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[1],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[2],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[3],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[4],0.3F);
+		break;
+	case 6:
+		tWorld->GetRender()->DrawLander(screen,&landedPt[0],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[1],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[2],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[3],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[4],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[5],0.3F);
+		break;
+	case 7:
+		tWorld->GetRender()->DrawLander(screen,&landedPt[0],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[1],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[2],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[3],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[4],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[5],0.3F);
+		tWorld->GetRender()->DrawLander(screen,&landedPt[6],0.3F);
 		break;
 	}
 	
