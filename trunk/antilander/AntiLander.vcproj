@@ -120,7 +120,7 @@
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)SDL\include&quot;;&quot;$(ProjectDir)SDLgfx\include&quot;;&quot;$(ProjectDir)SDLttf\include&quot;;&quot;$(ProjectDir)Lua\include&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;_RELEASE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
