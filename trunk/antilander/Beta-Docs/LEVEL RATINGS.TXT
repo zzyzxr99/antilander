@@ -11,3 +11,38 @@ NUM	AESTHETIC	GAMEPLAY	DIFFICULTY	NOTES
 10 -	5		4		10		Pre-Knowledge
 11 -	6		7		7			
 12 -	7		8		9		Pre-Something
+200-	7		6		4
+201-	7		8		7
+202-	4		2		1		Expl smaller - more landers - little faster
+203-	2		3		9						move gunship							Pad on right bad
+204-	8		6		5		
+300-	4		5		2		Start level
+301-	6		4		3		Less bombs 5
+302-	5		4		3		2 Landers screen
+303-	5		3		2		< ammo - > landers screen
+304-	5		6		4		
+305-	4		2		10		Few less landers at a time
+306-	6		5		4
+307-	3		6		6		Change the look
+308-	5		5		4		Pad at right get rid of
+309-	5		8		7		More speed on bombs missiles
+310-	5		6		7
+400-	7		7		7		
+401-	6		7		9		
+402-	5		7		7		
+403-	5		6		9
+404-	7		8		3
+405-	4		7		9		Lower the mountain
+500-	7		7		4		
+501-	5		5		2		
+502-	7		4		2		
+503-	5		8		6
+504-	6		6		3
+505-	8		7		6
+600-	8		8		6
+601-	5		5		10		Shorten reload on bombs
+602-	6		7		9
+603-	6		7		8
+604-	6		7		10
+607-	5		4		2		More landers on screen
+800-	6		6		5
