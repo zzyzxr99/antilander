@@ -416,10 +416,10 @@ void GameWorld::UpdateEverything( )
 		}
 		else if (tStatus == knMissileExplode)
 		{
-			Point explPt= misIter->GetTarget();
+			Point explPt= misIter->GetLocation();
 			Point nosePt= misIter->GetNoseLoc();
-	/*		explPt.x+= nosePt.x;
-			explPt.y+= nosePt.y;*/
+			explPt.x+= nosePt.x;
+			explPt.y+= nosePt.y;
 			misIter->SetStatus(knMissileDead);
 			SpawnExplosion(explPt);
 		}
