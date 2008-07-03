@@ -39,9 +39,9 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 	SS << "Score : " << Score;
 	landed << "__ __ __";
 	
-	bomb << tWorld->GetNumBombs();
-	miss << tWorld->GetNumMissiles();
-	land << tWorld->GetLandToGo();
+	bomb << "x" << tWorld->GetNumBombs();
+	miss << "x" << tWorld->GetNumMissiles();
+	land << "x" << tWorld->GetLandToGo();
 	
 	DrawIcons(screen);
 	
