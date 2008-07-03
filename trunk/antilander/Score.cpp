@@ -46,56 +46,67 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 	land << "!" << tWorld->GetLandToGo();
 	
 	DrawIcons(screen);
+    SDL_Color txtForeColor = { 0, 254, 254 };
+    SDL_Surface* textSurface;
+    SDL_Surface* missSurface;
+    SDL_Surface* bombSurface;
+    SDL_Surface* landSurface;
+    SDL_Surface* landedSurface;
 	
     TTF_Font* ScoreFont = TTF_OpenFont("QUERROUND.TTF", 10);
-    SDL_Color txtForeColor = { 0, 254, 254 };
-	SDL_Surface* textSurface = TTF_RenderText_Blended( ScoreFont, SS.str().c_str(), txtForeColor );
-    SDL_Rect ScoreLoc = { kWinWidth - 365 ,0 ,
-                           0,0 };
-    SDL_BlitSurface( textSurface,
-                     NULL,
-                     screen,
-                     &ScoreLoc );
-	TTF_CloseFont( ScoreFont );
+    if ( ScoreFont )
+    {
+	    textSurface = TTF_RenderText_Blended( ScoreFont, SS.str().c_str(), txtForeColor );
+        SDL_Rect ScoreLoc = { kWinWidth - 365 ,0 ,
+                               0,0 };
+        SDL_BlitSurface( textSurface,
+                         NULL,
+                         screen,
+                         &ScoreLoc );
+	    TTF_CloseFont( ScoreFont );
+    }
 
 	//draw missile count
 	TTF_Font* hudFont = TTF_OpenFont("QUERROUND.TTF", 7);
-	SDL_Surface* missSurface = TTF_RenderText_Blended( hudFont, miss.str().c_str(), txtForeColor );
-	SDL_Rect MissLoc = { kWinWidth - 480 , 3,
-                           0,0 };
-	SDL_BlitSurface( missSurface,
-                     NULL,
-                     screen,
-                     &MissLoc );
+    if ( hudFont )
+    {
+	    missSurface = TTF_RenderText_Blended( hudFont, miss.str().c_str(), txtForeColor );
+	    SDL_Rect MissLoc = { kWinWidth - 480 , 3,
+                               0,0 };
+	    SDL_BlitSurface( missSurface,
+                         NULL,
+                         screen,
+                         &MissLoc );
 
-	//draw bomb count
-	SDL_Surface* bombSurface = TTF_RenderText_Blended( hudFont, bomb.str().c_str(), txtForeColor );
-	SDL_Rect BombLoc = { kWinWidth - 410 , 3,
-                           0,0 };
-	SDL_BlitSurface( bombSurface,
-                     NULL,
-                     screen,
-                     &BombLoc );
+	    //draw bomb count
+	    bombSurface = TTF_RenderText_Blended( hudFont, bomb.str().c_str(), txtForeColor );
+	    SDL_Rect BombLoc = { kWinWidth - 410 , 3,
+                               0,0 };
+	    SDL_BlitSurface( bombSurface,
+                         NULL,
+                         screen,
+                         &BombLoc );
 
-	//draw lander count
-	SDL_Surface* landSurface = TTF_RenderText_Blended( hudFont, land.str().c_str(), txtForeColor );
-	SDL_Rect LandLoc = { kWinWidth - 272 , 3,
-                           0,0 };
-	SDL_BlitSurface( landSurface,
-                     NULL,
-                     screen,
-                     &LandLoc );
-	
-	//draw landed count
-	SDL_Surface* landedSurface = TTF_RenderText_Blended( hudFont, landed.str().c_str(), txtForeColor );
-	SDL_Rect LandedLoc = { kWinWidth - 240 , 4,
-                           0,0 };
-	SDL_BlitSurface( landedSurface,
-                     NULL,
-                     screen,
-                     &LandedLoc );
+	    //draw lander count
+	    landSurface = TTF_RenderText_Blended( hudFont, land.str().c_str(), txtForeColor );
+	    SDL_Rect LandLoc = { kWinWidth - 272 , 3,
+                               0,0 };
+	    SDL_BlitSurface( landSurface,
+                         NULL,
+                         screen,
+                         &LandLoc );
+    	
+	    //draw landed count
+	    landedSurface = TTF_RenderText_Blended( hudFont, landed.str().c_str(), txtForeColor );
+	    SDL_Rect LandedLoc = { kWinWidth - 240 , 4,
+                               0,0 };
+	    SDL_BlitSurface( landedSurface,
+                         NULL,
+                         screen,
+                         &LandedLoc );
 
-	TTF_CloseFont( hudFont );
+	    TTF_CloseFont( hudFont );
+    }
 	SDL_FreeSurface( textSurface );
 	SDL_FreeSurface( missSurface );
 	SDL_FreeSurface( bombSurface );
