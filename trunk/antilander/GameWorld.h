@@ -98,6 +98,7 @@ public:
     USINT GetNumLndrScr( );
 	USINT GetLandToGo( );
 	USINT GetLandLanded( );
+	USINT GetEndGamePadOcc( );
 
 	string GetLevName (int num);
 	Level* GetEditLevel();
