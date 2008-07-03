@@ -314,6 +314,7 @@ void Level::ClearLevel( )
 }
 bool Level::LoadLevel( string LevString )
 {
+    LevString = "data\\" + LevString;
 	ifstream infile(LevString.c_str());
     if ( !infile )
     {
@@ -479,6 +480,7 @@ bool Level::LoadLevel( string LevString )
 
 void Level::SaveLevel( string LevString )
 {
+    LevString = "data\\" + LevString;
 	ofstream outfile(LevString.c_str());
 	outfile << "mTerPt" << endl;
 	for(int i = 0; i < mNumTerPt; i++)
