@@ -45,7 +45,7 @@ void Score::DrawScore(int Score, SDL_Surface* screen)
 	
 	DrawIcons(screen);
 	
-    TTF_Font* ScoreFont = TTF_OpenFont("QUERROUND.TTF", 10);
+    TTF_Font* ScoreFont = TTF_OpenFont("Compact_Mono.TTF", 10);
     SDL_Color txtForeColor = { 0, 254, 254 };
 	SDL_Surface* textSurface = TTF_RenderText_Blended( ScoreFont, SS.str().c_str(), txtForeColor );
     SDL_Rect ScoreLoc = { kWinWidth - 370 ,0 ,
