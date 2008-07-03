@@ -54,3 +54,11 @@ All warnings at level 3 (!) are evaluated and considered removed
 All 50 levels played, tested, ordered
 HUD near build complete with Missile, Bomb, Lander
 
+7/7
+
+Final build - How did we do for BETA release?
+Did we achieve goals?
+
+What is missing from the BETA in general?
+
+What could be added in the final product to make a better game?
