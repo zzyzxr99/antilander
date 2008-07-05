@@ -44,5 +44,5 @@ NUM	AESTHETIC	GAMEPLAY	DIFFICULTY	NOTES
 602-	6		7		9
 603-	6		7		8
 604-	6		7		10
-607-	5		4		2		More landers on screen
+605-	5		4		2		More landers on screen
 800-	6		6		5

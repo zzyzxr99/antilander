@@ -34,10 +34,10 @@ mNumLndrLvl
 10
 mNumLndrScr
 1
-mNumBomb
-100
+mNumBombq
+40
 mNumMissile
-300
+0
 mBombMxSpd
 100
 mBombAcc
@@ -63,6 +63,6 @@ mGunMoves
 mGunMoveRnd
 0
 mBombReloadTime
-1.5
+0.8
 LAST
 --Adam
