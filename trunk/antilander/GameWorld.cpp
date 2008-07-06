@@ -1380,9 +1380,9 @@ USINT GameWorld::GetLandToGo( )
 	return mNumLndrsToGo;
 }
 
-USINT GameWorld::GetLandLanded( )
+USINT* GameWorld::GetLandLanded( )
 {
-	return mNumLndrsLanded;
+	return &mNumLndrsLanded;
 }
 
 USINT GameWorld::GetEndGamePadOcc( )

@@ -18,7 +18,6 @@ Score::Score()
 	missPt2.x = missPt.x; missPt2.y = 0;
 	landPt.x = kWinWidth-285; landPt.y = 7;
 	
-	// init Point etc
 }
 Score::~Score()
 {
@@ -140,7 +139,11 @@ void Score::DrawIcons(SDL_Surface* screen)
 	tWorld->GetRender()->DrawMissile(screen,&missPt,&missPt2,0.6F);
 	tWorld->GetRender()->DrawLander(screen,&landPt,0.5F);
     
-	switch(tWorld->GetLandLanded())
+	if(*tWorld->GetLandLanded() >= tWorld->GetEndGamePadOcc())
+	{
+		*tWorld->GetLandLanded() = tWorld->GetEndGamePadOcc();
+	}
+	switch(*tWorld->GetLandLanded())
 	{
 	case 1:
 		tWorld->GetRender()->DrawLander(screen,&landedPt[0],0.3F);
