@@ -665,7 +665,7 @@ void GameWorld::UpdateEverything( )
         bool levelExist;
         if ( mRender.GetSplashFade( ) == knFadeIn )
         {
-            mRender.StepSplashAlpha(1);
+            mRender.StepSplashAlpha(2);
         }
         else if ( mRender.GetSplashFade( ) == knFadeOut )
         {
