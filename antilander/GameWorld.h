@@ -48,8 +48,8 @@ private:
     USINT mEndGamePadOcc;
     bool mFrat;
 	USINT lvlCtr;
-	int mNumLndrsToGo;
-	int mNumLndrsLanded;
+	USINT mNumLndrsToGo;
+	USINT mNumLndrsLanded;
 	//console and lua variables
 	char ch;
 	static lua_State* luaVM;
@@ -97,7 +97,7 @@ public:
     vector<Lander>* GetLanders( );
     USINT GetNumLndrScr( );
 	USINT GetLandToGo( );
-	USINT GetLandLanded( );
+	USINT* GetLandLanded( );
 	USINT GetEndGamePadOcc( );
 
 	string GetLevName (int num);
