@@ -1,48 +1,51 @@
-NUM	AESTHETIC	GAMEPLAY	DIFFICULTY	NOTES
-01 - 	8		5		2
-02 -	6		6		3		Fix last pad
-03 -	6		7		6
-04 -	7		10		8		Skilled
-05 -	7		9		9		Skilled
-06 -	7		8		6		
-07 -	6		9		7		Skilled
-08 -	5		7		6
-09 -	6		6		4		
-10 -	5		4		10		Pre-Knowledge
-11 -	6		7		7			
-12 -	7		8		9		Pre-Something
-200-	7		6		4
-201-	7		8		7
-202-	4		2		1		Expl smaller - more landers - little faster
-203-	2		3		9						move gunship							Pad on right bad
-204-	8		6		5		
-300-	4		5		2		Start level
-301-	6		4		3		Less bombs 5
-302-	5		4		3		2 Landers screen
-303-	5		3		2		< ammo - > landers screen
-304-	5		6		4		
-305-	4		2		10		Few less landers at a time
-306-	6		5		4
-307-	3		6		6		Change the look
-308-	5		5		4		Pad at right get rid of
-309-	5		8		7		More speed on bombs missiles
-310-	5		6		7
-400-	7		7		7		
-401-	6		7		9		
-402-	5		7		7		
-403-	5		6		9
-404-	7		8		3
-405-	4		7		9		Lower the mountain
-500-	7		7		4		
-501-	5		5		2		
-502-	7		4		2		
-503-	5		8		6
-504-	6		6		3
-505-	8		7		6
-600-	8		8		6
-601-	5		5		10		Shorten reload on bombs
-602-	6		7		9
-603-	6		7		8
-604-	6		7		10
-605-	5		4		2		More landers on screen
-800-	6		6		5
+NUM!ORD	AESTHETIC	GAMEPLAY	DIFFICULTY	NOTES
+01 -01 	8		5		2		Modified ammo
+02 -02	6		6		3		Adam fixed last pad
+03 -32	6		7		6
+04 -40	7		10		8		Skilled
+05 -25	7		9		9		Skilled
+06 -33	7		8		6		
+07 -41	6		9		7		Skilled
+08 -39	5		7		6
+09 -12	6		6		4		
+10 -48	5		4		10		Pre-Knowledge
+11 -31	6		7		7			
+12 -47	7		8		9		Pre-Something
+200-18	7		6		4
+201-34	7		8		7
+202-03	4		2		1		Expl smaller - more landers - little faster
+203-42	2		3		9						move gunship							Pad on right bad
+204-23	8		6		5		
+300-13	4		5		2		Start level
+301-08	6		4		3		Less bombs 5
+302-17	5		4		3		2 Landers screen
+303-11	5		3		2		< ammo - > landers screen
+304-10	5		6		4		
+305-49	4		2		10		Few less landers at a time
+306-19	6		5		4
+307-35	3		6		6		Change the look
+308-09	5		5		4		Pad at right get rid of
+309-28	5		8		7		More speed on bombs missiles
+310-46	5		6		7
+400-38	7		7		7		
+401-43	6		7		9		
+402-36	5		7		7		
+403-50	5		6		9
+404-16	7		8		3
+405-44	4		7		9		Lower the mountain
+500-20	7		7		4		
+501-04	5		5		2		
+502-06	7		4		2		
+503-27	5		8		6
+504-05	6		6		3
+505-29	8		7		6
+600-22	8		8		6
+601-30	5		5		10		Shorten reload on bombs
+602-37	6		7		9
+603-21	6		7		8
+604-45	6		7		10
+605-07	5		4		2		More landers on screen
+800-14	6		6		5
+3k -15
+3k1-24
+3k2-26

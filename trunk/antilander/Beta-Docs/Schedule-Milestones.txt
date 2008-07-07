@@ -56,6 +56,9 @@ HUD near build complete with Missile, Bomb, Lander
 
 7/7
 
+Build package and playtest - can we make it to level 50?
+Are there ups and downs in the levels?
+
 Final build - How did we do for BETA release?
 Did we achieve goals?
 
