@@ -59,8 +59,8 @@ Render::Render( )
 	SDL_Init( SDL_INIT_VIDEO );
     TTF_Init( );
 	SDL_ShowCursor (SDL_DISABLE);
-//	screen = SDL_SetVideoMode( kWinWidth, kWinHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
-	screen = SDL_SetVideoMode( kWinWidth, kWinHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
+	screen = SDL_SetVideoMode( kWinWidth, kWinHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
+//	screen = SDL_SetVideoMode( kWinWidth, kWinHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
 	plIn.mouseMove.x = 50;
 	plIn.mouseMove.y = 50;
 	gameState = true;
@@ -505,17 +505,25 @@ void Render::DrawSplash(GameStatusType status)
 {
     TTF_Font* splashFont = TTF_OpenFont("QUERROUND.TTF", 24);
     string splashText;
+	stringstream scat;
+    SDL_Rect splashLoc = { 200,25,
+                           0,0 };
+
     switch ( status )
     {
     case knIntroMode:
         splashText = "anti lander";
+		
         break;
     case knEndMode:
         splashText = "game over";
         break;
     case knLevTransMode:
-        splashText = "level clear";
-        break;
+		scat << "sector " << *(tWorld->GetLvlCtr()) << " cleared";
+		splashText= scat.str();
+		splashLoc.x= 125;
+		splashLoc.y= 25;
+		break;
     default:
         splashText = "splash error";
         break;
@@ -526,8 +534,7 @@ void Render::DrawSplash(GameStatusType status)
     SDL_Surface* textSurface = TTF_RenderText_Blended( splashFont,
                                                        splashText.c_str( ),
                                                        txtForeColor );
-    SDL_Rect splashLoc = { 200,25,
-                           0,0 };
+
     SDL_BlitSurface( textSurface,
                      NULL,
                      screen,
