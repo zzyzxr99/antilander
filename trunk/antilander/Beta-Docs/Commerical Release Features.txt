@@ -26,8 +26,10 @@ Gameplay-Logic-Features
 *Landers that take multiple hits
 *Boss ships - motherships
 
-*Lose focus - windowed or not - stop game engine - return
- - Cannot lose focus
+*Extra bombs/missiles add to score - Landers landed adjusts score
+ - Bonus for no landers landed - degrades as more landers land
 
+*Lose focus - windowed or not - stop game engine - return
+ - Cannot lose focus is a simple solution
 
 
