@@ -1,0 +1,33 @@
+Commercial Release Features
+---------------------------
+Visual
+------
+*HUD displays sector your playing
+*Sound effects - background musak
+*Help/Info option on menu in game for readme files - Credits?
+*Run on vista
+*Missile pointing valid direction always -
+*Twinkle stars/shooting stars - simple
+*Fancy animated score on collisions
+*Visual reload timer display on HUD/cursor/near gunship ...
+*Show landed/shielded landers
+*Beat all levels win condition screen - Congrats - show credits
+*High score list - to keep level and score info - how many beats
+ - On game over show high score list
+*Missile thrust - Lander thrust? - Bomb rotation
+*Gunship show missile and bomb - what to do?
+*Explosion fades out when dieing - no fracticide
+
+Gameplay-Logic-Features
+-----------------------
+*Accelerating missiles
+*Heat seeking missiles
+*Anti-gravity sticky magnetic super bombs
+*Landers that take multiple hits
+*Boss ships - motherships
+
+*Lose focus - windowed or not - stop game engine - return
+ - Cannot lose focus
+
+
+
