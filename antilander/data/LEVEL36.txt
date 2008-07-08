@@ -38,7 +38,7 @@ mNumLndrLvl
 mNumLndrScr
 2
 mNumBomb
-20
+50
 mNumMissile
 30
 mBombMxSpd
@@ -50,7 +50,7 @@ mBombRad
 mLndrDescRate
 40
 mGunReload
-5
+3.5
 mExpRad
 70
 mExpRate
