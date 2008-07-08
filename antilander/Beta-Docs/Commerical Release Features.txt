@@ -16,7 +16,7 @@ Visual
  - On game over show high score list
 *Missile thrust - Lander thrust? - Bomb rotation
 *Gunship show missile and bomb - what to do?
-*Explosion fades out when dieing - no fracticide
+*Explosion fades out when dieing - no fratricide
 
 Gameplay-Logic-Features
 -----------------------
