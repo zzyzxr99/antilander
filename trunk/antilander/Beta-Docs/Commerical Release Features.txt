@@ -17,6 +17,8 @@ Visual
 *Missile thrust - Lander thrust? - Bomb rotation
 *Gunship show missile and bomb - what to do?
 *Explosion fades out when dieing - no fratricide
+*Level transition of some kind - fancy - fade in fade out - alternate - move
+ - level left and bring new one in from right.
 
 Gameplay-Logic-Features
 -----------------------
