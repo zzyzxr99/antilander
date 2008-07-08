@@ -38,7 +38,7 @@ mNumLndrLvl
 mNumLndrScr
 2
 mNumBomb
-100
+20
 mNumMissile
 30
 mBombMxSpd
