@@ -34,7 +34,7 @@ mNumLndrLvl
 10
 mNumLndrScr
 1
-mNumBombq
+mNumBomb
 40
 mNumMissile
 0
