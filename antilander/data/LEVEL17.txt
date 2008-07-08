@@ -32,11 +32,11 @@ mPadPt
 mGunStartPad
 5
 mEndGamePadOcc
-4
+5
 mNumLndrLvl
 35
 mNumLndrScr
-5
+4
 mNumBomb
 20
 mNumMissile
