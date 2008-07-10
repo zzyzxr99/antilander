@@ -1,0 +1,48 @@
+http://www.brandens.net/snd_list.php?cat=Military
+http://www.therecordist.com/pages/downloads.html
+http://freesoundeffectsandloops.com/
+http://www.wavsource.com/
+
+Sound Effect list/events
+------------------------
+Intro Sound
+-During "AntiLander Splash"
+
+Menu
+-"new" ticks?
+-"Quit" letdown?
+
+Landers
+-Spawns * Priority
+-Explosion "Bulkhead crunch"
+-Landing "Alarm Sound! Shield!"
+
+Missile
+-Launch * Priority
+-Explosion "Boom"
+-Flying? unsure of feature
+
+Bomb
+-Launch * Priority
+-Explosion "Boom"
+-Flying? unsure of feature
+
+Level Complete "Victory"
+
+GameOver "You Suck"
+
+Music Stream
+- Menu "Spacey"
+- Ingame "Pressure but subtle"
+
+
+Sound Interface Features
+------------------------
+LOad Sound Effects and Release properly
+- How much memory will they use?
+- Caching?
+
+Play Multiple Sounds
+- * Priority for certain effects - sound level
+- Tie sound to object status - ?
+- Free Resources
