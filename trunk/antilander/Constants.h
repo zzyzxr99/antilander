@@ -4,6 +4,7 @@
 #define _CONSTANTS_H
 
 #include "SDL.h"
+#include "SDL_Mixer.h"
 #include <cmath>
 using namespace std;
 
@@ -159,7 +160,16 @@ const int knMKill = 50;
 const int knBKill = 75;
 const int knFKill = 100;
 
-//SOUND EFFECT
+//SOUND EFFECTS
+
+const int kFrequency = 44100;
+const Uint16 kFormat = MIX_DEFAULT_FORMAT;
+const int kListenChannels = 2;
+const int kChunkSize = 2096;
+const int kDefaultVolumne = MIX_MAX_VOLUME/4;
+const int kMAXChannels = 256;
+const int kReservedChannels = 4; // number of channels for loops reserved not used for effects
+
 enum SoundEffectType { knSEMissileLaunch = 0,
 					   knSEMissileExplosion,
 					   knSEBombLaunch,
@@ -173,10 +183,8 @@ enum SoundEffectType { knSEMissileLaunch = 0,
 					   knSELevelClear,
 					   knSLMenu,
 					   knSLPlay,
-					   knSENumber
+					   knLastEffect
 					 };
-
-
 
 
 #endif // _CONSTANTS_H
