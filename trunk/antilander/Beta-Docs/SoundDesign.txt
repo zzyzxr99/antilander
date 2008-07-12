@@ -7,35 +7,38 @@ http://www.soundsnap.com/
 Sound Effect list/events
 ------------------------
 Intro Sound
--During "AntiLander Splash"
+-During "AntiLander Splash" 3.5 secs
 
 Menu
--"new" ticks?
--"Quit" letdown?
+-"new" ticks? < 1.0 sec
+-"Quit" letdown? < 1.0 sec
+-"Music" - Transion to this - loop
 
 Landers
--Spawns * Priority
--Explosion "Bulkhead crunch"
--Landing "Alarm Sound! Shield!"
+-Spawns * Priority short
+-Explosion "Bulkhead crunch" 2 seconds max
+-Landing "Alarm Sound! Shield!" short
 
 Missile
--Launch * Priority
--Explosion "Boom"
--Flying? unsure of feature
+-Launch * Priority - whoosh 1 second max
+-Explosion "Boom" 2 seconds max
+-Flying? unsure of feature ---
 
 Bomb
--Launch * Priority
--Explosion "Boom"
--Flying? unsure of feature
+-Launch * Priority - mortor < 1 second max
+-Explosion "Boom"  2 seconds max
+-Flying? unsure of feature ----
 
 Level Complete "Victory"
+- Level music blip - 3.5 seconds
 
 GameOver "You Suck"
+- While game over displayed  5 seconds max
+- Music Stream
 
-Music Stream
 - Menu "Spacey"
 - Ingame "Pressure but subtle"
-
+- Music loop - how much memory? stream?
 
 Sound Interface Features
 ------------------------

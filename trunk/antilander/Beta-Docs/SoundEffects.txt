@@ -1,0 +1,166 @@
+117_0_4_D_etensionchords_st.mp3
+- Loop beats - background 
+
+119_02_1_A_dsynthseq_mo.mp3
+- Fanfaire techno spacey - levelup
+
+120_0_8_C_dsolosynthseq_mo.mp3
+- Intro - Game over - a litte mournful
+
+11908101.mp3
+- booms repeat 
+
+11908501.mp3
+- Whistle boom repeat
+
+AFTERBUR.WAV
+- Missile zoom and boom - missile shoot and explosion
+
+Alien_Bug_Transmission.mp3
+- Freaky and alien
+
+ANTI_AIR.WAV
+- bomb sounds - hmmm
+
+anti-aircraft_missile_explode.mp3
+- Explosions extended relaly
+
+BOMB_HIT.WAV
+- Boomer effects - cannon.. slice it up bomb launch
+
+CANNON_F.WAV
+- Bomb launch 1st candidate
+
+chain_of_small_explotions.mp3
+- Lander landing? bu bump bahj
+
+CHAKK_VERSE.mp3
+- menu music stream candidate
+
+CRASH.WAV
+- explosion on ground candidate
+
+Crystal_Whoosh_01.mp3
+- Lander spawn candidate- missile launch
+
+demonic_whoosh.mp3
+- missile launch
+
+Explosion_Missile_Impact_SE.mp3
+- Missile impact - explosion
+
+HEADCRAS.WAV
+- Explosion for something
+
+Missile_Incoming_FlyBy.mp3
+- Slice and dice for launching
+
+Missile_Rip_By2.mp3
+- Slice and dice for launching
+
+mortar_launch.mp3
+- Fireworky lauching
+
+Rocket_Away.mp3
+- Launching - lengthy
+
+rocket_launch2.mp3
+- Launching - fading away
+
+rocket-grenade_explosion.mp3
+- Explosion 
+
+SciFi_Metallic_Clunk.mp3
+- Explosion and metalic clunking
+
+sfxsource.comFREELFNKYDR105-1.wav
+- Music stream - hmm
+
+sfxsource.comFREELSYNTHBASS120-1.wav
+- Lander spawn candidite - little fart
+
+small_bomb.mp3
+- Missile shot
+
+small_charge_explosion.mp3
+- bomb shot
+
+Space_FX_The_Wasteland.mp3
+- music stream - background
+
+Space_Transmission.mp3
+- space invadery modern
+
+Space_Transmission_Drums.mp3
+- Creditsy music
+
+space_whoosh.mp3
+- Missile launch whoosh
+
+Telemetry_Data_Beeps.mp3
+- Annoying lander spawn noise
+
+Tonal_UFO_-_Descend-Long_Hover.mp3
+- Lander land or spawn
+
+trumpets_fanfar.mp3
+- Level clear 
+
+trumpets_fanfar_2.mp3
+- Level 10x clear
+
+WARFARE_WEAPON_CANNON_FIRE_SINGLE_SHOT_PIRATE_BLAST_EXPLOSION_01.mp3
+- Shot and fade out
+
+www.sfxsource.comFREEALRMHIT.wav]
+- Techno alarm
+
+www.sfxsource.comFREELAZER.wav
+- Laser shot noise
+
+ADAMS
+-----
+amissile.wav
+- Missile launch hit and reverb
+
+amissilelaunch.wav
+- Missile launch whoosh
+
+background_1.wav
+- Adult antilander music theme
+
+background_2.wav
+- Music for gameover - intro - background
+
+bomblaunch.wav
+- Click menu noise
+
+explode.wav
+- Gravelly explosion
+
+Landed.wav
+- Bump noise - menu - landed?
+
+missileflight.wav
+- Missile launch and fly
+
+Mortar.wav
+- Thump - boom - reverb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
