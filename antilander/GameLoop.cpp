@@ -24,7 +24,6 @@ int main(int argv, char *args[])
 
     tWorld->GetEditLevel()->ClearLevel();
 
-
 	// ejr check OLD
 	if (tWorld->GetGameStatus() == knPlayMode)
 	{

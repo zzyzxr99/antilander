@@ -84,6 +84,7 @@ Render::Render( )
 	editLoc.x = kMenuDrawX+5; editLoc.y = kMenuDrawY+75; editLoc.h = 0; editLoc.w = 0;
 	startLoc.x = kMenuDrawX+5; startLoc.y = kMenuDrawY+25; startLoc.h = 0; startLoc.w = 0;
 	txtForeColor.b = 255; txtForeColor.g = 255; txtForeColor.r = 0;
+
 }
 
 Render::~Render( )

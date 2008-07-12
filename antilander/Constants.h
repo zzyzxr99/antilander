@@ -159,6 +159,26 @@ const int knMKill = 50;
 const int knBKill = 75;
 const int knFKill = 100;
 
+//SOUND EFFECT
+enum SoundEffectType { knSEMissileLaunch = 0,
+					   knSEMissileExplosion,
+					   knSEBombLaunch,
+					   knSEBombExplosion,
+					   knSELanderSpawn,
+					   knSELanderExplosion,
+					   knSELanderLanded,
+					   knSEMenuClick,
+					   knSEIntroSound,
+					   knSEGameOver,
+					   knSELevelClear,
+					   knSLMenu,
+					   knSLPlay,
+					   knSENumber
+					 };
+
+
+
+
 #endif // _CONSTANTS_H
 
 // comment
