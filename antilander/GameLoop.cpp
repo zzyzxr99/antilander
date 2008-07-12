@@ -15,7 +15,7 @@ int main(int argv, char *args[])
 	srand(clock());
  
 	tWorld= new GameWorld();
-
+    tWorld->InitSoundEngine();
 	SDL_WM_SetCaption( kWinTitle, 0 );
 
     tWorld->StartGameStepper();
@@ -31,7 +31,7 @@ int main(int argv, char *args[])
 		tWorld->GetEditLevel()->ClearLevel();  //shouldn't this be set to ...GetCurrentLevel...?
 	}
 
-
+    tWorld->PlaySoundLoop(knSLMenu);
 	while (tWorld->GetRender()->gameRunning())
 	{
 
@@ -115,6 +115,7 @@ int main(int argv, char *args[])
 
 //    tWorld->TestSaveLoadLevel();
     // Delete the GameWorld, it will delete all of its members
+    tWorld->ShutdownSoundEngine();
    	delete tWorld;
 
 	return 0;

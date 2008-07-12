@@ -89,6 +89,7 @@ void GameWorld::SpawnBomb()
 {
     if ( mNumBomb > 0 )
     {
+        mSoundEngine.PlayEffect(knSEBombLaunch,-1);
 	    //set Missile at Gunship Location EVERYTIME
 	    Point *Start;
 	    Start = mPlayerShip.GetLoc();
@@ -416,6 +417,7 @@ void GameWorld::UpdateEverything( )
 		}
 		else if (tStatus == knMissileExplode)
 		{
+            PlaySoundEffect(knSEMissileExplosion);
 			Point explPt= misIter->GetLocation();
 			Point nosePt= misIter->GetNoseLoc();
 			explPt.x+= nosePt.x;
@@ -510,6 +512,7 @@ void GameWorld::UpdateEverything( )
 		}
 		else if (bStatus == knBombExplode)
 		{
+            PlaySoundEffect(knSEBombExplosion);
 			bombIter->SetStatus(knBombDead);
 			SpawnExplosion(bombIter->GetLocation());
 		}
@@ -549,6 +552,7 @@ void GameWorld::UpdateEverything( )
 		}
 		else if ( lStatus == knLanderExplode )
 		{
+            PlaySoundEffect(knSELanderExplosion);
 			landIter->SetStatus(knLanderDead);
 			SpawnExplosion(landIter->GetLoc());
 		}
@@ -1085,6 +1089,7 @@ void GameWorld::CheckSpawnLander()
 
 			if (doSpawn == true)
 			{
+                PlaySoundEffect(knSELanderSpawn);
 				tWorld->SpawnLander(sPoint, tPoint);
 			}
 
@@ -1388,4 +1393,24 @@ USINT* GameWorld::GetLandLanded( )
 USINT GameWorld::GetEndGamePadOcc( )
 {
 	return mEndGamePadOcc;
+}
+
+bool GameWorld::InitSoundEngine()
+{
+    return mSoundEngine.Init();
+}
+
+void GameWorld::ShutdownSoundEngine()
+{
+    mSoundEngine.Shutdown();
+}
+
+void GameWorld::PlaySoundEffect(SoundEffectType src)
+{
+    mSoundEngine.PlayEffect(src,-1);
+}
+
+void GameWorld::PlaySoundLoop(SoundEffectType src)
+{
+    mSoundEngine.PlayLoop(src,0);
 }

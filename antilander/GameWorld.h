@@ -18,12 +18,14 @@ extern "C"
 #include <vector>
 #include "Level.h"
 #include "Score.h"
+#include "EffectEngine.h"
 using namespace std;
 
 class GameWorld
 {
 private:
     Render mRender;
+    EffectEngine mSoundEngine;
     bool mStarted;
 	ALTimer mGameStepper;
 	vector<Lander> mLanders;
@@ -64,6 +66,10 @@ private:
 public:
 	GameWorld();
 	~GameWorld();
+    bool InitSoundEngine();
+    void ShutdownSoundEngine();
+    void PlaySoundEffect(SoundEffectType src);
+    void PlaySoundLoop(SoundEffectType src);
     void DrawEverything();
 	void EditDrawEverything();
 	Render* GetRender( );
