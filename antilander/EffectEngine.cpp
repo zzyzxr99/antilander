@@ -87,7 +87,6 @@ void EffectEngine::PlayEffect(SoundEffectType src, int channel)
         }
         if (channel != -1)
         {
-            cout << "Ch:" << channel;
             int play_result= Mix_PlayChannel(channel,mEffects[src].PtrChunk(),0);
             if (play_result == -1)
             {
