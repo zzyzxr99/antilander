@@ -47,6 +47,7 @@ bool EffectEngine::Init()
         }
         else
         {
+            retval|= LoadEffectSlot(knSEMissileLaunch, "data\\effects\\MissileLaunch1.wav");
             retval|= LoadEffectSlot(knSEMissileExplosion, "data\\effects\\LanderExplode3.wav");
             retval|= LoadEffectSlot(knSELanderExplosion, "data\\effects\\LanderExplode2.wav");
             retval|= LoadEffectSlot(knSELanderSpawn, "data\\effects\\LanderSpawn1.wav");

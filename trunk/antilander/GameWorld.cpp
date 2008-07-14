@@ -66,6 +66,8 @@ void GameWorld::SpawnMissile()
 {
     if ( mNumMissile > 0 )
     {
+        mSoundEngine.PlayEffect( knSEMissileLaunch,
+                                 -1 );
 	    //set Missile at Gunship Location EVERYTIME
 	    Point *Start;
 	    Start = mPlayerShip.GetLoc();
