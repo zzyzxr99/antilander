@@ -376,6 +376,7 @@ void Render::doMenuInput()
 			}
 			else if(plIn.keyPress == SDLK_q)
 			{
+				
 				gameState = false;
 			}
 			else if(plIn.keyPress == SDLK_n)
@@ -386,6 +387,7 @@ void Render::doMenuInput()
 				tWorld->InitLevel();
 				tWorld->GetScore()->ClearScore();
 				tWorld->SetGameStatus(knPlayMode);
+				tWorld->PlaySoundEffect(knSEMenuClick);
 			}
 #ifndef _RELEASE
 			else if(plIn.keyPress == SDLK_e)
@@ -463,6 +465,7 @@ void Render::doMenuInput()
 		tWorld->GetScore()->ClearScore();
 		tWorld->InitLevel();
 		tWorld->SetGameStatus(knPlayMode);
+		tWorld->PlaySoundEffect(knSEMenuClick);
 	}
 }
 
