@@ -690,7 +690,10 @@ void GameWorld::UpdateEverything( )
                 }
             }
             mGameMode = knMenuMode;
-			PlaySoundLoop(knSLMenu, knMenuChannel, 2.0F);
+
+			FadeChannel(knPlayChannel,.25);
+			PlaySoundLoop(knSLPlay,knPlayChannel,1.5);
+
             mRender.SetSplashFade(knFadeIn);
             StopRender( );
         }
@@ -707,7 +710,10 @@ void GameWorld::UpdateEverything( )
                 }
             }
             mGameMode = knMenuMode;
-			tWorld->PlaySoundLoop(knSLMenu, knMenuChannel, 2.0F);
+
+			FadeChannel(knMenuChannel,.25);
+			PlaySoundLoop(knSLPlay,knPlayChannel,1.5);
+
          // mCurrentLevel.ClearLevel( );
             InitLevel( );
 			mScore.ClearScore();
@@ -741,7 +747,9 @@ void GameWorld::UpdateEverything( )
                 }
             } while ( lvlCtr <= 50 );
             mGameMode = knPlayMode;
-			tWorld->PlaySoundLoop(knSLPlay, knPlayChannel, 2.0F);
+
+			FadeChannel(knMenuChannel,.25);
+			PlaySoundLoop(knSLPlay,knPlayChannel,1.5);
             InitLevel( );
             mRender.SetSplashFade(knFadeIn);
             StopRender( );
