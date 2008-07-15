@@ -33,7 +33,6 @@ int main(int argv, char *args[])
 	
 	}
 
-    tWorld->PlaySoundLoop(knSLMenu, knMenuChannel, 3.0F);
 	while (tWorld->GetRender()->gameRunning())
 	{
 
