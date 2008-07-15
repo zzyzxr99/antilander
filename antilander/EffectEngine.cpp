@@ -55,6 +55,14 @@ bool EffectEngine::Init()
             retval|= LoadEffectSlot(knSEBombLaunch, "data\\effects\\BombLaunch.wav");
             retval|= LoadEffectSlot(knSLMenu, "data\\loops\\MenuMusic.wav");
             retval|= LoadEffectSlot(knSEMenuClick, "data\\effects\\MenuClick.wav");
+			retval|= LoadEffectSlot(knSEIntroSound,"data\\effects\\intro1.wav");
+			retval|= LoadEffectSlot(knSEGameOver,"data\\effects\\gameover3.wav");
+			retval|= LoadEffectSlot(knSELevelClear,"data\\effects\\LevelComplete.wav");
+			//retval|= LoadEffectSlot(knLastEffect,"");
+
+
+
+
 			
 
 
