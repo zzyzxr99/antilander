@@ -690,7 +690,7 @@ void GameWorld::UpdateEverything( )
                 }
             }
             mGameMode = knMenuMode;
-			PlaySoundLoop(knSLMenu, knMenuChannel, 3.0F);
+			PlaySoundLoop(knSLMenu, knMenuChannel, 2.0F);
             mRender.SetSplashFade(knFadeIn);
             StopRender( );
         }
@@ -707,7 +707,7 @@ void GameWorld::UpdateEverything( )
                 }
             }
             mGameMode = knMenuMode;
-			tWorld->PlaySoundLoop(knSLMenu, knMenuChannel, 3.0F);
+			tWorld->PlaySoundLoop(knSLMenu, knMenuChannel, 2.0F);
          // mCurrentLevel.ClearLevel( );
             InitLevel( );
 			mScore.ClearScore();
