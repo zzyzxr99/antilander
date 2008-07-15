@@ -1417,7 +1417,12 @@ void GameWorld::PlaySoundEffect(SoundEffectType src)
     mSoundEngine.PlayEffect(src,-1);
 }
 
-void GameWorld::PlaySoundLoop(SoundEffectType src)
+void GameWorld::PlaySoundLoop(SoundEffectType src, LoopChannels chan, float length)
 {
-    mSoundEngine.PlayLoop(src,0);
+    mSoundEngine.PlayFadeIn(src, chan, length);
+}
+
+void GameWorld::FadeChannel(int channel, float length)
+{
+	mSoundEngine.PlayFadeOut(channel, length);
 }

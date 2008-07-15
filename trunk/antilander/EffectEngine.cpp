@@ -169,3 +169,18 @@ int EffectEngine::FindChannel()
     return -1;
 }
 
+void EffectEngine::PlayFadeIn(SoundEffectType src, int channel, float length)
+{
+	if(Mix_FadeInChannel(channel,mEffects[src].PtrChunk(),-1,(int)length*1000) == -1)
+	{
+		cout << "Failure - Sound Effect not loaded" << endl;
+	}
+}
+
+void EffectEngine::PlayFadeOut(int channel, float length)
+{
+	if ((channel >= 0) && (channel < kMAXChannels))
+	{
+		int res = Mix_FadeOutChannel(channel,(int)length*1000);
+	}
+}

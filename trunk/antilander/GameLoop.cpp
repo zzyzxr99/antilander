@@ -30,9 +30,10 @@ int main(int argv, char *args[])
 	{
 //		Level*L= tWorld->GetLevel();
 		tWorld->GetEditLevel()->ClearLevel();  //shouldn't this be set to ...GetCurrentLevel...?
+	
 	}
 
-    //tWorld->PlaySoundLoop(knSLMenu);
+    tWorld->PlaySoundLoop(knSLMenu, knMenuChannel, 3.0F);
 	while (tWorld->GetRender()->gameRunning())
 	{
 

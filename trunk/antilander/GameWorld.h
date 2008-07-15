@@ -69,7 +69,8 @@ public:
     bool InitSoundEngine();
     void ShutdownSoundEngine();
     void PlaySoundEffect(SoundEffectType src);
-    void PlaySoundLoop(SoundEffectType src);
+    void PlaySoundLoop(SoundEffectType src,LoopChannels chan, float length);
+	void FadeChannel(int channel, float length);
     void DrawEverything();
 	void EditDrawEverything();
 	Render* GetRender( );
