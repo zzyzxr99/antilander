@@ -55,7 +55,7 @@ bool EffectEngine::Init()
             retval|= LoadEffectSlot(knSEBombLaunch, "data\\effects\\BombLaunch.wav");
             retval|= LoadEffectSlot(knSLMenu, "data\\loops\\MenuMusic.wav");
             
-            Mix_Volume(-1,kDefaultVolumne);
+            Mix_Volume(-1,kDefaultVolume);
         }
 
     }
@@ -88,6 +88,18 @@ void EffectEngine::PlayEffect(SoundEffectType src, int channel)
         }
         if (channel != -1)
         {
+            if (  src == knSEMissileLaunch
+               || src == knSEBombLaunch
+               || src == knSELanderSpawn )
+            {
+                Mix_Volume( channel,
+                            kPriorityVolume );
+            }
+            else
+            {
+                Mix_Volume( channel,
+                            kDefaultVolume );
+            }
             int play_result= Mix_PlayChannel(channel,mEffects[src].PtrChunk(),0);
             if (play_result == -1)
             {

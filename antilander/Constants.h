@@ -166,7 +166,8 @@ const int kFrequency = 44100;
 const Uint16 kFormat = MIX_DEFAULT_FORMAT;
 const int kListenChannels = 2;
 const int kChunkSize = 2096;
-const int kDefaultVolumne = MIX_MAX_VOLUME/4;
+const int kDefaultVolume = MIX_MAX_VOLUME/4;
+const int kPriorityVolume = MIX_MAX_VOLUME/2;
 const int kMAXChannels = 256;
 const int kReservedChannels = 4; // number of channels for loops reserved not used for effects
 
