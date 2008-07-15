@@ -6,7 +6,7 @@
 using namespace std;
 
 extern GameWorld *tWorld;
-
+extern GameWorld *mScore;
 void Render::doInput()
 {
 	plIn.leftClick= false;
@@ -460,6 +460,7 @@ void Render::doMenuInput()
 		cout << "Start highlighted!!" << endl;
 		mStart = true;
 		mPause = false;
+		tWorld->GetScore()->ClearScore();
 		tWorld->InitLevel();
 		tWorld->SetGameStatus(knPlayMode);
 	}
