@@ -35,6 +35,7 @@ void Render::doInput()
 					if(mPause == false)
 					{
 						tWorld->SetGameStatus(knMenuMode);
+					
 						mPause = true;
 					}
 			/*		else
