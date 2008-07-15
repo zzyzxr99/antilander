@@ -47,13 +47,13 @@ bool EffectEngine::Init()
         }
         else
         {
-            retval|= LoadEffectSlot(knSEMissileLaunch, "data\\effects\\MissileLaunch1.wav");
-            retval|= LoadEffectSlot(knSEMissileExplosion, "data\\effects\\LanderExplode3.wav");
-            retval|= LoadEffectSlot(knSELanderExplosion, "data\\effects\\LanderExplode2.wav");
-            retval|= LoadEffectSlot(knSELanderSpawn, "data\\effects\\LanderSpawn1.wav");
-            retval|= LoadEffectSlot(knSEBombExplosion, "data\\effects\\BombExplosion.wav");
-            retval|= LoadEffectSlot(knSEBombLaunch, "data\\effects\\BombLaunch.wav");
-            retval|= LoadEffectSlot(knSLMenu, "data\\loops\\MenuMusic.wav");
+            retval|= LoadEffectSlot(knSEMissileLaunch, "data\\effects\\tMissileLaunch1.wav");
+            retval|= LoadEffectSlot(knSEMissileExplosion, "data\\effects\\tLanderExplode3.wav");
+            retval|= LoadEffectSlot(knSELanderExplosion, "data\\effects\\tLanderExplode2.wav");
+            retval|= LoadEffectSlot(knSELanderSpawn, "data\\effects\\tLanderSpawn1.wav");
+            retval|= LoadEffectSlot(knSEBombExplosion, "data\\effects\\tBombExplosion.wav");
+            retval|= LoadEffectSlot(knSEBombLaunch, "data\\effects\\tBombLaunch.wav");
+            retval|= LoadEffectSlot(knSLMenu, "data\\loops\\tMenuMusic.wav");
             retval|= LoadEffectSlot(knSEMenuClick, "data\\effects\\MenuClick.wav");
 			retval|= LoadEffectSlot(knSEIntroSound,"data\\effects\\intro1.wav");
 			retval|= LoadEffectSlot(knSEGameOver,"data\\effects\\gameover3.wav");
