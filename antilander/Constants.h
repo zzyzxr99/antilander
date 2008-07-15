@@ -187,6 +187,9 @@ enum SoundEffectType { knSEMissileLaunch = 0,
 					   knLastEffect
 					 };
 
+enum LoopChannels    { knMenuChannel = 0,
+					   knPlayChannel
+					 };
 
 #endif // _CONSTANTS_H
 

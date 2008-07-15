@@ -21,8 +21,8 @@ public:
     bool LoadEffectSlot(SoundEffectType slot, const char *fn);
     void PlayEffect(SoundEffectType src, int channel);
     void PlayLoop(SoundEffectType src, int channel);
-    void PlayFadeIn(SoundEffectType src, int channel);
-    void PlayFadeOut(SoundEffectType src, int channel);
+    void PlayFadeIn(SoundEffectType src, int channel, float length);
+    void PlayFadeOut(int channel, float length);
     void Shutdown();
     void Halt(int channel);
     bool InUse(int channel);
