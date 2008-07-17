@@ -1121,6 +1121,8 @@ void GameWorld::CheckWinLose( )
     else if ( Lander::sGetLanderCount( ) >= mNumLndrLvl )
     {
         mGameMode = knLevTransMode;
+        FadeChannel( knPlayChannel,
+                     .25            );
 		PlaySoundEffect(knSELevelClear);
     }
 }
