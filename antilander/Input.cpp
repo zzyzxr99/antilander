@@ -35,7 +35,9 @@ void Render::doInput()
 					if(mPause == false)
 					{
 						tWorld->SetGameStatus(knMenuMode);
+						tWorld->FadeChannel(knPlayChannel,.25);
 						tWorld->PlaySoundEffect(knSLMenu);
+						
 					
 						mPause = true;
 					}
@@ -468,6 +470,7 @@ void Render::doMenuInput()
 		tWorld->InitLevel();
 		tWorld->SetGameStatus(knPlayMode);
 		tWorld->PlaySoundEffect(knSEMenuClick);
+		
 	}
 }
 
