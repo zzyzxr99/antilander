@@ -382,7 +382,8 @@ void Render::doMenuInput()
 			}
 			else if(plIn.keyPress == SDLK_q)
 			{
-				
+
+				tWorld->PlaySoundEffect(knSEMenuClick);
 				gameState = false;
 			}
 			else if(plIn.keyPress == SDLK_n)
@@ -453,6 +454,7 @@ void Render::doMenuInput()
 	if(getMouse().x > kMenuDrawX && getMouse().x < kMenuDrawX+kMenuWidth && getMouse().y > kMenuDrawY+50 && getMouse().y < kMenuDrawY+70 && plIn.leftClick == true)
 	{
 		cout << "Quit highlighted!!" << endl;
+		tWorld->PlaySoundEffect(knSEMenuClick);
 		gameState = false;
 	}
 #ifndef _RELEASE
