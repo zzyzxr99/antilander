@@ -21,6 +21,7 @@ int main(int argv, char *args[])
     tWorld->StartGameStepper();
 	tWorld->SetGameStatus(knIntroMode);
 	tWorld->PlaySoundEffect(knSEIntroSound);
+	tWorld->FadeChannel(knPlayChannel,.25);
 	tWorld->SetEditStatus(knBuildMode);
 
     tWorld->GetEditLevel()->ClearLevel();
@@ -32,7 +33,7 @@ int main(int argv, char *args[])
 		tWorld->GetEditLevel()->ClearLevel();  //shouldn't this be set to ...GetCurrentLevel...?
 	
 	}
-	tWorld->FadeChannel(knPlayChannel,.25);
+	
 	while (tWorld->GetRender()->gameRunning())
 	{
 
