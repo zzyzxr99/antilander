@@ -55,11 +55,12 @@ bool EffectEngine::Init()
             retval|= LoadEffectSlot(knSELanderSpawn, "data\\effects\\LanderSpawn1.wav");
             retval|= LoadEffectSlot(knSEBombExplosion, "data\\effects\\BombExplosion.wav");
             retval|= LoadEffectSlot(knSEBombLaunch, "data\\effects\\BombLaunch.wav");
-            retval|= LoadEffectSlot(knSLMenu, "data\\effects\\gameover1.wav");
+            retval|= LoadEffectSlot(knSLMenu, "data\\loops\\MenuMusic.wav");
             retval|= LoadEffectSlot(knSEMenuClick, "data\\effects\\MenuClick.wav");
 			retval|= LoadEffectSlot(knSEIntroSound,"data\\effects\\intro1.wav");
 			retval|= LoadEffectSlot(knSEGameOver,"data\\effects\\gameover4.wav");
 			retval|= LoadEffectSlot(knSELevelClear,"data\\effects\\LevelComplete.wav");
+			retval|= LoadEffectSlot(knSELanderLanded,"data\\effects\\LanderLanded2.wav");
 			//retval|= LoadEffectSlot(knLastEffect,"");
 
 
@@ -173,7 +174,7 @@ int EffectEngine::FindChannel()
 
 void EffectEngine::PlayFadeIn(SoundEffectType src, int channel, float length)
 {
-	if(Mix_FadeInChannel(channel,mEffects[src].PtrChunk(),-1,(int)length*1000) == -1)
+	if(Mix_FadeInChannel(channel,mEffects[src].PtrChunk(),-1,(int)(length*1000)) == -1)
 	{
 		cout << "Failure - Sound Effect not loaded" << endl;
 	}
@@ -183,6 +184,6 @@ void EffectEngine::PlayFadeOut(int channel, float length)
 {
 	if ((channel >= 0) && (channel < kMAXChannels))
 	{
-		int res = Mix_FadeOutChannel(channel,(int)length*1000);
+		int res = Mix_FadeOutChannel(channel,(int)(length*1000));
 	}
 }

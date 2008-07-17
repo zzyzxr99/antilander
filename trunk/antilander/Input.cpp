@@ -36,7 +36,7 @@ void Render::doInput()
 					{
 						tWorld->SetGameStatus(knMenuMode);
 						tWorld->FadeChannel(knPlayChannel,.25);
-						tWorld->PlaySoundEffect(knSLMenu);
+						tWorld->PlaySoundLoop(knSLMenu,knMenuChannel,.5);
 						
 					
 						mPause = true;
@@ -375,6 +375,8 @@ void Render::doMenuInput()
 				{
 					mPause = false;
 					tWorld->SetGameStatus(knPlayMode);
+					tWorld->FadeChannel(knMenuChannel,.5);
+					tWorld->PlaySoundLoop(knSLPlay,knPlayChannel,.5);
 					tWorld->ResetTimers();
 				}
 			}
@@ -391,6 +393,8 @@ void Render::doMenuInput()
 				tWorld->InitLevel();
 				tWorld->GetScore()->ClearScore();
 				tWorld->SetGameStatus(knPlayMode);
+				tWorld->FadeChannel(knMenuChannel,.5);
+				tWorld->PlaySoundLoop(knSLPlay,knPlayChannel,.5);
 				tWorld->PlaySoundEffect(knSEMenuClick);
 			}
 #ifndef _RELEASE
@@ -469,6 +473,8 @@ void Render::doMenuInput()
 		tWorld->GetScore()->ClearScore();
 		tWorld->InitLevel();
 		tWorld->SetGameStatus(knPlayMode);
+		tWorld->FadeChannel(knMenuChannel,.5);
+		tWorld->PlaySoundLoop(knSLPlay,knPlayChannel,.5);
 		tWorld->PlaySoundEffect(knSEMenuClick);
 		
 	}

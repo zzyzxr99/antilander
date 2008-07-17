@@ -541,6 +541,7 @@ void GameWorld::UpdateEverything( )
 			{
 				landIter->SetLocation(landIter->GetDest().x,landIter->GetDest().y);
 				landIter->SetStatus( knLanderLanded );
+				PlaySoundEffect(knSELanderLanded);
 				LanderLanded();
 				cout << mNumLndrsLanded << " lander(s) have landed" << endl;
 			}
@@ -691,8 +692,8 @@ void GameWorld::UpdateEverything( )
             }
             mGameMode = knMenuMode;
 
-			FadeChannel(knPlayChannel,.25);
-			PlaySoundLoop(knSLPlay,knPlayChannel,1.5);
+			//FadeChannel(knPlayChannel,.25);
+			PlaySoundLoop(knSLMenu,knMenuChannel,1.5);
 
             mRender.SetSplashFade(knFadeIn);
             StopRender( );
@@ -711,8 +712,8 @@ void GameWorld::UpdateEverything( )
             }
             mGameMode = knMenuMode;
 
-			FadeChannel(knMenuChannel,.25);
-			PlaySoundLoop(knSLPlay,knPlayChannel,1.5);
+			FadeChannel(knPlayChannel,.25);
+			PlaySoundLoop(knSLMenu,knMenuChannel,2.5);
 
          // mCurrentLevel.ClearLevel( );
             InitLevel( );
