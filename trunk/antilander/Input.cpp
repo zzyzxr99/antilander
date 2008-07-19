@@ -450,7 +450,6 @@ void Render::doMenuInput()
 		tWorld->SetGameStatus(knEditMode);
 		tWorld->SetEditStatus(knBuildMode);
 	}
-	TTF_Font* startFont = TTF_OpenFont("QUERROUND.TTF", 12);
 	if(getMouse().x > kMenuDrawX && getMouse().x < kMenuDrawX+kMenuWidth && getMouse().y > kMenuDrawY+50 && getMouse().y < kMenuDrawY+70 && plIn.leftClick == true)
 	{
 		cout << "Quit highlighted!!" << endl;
@@ -480,6 +479,7 @@ void Render::doMenuInput()
 		tWorld->PlaySoundEffect(knSEMenuClick);
 		
 	}
+	
 }
 
 void Render::doMoveInput()

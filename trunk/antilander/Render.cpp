@@ -605,6 +605,7 @@ void Render::DrawMenu()
                      &editLoc );
 	SDL_FreeSurface( editSurface );
 #endif    
+	TTF_CloseFont ( startFont );
 	SDL_FreeSurface( newSurface );
 	SDL_FreeSurface( quitSurface );
 	
