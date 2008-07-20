@@ -54,7 +54,6 @@ mPadPt
 549, 472
 579, 472
 610, 255
-635.5, 474
 mGunStartPad
 9
 mEndGamePadOcc
