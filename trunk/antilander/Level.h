@@ -90,8 +90,8 @@ public:
 
     bool LoadLevel( string LevString );
     void SaveLevel( string LevString );
-    void EJRTestSaveLevel(string filename);
-    void EJRTestLoadLevel(string filename);
+   //void EJRTestSaveLevel(string filename);
+   //void EJRTestLoadLevel(string filename);
 
 	void AddPoint(Point p);
 	void AddPad(Point p);

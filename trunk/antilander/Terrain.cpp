@@ -11,21 +11,6 @@ using namespace std;
 Terrain::Terrain()
 {
 	//initialize all the members of the variable
-
-    // Terrain Point already cleared in vector constructor
-	/*for (int i=0;i<kMaxTpts;i++)
-	{
-		mTerrainPts[i].x=0;
-		mTerrainPts[i].y=0;
-	}*/
-
-    // Padpoints vector already cleared in vector constructor
-	//for(int i=0;i<kMaxPpts;i++)
-	//{
-	//	mPadPts[i].x=0;
-	//	mPadPts[i].y=0;
-
-	//}
 	// Reserve Initial size of vector for Terrain, Pad Points, BBoxes
 	mTerrainPts.reserve(kInitialTPts);
     mPadPts.reserve(kInitialPPts);
@@ -175,19 +160,6 @@ void Terrain::InitPadPoints()
     pTemp.x= (mTerrainPts[12].x + mTerrainPts[13].x)/2;
     pTemp.y= (mTerrainPts[12].y);
     mPadPts.push_back(pTemp);
-
-    /*
-    mPadPts[0].x= (mTerrainPts[0].x + mTerrainPts[1].x) / 2;
-	mPadPts[0].y= (mTerrainPts[0].y);
-	mPadPts[1].x= (mTerrainPts[2].x + mTerrainPts[3].x) / 2;
-	mPadPts[1].y= (mTerrainPts[2].y);
-	mPadPts[2].x= (mTerrainPts[6].x + mTerrainPts[7].x) / 2;
-	mPadPts[2].y= (mTerrainPts[6].y);
-	mPadPts[3].x= (mTerrainPts[8].x + mTerrainPts[9].x) / 2;
-	mPadPts[3].y= (mTerrainPts[8].y);
-	mPadPts[4].x= (mTerrainPts[12].x + mTerrainPts[13].x) / 2;
-	mPadPts[4].y= (mTerrainPts[12].y);
-    */
 }
 
 void Terrain::InitPadPoints( vector<Point>* vpp )

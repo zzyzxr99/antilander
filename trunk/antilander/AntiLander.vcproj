@@ -305,10 +305,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\resource.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Score.h"
 				>
 			</File>

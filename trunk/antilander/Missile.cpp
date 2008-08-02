@@ -6,7 +6,6 @@ using namespace std;
 
 float Missile::sSpeed = kMissileStartSpeed;
 
-//Constructor FIRST (easier for me)
 Missile::Missile()
 {
 	//Initilize all member variables
@@ -115,7 +114,6 @@ Missile::Missile(Point StartLoc, Point Dest, Vect InitDir)
     mBox.w = maxX - minX;
     mBox.h = maxY - minY;
 }
-//Deconstructor Last (easier for me)
 Missile::~Missile()
 {
 	//any new operators must have delete matches here
