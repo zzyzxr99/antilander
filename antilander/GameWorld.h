@@ -58,8 +58,6 @@ private:
 	static int command;
 	static float value;
 	Level* mTempLevel;
-	//Score	
-	//int TotalScore;
 	Score mScore;
 	Point mStars[125];
 	
@@ -124,8 +122,6 @@ public:
 	static void StartLua();
 	static int l_Action(lua_State* LVM);
 	
-	//Total Score
-	//int GetScore();
 	Score* GetScore();
 	
 	void CheckPause();

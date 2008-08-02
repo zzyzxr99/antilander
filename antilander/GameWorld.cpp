@@ -49,15 +49,12 @@ GameWorld::GameWorld()
 		mCurrentLevel.LoadLevel(GetLevName(lvlCtr));
 	}
 	InitEverything();
-	/*vector<Point>::iterator fP= mGameTerrain.PadPts();
-	mPlayerShip.InitGunship(fP[mCurrentLevel.GetGunStartPad()]);*/
 	InitStars();
 }
 
 GameWorld::~GameWorld()
 {
 	// any new operators must have delete matches here
-	// mLanders.capacity();
 	lua_close(luaVM);
 	delete mTempLevel;
 }
@@ -111,9 +108,6 @@ void GameWorld::SpawnBomb()
 
 void GameWorld::SpawnLander(Point sPoint, Point tPoint)
 {
-	//Lander *PtrLander;
-	//PtrLander= new Lander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ) );
-
     Lander localLander(sPoint, tPoint, knLanderDescending, Lander::sGetDescentRate( ));
 
 	mLanders.push_back(localLander);
@@ -123,13 +117,6 @@ void GameWorld::SpawnLander(Point sPoint, Point tPoint)
 
 void GameWorld::SpawnExplosion( Point sLoc )
 {
-    //Explosion *newExpl;
-    //newExpl= new Explosion( sLoc,
-    //                        Explosion::sGetMaxRadius( ),
-    //                        Explosion::sGetExpansionRate( ),
-    //                        kExplosionInnerColorDefault,
-    //                        kExplosionOuterColorDefault);
-
     Explosion localExplosion( sLoc,
                               Explosion::sGetMaxRadius( ),
                               Explosion::sGetExpansionRate( ),
@@ -137,32 +124,12 @@ void GameWorld::SpawnExplosion( Point sLoc )
                               kExplosionOuterColorDefault );
 
     mExplosions.push_back(localExplosion);
-
-    // Test setting static variables
-    //Explosion::sSetMaxRadius( newExpl->GetMaxRadius( ) + 10.0F );
-    //Explosion::sSetExpansionRate( newExpl->GetExpansionRate( ) + 5.0F );
 }
 
 void GameWorld::InitEverything()
 {
-	
-	/*mTempLevel->LoadLevel("default.txt");
-	mCurrentLevel.Clone(mTempLevel);*/
     InitLevel( );
-	//Init all Entities
-	//mGameTerrain.InitTerrain();
-	//mGameTerrain.InitPadPoints();
-	/*InitMissiles();*/
-	//InitLanders();
-	//SpawnLander();
-	//int numpts= mGameTerrain.GetNumPadPts();
-//	tWorld->SetGunPad(mCurrentLevel.GetGunStartPad());
-	
-//	vector<Point>::iterator fP= mGameTerrain.PadPts();
-	//	mPlayerShip.InitGunship(fP[mCurrentLevel.GetGunStartPad()]);
-    // EJR Explosions - None to init there are done during results
 }
-
 void GameWorld::DrawEverything( )
 {
     SDL_FillRect( mRender.getpScreen( ),
@@ -195,7 +162,6 @@ void GameWorld::DrawEverything( )
     {
         mRender.DrawLander( mRender.getpScreen( ),
                             &(landIter->GetLoc( )));
-//		mRender.DrawBox(landIter->GetLoc(), mRender.GetLanderBox());
     }
 
     // DWL draw missiles and bombs only in knPlayMode
@@ -210,8 +176,6 @@ void GameWorld::DrawEverything( )
             mRender.DrawCrosshair( mRender.getpScreen( ),
                                    &(misIter->GetTarget( )),
                                    255,0,0 );
-         // mRender.DrawBox( misIter->GetLocation( ),
-         //                  misIter->GetBox( ) );
         }
         vector<Bomb>::iterator bombIter;
         for ( bombIter = mBombs.begin( ); bombIter != mBombs.end( ); bombIter++ )
@@ -252,11 +216,7 @@ void GameWorld::DrawEverything( )
 		mRender.DrawConsole(DoConsoleIn());
 	}
 
-	//this is temp draw menu
-	
-	//mRender.DrawScore(TotalScore);
-	
-	//mRender.DrawMenu();
+	//Modes
 	if( mGameMode != knIntroMode)
 	{
 		mScore.DrawScore(mScore.GetTotalScore(), mRender.getpScreen());
@@ -291,24 +251,6 @@ void GameWorld::EditDrawEverything()
                               0,0,0 ));
 	bool DrawGreen= (mEditMode == knBuildMode);
 	mRender.DrawLevel(&mEditLevel,DrawGreen);
-
-    //mRender.DrawGunship( mRender.getpScreen( ),
-    //                     mPlayerShip.GetLoc( ));
-
-    //mRender.DrawTerrain( mRender.getpScreen( ),
-    //                     mGameTerrain.TerrainPts( ),
-    //                     mGameTerrain.GetTPts( ),
-	//					 mGameTerrain.TerBox());
-
-    /*if ( mRender.GetSplashAlpha( ) > 0 )
-    {
-        mRender.DrawSplash( );
-        mRender.DecSplashAlpha( 1 );
-    }*/
- 
- /*   mRender.DrawMissile( mRender.getpScreen( ),
-					     mPlayerShip.GetLoc( ),
-					     &(mRender.getMouse( )));*/
 
     mRender.DrawCrosshair( mRender.getpScreen( ),
 					       &mRender.getMouse( ),
@@ -351,7 +293,6 @@ void GameWorld::UpdateEverything( )
 			if ( misIter->GetLocation( ).Distance(misIter->GetDestination( ) ) < 17 )
 			{
 				misIter->SetStatus(knMissileExplode);
-                //SpawnExplosion( misIter->GetLocation( ) );
 			}
 			else
 			{
@@ -376,7 +317,6 @@ void GameWorld::UpdateEverything( )
 							landIter->SetStatus(knLanderExplode);
 							misIter->SetStatus(knMissileExplode);
 							mScore.AddScore(TotalScore, knMKill);
-						//AddScore(TotalScore, knMKill);
 						}
 					}
 				}
@@ -468,8 +408,7 @@ void GameWorld::UpdateEverything( )
 						{
 							landIter->SetStatus(knLanderExplode);
 							bombIter->SetStatus(knBombExplode);
-						//AddScore(TotalScore, knBKill);
-						mScore.AddScore(TotalScore, knBKill);
+							mScore.AddScore(TotalScore, knBKill);
 						}
 					}
 
@@ -549,8 +488,6 @@ void GameWorld::UpdateEverything( )
 			{
 				LanderTemp= MoveEntity( landIter->GetLoc(),landIter->GetDir(), landIter->GetSpeed(), elapsedTime);
 				landIter->SetLocation(LanderTemp.x,LanderTemp.y);
-                // EJR Lander watcher
- //               cout << "Lander x,y: " << LanderTemp.x << " " << LanderTemp.y << endl;
 			}
 		}
 		else if ( lStatus == knLanderExplode )
@@ -579,7 +516,7 @@ void GameWorld::UpdateEverything( )
             ExplosionStatusType eStatus;
             eStatus= iterExpl->Update(elapsedTime);
 
-			// Fratricide - did I spell it right?
+			// Fratricide
 			// Check if explosion radius hits missile, bomb, lander
 			// Need current radius, current location of Explosion
 			float curRadius= iterExpl->GetCurrentRadius();
@@ -598,7 +535,6 @@ void GameWorld::UpdateEverything( )
 					{
 						iterLander->SetStatus(knLanderExplode);
 						mScore.AddScore(TotalScore, knFKill);
-						//AddScore(TotalScore, knFKill);
 					}
 				}
 			}
@@ -642,27 +578,6 @@ void GameWorld::UpdateEverything( )
             break; // break out of loop - iterator is invalid after erase - only delete one each update cycle
         }
     }
-	//update all values
-	// Lander
-    //Lander::sSetDescentRate( mCurrentLevel.GetLndrDescRate( ) );
-
-    //// Missile
-    //Missile::sSetSpeed( mCurrentLevel.GetMissileSpd( ) );
-
-    //// Gunship
-    //mPlayerShip.SetPad( mCurrentLevel.GetGunStartPad( ) );
-    //mPlayerShip.SetReloadTime( mCurrentLevel.GetGunReload( ) );
-    //mPlayerShip.SetBombReloadTime( mCurrentLevel.GetBombReloadTime( ) );
-
-    //// Explosion
-    ///*Explosion::sSetMaxRadius( mCurrentLevel.GetExpRad( ) );
-    //Explosion::sSetExpansionRate( mCurrentLevel.GetExplRate( ) );*/
-
-    //// Bomb
-    //Bomb::sSetSpeed( mCurrentLevel.GetBombMxSpd( ) );
-    //Bomb::sSetAcceleration( mCurrentLevel.GetBombAcc( ) );
-    //Bomb::sSetRadius( mCurrentLevel.GetBombRad( ) );
-	//CheckPause();
 
     // Splash
     if ( mGameMode == knIntroMode ||
@@ -692,7 +607,6 @@ void GameWorld::UpdateEverything( )
             }
             mGameMode = knMenuMode;
 
-			//FadeChannel(knPlayChannel,.25);
 			PlaySoundLoop(knSLMenu,knMenuChannel,1.5);
 
             mRender.SetSplashFade(knFadeIn);
@@ -715,7 +629,6 @@ void GameWorld::UpdateEverything( )
 			FadeChannel(knPlayChannel,.25);
 			PlaySoundLoop(knSLMenu,knMenuChannel,2.5);
 
-         // mCurrentLevel.ClearLevel( );
             InitLevel( );
 			mScore.ClearScore();
             mRender.SetSplashFade(knFadeIn);
@@ -757,9 +670,6 @@ void GameWorld::UpdateEverything( )
         }
 
     }
-
-	//update gunship location
-	
 }
 
 bool GameWorld::FireMissile()
@@ -801,7 +711,6 @@ bool GameWorld::MissileSect(vector<Point>::iterator TerArr, Point MissNose, Vect
 	///////// calculate missile nose in relation to base //////////////
 	float M = Direction.y/Direction.x;		
 	float offX = sqrt (256/((M * M) + 1));
-//	float offX = 17/sqrt((M * M) + 1);    works as well
 	float offY = M*offX;
 	MissNose.x += offX;
 	int numTps= mGameTerrain.GetTPts();
@@ -989,8 +898,6 @@ void GameWorld::InitLevel( )
 
     // GameWorld
     ResetTimers( );
-
-
 }
 
 void GameWorld::ResetTimers( )
@@ -1054,7 +961,6 @@ USINT GameWorld::GetNumLndrScr( )
 
 int GameWorld::PointCheck()
 {
-	//for (int tp = 1; tp < (numPts); tp++)
 	return 0;
 }
 
@@ -1187,7 +1093,6 @@ string GameWorld::DoConsoleIn()			//if '!' returned = stop stream
 		str.erase(str.begin());
 		GetRender()->GetInput()->luaString = str;
 		DoLua();
-//		str = GetRender()->GetInput()->conString;
 		GetRender()->GetInput()->conString.clear();
 	}
 	return str;
@@ -1222,7 +1127,6 @@ int GameWorld::l_Action(lua_State* LVM)
 	{
 		command = (int)lua_tonumber(LVM, -2);
 		value = (float)lua_tonumber(LVM, -1);
-	//	lua_pushnumber(LVM, 0);
 	}
 	switch(command)
 	{
@@ -1287,21 +1191,9 @@ int GameWorld::l_Action(lua_State* LVM)
 		tWorld->GetCurrentLevel()->LoadLevel(tWorld->GetLevName((int)value));
 		*tWorld->GetLvlCtr() = (USINT)value;
 		break;
-	case 92 :
-		//restart - by default all the cases restart the level
-		break;
 	case 93 :
 		tWorld->GetRender()->SetGameState(false);
 		break;
-	//case 100 :
-	//	tWorld->SpawnBomb();
-	//	break;
-	//case 101 :
-	//	tWorld->SpawnMissile();
-	//	break;
-	//case 102 :
-	//	tWorld->SpawnLander();
-	//	break;
 	}
 	if(command != 0)
 	{
@@ -1324,12 +1216,6 @@ void GameWorld::StartLua()
 	lua_register(luaVM,"Action", l_Action);
 
 }
-
-
-//int GameWorld::GetScore()
-//{
-//	return TotalScore;
-//}
 
 Gunship* GameWorld::GetGunship()
 {

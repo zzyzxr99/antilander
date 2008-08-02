@@ -59,8 +59,8 @@ Render::Render( )
 	SDL_Init( SDL_INIT_VIDEO );
     TTF_Init( );
 	SDL_ShowCursor (SDL_DISABLE);
-//	screen = SDL_SetVideoMode( kWinWidth, kWinHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
-	screen = SDL_SetVideoMode( kWinWidth, kWinHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
+	screen = SDL_SetVideoMode( kWinWidth, kWinHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
+	//screen = SDL_SetVideoMode( kWinWidth, kWinHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
 	plIn.mouseMove.x = 50;
 	plIn.mouseMove.y = 50;
 	gameState = true;
@@ -276,12 +276,6 @@ void Render::DrawTerrain( SDL_Surface *scrn,
                   Round( tPts[i+1].y ),
                   255,255,255,255 );
     }
-
-    //Bounding boxes
-   /* for ( int i = 0; i < numTP-1; i++ )
-    {
-		DrawBox(boxes[i]);
-    }*/
 }
 
 void Render::DrawCrosshair( SDL_Surface* scrn,
@@ -407,12 +401,6 @@ bool Render::arePlaying()
 {
 	return playState;
 }
-
-//bool Render::shiftHeld()
-//{
-//	return shiftKey;
-//}
-
 bool Render::EndEdit()
 {
 	return exitEditmode;
@@ -608,37 +596,7 @@ void Render::DrawMenu()
 	TTF_CloseFont ( startFont );
 	SDL_FreeSurface( newSurface );
 	SDL_FreeSurface( quitSurface );
-	
-
-
-	//SDL_Flip( screen );
 }
-
-//void Render::DrawMenuItems
-
-
-
-//void Render::DrawBox( Point loc,
-//                      BBox box )
-//{
-//    rectangleRGBA( screen,
-//                   (int)(loc.x + box.x),
-//                   (int)(loc.y + box.y),
-//                   (int)(loc.x + box.x + box.w),
-//                   (int)(loc.y + box.y + box.h),
-//                   255,255,255,127 );
-//}
-
-//void Render::DrawBox(BBox box)
-//{
-//    rectangleRGBA( screen,
-//                   (int)(box.x),
-//                   (int)(box.y),
-//                   (int)(box.x + box.w),
-//                   (int)(box.y + box.h),
-//                  7,150,255,127 );
-//}
-
 
 BBox Render::GetLanderBox()
 {
@@ -681,24 +639,6 @@ bool Render::GetConsole()
 {
 	return mConsole;
 }
-//void Render::DrawScore(int Score)
-//{
-//	stringstream SS;
-//	SS << "Score : " << Score;
-//    TTF_Font* ScoreFont = TTF_OpenFont("QUERROUND.TTF", 12);
-//    SDL_Color txtForeColor = { 0, 254, 254 };
-//	SDL_Surface* textSurface = TTF_RenderText_Blended( ScoreFont, SS.str().c_str(), txtForeColor );
-//    SDL_Rect ScoreLoc = { kWinWidth - 380 ,10 ,
-//                           0,0 };
-//    SDL_BlitSurface( textSurface,
-//                     NULL,
-//                     screen,
-//                     &ScoreLoc );
-//    SDL_FreeSurface( textSurface );
-//    TTF_CloseFont( ScoreFont );
-//}
-
-
 
 bool* Render::IsPause()
 {
@@ -739,4 +679,3 @@ void Render::SetEndDraw (bool num)
 {
 	doneBuildmode = num;
 }
-

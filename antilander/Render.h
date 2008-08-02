@@ -23,7 +23,6 @@ private:
 	SDL_Event mEvent;
 	SDL_KeyboardEvent mKeyEvent;
 	playInput plIn;				//player input
-	//bool shiftKey;
 	bool gameState;
 	bool playState;  //for checking if a level is started
 	bool doneBuildmode;
@@ -86,7 +85,6 @@ public:
 	void SetEndEdit(bool num);
 	void SetEndDraw(bool num);
 	Point getMouse();					//gets cursor position
-	//bool shiftHeld();
 	bool isLClicked();					//check whether mouse is clicked
 	bool isRClicked();
 	bool isMClicked();
@@ -100,9 +98,6 @@ public:
     void DrawSplash(GameStatusType status);
 	void DrawMenu();
 	
-//    void DrawBox( Point loc,
-//                  BBox box );
-//	void DrawBox(BBox box);
 	BBox GetLanderBox();
 	void DrawLevel(Level* l,bool DrawGreen);
     BBox GetGameScreen();
@@ -110,7 +105,6 @@ public:
 	void DrawConsole(string str);
 	playInput* GetInput();
 	bool GetConsole();
-	//void DrawScore(int Score);
 	bool* IsPause();
 	bool* IsStart();
 	bool* IsEdit();

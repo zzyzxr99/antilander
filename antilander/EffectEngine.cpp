@@ -17,7 +17,6 @@ EffectEngine::~EffectEngine()
     {
         Shutdown();
         mStarted= false;
-
     }
 }
 

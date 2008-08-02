@@ -103,11 +103,7 @@ Vect MagVect(Vect v, float m)
 Point MoveEntity(Point start,Vect direction,float speed,float timeelapsed)
 {
 	Point retPoint;
-	//Point calcStart, calcEnd;
-	//calcEnd.x= direction.x;
-	//calcEnd.y= direction.y;
 
-	//direction= UnitVect(calcStart,calcEnd);
 	direction.x= direction.x*speed*timeelapsed;
 	direction.y= direction.y*speed*timeelapsed;
 
@@ -121,10 +117,7 @@ Point MoveEntityAccel(Point start,Vect vel,Vect acc,float timeelapsed)
 {
 	Point retPoint;
 	Point calcStart, calcEnd;
-	//calcEnd.x= direction.x;
-	//calcEnd.y= direction.y;
 
-	//direction= UnitVect(calcStart,calcEnd);
 	vel.x= (vel.x + .5F*acc.x*timeelapsed)*timeelapsed;
 	vel.y= (vel.y +  .5F*acc.y*timeelapsed)*timeelapsed;
 

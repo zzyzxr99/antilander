@@ -29,9 +29,7 @@ int main(int argv, char *args[])
 	// ejr check OLD
 	if (tWorld->GetGameStatus() == knPlayMode)
 	{
-//		Level*L= tWorld->GetLevel();
 		tWorld->GetEditLevel()->ClearLevel();  //shouldn't this be set to ...GetCurrentLevel...?
-	
 	}
 	
 	while (tWorld->GetRender()->gameRunning())
@@ -113,9 +111,6 @@ int main(int argv, char *args[])
             tWorld->DrawEverything( );
         }
 	}
-
-
-//    tWorld->TestSaveLoadLevel();
     // Delete the GameWorld, it will delete all of its members
     tWorld->ShutdownSoundEngine();
    	delete tWorld;

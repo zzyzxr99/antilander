@@ -47,12 +47,6 @@ const unsigned char kMenuAvalue= 255;
 const int kMenuDrawX=(kWinWidth/2)-(kMenuWidth/2);
 const int kMenuDrawY= 60;
 
-
-// for IntersectBoxesStatus - to return information about where out of bounds
-// each value can be combine using powers of 2
-// knOutLeft | knOutTop means outside of boxes left and up/top
-// 
-
 // terrain
 const int kDefaultNumLPad = 8;
 const int kDefaultNumTPt = kDefaultNumLPad * 2;
@@ -192,6 +186,3 @@ enum LoopChannels    { knMenuChannel = 0,
 					 };
 
 #endif // _CONSTANTS_H
-
-// comment
-// Eric comment

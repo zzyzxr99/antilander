@@ -7,6 +7,7 @@ using namespace std;
 
 extern GameWorld *tWorld;
 extern GameWorld *mScore;
+
 void Render::doInput()
 {
 	plIn.leftClick= false;
@@ -41,10 +42,10 @@ void Render::doInput()
 					
 						mPause = true;
 					}
-			/*		else
+					else
 					{
-						mPause = false;
-					}*/
+						break;
+					}
 					break;
 #ifndef	_RELEASE				
 				case SDLK_BACKQUOTE :
@@ -276,16 +277,6 @@ void Render::doEditInput()
 			}
 		}
 
-		//if(mEvent.type == SDL_KEYDOWN)
-		//{
-		//	plIn.keyPress = mEvent.key.keysym.sym;
-		//	if(plIn.keyPress == SDLK_LSHIFT)
-		//	{
-		//		shiftKey = true;
-		//	}
-		//}
-
-
 		if(mEvent.type == SDL_MOUSEBUTTONDOWN)
 		{
 			plIn.mousePress.button = mEvent.button.button;
@@ -390,7 +381,6 @@ void Render::doMenuInput()
 			{
 				mStart = true;
 				mPause = false;
-				/*tWorld->GetCurrentLevel()->LoadLevel("LEVEL01.txt");*/
 				tWorld->InitLevel();
 				tWorld->GetScore()->ClearScore();
 				tWorld->SetGameStatus(knPlayMode);

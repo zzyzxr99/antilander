@@ -20,7 +20,6 @@ private:
 
 public:
 	Score();
-	// Score( parameters )
 	~Score();
 	int GetTotalScore();
 	void AddScore(int Score, int Val);

@@ -9,7 +9,6 @@ float Bomb::sMaxSpeed = kBombMaxSpeed;
 float Bomb::sAcceleration = kGravity*kGravity;
 float Bomb::sRadius = kBombRadius;
 
-//Constructor FIRST (easier for me)
 Bomb::Bomb()
 {
 	//Initilize all member variables
@@ -63,7 +62,6 @@ Bomb::Bomb(Point StartLoc, Vect InitDir)
     cout << "Add bomb";
 
 }
-//Deconstructor Last (easier for me)
 Bomb::~Bomb()
 {
 	//any new operators must have delete matches here
